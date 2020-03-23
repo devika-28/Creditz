@@ -1,0 +1,23 @@
+<mat-card *ngFor="let personapplicant of personapplicants" class="application-card" mat-elevation-z10>
+
+    <mat-card-header>
+    <mat-card-title class="title">ApplicationDetails</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+   <br/><h1> ApplicantId  :{{personapplicant.appliId}}</h1>
+        <h1> LoanAmount :{{personapplicant.loanAmount}}</h1>
+        <h1> Occupation :{{personapplicant.occupation}}</h1>
+        <h1> Panacard   :{{personapplicant.pancard}}</h1>
+        <h1> Loan tenture :{{personapplicant.loanTenture}}</h1>
+    
+    </mat-card-content>
+   
+    <mat-card-actions class="application-actions">
+    <button mat-button class="mat-raised-button mat-primary" >
+     BACK
+    </button>
+
+    </mat-card-actions>
+
+</mat-card>
+

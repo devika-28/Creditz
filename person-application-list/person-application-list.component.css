@@ -1,0 +1,16 @@
+.application-card {
+    margin: 20px 10px;
+    background-color: burlywood;
+}
+
+.mat-card{
+    width:90%;
+}
+h1{
+    font-family: 'Times New Roman', Times, serif;font-size:30px;color: darkblue;
+  }
+  .title
+  {
+    font-family: 'Times New Roman', Times, serif;font-size:50px;color:black;text-align:auto; 
+  }
+
