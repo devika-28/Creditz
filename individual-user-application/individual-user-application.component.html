@@ -1,0 +1,79 @@
+<div *ngIf="this.storeRole=='Person' and this.store!=null">
+  <div style="display: block; min-width: 400px; margin-left:29%; width: 100%;" >
+  <div class="limiter">
+      <div class="container-login100">
+      <div class="wrap-login100">
+
+
+      <form #application="ngForm" (ngSubmit)="apply()" method="POST" class="login100-form validate-form" style="border:none;" >
+
+      <div class="wrap-input100">
+      <H1>Your Credit Details</H1>
+                  <span class="focus-input100"></span>
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+      </div>
+  <br>
+      <div class="wrap-input100">
+        <input type="text" placeholder="Pan Card - AAAA1234A" class="input100" name="pancard" [(ngModel)]="applicationModel.pancard" required>
+              <span class="focus-input100"></span>
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+      </div>
+
+          <div class="wrap-input100">
+        <input type="text" placeholder="Loan Amount Required" class="input100" name="loanAmount" [(ngModel)]="applicationModel.loanAmount" required>
+              <span class="focus-input100"></span>
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+      </div>
+
+          <div class="wrap-input100">
+        <input type="text" placeholder="Your Age" class="input100" name="age" [(ngModel)]="applicationModel.age" required>
+              <span class="focus-input100"></span>
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+      </div>
+
+          <div class="wrap-input100">
+        <input type="text" class="input100" name="gender" [(ngModel)]="applicationModel.gender" required>
+              <span class="focus-input100"></span>
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+      </div>
+
+          <div class="wrap-input100">
+        <input type="text" class="input100" name="criminalRecord" [(ngModel)]="applicationModel.criminalRecord" required>
+              <span class="focus-input100"></span>
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+      </div>
+
+              <div class="wrap-input100">
+        <input type="text" class="input100" name="bankruptcy" [(ngModel)]="applicationModel.bankruptcy" required>
+              <span class="focus-input100"></span>
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+      </div>
+
+      
+      <div class="wrap-input100">
+        <input type="text" placeholder="Your Occupation" class="input100" name="occupation" [(ngModel)]="applicationModel.occupation" required>
+              <span class="focus-input100"></span>
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+      </div>
+
+      
+      <div class="wrap-input100">
+        <input type="text" placeholder="Duration of Repayment- in Months" class="input100" name="loanTenure" [(ngModel)]="applicationModel.loanTenure" required>
+              <span class="focus-input100"></span>
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+      </div>
+  <br>
+      <div class="container-login100-form-btn" >
+        <button class="login100-form-btn" (click)="apply()">Apply</button>
+      </div>
+
+  </form>
+
+  </div>
+  </div>
+  </div>
+  </div>
+</div>
+<div *ngIf="this.store==null">
+<app-login></app-login>
+</div>
