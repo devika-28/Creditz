@@ -1,0 +1,73 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">C₹ED!TZ</a>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" href="home" >      Home  </a>
+      </li>
+            
+      <li class="nav-item">
+        <a class="nav-link" href="aboutUs" >      About Us  </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="faq" >  FAQ  </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="ourPolicies" >  Our Policies  </a>
+      </li>  
+      
+      <li class="nav-item" *ngIf="this.store==null">
+        <a class="nav-link" href="login" >  login  </a>
+      </li>
+
+      <li class="nav-item" *ngIf="this.store!=null">
+        <a class="nav-link" (click)="logout()" >  logout  </a>
+      </li>
+
+
+<!--      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li> 
+-->
+
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+<!--
+<div class="toolbar" role="banner">
+      <img width="100" alt="Angular Logo"
+            src="assets/logo.png" />
+      <span>Welcome!</span>
+      <div class="spacer"></div>
+      <div class="spacer"></div>
+      <div class="spacer"></div>
+
+      <span (click)="goToUrl('home')" class="click">Home</span>
+      <div class="spacer"></div>
+
+      <span (click)="goToUrl('aboutUs')" class="click">About Us</span>
+      <div class="spacer"></div>
+
+      <span (click)="goToUrl('faq')" class="click">FAQ</span>
+      <div class="spacer"></div>
+
+      <span (click)="goToUrl('ourPolicies')" class="click">Our Policies</span>
+      <div class="spacer"></div>
+
+      <span (click)="goToUrl('contactUs')" class="click">Contact Us</span>
+      <div class="spacer"></div>
+
+      <span (click)="goToUrl('login')" style="padding-right:2%;" class="click">Login</span>
+
+</div> -->

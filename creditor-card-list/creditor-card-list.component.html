@@ -1,0 +1,19 @@
+
+<mat-card *ngFor="let person of persons" class="creditor-card" mat-elevation-z10>
+   
+    <mat-card-header>
+    <mat-card-title>{{person.personName}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+     <br/><h1> Email :{{person.user.userEmail}}</h1>
+     <h1> Contact :{{person.contact}}</h1>
+    </mat-card-content>
+
+    <mat-card-actions class="creditor-actions">
+        <button mat-button class="mat-raised-button mat-primary" [routerLink]="['person-application']"[queryParams]="{userId:person.user.userId}">
+         VIEW CREDITORS DETAILS
+    </button>
+
+    </mat-card-actions>
+
+</mat-card>

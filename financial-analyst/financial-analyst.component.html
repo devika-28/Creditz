@@ -1,0 +1,22 @@
+<div style="display: block; width: 90%; min-width: 400px; margin-left:41%;">
+
+<div class="Creditor-panel">
+
+    <br> <h1>Welcome to Dashboard</h1>
+    <br>
+       <mat-tab-group animationDuration="1000ms">
+          <mat-tab label ="Top Individual Creditors">
+            <app-creditor-card-list>
+                     [persons]="topPersons$ | async">
+            </app-creditor-card-list>
+          </mat-tab>
+       <mat-tab label="Top Organizational Creditors">
+               <app-creditor1-card-list
+                     [organizations]="topOrganizations$ | async" >
+               </app-creditor1-card-list>
+          </mat-tab>
+       </mat-tab-group>
+ </div>
+   
+</div>
+   
