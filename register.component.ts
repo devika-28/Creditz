@@ -1,5 +1,5 @@
 import { OrganizationService } from './../services/organization.service';
-
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from '../model/user';
@@ -29,7 +29,11 @@ export class RegisterComponent implements OnInit {
   userModel2=new User(1,'a@gmail.com','empty','default');
   personModel=new Person(1,'shiv','678989238','sagar',this.userModel1);
   organizationModel=new Organization(1,'A','435665','bhopal','A.K.Rao',this.userModel2);
-  constructor(private formBuilder: FormBuilder, private _registerService:RegistrationService) { }
+  error: string;
+  loading: false;
+  constructor(private formBuilder: FormBuilder,
+    private router: Router,
+    private _registerService:RegistrationService) { }
 
   ngOnInit() {
 }
@@ -42,10 +46,14 @@ onSubmit1() {
    this.personModel.user=this.userModel1;
   this._registerService.registerPerson(this.personModel)
   .subscribe( 
-    data=>console.log('success'!,data),
-    error=>console.error('Error!',error)
-    
-   )
+    data => {console.log('success'!,data)
+      this.router.navigate(['/login'], { queryParams: { registered: true }});
+  },
+  error => {
+      this.error = error;
+      this.loading = false;
+      console.error('Error!',error)
+  });
 }
 
 
@@ -57,9 +65,14 @@ onSubmit2() {
    this.organizationModel.user=this.userModel2;
   this._registerService.registerOrganization(this.organizationModel)
   .subscribe( 
-    data=>console.log('success'!,data),
-    error=>console.error('Error!',error)
- )
+    data => {console.log('success'!,data)
+      this.router.navigate(['/login'], { queryParams: { registered: true }});
+  },
+  error => {
+      this.error = error;
+      this.loading = false;
+      console.error('Error!',error)
+  });
 }
 
 
