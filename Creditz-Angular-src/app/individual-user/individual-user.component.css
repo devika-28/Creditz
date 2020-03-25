@@ -2,7 +2,7 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css"; 
 
 body {font-family: Arial, Helvetica, sans-serif;}
-form {border: 3px solid #f1f1f1;}
+form {border: 1px solid #f1f1f1;}
 
 input[type=text], input[type=password] {
   width: 100%;
@@ -20,8 +20,8 @@ input[type=text], input[type=password] {
 button {
   background-color: #4CAF50;
   color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
+  padding: 100% 100%;
+  margin: 10% 0;
   border: none;
   cursor: pointer;
   width: 100%;
@@ -31,15 +31,9 @@ button:hover {
   opacity: 0.8;
 }
 
-.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
-}
-
 .imgcontainer {
   text-align: center;
-  margin: 24px 0 12px 0;
+  margin: 0 0 0 0;
 }
 
 img.avatar {
@@ -48,7 +42,7 @@ img.avatar {
 }
 
 .container {
-  padding: 16px;
+  padding: 2%;
 }
 
 span.psw {
@@ -56,16 +50,6 @@ span.psw {
   padding-top: 16px;
 }
 
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-  span.psw {
-     display: block;
-     float: none;
-  }
-  .cancelbtn {
-     width: 100%;
-  }
-}
 
 * {
 	margin: 0px; 
@@ -81,7 +65,7 @@ body, html {
 /*---------------------------------------------*/
 a {
 	font-family: Poppins-Regular;
-	font-size: 14px;
+	font-size: 100%;
 	line-height: 1.7;
 	color: #666666;
 	margin: 0px;
@@ -102,7 +86,7 @@ a:hover {
 
 /*---------------------------------------------*/
 h1,h2,h3,h4,h5,h6 {
-	margin: 0px;
+	margin: 1%;
 }
 
 p {
@@ -110,11 +94,11 @@ p {
 	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;
-	margin: 0px;
+	margin: 10%;
 }
 
 ul, li {
-	margin: 0px;
+	margin: 0%;
 	list-style-type: none;
 }
 
@@ -206,7 +190,7 @@ iframe {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  padding: 15px;
+  padding: 5%;
   background: #9053c7;
   background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
   background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
@@ -217,7 +201,7 @@ iframe {
 .wrap-login100 {
   width:fit-content;
   background: #fff;
-  border-radius: 10px;
+  border-radius: 10%;
   overflow: hidden;
   align-items:center;
   display: -webkit-box;
@@ -230,33 +214,24 @@ iframe {
   padding: 8% 10% 25% 10%;
 }
 
-/*------------------------------------------------------------------
-[  ]*/
-.login100-pic {
-  width: 316px;
-}
-
 .login100-pic img {
   max-width: 100%;
 }
 
-
-/*------------------------------------------------------------------
-[  ]*/
 .login100-form {
-  width: 290px;
+  width: 100%;
 }
 
 .login100-form-title {
   font-family: Poppins-Bold;
-  font-size: 24px;
+  font-size: 32px;
   color: #333333;
   line-height: 1.2;
   text-align: center;
 
   width: 100%;
   display: block;
-  padding-bottom: 54px;
+  padding-bottom: 2%;
 }
 
 
@@ -265,12 +240,12 @@ iframe {
   position: relative;
   width: 100%;
   z-index: 1;
-  margin-bottom: 10px;
+  margin-bottom: 5%;
 }
 
 .input100 {
   font-family: Poppins-Medium;
-  font-size: 15px;
+  font-size: 90%;
   line-height: 1.5;
   color: #666666;
 
@@ -279,7 +254,7 @@ iframe {
   background: #e6e6e6;
   height: 50px;
   border-radius: 25px;
-  padding: 0 30px 0 68px;
+  padding: 0 3% 0 6%;
 }
 
 
@@ -358,7 +333,7 @@ iframe {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding-top: 20px;
+  padding-top: 2%;
 }
 
 .login100-form-btn {
@@ -379,7 +354,7 @@ iframe {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 25px;
+  padding: 0 2%;
 
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
@@ -400,7 +375,7 @@ iframe {
 
 @media (max-width: 992px) {
   .wrap-login100 {
-    padding: 177px 90px 33px 85px;
+    padding: 15% 6% 2% 5%;
   }
 
   .login100-pic {
@@ -414,7 +389,7 @@ iframe {
 
 @media (max-width: 768px) {
   .wrap-login100 {
-    padding: 100px 80px 33px 80px;
+    padding: 8% 6% 2% 6%;
   }
 
   .login100-pic {
@@ -426,76 +401,8 @@ iframe {
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 30%) {
   .wrap-login100 {
     padding: 100px 15px 33px 15px;
-  }
-}
-
-
-/*------------------------------------------------------------------
-[ Alert validate ]*/
-
-.validate-input {
-  position: relative;
-}
-
-.alert-validate::before {
-  content: attr(data-validate);
-  position: absolute;
-  max-width: 70%;
-  background-color: white;
-  border: 1px solid #c80000;
-  border-radius: 13px;
-  padding: 4px 25px 4px 10px;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  transform: translateY(-50%);
-  right: 8px;
-  pointer-events: none;
-
-  font-family: Poppins-Medium;
-  color: #c80000;
-  font-size: 13px;
-  line-height: 1.4;
-  text-align: left;
-
-  visibility: hidden;
-  opacity: 0;
-
-  -webkit-transition: opacity 0.4s;
-  -o-transition: opacity 0.4s;
-  -moz-transition: opacity 0.4s;
-  transition: opacity 0.4s;
-}
-
-.alert-validate::after {
-  content: "\f06a";
-  font-family: FontAwesome;
-  display: block;
-  position: absolute;
-  color: #c80000;
-  font-size: 15px;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  transform: translateY(-50%);
-  right: 13px;
-}
-
-.alert-validate:hover:before {
-  visibility: visible;
-  opacity: 1;
-}
-
-@media (max-width: 992px) {
-  .alert-validate::before {
-    visibility: visible;
-    opacity: 1;
   }
 }

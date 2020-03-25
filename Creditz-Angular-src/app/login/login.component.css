@@ -6,10 +6,10 @@ form {border: 3px solid #f1f1f1;}
 
 input[type=text], input[type=password] {
   width: 100%;
-  padding: 12px 20px;
+  padding: 4% 5%;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #ccc;
+  border: 1% solid #ccc;
   box-sizing: border-box;
 }
 
@@ -31,15 +31,9 @@ button:hover {
   opacity: 0.8;
 }
 
-.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
-}
-
 .imgcontainer {
   text-align: center;
-  margin: 24px 0 12px 0;
+  margin: auto;
 }
 
 img.avatar {
@@ -102,7 +96,7 @@ a:hover {
 
 /*---------------------------------------------*/
 h1,h2,h3,h4,h5,h6 {
-	margin: 0px;
+	margin: 1%;
 }
 
 p {
@@ -191,7 +185,7 @@ iframe {
 [ login ]*/
 
 .limiter {
-  width: 100%;
+  width: 90%;
   margin: 0 auto;
 }
 
@@ -206,7 +200,7 @@ iframe {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  padding: 15px;
+  padding: 0%;
   background: #9053c7;
   background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
   background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
@@ -233,7 +227,7 @@ iframe {
 /*------------------------------------------------------------------
 [  ]*/
 .login100-pic {
-  width: 316px;
+  width: 80%;
 }
 
 .login100-pic img {
@@ -244,7 +238,7 @@ iframe {
 /*------------------------------------------------------------------
 [  ]*/
 .login100-form {
-  width: 290px;
+  width: 100%;
 }
 
 .login100-form-title {
@@ -414,7 +408,7 @@ iframe {
 
 @media (max-width: 768px) {
   .wrap-login100 {
-    padding: 100px 80px 33px 80px;
+    padding: 6% 5% 2% 5%;
   }
 
   .login100-pic {
@@ -428,7 +422,7 @@ iframe {
 
 @media (max-width: 576px) {
   .wrap-login100 {
-    padding: 100px 15px 33px 15px;
+    padding: 6% 1% 2% 1%;
   }
 }
 

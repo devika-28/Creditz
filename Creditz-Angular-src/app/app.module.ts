@@ -39,6 +39,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { FAQComponent } from './faq/faq.component';
 import { OurPoliciesComponent } from './our-policies/our-policies.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { ConfirmEqualValidatorDirective } from './shared/confirm-equal-validator.directive';
 
 
 
@@ -86,6 +87,7 @@ export const route: Routes = [
     FAQComponent,
     OurPoliciesComponent,
     ContactUsComponent,
+    ConfirmEqualValidatorDirective,
     
     // AuthenticateComponent,
     // HttpClientModule,
