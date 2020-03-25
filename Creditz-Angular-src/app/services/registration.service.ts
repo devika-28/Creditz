@@ -13,11 +13,13 @@ export class RegistrationService {
 
  registerPerson(person:Person)
  {
+   person.user.role="Person";
    return this._http.post<any>(`${this._url}/save_person`,person);
  }
 
  registerOrganization(organization:Organization)
  {
+   organization.user.role="Organization";
    return this._http.post<any>(`${this._url}/save_organization`,organization);
  }
 }

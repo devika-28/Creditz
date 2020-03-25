@@ -6,113 +6,196 @@
                 alt="Avatar" class="avatar" height=10% width=10%>
         </div>
         <mat-tab-group>
-  <mat-tab label="Person Registration">
+  <mat-tab label=" Registration  for  Person/Individual">
    <form #personForm="ngForm"  (ngSubmit)="onSubmit1()" novalidate>
 
   <div class="form-group">
             <label for="pname"><b>Name</b></label>
            <input type="text" [class.is-invalid]="name.invalid && name.touched" class="form-control" #name="ngModel" placeholder="Enter full name" name="pname"  [(ngModel)]="personModel.personName" required>
-        <small class="text-danger" [class.d-none]="name.valid||name.untouched">Name is required</small>
-</div>
+           <div *ngIf="name.invalid && (name.dirty || name.touched)"
+           class="text-danger">      
+         <small *ngIf="name.errors.required">
+           Name is required.
+         </small>
+        </div>   
+    </div>
 <div class="form-group">
            <label for="pemail"><b>Email</b></label>
            <input type="text" #email="ngModel" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [class.is-invalid]="email.invalid && email.touched" class="form-control" placeholder="Enter email" name="pemail" [(ngModel)]="userModel1.userEmail" required>
-           <small class="text-danger" [class.d-none]="email.valid||email.untouched">Enter in email format</small>
+           <div *ngIf="email.invalid && (email.dirty || email.touched)"
+           class="text-danger">
+       
+         <small *ngIf="email.errors.required">
+           Email is required.
+         </small>
+         <small *ngIf="email.errors.pattern">
+          Enter in email format.
+         </small>      
+       </div>
 </div>
 <div class="form-group">
 
              <label for="psw"><b>Password</b></label>
-             <input type="password" #password="ngModel" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}" [class.is-invalid]="password.invalid && password.touched" class="form-control" placeholder="Enter Password" name="psw" [(ngModel)]="userModel1.password" required>
-             <small class="text-danger" [class.d-none]="password.valid||password.untouched">At least 8 characters in length,Lowercase letters,Uppercase letters,Numbers,Special characters</small>
-</div>
+             <input type="password" #password="ngModel" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}" 
+             [class.is-invalid]="password.invalid && password.touched" class="form-control" placeholder="Enter Password" 
+             name="psw" [(ngModel)]="userModel1.password" required>
+             <div *ngIf="password.invalid && (password.dirty || password.touched)"
+             class="text-danger">
+         
+           <small *ngIf="password.errors.required">
+             Password is required.
+           </small>
+           <small *ngIf="password.errors.pattern">
+            At least 8 characters in length,Lowercase letters,Uppercase letters,Numbers,Special characters.
+           </small>      
+         </div>
+            </div>
 <div class="form-group">                        
 
              <label for="cpsw"><b>Confirm Password</b></label>
-             <input type="password" #confirmpassword="ngModel" appConfirmEqualValidator="psw"  [class.is-invalid]="confirmpassword.invalid && confirmpassword.touched && confirmpassword.errors?.notEqual" class="form-control" placeholder="Enter Password again" name="cpsw" ngModel required>
-              <small class="text-danger" [class.d-none]="confirmpassword.valid||confirmpassword.untouched">password is required to enter again</small>
-              <span  *ngIf="confirmpassword.touched && confirmpassword.errors?.notEqual">password and confirmpassword does not match
-              </span>
-</div>
+             <input type="password" #confirmpassword="ngModel" appConfirmEqualValidator="psw" 
+              [class.is-invalid]="confirmpassword.invalid && confirmpassword.touched" class="form-control" 
+              placeholder="Enter Password again" name="cpsw" ngModel required>
+             <div *ngIf="confirmpassword.invalid && (confirmpassword.dirty || confirmpassword.touched)"
+             class="text-danger">
+         
+           <small *ngIf="confirmpassword.errors.required">
+             Password is required to enter again.
+           </small>
+           <small *ngIf=" confirmpassword.errors?.notEqual">password and confirmpassword does not match.
+           </small>      
+         </div>
+            </div> 
 <div class="form-group">                        
               <label for="address"><b>Address</b></label>
             <input type="address" #add="ngModel" [class.is-invalid]="add.invalid && add.touched" class="form-control" placeholder="Enter address" name="address" [(ngModel)]="personModel.address" required>
-             <small class="text-danger" [class.d-none]="add.valid||add.untouched">Address is required</small>
+            <div *ngIf="add.invalid && (add.dirty || add.touched)"
+           class="text-danger">      
+         <small *ngIf="add.errors.required">
+           Address is required.
+         </small>
+        </div>   
 </div>
 <div class="form-group">
             <label for="contact"><b>Contact No.</b></label>
             <input type="text" #contact="ngModel" pattern="^\d{10}" [class.is-invalid]="contact.invalid && contact.touched" class="form-control" placeholder="Enter contact no." name="contact" [(ngModel)]="personModel.contact" required>
-            <small class="text-danger" [class.d-none]="contact.valid||contact.untouched">Contact is required in ten digit</small>
+            <div *ngIf="contact.invalid && (contact.dirty || contact.touched)"
+             class="text-danger">
+         
+           <small *ngIf="contact.errors.required">
+             contact number is required.
+           </small>
+           <small *ngIf="contact.errors.pattern">Number should be in 10 digit.
+           </small>      
+         </div>
 </div>
 <div class="form-group">
-
-            <label for="Role"><b>Role</b></label>
-            <select (blur)="validateRole1(role1.value)"  (change)="validateRole1(role1.value)" [class.is-invalid]="topicHasError1 && role1.touched" class="custom-select" #role1="ngModel" name="role" [(ngModel)]="userModel1.role">
-                <option value="default"> I am: </option>
-                <option *ngFor="let role1 of roles1"> {{ role1 }} </option>
-            </select>
-            <small class="text-danger" [class.d-none]="!topicHasError1||role1.untouched"> Please choose the role</small>
-</div>
-<div class="form-group">
-            <button [disabled]="personForm.form.invalid " type="submit">Register</button>
+            <button class="btn btn-success" [disabled]="!personForm.form.valid" type="submit">Register</button>
         </div>
     </form> </mat-tab>
 
 
 
-  <mat-tab label="Organization Registration">
+  <mat-tab label=" Registration for Organization/Company">
 
   <form #organizationForm="ngForm"  (ngSubmit)="onSubmit2()" novalidate> 
 
    <div class="form-group">
            <label for="uname"><b>Organization/Company Name</b></label>
            <input type="text" #cname="ngModel" [class.is-invalid]="cname.invalid && cname.touched" class="form-control" placeholder="Enter company name" name="cname"  [(ngModel)]="organizationModel.organizationName" required>
-           <small class="text-danger" [class.d-none]="cname.valid||cname.untouched">Name is required</small>
+           <div *ngIf="cname.invalid && (cname.dirty || cname.touched)"
+           class="text-danger">      
+         <small *ngIf="cname.errors.required">
+           Organization/Company Name is required.
+         </small>
+        </div>   
 </div>
 <div class="form-group">
             <label for="dname"><b>Director Name</b></label>
            <input type="text" #dirname="ngModel" [class.is-invalid]="dirname.invalid && dirname.touched" class="form-control" placeholder="Enter director name" name="dname" [(ngModel)]="organizationModel.directorName" required>
-           <small class="text-danger" [class.d-none]="dirname.valid||dirname.untouched">Director name is required</small>
+           <div *ngIf="dirname.invalid && (dirname.dirty || dirname.touched)"
+           class="text-danger">      
+         <small *ngIf="dirname.errors.required">
+           Director name is required.
+         </small>
+        </div>   
 </div>
 <div class="form-group">            
 
             <label for="email"><b>Organization/Company Email</b></label>
              <input type="email" #mail="ngModel" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [class.is-invalid]="mail.invalid && mail.touched" class="form-control" placeholder="Enter email" name="email" [(ngModel)]="userModel2.userEmail" required>
-            <small class="text-danger" [class.d-none]="mail.valid||mail.untouched">Enter in email format</small>
+             <div *ngIf="mail.invalid && (mail.dirty || mail.touched)"
+             class="text-danger">
+         
+           <small *ngIf="mail.errors.required">
+             Email is required.
+           </small>
+           <small *ngIf="mail.errors.pattern">
+            Enter in email format.
+           </small>      
+         </div>
   </div>
   <div class="form-group">    
 
             <label for="psw"><b>Password</b></label>  
-             <input type="password"  pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}"  #cpassword="ngModel" [class.is-invalid]="cpassword.invalid && cpassword.touched" class="form-control" placeholder="Enter Password" name="psw" [(ngModel)]="userModel2.password" required>
-          <small class="text-danger" [class.d-none]="cpassword.valid||cpassword.untouched">At least 8 characters in length,Lowercase letters,Uppercase letters,Numbers,Special characters</small>
-  </div>
+             <input type="password"  pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}"  
+             #cpassword="ngModel" [class.is-invalid]="cpassword.invalid && cpassword.touched" class="form-control"
+              placeholder="Enter Password" name="cpsw" [(ngModel)]="userModel2.password" required>
+             <div *ngIf="cpassword.invalid && (cpassword.dirty || cpassword.touched)"
+             class="text-danger">
+         
+           <small *ngIf="cpassword.errors.required">
+             Password is required.
+           </small>
+           <small *ngIf="cpassword.errors.pattern">
+            At least 8 characters in length,Lowercase letters,Uppercase letters,Numbers,Special characters.
+           </small>      
+         </div> 
+         </div>
 
 <div class="form-group">
            <label for="cpsw"><b>Confirm Password</b></label>
-             <input type="password" #ccpassword="ngModel" [class.is-invalid]="ccpassword.invalid && ccpassword.touched" class="form-control" placeholder="Enter Password again" name="cpsw" ngModel required>
-            <small class="text-danger" [class.d-none]="ccpassword.valid||ccpassword.untouched">password is required to enter again</small>
-</div>
+             <input type="password" #ccpassword="ngModel" appConfirmEqualValidator="cpsw"
+              [class.is-invalid]="ccpassword.invalid && ccpassword.touched" class="form-control"
+               placeholder="Enter Password again" name="ccpsw" ngModel required>
+             <div *ngIf="ccpassword.invalid && (ccpassword.dirty || ccpassword.touched)"
+             class="text-danger">
+         
+           <small *ngIf="ccpassword.errors.required">
+             Password is required to enter again.
+           </small>
+           <small *ngIf=" ccpassword.errors?.notEqual">password and confirmpassword does not match.
+          </small>      
+         </div>
+            </div>
 <div class="form-group">
             
               <label for="address"><b>Address</b></label>
             <input type="address" #cadd="ngModel" [class.is-invalid]="cadd.invalid && cadd.touched" class="form-control" placeholder="Enter address" name="address" [(ngModel)]="organizationModel.address" required>
-           <small class="text-danger" [class.d-none]="cadd.valid||cadd.untouched">Address is required</small>
+            <div *ngIf="cadd.invalid && (cadd.dirty || cadd.touched)"
+           class="text-danger">      
+         <small *ngIf="cadd.errors.required">
+          Address is required.
 
+
+          </small>
+        </div>   
 </div>
 <div class="form-group">
             <label for="contact"><b>Contact No.</b></label>
             <input type="text" #ccontact="ngModel" pattern="^\d{10}" [class.is-invalid]="ccontact.invalid && ccontact.touched" class="form-control" placeholder="Enter contact no." name="contact" [(ngModel)]="organizationModel.contact" required>
-            <small class="text-danger" [class.d-none]="ccontact.valid||ccontact.untouched">phone number is required  and must be 10 digit</small>
- </div>                   
-   <div class="form-group">   
-               <label for="Role"><b>Role</b></label>
-            <select (blur)="validateRole2(role2.value)"  (change)="validateRole2(role2.value)" [class.is-invalid]="topicHasError2 && role2.touched" class="custom-select" #role2="ngModel" name="role" [(ngModel)]="userModel2.role">
-                <option value="default"> I am: </option>
-                <option *ngFor="let role2 of roles2"> {{ role2 }} </option>
-            </select>
-            <small class="text-danger" [class.d-none]="!topicHasError2||role2.untouched"> Please choose the role</small>                 
-    </div>
+            <div *ngIf="ccontact.invalid && (ccontact.dirty || ccontact.touched)"
+             class="text-danger">
+         
+           <small *ngIf="ccontact.errors.required">
+             contact number is required.
+           </small>
+           <small *ngIf="ccontact.errors.pattern">Number should be in 10 digit.
+           </small>      
+         </div>          
+            </div>                   
             <div class="form-group">
-            <button [disabled]="organizationForm.form.invalid" type="submit">Register</button>          
+            <button  class="btn btn-success" [disabled]="!organizationForm.form.valid" type="submit">Register</button>          
      </div>
     </form> </mat-tab>
 </mat-tab-group>
