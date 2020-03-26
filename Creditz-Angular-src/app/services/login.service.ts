@@ -55,10 +55,10 @@ goToUrl(url: string){
                            break; 
                         } 
                         case 'Admin': { 
-                          this.goToUrl('admin');
+                          this.goToUrl('default');
                           break; 
                        } 
-                       case 'analyst': { 
+                       case 'Analyst': { 
                         this.goToUrl('financial-analyst');
                         break; 
                      } 

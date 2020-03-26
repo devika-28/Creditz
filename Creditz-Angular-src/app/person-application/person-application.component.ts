@@ -1,4 +1,3 @@
-
 import { Component, OnInit,Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PersonService } from '../services/person.service';

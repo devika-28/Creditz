@@ -1,29 +1,33 @@
 .application-card {
-    margin: 20px 10px;
-    background-color: #bccee5;
-    max-width: 200px;
-    max-height:fit-content;
+  margin: 20px 10px;
+  background-color: #bccee5;
+  max-width: 400px;
+  max-height:fit-content;
+  margin: 4px;
 
 }
 
 .mat-card{
-    width:90%;
+  width:90%;
 }
 h1{
-    font-family: 'Times New Roman', Times, serif; 
-    text-align:auto;
-    color: rgb(49, 49, 128); 
-    font-size: smaller;
+  font-family: 'Times New Roman', Times, serif; 
+  text-align:auto;
+  color: rgb(49, 49, 128); 
+  font-size:medium;
 
-  }
-  .title
-  {
-    font-family: 'Times New Roman', Times, serif; 
-    color:black;
-    text-align:auto;
-    font-weight: bold;
-    font-size: small ;
-
- 
+}
+.title
+{
+  font-family: 'Times New Roman', Times, serif; 
+  color:black;
+  text-align:auto;
+  font-weight: bold;
+  font-size: 40px ;
+}
+#card-container {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
   }
 

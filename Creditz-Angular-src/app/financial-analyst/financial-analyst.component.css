@@ -1,19 +1,43 @@
 .creditor-panel {
-    max-width: 400px;
-    margin: 30%;
-    
+  max-width: 400px;
+  margin: 30%;
+  
 }
 
 h1{
-    font-family: 'Times New Roman', Times, serif;font-size: 50px;color: darkblue;
-  }
-  .mat-tab-group {
-    margin-bottom: auto;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 50px;color: darkblue;
+}
+.mat-tab-group {
+  margin-bottom: auto;
+  
+}
+.label
+{
     
-  }
-  .label
-  {
-      
-    background-color: cornflowerblue;
-    
-  }
+  background-color: cornflowerblue;
+  
+}
+.mat-cell{
+  width:max-content
+}
+table {
+  width: 100%;
+}
+.mat-tab
+{
+  color: crimson;
+}
+
+td{
+font-size:15px;
+color: crimson;
+ }
+
+ th{
+   font-size: 18px;
+   color: darkblue;
+ }
+
+
+

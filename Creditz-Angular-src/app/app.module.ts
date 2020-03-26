@@ -21,8 +21,6 @@ import { OrganizationApplicationComponent } from './organization-application/org
 import { OrganizationApplicationListComponent } from './organization-application-list/organization-application-list.component';
 import { PersonApplicationComponent } from './person-application/person-application.component';
 import { PersonApplicationListComponent } from './person-application-list/person-application-list.component';
-import { CreditorCardListComponent } from './creditor-card-list/creditor-card-list.component';
-import { Creditor1CardListComponent } from './creditor1-card-list/creditor1-card-list.component';
 // import { AuthenticateComponent } from './authenticate/authenticate.component';
 // import {MatTableModule} from '@angular/material/table';
 import {MatTabsModule} from '@angular/material/tabs';
@@ -41,10 +39,26 @@ import { OurPoliciesComponent } from './our-policies/our-policies.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { ConfirmEqualValidatorDirective } from './shared/confirm-equal-validator.directive';
 
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSortModule } from '@angular/material/sort';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { AdminModule } from './admin/admin.module';
+import { CreditorTableListComponent } from './creditor-table-list/creditor-table-list.component';
+
 
 
 
 export const route: Routes = [
+  { path: " creditor-table-list",component:CreditorTableListComponent},
   { path: '', component: HomeComponent },
   { path: '#', component: HomeComponent },
   { path: 'login', component: LoginComponent },
@@ -80,13 +94,12 @@ export const route: Routes = [
     OrganizationApplicationListComponent,
     PersonApplicationComponent,
     PersonApplicationListComponent,
-    CreditorCardListComponent,
-    Creditor1CardListComponent,
     IndividualUserApplicationComponent,
     AboutUsComponent,
     FAQComponent,
     OurPoliciesComponent,
     ContactUsComponent,
+    CreditorTableListComponent,
     ConfirmEqualValidatorDirective,
     
     // AuthenticateComponent,
@@ -100,12 +113,24 @@ export const route: Routes = [
     MatTabsModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
     MatTabsModule ,
     MatButtonModule,
     MatCardModule,
     AngularTiltModule,
-    // MatTableModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatInputModule,
+    MatIconModule,
+    MatSidenavModule ,
+    MatToolbarModule,
+    MatSortModule,
+    MatFormFieldModule,
+    FlexLayoutModule,
+    MatListModule,
+    MatMenuModule,
+    HttpClientModule,
+    MatProgressSpinnerModule,
+    AdminModule
     // MatPaginatorModule,
   ],
   providers: [PersonService,OrganizationService],
