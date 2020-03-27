@@ -1,0 +1,39 @@
+import { Component, OnInit } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { ShowAnalystComponent } from '../show-analyst/show-analyst.component';
+import { AdminsidebarComponent } from '../adminsidebar/adminsidebar.component';
+import { AdminComponent } from 'creditz/src/app/admin/admin.component';
+
+
+// @Component({
+//   selector: 'app-default',
+//   templateUrl: './default.component.html',
+//   styleUrls: ['./default.component.css']
+// })
+
+export const route: Routes = [
+  { path: " creditor-table-list",component:ShowAnalystComponent},
+  { path: 'aboutUs', component: AdminsidebarComponent },
+
+
+
+
+@NgModule({
+  declarations: [
+    AdminComponent,
+  ],
+  imports: [
+    RouterModule.forRoot(route),
+
+  ],
+  providers: [],
+  bootstrap: [AdminComponent]
+})
+export class DefaultComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}
