@@ -1,0 +1,109 @@
+  
+   <!-- <img src="assets/img/short-term-business-loans.jpg"  alt="alternative text" style="position: relative;"  class="img1" > -->
+   
+ 
+<div *ngIf="this.storeRole=='Organization' and this.store!=null">
+    <!-- <div style="display: block; min-width: 400px; margin-left:29%; width: 100%;" > -->
+    <!-- <div class="outtermost1"> -->
+      <div class="limiter">
+                 
+          <!-- <div style=" float: left;"> -->
+            <div class="container" aTilt >
+              <img src="assets/img/short-term-business-loans.jpg" alt="IMG" class="img1">
+            </div>
+    <!-- </div> -->
+      </div>
+    
+          
+          <div class="wrap-login100">
+  
+  
+   <form #application="ngForm"  method="POST" class="login100-form validate-form" style="border:none;" >
+  
+        <div class="wrap-input100"> 
+        <H1>Your Credit Details</H1>
+                    <span class="focus-input100"></span>
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+        </div>
+    <br>
+        <div class="wrap-input100">
+          <input type="text" placeholder="Pan Card - AAAA1234A" class="input100" name="pancard" [(ngModel)]="applicationModel.pancard" required>
+                <span class="focus-input100"></span>
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+        </div>
+  
+            <div class="wrap-input100">
+          <input type="number" placeholder="Loan Amount Required" class="input100" name="loanAmount" [(ngModel)]="applicationModel.loanAmount" required>
+                <span class="focus-input100"></span>
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+        </div>
+  
+            <div class="wrap-input100">
+          <input type="number" placeholder="How old is your business" class="input100" name="businessAge" [(ngModel)]="applicationModel.businessAge" required>
+                <span class="focus-input100"></span>
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+        </div>
+  
+          
+  
+        
+         <div class="wrap-input100">
+          <input type="number" placeholder="Revenue" class="input100" name="revenue" [(ngModel)]="applicationModel.revenue" required>
+                <span class="focus-input100"></span>
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+        </div>
+
+        <div class="wrap-input100">
+          <input type="number" placeholder="Total number of employee" class="input100" name="employeeCount" [(ngModel)]="applicationModel.employeeCount" required>
+                <span class="focus-input100"></span>
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+        </div>
+   
+        
+        <div class="wrap-input100">
+          <input type="text" placeholder="License Number" class="input100" name="licenseno" [(ngModel)]="applicationModel.licenseno" required>
+                <span class="focus-input100"></span>
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+        </div>
+
+        
+        <div class="wrap-input100">
+          <input type="text" placeholder="Type of Organization" class="input100" name="organizationType" [(ngModel)]="applicationModel.organizationType" required>          
+                <span class="focus-input100"></span>
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+        </div>
+        
+        <div class="wrap-input100">
+          <input type="number" placeholder="Duration of Repayment- in Months" class="input100" name="loanTenure" [(ngModel)]="applicationModel.loanTenure" required>
+                <span class="focus-input100"></span>
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+        </div>
+        <div class="wrap-input100">
+          <input type="checkbox" class="input100" name="criminalRecord" [(ngModel)]="applicationModel.criminalRecord" required>
+                <span class="focus-input100"></span>
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+        </div>
+  
+                <div class="wrap-input100">
+          <input type="checkbox" class="input100" name="bankruptcy" [(ngModel)]="applicationModel.bankruptcy" required>
+                <span class="focus-input100"></span>
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+        </div>
+    <!-- <br>
+        <div class="container-login100-form-btn" >
+          <button class="login100-form-btn" (click)="">Apply</button>
+        </div>
+   -->
+    </form>
+  
+    </div>
+     </div>
+    <!-- </div> -->
+    <!-- </div> -->
+    <!-- </div> -->
+  
+
+  
+  <!-- <div *ngIf="this.store==null">
+  <app-login></app-login>
+  </div> -->
