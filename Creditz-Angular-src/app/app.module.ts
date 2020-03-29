@@ -53,8 +53,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AdminModule } from './admin/admin.module';
 import { CreditorTableListComponent } from './creditor-table-list/creditor-table-list.component';
-
-
+import { FooterComponent } from './footer/footer.component';
 
 
 export const route: Routes = [
@@ -101,6 +100,7 @@ export const route: Routes = [
     ContactUsComponent,
     CreditorTableListComponent,
     ConfirmEqualValidatorDirective,
+    FooterComponent,
     
     // AuthenticateComponent,
     // HttpClientModule,
@@ -130,7 +130,7 @@ export const route: Routes = [
     MatMenuModule,
     HttpClientModule,
     MatProgressSpinnerModule,
-    AdminModule
+    AdminModule,
     // MatPaginatorModule,
   ],
   providers: [PersonService,OrganizationService],
