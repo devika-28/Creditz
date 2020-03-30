@@ -56,7 +56,7 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
 
 
 .new_footer_top .f_widget.about-widget .f_list li a:hover {
-    color: #5e2ced;
+    color: #4CAF50;
 }
 .new_footer_top .f_widget.about-widget .f_list li {
     margin-bottom: 11px;
@@ -121,7 +121,7 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
 
 .new_footer_top .f_social_icon a:hover {
     background: #4CAF50;
-    border-color: #5e2ced;
+    border-color: #4CAF50;
   color:white;
 }
 .new_footer_top .f_social_icon a + a {
