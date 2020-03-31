@@ -1,9 +1,15 @@
 package com.impetus.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
 
 import com.impetus.model.CibilReport;
 import com.impetus.model.PersonApplicant;
@@ -19,6 +25,7 @@ public class PersonApplicationServiceImplementation implements PersonApplication
 	@Autowired PersonApplicationRepository personApplication;
 	
 	@Autowired PersonRepository person;
+	
 	
 	@Override
 	public HashMap<String,Long> RiskMitigate(PersonApplicant application) {
@@ -66,5 +73,19 @@ public class PersonApplicationServiceImplementation implements PersonApplication
 		
 		return "approve";
 	}
+	
+	
+	public List<PersonApplicant> getAllPersonApplicant(Integer pageNo, Integer pageSize)
+    {
+        Pageable paging = PageRequest.of(pageNo, pageSize);
+ 
+        Page<PersonApplicant> pagedResult = personApplication.findAll(paging);
+         
+        if(pagedResult.hasContent()) {
+            return pagedResult.getContent();
+        } else {
+            return new ArrayList<PersonApplicant>();
+        }
+    }
 
 }

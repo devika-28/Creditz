@@ -30,7 +30,8 @@ import com.impetus.model.User;
      *            the user
      * @return true, if successful */
     public boolean saveOrganization(Organization user);
-    public boolean deleteAnalystByUserId(int userId);
+    public void deleteAnalyst(long userId);
+    public User getUserById(long userId);
 
     /** @return */
     public List<Person> findAllPersons();

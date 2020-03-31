@@ -38,6 +38,9 @@ public interface UserService {
     public List<OrganizationApplicant> findOrganizationApplicantByUserId(int userId);
 
     public boolean saveAnalyst(User user);
+   // public boolean deleteAnalyst(User user);
+    public User getUserById(long userId);
+    void deleteAnalyst(long userId);
 }
 
 

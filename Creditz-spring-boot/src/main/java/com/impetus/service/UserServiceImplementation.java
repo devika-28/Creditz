@@ -69,4 +69,16 @@ public class UserServiceImplementation implements UserService {
         return userdao.findOrganizationApplicantByUserId(userId);
     }
 
+    public User getUserById(long userId)
+    {
+    	return userdao.getUserById(userId);
+    }
+
+	@Override
+	public void deleteAnalyst(long userId) {
+       userdao.deleteAnalyst(userId);
+		
+	}
+    
+
 }

@@ -3,6 +3,7 @@ package com.impetus.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ import com.impetus.model.User;
 public class UserDAOImplementation implements User_DAO {
 
 	/** The entity manager. */
-	@Autowired
+	@Autowired	
 	private EntityManager entityManager;
 
 	/*
@@ -52,12 +53,10 @@ public class UserDAOImplementation implements User_DAO {
 		boolean status = false;
 		entityManager = entityManager.getEntityManagerFactory().createEntityManager();
 		Session currentSession = (Session) entityManager.unwrap(Session.class);
-
-		try {
-
-			User user1 = user.getUser();
-			currentSession.save(user1);
-			currentSession.save(user);
+         try {
+             User user1 = user.getUser();
+			 currentSession.save(user1);
+			 currentSession.save(user);
 			status = true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -100,19 +99,32 @@ public class UserDAOImplementation implements User_DAO {
 	        boolean status = false;
 	        entityManager = entityManager.getEntityManagerFactory().createEntityManager();
 	        Session currentSession = (Session) entityManager.unwrap(Session.class);
+	        user.setRole("Analyst");
 	        currentSession.save(user);
 	        return status;
 	    }
 
-	    @Override
-	    public boolean deleteAnalystByUserId(int userId) {
-	        boolean status = false;
-	        entityManager = entityManager.getEntityManagerFactory().createEntityManager();
-	        Session currentSession = (Session) entityManager.unwrap(Session.class);
-	        currentSession.delete(userId);
-	        return status;
-	       
-	    }
+		@Override
+		public void deleteAnalyst(long userId) {
+			entityManager = entityManager.getEntityManagerFactory().createEntityManager();
+			entityManager.remove(getUserById(userId));
+		}
+		
+
+		@Override
+		public User getUserById(long userId) {
+			return entityManager.find(User.class, userId);
+			
+		}
+
+	    
+//	    public boolean deleteAnalyst(User user) {
+//	        boolean status = false;
+//	        entityManager = entityManager.getEntityManagerFactory().createEntityManager();
+//	        Session currentSession = (Session) entityManager.unwrap(Session.class);
+//	        currentSession.delete(user);
+//	        return status;
+//	       }
 
 	    
 	}

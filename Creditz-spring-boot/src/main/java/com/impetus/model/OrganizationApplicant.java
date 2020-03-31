@@ -11,7 +11,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
-@Entity
+@Entity(name = "organizationapplicant")
 @Table(name = "organizationapplicant")
 public class OrganizationApplicant {
     @Id

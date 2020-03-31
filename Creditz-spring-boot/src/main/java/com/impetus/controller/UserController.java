@@ -3,6 +3,7 @@ package com.impetus.controller;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -79,12 +80,23 @@ public class UserController {
     public List<PersonApplicant> findPersonApplicantByUserId(@RequestParam int userId) {
         return userservice.findPersonApplicantByUserId(userId);
     }
+    
+    @GetMapping("/articlebyid")
+	public User getUserById(@RequestParam long userId) {
+		return userservice.getUserById(userId);
+    }
 
     @GetMapping("/getOrganizationApplicant")
     public List<OrganizationApplicant> findOrganizationApplicantByUserId(@RequestParam int userId) {
      
         return userservice.findOrganizationApplicantByUserId(userId);
     }
+    @DeleteMapping("/deleteAnalyst")
+    public void deleteAnalyst(@RequestParam long userId)
+    {
+    	userservice.deleteAnalyst(userId);
+    }
+    
 
 }
 

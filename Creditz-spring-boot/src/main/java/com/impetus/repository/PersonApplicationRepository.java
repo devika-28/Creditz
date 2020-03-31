@@ -37,3 +37,4 @@ public interface PersonApplicationRepository extends JpaRepository<PersonApplica
 	
 }
 
+
