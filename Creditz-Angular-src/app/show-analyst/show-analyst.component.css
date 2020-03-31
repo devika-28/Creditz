@@ -1,0 +1,54 @@
+/* mat-table {
+  width: 400%;
+} */
+mat-header-cell 
+{
+font-family:'Times New Roman', Times, serif;
+font-size: 15px;color: darkblue; 
+}
+ .hide{
+   display: none;
+ }
+ mat-footer-row.mat-footer-cell{
+   justify-content: center;
+   font-style:italic;
+ }
+ /* filter control */
+
+.example-header {
+min-height: 64px;
+padding: 8px 24px 0;
+}
+
+.mat-form-field {
+font-size: 14px;
+width: 100%;
+}
+.data-container {
+display: flex;
+flex-direction: column;
+min-width: 300px;
+}
+.mat-table {
+overflow: auto;
+max-height: 500px;
+}
+/* mat-sidenav-container 
+{
+  height:200%;
+} */
+.profile-card{
+text-align: center;
+padding:20px;
+}
+a{
+color: black;
+align-content: center;
+}
+/* mat-sidenav-content
+{
+display: box; 
+width: 90%;
+min-width: 400px;
+height:90%
+} */

@@ -1,48 +1,53 @@
-<div class="search-div">
-    <button mat-raised-button>
-      <mat-icon>add</mat-icon> create
-    </button>
-    <mat-form-field class="search-form-field" floatLabel="never">
-      <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off">
-     <button mat-button matSuffix mat-icon-button aria-label="Clear">
+
+<div class= "data-container mat-elevation-z12">
+  <div class="example-header">
+    <mat-form-field floatLabel="never">
+      <input matInput (keyup)="applyFilter($event.target.value)" [(ngModel)]="searchKey" placeholder="SearchByApplicationStatus">
+     <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="onSearchClear()">
      <mat-icon>close</mat-icon>
-    </button>
+     </button>
     </mat-form-field>
-</div>
-<div class="mat-elevation-z8">
+  </div>
+  
 <table mat-table [dataSource]="dataSource" matSort>
-    
-      <!-- Position Column -->
-      <ng-container matColumnDef="personId">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
-        <mat-cell *matCellDef="let person"> {{person.personId}}</mat-cell>
-      </ng-container>
-  
-      <!-- Name Column -->
-      <ng-container matColumnDef="personName">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>personName</mat-header-cell>
-        <mat-cell *matCellDef="let person"> {{person.personName}}</mat-cell>
-      </ng-container>
-  
-      <!-- Weight Column -->
-      <ng-container matColumnDef="contact">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>contact</mat-header-cell>
-        <mat-cell *matCellDef="let person"> {{person.contact}}</mat-cell>
-      </ng-container>
-  
-      <!-- Symbol Column -->
+ 
       
-  
-      <ng-container matColumnDef="address">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>address</mat-header-cell>
-        <mat-cell *matCellDef="let person"> {{person.address}}</mat-cell>
+      <ng-container matColumnDef="applicationId">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Application ID </mat-header-cell>
+        <mat-cell *matCellDef="let application"> {{application.applicationId}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="personName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+        <mat-cell *matCellDef="let application"> {{application.personId.personName}}</mat-cell>
       </ng-container>
   
-      <ng-container matColumnDef="actions">
-        <mat-header-cell *matHeaderCellDef></mat-header-cell>
-        <mat-cell *matCellDef="let person">
-          <button mat-icon-button color="warn"> <mat-icon> delete_outline</mat-icon></button>
-        </mat-cell>
+  
+      <ng-container matColumnDef="contact">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Contact no </mat-header-cell>
+        <mat-cell *matCellDef="let application"> {{application.personId.contact}}</mat-cell>
+      </ng-container>
+
+      
+      <ng-container matColumnDef="address">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Address </mat-header-cell>
+        <mat-cell *matCellDef="let application"> {{application.personId.address}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="loanAmount">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Loan Amount </mat-header-cell>
+        <mat-cell *matCellDef="let application"> {{application.loanAmount}}</mat-cell>
+      </ng-container>
+
+
+      <ng-container matColumnDef="loanTenure">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Loan Tenure</mat-header-cell>
+        <mat-cell *matCellDef="let application"> {{application.loanTenure}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="applicationStatus">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Application Status </mat-header-cell>
+        <mat-cell *matCellDef="let application"> {{application.applicationStatus}}</mat-cell>
       </ng-container>
   
       <ng-container matColumnDef="loading">
@@ -51,20 +56,19 @@
        </mat-footer-cell>
         
        </ng-container>
-      <!-- <ng-container matColumnDef="noData">
-        <mat-footer-cell *matFooterCellDef colspan="6">
-        no data
-       </mat-footer-cell> 
-        
-      </ng-container> --> 
-  
+      
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
       <mat-footer-row *matFooterRowDef="['loading']"[ngClass]="{'hide':dataSource!=null}"></mat-footer-row>
       
   </table>
-  <mat-paginator [pageSizeOptions]="[5,10,25,100]" [pageSize]="5"></mat-paginator>
+  <mat-paginator [length]="length"
+                 [pageSize]="pageSize"
+                 [pageSizeOptions]="pageSizeOptions"
+                 (page)="pageEvent=$event">
+  </mat-paginator>
   
-  </div> 
+  </div>
+  
   
   

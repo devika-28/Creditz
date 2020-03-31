@@ -1,18 +1,16 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatSortModule, MatSort, Sort } from '@angular/material/sort';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSort } from '@angular/material/sort';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { OrganizationApplicationService } from '../services/organization-application.service';
-import { $ } from 'protractor';
-import { PersonApplicant } from '../model/personApplicant';
+
 @Component({
-  selector: 'app-creditor-table-list',
-  templateUrl: './creditor-table-list.component.html',
-  styleUrls: ['./creditor-table-list.component.css']
+  selector: 'app-organization-creditor-table-list',
+  templateUrl: './organization-creditor-table-list.component.html',
+  styleUrls: ['./organization-creditor-table-list.component.css']
 })
-export class CreditorTableListComponent implements OnInit {
-  topPersons$: Observable<PersonApplicant>;
+export class OrganizationCreditorTableListComponent implements OnInit {
+
   displayedColumns: string[] = ['applicationId','personName','contact','address','loanAmount','loanTenure','applicationStatus'];
   @ViewChild(MatSort) sort:MatSort;
   @ViewChild(MatPaginator) paginator:MatPaginator;
@@ -23,16 +21,17 @@ export class CreditorTableListComponent implements OnInit {
   pageEvent: PageEvent;
   pageIndex=0;
   pageNo=0;
-  pageSize=10;
+  pageSize=1;
  
   setPageSizeOptions(setPageSizeOptionsInput: string) {
-    if (setPageSizeOptionsInput) {
+  if (setPageSizeOptionsInput)
+   {
       this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
     }
   }
   constructor(private organizataionApplication:OrganizationApplicationService) { }
    ngOnInit(){
-      this.organizataionApplication.findAllIndividualApplication(this.pageNo,this.pageSize).subscribe(stream=>
+      this.organizataionApplication.findAllOrganizationApplication(this.pageNo,this.pageSize).subscribe(stream=>
        {
           this.dataSource.data=stream as any;
        });
@@ -47,7 +46,7 @@ export class CreditorTableListComponent implements OnInit {
        this.pageSize=this.pageEvent.pageSize;
        this.pageNo=this.pageEvent.pageIndex;
        console.log(this.pageIndex+"check");
-       this.organizataionApplication.findAllIndividualApplication(this.pageIndex,this.pageSize).subscribe(stream=>
+       this.organizataionApplication.findAllOrganizationApplication(this.pageIndex,this.pageSize).subscribe(stream=>
         {
            this.dataSource.data=stream as any;
            console.log(this.pageIndex);
