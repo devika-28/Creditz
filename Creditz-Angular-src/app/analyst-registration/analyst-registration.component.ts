@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AnalystService } from 'src/app/services/analyst.service';
-import { User } from 'src/app/model/user';
+import { User } from '../model/user';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { AnalystService } from '../services/analyst.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-admin-registration',
-  templateUrl: './admin-registration.component.html',
-  styleUrls: ['./admin-registration.component.css']
+  selector: 'app-analyst-registration',
+  templateUrl: './analyst-registration.component.html',
+  styleUrls: ['./analyst-registration.component.css']
 })
-export class AdminRegistrationComponent implements OnInit {
+export class AnalystRegistrationComponent implements OnInit {
+
   userModel1=new User(1,'a@gmail.com','empty','default');
   registerForm: FormGroup;
   submitted = false;
@@ -27,7 +28,7 @@ onSubmit1() {
   console.log(this.userModel1);
   this.analystService.registerAnalyst(this.userModel1).subscribe(  
     data => {console.log('success'!,data)
-    this.router.navigate(['default'], { queryParams: { registered: true }});
+    this.router.navigate(['adminsidenav'], { queryParams: { registered: true }});
   },
   error => {
       this.error = error;

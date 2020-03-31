@@ -51,9 +51,12 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { AdminModule } from './admin/admin.module';
 import { CreditorTableListComponent } from './creditor-table-list/creditor-table-list.component';
 import { FooterComponent } from './footer/footer.component';
+import { AnalystRegistrationComponent } from './analyst-registration/analyst-registration.component';
+import { AdminsidenavComponent } from './adminsidenav/adminsidenav.component';
+import { OrganizationCreditorTableListComponent } from './organization-creditor-table-list/organization-creditor-table-list.component';
+import { ShowAnalystComponent } from './show-analyst/show-analyst.component';
 
 
 export const route: Routes = [
@@ -74,7 +77,14 @@ export const route: Routes = [
   { path: 'ourPolicies', component: OurPoliciesComponent },
   { path: 'faq', component: FAQComponent },
   { path: 'aboutUs', component: AboutUsComponent },
-
+  { path:"creditor-table-list",component:CreditorTableListComponent},
+  { path:"organization-creditor-table-list",component:OrganizationCreditorTableListComponent},
+  {path:"adminsidenav",component:AdminsidenavComponent},
+  {path:"admin",component:AdminComponent},
+  {path:"analyst-registration",component:AnalystRegistrationComponent},
+  {path:"show-analyst",component:ShowAnalystComponent},
+  
+    
 
 ];
 
@@ -101,6 +111,11 @@ export const route: Routes = [
     CreditorTableListComponent,
     ConfirmEqualValidatorDirective,
     FooterComponent,
+    AnalystRegistrationComponent,
+    AdminsidenavComponent,
+    AdminComponent,
+    OrganizationCreditorTableListComponent,
+    ShowAnalystComponent,
     
     // AuthenticateComponent,
     // HttpClientModule,
@@ -130,7 +145,7 @@ export const route: Routes = [
     MatMenuModule,
     HttpClientModule,
     MatProgressSpinnerModule,
-    AdminModule,
+  
     // MatPaginatorModule,
   ],
   providers: [PersonService,OrganizationService],
