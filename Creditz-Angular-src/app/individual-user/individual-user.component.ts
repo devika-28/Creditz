@@ -22,12 +22,18 @@ export class IndividualUserComponent implements OnInit {
    calculateEMI: any = function(principle:number, tenure:number){
       var p:number=principle;
       var t:number=tenure;
-    var interest = (p*13.5*t)/1200;
+    var interest = (p*11.5*t)/1200;
      return ((p+interest)/t);   
     
     }
 
 
 
-  
+  // calculateEMI: any = function(P: number , T:number){
+  //   this.calculator.subscribe( (res: Response) =>{
+  //     var interest = (P*T*11.5)/1200;
+  //     window.alert((P+interest)/T  );
+  //     return (P+interest)/T;
+  //   }
+  //   )}
 }
