@@ -33,81 +33,87 @@ public class PersonApplicationServiceImplementation implements PersonApplication
 	@Autowired OrganizationRepository organization;
 	
 	
-	@Override
-	public HashMap<String,Long> RiskMitigate(PersonApplicant application) {
+		@Override
+	public HashMap<String, Long> RiskMitigate(PersonApplicant application) {
 
-		CibilReport reportOfCurrentUser = cibilReport.findByPanCard(application.getPancard());
-		System.out.println(reportOfCurrentUser);
-		
-		System.out.println(reportOfCurrentUser.getAssetCost());
-		System.out.println(reportOfCurrentUser.getCategory());
-//		application.getLoanAmount();
-//		application.getAge();
-//		application.getBankruptcy();
-//		application.getCriminalRecord();
-//		application.getLoanTenure();
-//		application.getApplicationStatus();
-//		reportOfCurrentUser.getAssetCost();
-//		reportOfCurrentUser.getCategory();
-//		reportOfCurrentUser.getCreditLimit();
-//		reportOfCurrentUser.getCreditScore();
-//		reportOfCurrentUser.getCreditUtilization();
-//		reportOfCurrentUser.getCurrentBalance();
-//		reportOfCurrentUser.getLiabilities();
-//		reportOfCurrentUser.getMonthlyIncome();
+		try {
+			CibilReport reportOfCurrentUser = cibilReport.findByPanCard(application.getPancard());
 
-		System.out.println("userId: "+ (application.getUserId()).getUserId());
-		
-		application.setApplicationStatus(this.ApproveOrDisapprove());
+			application.setApplicationStatus(
+					this.ApproveOrDisapprove(application.getBankruptcy(), application.getCriminalRecord(),
+							reportOfCurrentUser.getCategory(), reportOfCurrentUser.getCreditScore(),
+							application.getLoanAmount(), reportOfCurrentUser.getCreditUtilization(),
+							reportOfCurrentUser.getCreditLimit(), reportOfCurrentUser.getMonthlyIncome(),
+							reportOfCurrentUser.getLiabilities(), reportOfCurrentUser.getCurrentBalance()));
+		} catch (Exception e) {
+//			LOG.info("cibil record not found");
+			application.setApplicationStatus("Record Not Found");
+		}
+
 		Long userId = (application.getUserId()).getUserId();
-		
+
 		Long personId = person.getPersonIdByUserId(userId);
-		
-	personApplication.insertApplication(application.getPancard(), application.getLoanAmount(), application.getAge(), application.getGender(), 
-										application.getOccupation(), application.getApplicationStatus(), application.getCriminalRecord(), 
-										application.getBankruptcy(), application.getLoanTenure(), personId, userId);		
-	
-	System.out.println("Person Application ID:"+ personApplication.getApplicationId());
-	HashMap<String,Long> json = new HashMap<String,Long>();
-	json.put("Application_Id", personApplication.getApplicationId());
-	return json;
-	}
-	
-	
 
-	public String ApproveOrDisapprove() {
-		
-		return "approve";
-	}
-	
-	
-	public HashMap<String,Long> organizationRiskMitigate(OrganizationApplicant application){
-		
-      System.out.println(application.getLicenseNumber());
-      System.out.println(application.getPancard());
-		CibilReport reportOfCurrentUser = cibilReport.findByPanCard(application.getPancard());
-		System.out.println(reportOfCurrentUser);
-		
-		System.out.println(reportOfCurrentUser.getAssetCost());
-		System.out.println(reportOfCurrentUser.getCategory());
-		
-System.out.println("userId: "+ (application.getUserId()).getUserId());
-		
-		application.setApplicationStatus(this.ApproveOrDisapprove());
-		Long userId = (application.getUserId()).getUserId();
-		
-		Long organizatinId = organization.getOrganizationIdByUserId(userId);
-		
-	organizationApplication.insertApplication(application.getBankruptcy(), application.getBusinessAge(), application.getCriminalRecord(), application.getEmployeeCount(), 
-										application.getLicenseNumber(), application.getLoanAmount(),application.getLoanTenure(),application.getOrganizationType(),application.getPancard(),
-										application.getRevenue(), application.getApplicationStatus(), organizatinId, userId);		
-	
-	System.out.println("Organization Application ID:"+ organizationApplication.getApplicationId());
-	HashMap<String,Long> json = new HashMap<String,Long>();
-	json.put("Application_Id", personApplication.getApplicationId());
-	return json;
+		personApplication.insertApplication(application.getPancard(), application.getLoanAmount(), application.getAge(),
+				application.getGender(), application.getOccupation(), application.getApplicationStatus(),
+				application.getCriminalRecord(), application.getBankruptcy(), application.getLoanTenure(), personId,
+				userId);
 
+		System.out.println("Person Application ID:" + personApplication.getApplicationId());
+		HashMap<String, Long> json = new HashMap<String, Long>();
+		json.put("Application_Id", personApplication.getApplicationId());
+		return json;
 	}
+	public String ApproveOrDisapprove(int bankrupt, int criminal, String assetCategory, int cibilScore, int loanAmount,
+			float creditUtilization, float creditLimit, int monthlyIncome, float monthlyLiablities,
+			float currentBalance) {
+		if (bankrupt == 1 || criminal == 1) {
+			return "Rejected";
+		}
+
+		else if (assetCategory != "STD" || assetCategory != "NPA") {
+			return "Rejected Bad History"; // of repayment
+		}
+
+		else if (cibilScore < 550 && cibilScore >= 300) {
+			return "Rejected Low Credits";
+		}
+
+		else if (cibilScore < 700 && cibilScore >= 550) {
+			int limit = 500000;
+			return validation(limit, loanAmount, creditUtilization, creditLimit, monthlyIncome, monthlyLiablities,
+					currentBalance);
+		}
+
+		else if (cibilScore < 800 && cibilScore >= 700) {
+			int limit = 1000000;
+			return validation(limit, loanAmount, creditUtilization, creditLimit, monthlyIncome, monthlyLiablities,
+					currentBalance);
+		}
+
+		else if (cibilScore <= 900 && cibilScore >= 800) {
+			return "Approve";
+		}
+
+		return "Pending Internal Error";
+	}
+	public String validation(int limit, int loanAmount, float creditUtilization, float creditLimit, int monthlyIncome,
+			float monthlyLiablities, float currentBalance) {
+		if (loanAmount > limit) {
+			return "Rejected Amount Declined";
+		}
+
+		else if (creditUtilization >= .4 * creditLimit) {
+			return "Rejected Bad History";
+		}
+
+		else if (.25 * (monthlyIncome + monthlyLiablities) <= loanAmount && currentBalance < loanAmount / 2) {
+			return "Approve";
+		}
+
+		return "Pending Internal Error";
+	}
+
 	
 	
 	
