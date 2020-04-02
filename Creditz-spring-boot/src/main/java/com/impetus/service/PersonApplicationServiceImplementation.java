@@ -12,8 +12,11 @@ import org.springframework.stereotype.Service;
 
 
 import com.impetus.model.CibilReport;
+import com.impetus.model.OrganizationApplicant;
 import com.impetus.model.PersonApplicant;
 import com.impetus.repository.CibilReportRepository;
+import com.impetus.repository.OrganizationApplicationRepository;
+import com.impetus.repository.OrganizationRepository;
 import com.impetus.repository.PersonApplicationRepository;
 import com.impetus.repository.PersonRepository;
 
@@ -25,6 +28,9 @@ public class PersonApplicationServiceImplementation implements PersonApplication
 	@Autowired PersonApplicationRepository personApplication;
 	
 	@Autowired PersonRepository person;
+	
+	@Autowired OrganizationApplicationRepository organizationApplication;
+	@Autowired OrganizationRepository organization;
 	
 	
 	@Override
@@ -73,6 +79,57 @@ public class PersonApplicationServiceImplementation implements PersonApplication
 		
 		return "approve";
 	}
+	
+	
+	public HashMap<String,Long> organizationRiskMitigate(OrganizationApplicant application){
+		
+      System.out.println(application.getLicenseNumber());
+      System.out.println(application.getPancard());
+		CibilReport reportOfCurrentUser = cibilReport.findByPanCard(application.getPancard());
+		System.out.println(reportOfCurrentUser);
+		
+		System.out.println(reportOfCurrentUser.getAssetCost());
+		System.out.println(reportOfCurrentUser.getCategory());
+		
+System.out.println("userId: "+ (application.getUserId()).getUserId());
+		
+		application.setApplicationStatus(this.ApproveOrDisapprove());
+		Long userId = (application.getUserId()).getUserId();
+		
+		Long organizatinId = organization.getOrganizationIdByUserId(userId);
+		
+	organizationApplication.insertApplication(application.getBankruptcy(), application.getBusinessAge(), application.getCriminalRecord(), application.getEmployeeCount(), 
+										application.getLicenseNumber(), application.getLoanAmount(),application.getLoanTenure(),application.getOrganizationType(),application.getPancard(),
+										application.getRevenue(), application.getApplicationStatus(), organizatinId, userId);		
+	
+	System.out.println("Organization Application ID:"+ organizationApplication.getApplicationId());
+	HashMap<String,Long> json = new HashMap<String,Long>();
+	json.put("Application_Id", personApplication.getApplicationId());
+	return json;
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	public List<PersonApplicant> getAllPersonApplicant(Integer pageNo, Integer pageSize)
