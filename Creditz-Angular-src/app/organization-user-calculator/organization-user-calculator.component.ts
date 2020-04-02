@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { EMI } from '../model/emi';
 
 @Component({
-  selector: 'app-individual-user',
-  templateUrl: './individual-user.component.html',
-  styleUrls: ['./individual-user.component.css']
+  selector: 'app-organization-user-calculator',
+  templateUrl: './organization-user-calculator.component.html',
+  styleUrls: ['./organization-user-calculator.component.css']
 })
-export class IndividualUserComponent implements OnInit {
+export class OrganizationUserCalculatorComponent implements OnInit {
 
   calculatorModel = new EMI();
   constructor() { }
@@ -22,12 +22,9 @@ export class IndividualUserComponent implements OnInit {
    calculateEMI: any = function(principle:number, tenure:number){
       var p:number=principle;
       var t:number=tenure;
-    var interest = (p*13.5*t)/1200;
+    var interest = (p*11.5*t)/1200;
      return ((p+interest)/t);   
     
     }
 
-
-
-  
 }

@@ -51,11 +51,11 @@ goToUrl(url: string){
                           break; 
                         } 
                         case 'Organization': { 
-                          this.goToUrl('Orgnizational-user');
+                          this.goToUrl('organization-user-calculator');
                            break; 
                         } 
                         case 'Admin': { 
-                          this.goToUrl('adminsidenav');
+                          this.goToUrl('default');
                           break; 
                        } 
                        case 'Analyst': { 

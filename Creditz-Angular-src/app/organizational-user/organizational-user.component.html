@@ -1,1 +1,174 @@
-<p>organizational-user works!</p>
+  
+   <!-- <img src="assets/img/short-term-business-loans.jpg"  alt="alternative text" style="position: relative;"  class="img1" > -->
+   
+ 
+<div *ngIf="this.storeRole=='Organization' and this.store!=null">
+    <!-- <div style="display: block; min-width: 400px; margin-left:29%; width: 100%;" > -->
+    <!-- <div class="outtermost1"> -->
+      <div class="limiter">
+                 
+          <!-- <div style=" float: left;"> -->
+            <div class="container" >
+              <img src="assets/img/short-term-business-loans.jpg" alt="IMG" class="img1">
+            </div>
+    <!-- </div> -->
+      </div>
+    
+          
+          <div class="wrap-login100"  aTilt>
+  
+  
+   <form #application="ngForm"  method="POST" class="login100-form validate-form" style="border:none;" >
+  
+        <div class="wrap-input100"> 
+        <H1>Your Credit Details</H1>
+                    <span class="focus-input100"></span>
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+        </div>
+    <br>
+        <div class="wrap-input100">
+          <input type="text" #pancard="ngModel" placeholder="   Pan Card - AAAA1234A" 
+          class="input100" name="pancard" 
+          [(ngModel)]="applicationModel.pancard" required>
+          <div *ngIf="pancard.invalid && (pancard.dirty || pancard.touched)"
+          class="text-danger">      
+        <small *ngIf="pancard.errors.required">
+          PAN no. is required.
+        </small>
+      
+                <span class="focus-input100"></span>
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+        </div> 
+      </div>
+            <div class="wrap-input100">
+          <input type="number" #loanAmount="ngModel" placeholder="Loan Amount Required" 
+          class="input100" name="loanAmount" [(ngModel)]="applicationModel.loanAmount" required>
+          <div *ngIf="loanAmount.invalid && (loanAmount.dirty || loanAmount.touched)"
+          class="text-danger">      
+        <small *ngIf="loanAmount.errors.required">
+          Loan amount is required.
+        </small>
+        
+               
+                <span class="focus-input100"></span>
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+        </div>
+      </div>
+            <div class="wrap-input100">
+          <input type="number" #businessAge="ngModel" placeholder="How old is your business(in months)?"
+           class="input100" name="businessAge" [(ngModel)]="applicationModel.businessAge" required>
+          <div *ngIf="businessAge.invalid && (businessAge.dirty || businessAge.touched)"
+          class="text-danger">      
+        <small *ngIf="businessAge.errors.required">
+          Enter the age of your business.
+        </small>
+    
+                <span class="focus-input100"></span>
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+        </div>
+      </div>
+          
+  
+        
+         <div class="wrap-input100">
+          <input type="number" #revenue="ngModel" placeholder="Revenue" class="input100" 
+          name="revenue" [(ngModel)]="applicationModel.revenue" required>
+          <div *ngIf="revenue.invalid && (revenue.dirty || revenue.touched)"
+          class="text-danger">      
+        <small *ngIf="revenue.errors.required">
+          Enter the total revenue.
+        </small>
+          
+          <span class="focus-input100"></span>
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+        </div>
+      </div>
+        <div class="wrap-input100">
+          <input type="number" #employeeCount="ngModel" placeholder="Total number of employee" class="input100"
+           name="employeeCount" [(ngModel)]="applicationModel.employeeCount" required>
+           <div *ngIf="employeeCount.invalid && (employeeCount.dirty || employeeCount.touched)"
+          class="text-danger">
+           <small *ngIf="employeeCount.errors.required">
+            Enter the number of employees.
+          </small>  
+           
+           <span class="focus-input100"></span>
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+        </div>
+      </div>
+        
+        <div class="wrap-input100">
+          <input type="text" #licenseno="ngModel" placeholder="License Number" class="input100" name="licenseno" [(ngModel)]="applicationModel.licenseNumber" required>
+          <div *ngIf="licenseno.invalid && (licenseno.dirty || licenseno.touched)"
+          class="text-danger">
+          <small *ngIf="licenseno.errors.required">
+            Enter the licenseNumber.
+          </small>    
+          <span class="focus-input100"></span>
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+        </div>
+      </div>
+        
+        <div class="wrap-input100">
+          <input type="text" #organizationType="ngModel" placeholder="Type of Organization" class="input100" name="organizationType" [(ngModel)]="applicationModel.organizationType" required>          
+          <div *ngIf="organizationType.invalid && (organizationType.dirty || organizationType.touched)"
+          class="text-danger">
+          <small *ngIf="organizationType.errors.required">
+           Select the type of Organization.
+          </small>     
+          
+          <span class="focus-input100"></span>
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+        </div>
+      </div>
+        
+        <div class="wrap-input100">
+          <input type="number" #loanTenure="ngModel" placeholder="Duration of Repayment- in Months" class="input100" name="loanTenure" [(ngModel)]="applicationModel.loanTenure" required>
+          <div *ngIf="loanTenure.invalid && (loanTenure.dirty || loanTenure.touched)"
+          class="text-danger">
+          <small *ngIf="loanTenure.errors.required">
+            Duration of Repayment is required.
+           </small>     
+                
+          <span class="focus-input100"></span>
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+        </div>
+</div>
+
+        <div class="wrap-input100">
+          <input type="checkbox"  name="criminalRecord" [(ngModel)]="applicationModel.criminalRecord">
+                <span >Do you have any criminal record.If no,mark the box</span>
+                  
+        </div>
+  
+                <div class="wrap-input100">
+          <input type="checkbox"  name="bankruptcy" [(ngModel)]="applicationModel.bankruptcy" >
+                <span >Are you bankrupt.If no,mark the box</span>
+                  
+        </div>
+     
+        <div class="container-login100-form-btn" >
+          <button class="login100-form-btn" (click)="apply()">Apply</button>
+        </div> 
+    
+    </form>
+  
+    </div> 
+     
+    <!-- </div> -->
+    <!-- </div> -->
+    <!-- </div> -->
+    <div>
+  <div  style="font-size: 200%; color: black;">
+    Why CREDITZ ??
+    </div>
+    <div>
+    Creditz hopes to become your partner
+     in laying a strong foundation for your businesses and helping 
+     it grow to its full potential. 
+  </div>
+</div>
+  
+  <div *ngIf="this.store==null">
+  <app-login></app-login>
+  </div>

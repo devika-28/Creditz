@@ -39,6 +39,7 @@ import { OurPoliciesComponent } from './our-policies/our-policies.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { ConfirmEqualValidatorDirective } from './shared/confirm-equal-validator.directive';
 
+
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
@@ -52,11 +53,21 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CreditorTableListComponent } from './creditor-table-list/creditor-table-list.component';
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
+// 1. Import the libs you need
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import * as firebase from 'firebase';
+import { OrganizationUserCalculatorComponent } from './organization-user-calculator/organization-user-calculator.component';
 import { FooterComponent } from './footer/footer.component';
-import { AnalystRegistrationComponent } from './analyst-registration/analyst-registration.component';
-import { AdminsidenavComponent } from './adminsidenav/adminsidenav.component';
-import { OrganizationCreditorTableListComponent } from './organization-creditor-table-list/organization-creditor-table-list.component';
 import { ShowAnalystComponent } from './show-analyst/show-analyst.component';
+import { AdminsidenavComponent } from './adminsidenav/adminsidenav.component';
+import { AnalystRegistrationComponent } from './analyst-registration/analyst-registration.component';
+import { OrganizationCreditorTableListComponent } from './organization-creditor-table-list/organization-creditor-table-list.component';
+
+
 
 
 export const route: Routes = [
@@ -77,16 +88,22 @@ export const route: Routes = [
   { path: 'ourPolicies', component: OurPoliciesComponent },
   { path: 'faq', component: FAQComponent },
   { path: 'aboutUs', component: AboutUsComponent },
-  { path:"creditor-table-list",component:CreditorTableListComponent},
-  { path:"organization-creditor-table-list",component:OrganizationCreditorTableListComponent},
-  {path:"adminsidenav",component:AdminsidenavComponent},
-  {path:"admin",component:AdminComponent},
-  {path:"analyst-registration",component:AnalystRegistrationComponent},
-  {path:"show-analyst",component:ShowAnalystComponent},
-  
-    
+  { path: 'organization-user-calculator', component: OrganizationUserCalculatorComponent }
 
 ];
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBG0e2yCyr_rvPEVmLmJnXxa6szCYlk_kY",
+  authDomain: "creditz-62be2.firebaseapp.com",
+  databaseURL: "https://creditz-62be2.firebaseio.com",
+  projectId: "creditz-62be2",
+  storageBucket: "creditz-62be2.appspot.com",
+  messagingSenderId: "616539689577",
+  appId: "1:616539689577:web:1de336dd3a951d59dec8f8",
+  measurementId: "G-L6MLJ255PG"
+};
+firebase.initializeApp(firebaseConfig);
 
 @NgModule({
   declarations: [
@@ -110,12 +127,12 @@ export const route: Routes = [
     ContactUsComponent,
     CreditorTableListComponent,
     ConfirmEqualValidatorDirective,
+    OrganizationUserCalculatorComponent,
     FooterComponent,
-    AnalystRegistrationComponent,
-    AdminsidenavComponent,
-    AdminComponent,
-    OrganizationCreditorTableListComponent,
     ShowAnalystComponent,
+    AdminsidenavComponent,
+    AnalystRegistrationComponent,
+    OrganizationCreditorTableListComponent,
     
     // AuthenticateComponent,
     // HttpClientModule,
@@ -145,7 +162,10 @@ export const route: Routes = [
     MatMenuModule,
     HttpClientModule,
     MatProgressSpinnerModule,
-  
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
     // MatPaginatorModule,
   ],
   providers: [PersonService,OrganizationService],

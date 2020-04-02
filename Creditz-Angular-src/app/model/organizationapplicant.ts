@@ -1,19 +1,35 @@
 import { User } from './user';
+import { Organization } from './organization';
 
 export class OrganizationApplicant
 {
-    organizationappliId:Number;
-    pancard:String;
-    loanAmount:Number;
-    revenue:BigInteger;
-    businessAge:Number;
-    applicationStatus:String;
-    licenseno:String;
-    criminalRecord:Boolean;
-    bankCorupptency:boolean;
-    loanTenture:number; 
-    user:User; 
-    organizationType:String;
+    pancard:string;
+    loanAmount:number;
+    revenue:number;
+    employeeCount:number;
+    businessAge:number;
+    licenseNumber:string;    
+    organizationType:string;
+    applicationStatus:string;
+    criminalRecord:boolean;
+    bankruptcy:boolean;
+    loanTenure:number;
+    organizationId:number; 
+    userId:number; 
+    constructor( 
+        pancard:string,
+        loanAmount:number,
+        revenue:number,
+        employeeCount:number,
+        businessAge:number,
+        licenseno:string,  
+        organizationType:string,
+        applicationStatus:string,
+        criminalRecord:boolean,
+        bankruptcy:boolean,
+        loanTenure:number,
+         ){}
+    
 }
 
     

@@ -1,4 +1,5 @@
 <app-header></app-header>
+<div class="content" role="main">
     <svg id="clouds" alt="Gray Clouds Background" xmlns="http://www.w3.org/2000/svg" width="2611.084" height="485.677"
         viewBox="0 0 2611.084 485.677">
         <path id="Path_39" data-name="Path 39"
@@ -6,12 +7,25 @@
             transform="translate(142.69 -634.312)" fill="#eee" />
     </svg>
 
+</div>
+
 <div >
-    <div style="display: block;top: 500px;">
+    <div style="display: block; width: 60%">
          <router-outlet></router-outlet>
     </div>
 
 </div>
-<div style="min-height: 100%;clear: both;">
-<app-footer></app-footer>
-</div>
+
+<div style="min-height: 100%;margin-bottom: 60px;clear: both;">
+    <app-footer></app-footer>
+    </div>
+    
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="/__/firebase/7.13.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="/__/firebase/7.13.1/firebase-analytics.js"></script>
+
+<!-- Initialize Firebase -->
+<script src="/__/firebase/init.js"></script>

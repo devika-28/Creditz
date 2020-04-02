@@ -1,0 +1,60 @@
+<div style="display: block;  min-width: 40%; margin-right:2%; width: 50%; float: right; align: center" >
+    <br>
+    ABOUT Personal User Policies(key points)<br>
+    1.FLAT EMI POLICY<br>
+    2.13.5% intrest rate on organization Loan<br>
+    3.Secured loans<br>
+    4. Best loan for your buisness<br>
+    5. Want to start Startup? We are here<br>
+    6. What are our screening POLICY<br>
+    7. Check your Emi by yourself before Applying! because we care about your credit score!<br>
+    
+        <div class="container-login100-form-btn" >
+          <button class="login100-form-btn" (click)="goToUrl('Orgnizational-user')">Apply Now</button>
+        </div>
+    
+    </div>
+   
+    
+    <div style=" display:block; float: left; max-width:40%" >
+    
+    <div class="limiter">
+            <div class="container-login100"><br>
+        <H1 class=".login100-form-title " aTilt>Calculate Your EMI</H1><br>
+            <div class="wrap-login100">
+    
+        <form #calculator="ngForm" (ngSubmit)="calculateEMI()" class="login100-form" style="border:none;" ><br>
+    
+                        <div class="container" aTilt >
+                        <img src="assets/calculator.jpeg" alt="IMG"  style="width:100%;height:100%;"> 
+                    </div>
+    
+    <div class="wrap-input100" >
+          <input type="number" class="input100" placeholder="Loan Amount" name="principle" [(ngModel)] = calculatorModel.principle >
+                             <span class="focus-input100"></span>
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+        </div>
+    
+    
+        <div class="wrap-input100" >
+          <input type="number" class="input100" placeholder="Loan Duration-Month" name="tenure" [(ngModel)] = calculatorModel.tenure><br>
+                              <span class="focus-input100"></span>
+                                <i class="fa fa-lock" aria-hidden="true"></i>
+        </div>
+    
+        <label aTilt><br>EMI: {{this.calculateEMI(calculatorModel.principle,calculatorModel.tenure)}}</label>
+    
+    
+        </form>
+        </div>
+        </div>
+        
+        </div>
+       
+    </div>
+
+    <!-- <div class="container">
+      <img src="assets/img/businessLoans.jpg" alt="img" style="width:100%;height:100%;">
+      
+      
+          </div> -->
