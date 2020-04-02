@@ -66,7 +66,7 @@ import { ShowAnalystComponent } from './show-analyst/show-analyst.component';
 import { AdminsidenavComponent } from './adminsidenav/adminsidenav.component';
 import { AnalystRegistrationComponent } from './analyst-registration/analyst-registration.component';
 import { OrganizationCreditorTableListComponent } from './organization-creditor-table-list/organization-creditor-table-list.component';
-
+import { ErrorComponent } from './error/error.component';
 
 
 
@@ -88,7 +88,8 @@ export const route: Routes = [
   { path: 'ourPolicies', component: OurPoliciesComponent },
   { path: 'faq', component: FAQComponent },
   { path: 'aboutUs', component: AboutUsComponent },
-  { path: 'organization-user-calculator', component: OrganizationUserCalculatorComponent }
+  { path: 'organization-user-calculator', component: OrganizationUserCalculatorComponent },
+  { path: '**', component:ErrorComponent}
 
 ];
 
@@ -133,6 +134,7 @@ firebase.initializeApp(firebaseConfig);
     AdminsidenavComponent,
     AnalystRegistrationComponent,
     OrganizationCreditorTableListComponent,
+    ErrorComponent,
     
     // AuthenticateComponent,
     // HttpClientModule,
