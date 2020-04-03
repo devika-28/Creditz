@@ -13,6 +13,18 @@ input[type=text], input[type=password] {
   box-sizing: border-box;
 }
 
+.image{
+  display:block;
+  margin-left: auto;
+  margin-top: auto;
+  height: 73%;
+  width: 65%;  
+  bottom: 2%;
+  position: fixed;
+  /* border-bottom-right-radius: 45%;
+  border-top-right-radius: 45%; */
+  }
+
 .click{
   cursor:pointer;
 }
@@ -191,17 +203,17 @@ iframe {
   justify-content: center;
   align-items: center;
   padding: 5%;
-  background: #9053c7;
-  background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: linear-gradient(-135deg, #c850c0, #4158d0);
+  background: #15a085;
+  background: -webkit-linear-gradient(-135deg, #15a085, #946bad);
+  background: -o-linear-gradient(-135deg, #8bc8f1, #946bad);
+  background: -moz-linear-gradient(-135deg, #8bc8f1, #946bad);
+  background: linear-gradient(-135deg, #8bc8f1, #946bad);
 }
 
 .wrap-login100 {
   width:fit-content;
   background: #fff;
-  border-radius: 10%;
+  /* border-radius: 10%; */
   overflow: hidden;
   align-items:center;
   display: -webkit-box;

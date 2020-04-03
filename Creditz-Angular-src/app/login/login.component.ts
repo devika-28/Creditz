@@ -17,12 +17,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  styleUrls: ['../individual-user/individual-user.component.css'],
 })
 export class LoginComponent implements OnInit {
 
+  store = window.sessionStorage.getItem('userId');
+  storeRole = window.sessionStorage.getItem('role');
+
   
-  loginModel = new Login("Email","Password");
+  loginModel = new Login(null,null);
   // loginModel = new Login("","");
 
  constructor(  private loginService: LoginService  )  {}
@@ -40,4 +43,5 @@ export class LoginComponent implements OnInit {
  goToUrl(url: any){
    window.open(url,"_self");
  }
+
 }

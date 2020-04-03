@@ -5,7 +5,7 @@ import { IndividualApplicationService } from '../services/individual-application
 @Component({
   selector: 'app-individual-user-application',
   templateUrl: './individual-user-application.component.html',
-  styleUrls: ['./individual-user-application.component.css']
+  styleUrls: ['../individual-user/individual-user.component.css']
 })
 export class IndividualUserApplicationComponent implements OnInit {
 

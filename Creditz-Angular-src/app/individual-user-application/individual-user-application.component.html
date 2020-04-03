@@ -1,75 +1,76 @@
-<div *ngIf="this.storeRole=='Person' and this.store!=null">
-  <div style="display: block; min-width: 400px; margin-left:29%; width: 100%;" >
+<div style=" min-width:68%; max-width:68%; float:right; align: right;"   *ngIf="this.storeRole=='Person' and this.store!=null">
+            <div class="container" >
+              <img src="assets/loan.png" alt="IMG" class="image">
+            </div>
+</div>
+
+<div *ngIf="this.storeRole=='Person' and this.store!=null" style="max-width:32%; min-width:32%; float:left; align:left">
   <div class="limiter">
       <div class="container-login100">
+          <H1 class=".login100-form-title " aTilt>Your Credit Details...</H1><br>
       <div class="wrap-login100">
 
 
       <form #application="ngForm" (ngSubmit)="apply()" method="POST" class="login100-form validate-form" style="border:none;" >
+   				
+           <div class="container" aTilt >
+					<img src="assets/calculator.jpeg" alt="IMG"  style="width:100%;height:100%;"> 
+				</div>
 
-      <div class="wrap-input100">
-      <H1 class ="login100-form-title">Your Credit Details...</H1>
-                  <span class="focus-input100"></span>
-                <i class="fa fa-envelope" aria-hidden="true"></i>
-      </div>
-  <br>
       <div class="wrap-input100">
         <input type="text" placeholder="Pan Card - AAAA1234A" class="input100" name="pancard" [(ngModel)]="applicationModel.pancard" required>
               <span class="focus-input100"></span>
-                <i class="fa fa-envelope" aria-hidden="true"></i>
       </div>
 
           <div class="wrap-input100">
-        <input type="text" placeholder="Loan Amount Required" class="input100" name="loanAmount" [(ngModel)]="applicationModel.loanAmount" required>
+        <input type="number" placeholder="Loan Amount Required" class="input100" name="loanAmount" [(ngModel)]="applicationModel.loanAmount" required>
               <span class="focus-input100"></span>
-                <i class="fa fa-envelope" aria-hidden="true"></i>
       </div>
 
           <div class="wrap-input100">
-        <input type="text" placeholder="Your Age" class="input100" name="age" [(ngModel)]="applicationModel.age" required>
+        <input type="number" placeholder="Your Age" class="input100" name="age" [(ngModel)]="applicationModel.age" required>
               <span class="focus-input100"></span>
-                <i class="fa fa-envelope" aria-hidden="true"></i>
       </div>
-
-          <div class="wrap-input100">
-        <input type="text" class="input100" name="gender" [(ngModel)]="applicationModel.gender" required>
-              <span class="focus-input100"></span>
-                <i class="fa fa-envelope" aria-hidden="true"></i>
-      </div>
-
-          <div class="wrap-input100">
-        <input type="text" class="input100" name="criminalRecord" [(ngModel)]="applicationModel.criminalRecord" required>
-              <span class="focus-input100"></span>
-                <i class="fa fa-envelope" aria-hidden="true"></i>
-      </div>
-
-              <div class="wrap-input100">
-        <input type="text" class="input100" name="bankruptcy" [(ngModel)]="applicationModel.bankruptcy" required>
-              <span class="focus-input100"></span>
-                <i class="fa fa-envelope" aria-hidden="true"></i>
-      </div>
-
       
       <div class="wrap-input100">
         <input type="text" placeholder="Your Occupation" class="input100" name="occupation" [(ngModel)]="applicationModel.occupation" required>
               <span class="focus-input100"></span>
-                <i class="fa fa-envelope" aria-hidden="true"></i>
       </div>
 
-      
       <div class="wrap-input100">
-        <input type="text" placeholder="Duration of Repayment- in Months" class="input100" name="loanTenure" [(ngModel)]="applicationModel.loanTenure" required>
+        <input type="number" placeholder="Duration of Repayment- in Months" class="input100" name="loanTenure" [(ngModel)]="applicationModel.loanTenure" required>
               <span class="focus-input100"></span>
-                <i class="fa fa-envelope" aria-hidden="true"></i>
       </div>
+
+      <div class="wrap-input100">   
+          <label style="margin:20px">  Enter your Gender: </label><br>
+               <input type="radio" class="toggle" name="gender" [(ngModel)]="applicationModel.gender" value="Male" style="margin:15px">  Male  <br>
+               <input type="radio" class="toggle" name="gender" [(ngModel)]="applicationModel.gender" value="Female" style="margin:15px">  Female <br>
+               <input type="radio" class="toggle" name="gender" [(ngModel)]="applicationModel.gender" value="Other" style="margin:15px">  Other
+              <span class="focus-input100"></span>
+      </div>
+
+      <div class="wrap-input100">   
+          <label style="margin:20px">  Do you have any past criminal records: </label><br>
+               <input type="radio" class="toggle" name="criminalRecord" [(ngModel)]="applicationModel.criminalRecord" value=0 style="margin:15px">  No  <br>
+               <input type="radio" class="toggle" name="criminalRecord" [(ngModel)]="applicationModel.criminalRecord" value=1 style="margin:15px">  Yes <br>
+              <span class="focus-input100"></span>
+      </div>
+
+      <div class="wrap-input100">   
+          <label style="margin:20px">  Are you Bankrupt: </label><br>
+               <input type="radio" class="toggle" name="bankruptcy" [(ngModel)]="applicationModel.bankruptcy" value=0 style="margin:15px">  No  <br>
+               <input type="radio" class="toggle" name="bankruptcy" [(ngModel)]="applicationModel.bankruptcy" value=1 style="margin:15px">  Yes <br>
+              <span class="focus-input100"></span>
+      </div>
+
   <br>
       <div class="container-login100-form-btn" >
-        <button class="login100-form-btn" (click)="apply()">Apply</button>
+        <button type="submit" class="login100-form-btn"  [disabled]="application.form.invalid">Apply</button>
       </div>
 
   </form>
 
-  </div>
   </div>
   </div>
   </div>

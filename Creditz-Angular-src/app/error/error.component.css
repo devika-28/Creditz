@@ -41,3 +41,14 @@ div p { margin:0; }
     opacity:0.4; text-shadow: none; 
   }
 }
+
+.image{
+  display:block;
+  margin-left: auto;
+  height: 73%;
+  width: 65%;  
+  bottom: 0%;
+position: static;
+  /* border-bottom-right-radius: 45%;
+  border-top-right-radius: 45%; */
+  }
