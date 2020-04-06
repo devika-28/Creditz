@@ -1,0 +1,230 @@
+
+.bg-about {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: 54%;
+    background: url(/assets/loan.png) no-repeat center center;
+    background-size: cover;
+}
+
+@media (max-width: 992px) {
+    .bg-about{
+     width: 50%;
+ }
+ }
+
+ 
+.container {
+    position: relative;
+    text-align: center;
+    color: rgb(5, 64, 112);
+  }
+  
+  .center-left{
+      position: absolute;
+      bottom:48%;
+      left:18%;
+  }
+
+  .bottom-right {
+    position: absolute;
+    bottom: 5%;
+    left: 35%;
+  }
+  
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+   section.white {
+    /*background:url(/images/bg-section.png) repeat top center #fff;*/
+    background: #ffffff;
+    z-index: 3;
+    position: relative;
+  }
+
+  .container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  @media (min-width: 768px) {
+    .container {
+      width: 750px;
+    }
+  }
+  @media (min-width: 992px) {
+    .container {
+      width: 970px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .container {
+      width: 1170px;
+    }
+  }
+
+
+  .orange-box {
+    background: #15a085;
+    color: #ffffff;
+    top: -76px;
+    position: relative;
+    text-align: left;
+    padding: 76px 94px;
+    max-width: 858px;
+    z-index: 5;
+    margin: 0 auto -76px auto;
+  }
+
+
+  .row2col .col-left {
+    padding-right: 40px;
+    border-right: 1px solid #ffffff;
+  }
+  .row2col .col-right {
+    padding-left: 40px;
+  }
+
+  .col-md-6 {
+    width: 50%;
+  }
+
+.clearfix:before,
+.clearfix:after{
+  content: " ";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.block-quotes {
+    margin: 0px !important;
+    margin-bottom: -154px;
+    width: 100%;
+    padding: 0 8%;
+    position: relative;
+    z-index: 2;
+  }
+
+  .green-quotes,
+.orange-quotes {
+  position: relative;
+  padding: 150px 0;
+  top: -76px;
+  z-index: -1;
+  /*background:url(/images/shadow-bg.png) no-repeat center center;*/
+  margin-bottom: -76px;
+}
+.green-quotes .content-border,
+.orange-quotes .content-border {
+  position: absolute;
+  background: #b4dbbf;
+}
+.green-quotes .content-border.top,
+.orange-quotes .content-border.top {
+  height: 1px;
+  left: -24px;
+  right: -24px;
+  top: 0px;
+}
+.green-quotes .content-border.top:before,
+.orange-quotes .content-border.top:before {
+  left: 8px;
+  top: -16px;
+}
+.green-quotes .content-border.bottom,
+.orange-quotes .content-border.bottom {
+  height: 1px;
+  left: -24px;
+  right: -24px;
+  bottom: 0px;
+}
+.green-quotes .content-border.bottom:before,
+.orange-quotes .content-border.bottom:before {
+  bottom: -16px;
+  right: 8px;
+}
+.green-quotes .content-border.left,
+.orange-quotes .content-border.left {
+  width: 1px;
+  left: 0px;
+  bottom: -24px;
+  top: -24px;
+}
+.green-quotes .content-border.left:before,
+.orange-quotes .content-border.left:before {
+  bottom: 8px;
+  left: -16px;
+}
+.green-quotes .content-border.right,
+.orange-quotes .content-border.right {
+  width: 1px;
+  right: 0px;
+  bottom: -24px;
+  top: -24px;
+}
+.green-quotes .content-border.right:before,
+.orange-quotes .content-border.right:before {
+  top: 8px;
+  right: -16px;
+}
+.green-quotes .content-border:before,
+.orange-quotes .content-border:before {
+  display: block;
+  width: 8px;
+  height: 8px;
+  /* Border radius : code pour l'appliquer ".bradius(5px);" */
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  position: absolute;
+  content: "";
+}
+.green-quotes .content-border.top,
+.orange-quotes .content-border.top {
+  height: 1px;
+  left: -24px;
+  right: -24px;
+  top: 0px;
+}
+.green-quotes .content-border.top:before,
+.orange-quotes .content-border.top:before {
+  left: 8px;
+  top: -16px;
+}
+.green-quotes .content-border {
+  background: #000000;
+}
+.green-quotes .content-border:before {
+  background: #000000;
+}
+.orange-quotes .content-border {
+  background: #15a085;
+}
+.orange-quotes .content-border:before {
+  background: #15a085;
+}
+
+.quote {
+    text-shadow: 0 0 100px #ffffff;
+    font-size: 32px;
+    line-height: 70px;
+    text-transform: uppercase;
+    text-align: center;
+    color: #3e3e40;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin: 0px;
+  }
+  .quote span {
+    color: #15a085;
+  }
