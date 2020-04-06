@@ -10,7 +10,7 @@ import com.impetus.model.User;
 
 /** The Interface UserService. */
 public interface UserService {
-
+	
     /** Save person.
      *
      * @param user

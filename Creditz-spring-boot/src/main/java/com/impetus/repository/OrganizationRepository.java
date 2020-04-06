@@ -9,5 +9,6 @@ import com.impetus.model.Organization;
 public interface OrganizationRepository extends JpaRepository<Organization, Long> {
 	@Query(nativeQuery=true, value="select organization_id from organization where user_id= :userId")
 	Long getOrganizationIdByUserId(@Param("userId") Long userId);
+	
 
 }

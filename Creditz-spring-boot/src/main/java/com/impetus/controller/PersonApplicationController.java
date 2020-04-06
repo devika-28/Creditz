@@ -30,17 +30,7 @@ public class PersonApplicationController {
     	
 	}
     
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
-   	@PostMapping("/organization-user/user-application")
-   	public HashMap<String,Long> organizationApplicantApplicationSubmit(@RequestBody OrganizationApplicant application) {
-   		
-//       	service.RiskMitigate(application);
-//       	System.out.println("controller transfered to service");
-   		return service.organizationRiskMitigate(application);
-
-       	
-   	}
-    
+   
     
     
     @CrossOrigin(origins = "*", allowedHeaders = "*")

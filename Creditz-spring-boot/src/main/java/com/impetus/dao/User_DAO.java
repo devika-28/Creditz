@@ -10,6 +10,10 @@ import com.impetus.model.User;
 
 /** The Interface User_DAO. */
     public interface User_DAO {
+    	
+    	
+    	
+    	
 
     /** Save person.
      *
