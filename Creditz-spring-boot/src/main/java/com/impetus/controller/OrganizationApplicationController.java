@@ -38,12 +38,21 @@ public class OrganizationApplicationController {
 	 @CrossOrigin(origins = "*", allowedHeaders = "*")
 	 @GetMapping("/getOrganizationApplicants")
 	 public List<OrganizationApplicant>getAllPersonApplicant(
-             @RequestParam int pageNo, 
+             @RequestParam(defaultValue="0") int pageNo, 
              @RequestParam(defaultValue="1") int pageSize)
        {
            System.out.println(pageNo);
           return organizationservice.getAllOrganizationApplicant(pageNo, pageSize);
        }
+	 
+	 
+	 @CrossOrigin(origins = "*", allowedHeaders = "*")
+	 @GetMapping("/getTopOrganizationApplicants")
+	 public List<OrganizationApplicant>findTopPersonCreditors()
+	 {
+	      return organizationservice.findTopPersonCreditors();
+	 
+	 }
 	 
 	
 }

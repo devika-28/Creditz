@@ -12,9 +12,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+<<<<<<< HEAD
+=======
 import com.impetus.model.CibilReport;
+>>>>>>> 80813169cc27329ac8862c640cc0c27c55978bfa
 import com.impetus.model.OrganizationApplicant;
-import com.impetus.repository.CibilReportRepository;
 import com.impetus.repository.OrganizationApplicationRepository;
 import com.impetus.repository.OrganizationRepository;
 import com.impetus.repository.PersonApplicationRepository;
@@ -201,4 +203,17 @@ System.out.println("userId: "+ (application.getUserId()).getUserId());
             return new ArrayList<OrganizationApplicant>();
         }
     }
+	
+	 public List<OrganizationApplicant> findApplicants() {
+		   String emailStatus="False";
+		   List<OrganizationApplicant> result= organizationApplication.findByemailStatus(emailStatus);
+		   System.out.println("inside service");
+		return result;
 	}
+
+	@Override
+	public List<OrganizationApplicant> findTopPersonCreditors() {
+		List<OrganizationApplicant>result=organizationApplication.findTopPersonCreditors();
+		return result;
+}
+}

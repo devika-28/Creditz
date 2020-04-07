@@ -44,5 +44,13 @@ public class PersonApplicationController {
  
        
     }
+ @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @GetMapping("/getTopPersonApplicants")
+    public List<PersonApplicant>findTopPersonCreditors()
+    {
+        return service.findTopPersonCreditors();
+ 
+       
+    }
 	
 }

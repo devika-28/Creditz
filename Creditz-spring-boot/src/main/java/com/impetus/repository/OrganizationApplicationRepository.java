@@ -1,19 +1,22 @@
 package com.impetus.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.impetus.model.OrganizationApplicant;
 
+
 @Repository
 public interface OrganizationApplicationRepository extends JpaRepository<OrganizationApplicant, Long>
 {
-	@Modifying
 	@Transactional
+<<<<<<< HEAD
+=======
 	@Query(	value =  "insert into organizationapplicant ( bankruptcy,age,criminal_record,employee_count,licenseno,loan_amount,loan_tenure,organization_type,pan_card,revenue, application_status,organization_id,user_id)"
 			+ " values (:bankruptcy , :age, :criminalRecord, :employeeCount,:licenseNumber, :loanAmount , :loanTenure,:organizationType,:pancard,:revenue, :applicationStatus, :organizationId, :userId)", nativeQuery = true)
 	
@@ -32,8 +35,21 @@ public interface OrganizationApplicationRepository extends JpaRepository<Organiz
 			@Param("userId") long userId);
 	
 	
+>>>>>>> 80813169cc27329ac8862c640cc0c27c55978bfa
 	@Query(nativeQuery=true, value="SELECT LAST_INSERT_ID()")
 	Long getApplicationId();
+	
+	List<OrganizationApplicant> findByemailStatus(String emailStatus);
+	
+	@Modifying
+	@Transactional
+    @Query(nativeQuery = true,value="UPDATE organizationapplicant p SET p.email_status =:status WHERE p.application_id = :applicationId")
+    void updateEmailStatus(long applicationId, String status);
+    
+	@Modifying
+	@Transactional
+	@Query(nativeQuery=true,value="SELECT *FROM organizationapplicant,cibil_report WHERE organizationapplicant.pan_card=cibil_report.pan_card ORDER BY credit_score DESC LIMIT 10") 
+    List<OrganizationApplicant> findTopPersonCreditors();
 	
 	
 	//Long getApplicantIdByUserId(@Param("userId") Long userId);

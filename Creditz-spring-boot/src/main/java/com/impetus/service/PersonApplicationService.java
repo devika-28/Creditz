@@ -16,5 +16,9 @@ public interface PersonApplicationService {
 	
 	
 	public List<PersonApplicant> getAllPersonApplicant(Integer pageNo, Integer pageSize);
+	
+                     public List<PersonApplicant>findApplicants();
+    
 
+	public List<PersonApplicant> findTopPersonCreditors();
 }

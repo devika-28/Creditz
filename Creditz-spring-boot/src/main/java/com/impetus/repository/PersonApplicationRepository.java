@@ -34,6 +34,17 @@ public interface PersonApplicationRepository extends JpaRepository<PersonApplica
 	
 	@Query(nativeQuery=true, value="SELECT LAST_INSERT_ID()")
 	Long getApplicationId();
+
+ @Modifying
+	 @Transactional
+     @Query(nativeQuery = true,value="UPDATE personapplicant p SET p.email_status =:status WHERE p.application_id = :applicationId")
+     void updateEmailStatus(long applicationId, String status);
+     List<PersonApplicant> findByemailStatus(String emailStatus);
+     
+     @Modifying
+	 @Transactional
+	 @Query(nativeQuery=true,value="SELECT *FROM personapplicant,cibil_report WHERE personapplicant.pan_card=cibil_report.pan_card ORDER BY credit_score DESC LIMIT 10") 
+     List<PersonApplicant> findTopPersonCreditors();
 	
 }
 
