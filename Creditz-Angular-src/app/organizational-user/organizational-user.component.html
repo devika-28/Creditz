@@ -11,19 +11,37 @@
             <div class="container" >
               <img src="assets/img/short-term-business-loans.jpg" alt="IMG" class="img1">
             </div>
+
+            <div style="color: black; background-color: darkgray; height: 40%;">
+              <br>
+              <br>
+              <div  style="font-size: 200%;padding-left: 50%; font-family: fantasy; color: black;">
+                Why CREDITZ ??
+                </div>
+                <br>
+                <br>
+                <div style="padding-left: 10%;font-style: oblique; font-size: medium;">
+                Creditz hopes to become your partner
+                <br>
+                 in laying a strong foundation for your businesses and 
+                 <br>helping 
+                 it grow to its full potential. 
+              </div>
+            </div>
+              
     <!-- </div> -->
       </div>
     
           
-          <div class="wrap-login100"  aTilt>
+          <div class="wrap-login100"  >
   
   
-   <form #application="ngForm"  method="POST" class="login100-form validate-form" style="border:none;" >
+   <form #application="ngForm"  method="POST" class="login100-form" style="border:none;" >
   
         <div class="wrap-input100"> 
         <H1>Your Credit Details</H1>
                     <span class="focus-input100"></span>
-                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                  <!-- <i class="fa fa-envelope" aria-hidden="true"></i> -->
         </div>
     <br>
         <div class="wrap-input100">
@@ -37,7 +55,7 @@
         </small>
       
                 <span class="focus-input100"></span>
-                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                  <!-- <i class="fa fa-envelope" aria-hidden="true"></i> -->
         </div> 
       </div>
             <div class="wrap-input100">
@@ -51,7 +69,7 @@
         
                
                 <span class="focus-input100"></span>
-                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                  <!-- <i class="fa fa-envelope" aria-hidden="true"></i> -->
         </div>
       </div>
             <div class="wrap-input100">
@@ -64,7 +82,7 @@
         </small>
     
                 <span class="focus-input100"></span>
-                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                  <!-- <i class="fa fa-envelope" aria-hidden="true"></i> -->
         </div>
       </div>
           
@@ -80,7 +98,7 @@
         </small>
           
           <span class="focus-input100"></span>
-                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                  <!-- <i class="fa fa-envelope" aria-hidden="true"></i> -->
         </div>
       </div>
         <div class="wrap-input100">
@@ -93,7 +111,7 @@
           </small>  
            
            <span class="focus-input100"></span>
-                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                  <!-- <i class="fa fa-envelope" aria-hidden="true"></i> -->
         </div>
       </div>
         
@@ -105,7 +123,7 @@
             Enter the licenseNumber.
           </small>    
           <span class="focus-input100"></span>
-                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                  <!-- <i class="fa fa-envelope" aria-hidden="true"></i> -->
         </div>
       </div>
         
@@ -118,7 +136,7 @@
           </small>     
           
           <span class="focus-input100"></span>
-                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                  <!-- <i class="fa fa-envelope" aria-hidden="true"></i> -->
         </div>
       </div>
         
@@ -131,24 +149,24 @@
            </small>     
                 
           <span class="focus-input100"></span>
-                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                   <!-- <i class="fa fa-envelope" aria-hidden="true"></i>  -->
         </div>
 </div>
 
-        <div class="wrap-input100">
-          <input type="checkbox"  name="criminalRecord" [(ngModel)]="applicationModel.criminalRecord">
+        <div class="wrap-input100" style="margin-left: 10%; justify-content:center ;">
+          <input type="checkbox"  name="criminalRecord" [(ngModel)]="applicationModel.criminalRecord" >
                 <span >Do you have any criminal record.If no,mark the box</span>
                   
         </div>
   
-                <div class="wrap-input100">
+                <div class="wrap-input100" style="margin-left: 10%;">
           <input type="checkbox"  name="bankruptcy" [(ngModel)]="applicationModel.bankruptcy" >
-                <span >Are you bankrupt.If no,mark the box</span>
+               Are you bankrupt.If no,mark the box
                   
         </div>
      
         <div class="container-login100-form-btn" >
-          <button class="login100-form-btn" (click)="apply()">Apply</button>
+          <button class="login100-form-btn"  [disabled]="!application.form.valid" (click)="apply()">Apply</button>
         </div> 
     
     </form>
@@ -158,17 +176,7 @@
     <!-- </div> -->
     <!-- </div> -->
     <!-- </div> -->
-    <div>
-  <div  style="font-size: 200%; color: black;">
-    Why CREDITZ ??
-    </div>
-    <div>
-    Creditz hopes to become your partner
-     in laying a strong foundation for your businesses and helping 
-     it grow to its full potential. 
-  </div>
-</div>
-  
+   
   <div *ngIf="this.store==null">
   <app-login></app-login>
   </div>
