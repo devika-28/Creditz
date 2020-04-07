@@ -36,8 +36,16 @@ export class OrganizationUserApplicationService {
         .subscribe(
           (res:Response)=>{
             this.applicationId = res['Application_Id'];
-            window.alert("Thanks!\nYour Application is being taken into consideration\nWe will inform you Sooner\n Your Application Id is: "+ this.applicationId);
-          }
+             console.log(this.applicationId);
+            if(this.applicationId!=undefined){
+              window.alert("Thanks!\nYour Application is being taken into consideration\nWe will inform you Sooner\n Your Application Id is: "+ this.applicationId);
+        
+            }
+            else{
+              window.alert("Thanks!\nYour Application is not taken into consideration\nEnter valid pan number");
+            }
+
+             }
         )
         
     
