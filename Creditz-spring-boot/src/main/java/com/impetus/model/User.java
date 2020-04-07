@@ -9,10 +9,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.stereotype.Component;
 
 @Entity(name = "user")
 @Table(name = "user")
 @EntityListeners(AuditingEntityListener.class)
+@Component
 public class User { 
     
     @Id
@@ -84,6 +86,8 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+	
 
 
 }

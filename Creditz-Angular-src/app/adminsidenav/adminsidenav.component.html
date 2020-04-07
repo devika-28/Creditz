@@ -1,5 +1,5 @@
 
-<!-- <div style="display: box; width: 90%; min-width: 400px;height:90%"> -->
+<!--ss <div style="display: box; width: 90%; min-width: 400px;height:90%"> -->
     <mat-sidenav-container>
     
         <mat-sidenav #start mode="side" opened >
@@ -35,56 +35,22 @@
                 </a>
                 <br>
     
-                <a mat-list-item>
+                <a mat-list-item [routerLink]="'/schedular'"  >
                     <mat-icon>alarm</mat-icon>
                     <span> Schedular</span>
                 </a>
+              
                 <br>
-    
-                  <!-- <a mat-list-item>
-                    <mat-icon>account_circle</mat-icon>
-                    <span>Logout</span>
-                </a>        <br>  -->
-    
             </mat-nav-list>
             
         </mat-sidenav>
         <mat-sidenav-content>
        
-            <app-creditor-table-list></app-creditor-table-list>
-           
-        <!-- </div> -->
-    <!-- <app-creditor-table-list></app-creditor-table-list> -->
+        <app-creditor-table-list></app-creditor-table-list>
+      
         </mat-sidenav-content>
-    <!-- <mat-toolbar color="primary">
-            <mat-toolbar-row>
-            <button mat-icon-button (click)="start.open('mouse')">
-                <mat-icon>menu</mat-icon>
-            </button>
-                 <span>C₹ED!TZ</span>
-                    <div fxFlex fxLayoutAlign="flex-end">
-                        <ul fxLayout="row" fxLayoutGAP="20px" fxFlexAlign="auto">
-                            <li> 
-                                <a href='home'> 
-                                <h4> Home</h4>
-                                </a>
-                            </li>
-                        <li>
-                            <button mat-button [matMenuTriggerFor]="menu">
-                            <mat-icon>person_outline</mat-icon>
-                            </button>
-                            <mat-menu #menu="matMenu">
-                            <button mat-menu-item>
-                             SignOut
-                            </button>
-                            </mat-menu>
-                        </li>
-                    </ul>
-                   </div>
-                </mat-toolbar-row>
-            </mat-toolbar> -->
+   
         </mat-sidenav-container>
-        <!-- </div> -->
         <router-outlet></router-outlet>
     
     

@@ -11,8 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
-@Entity
-@Table(name = "personapplicant")
+@Entity(name ="personapplicant")
+@Table(name ="personapplicant")
 public class PersonApplicant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,8 +55,20 @@ public class PersonApplicant {
     /** loan tenure */
     @Column(name = "loan_tenure", nullable = false)
     private int loanTenure;
+   
+    @Column(name="email_status" ,nullable=false)
+    private String emailStatus;
     
-    @ManyToOne(fetch = FetchType.EAGER)
+    public String getEmailStatus() {
+		return emailStatus;
+	}
+
+
+	public void setEmailStatus(String emailStatus) {
+		this.emailStatus = emailStatus;
+	}
+
+	@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "person_id")
     private Person  personId;
     
@@ -68,7 +80,8 @@ public class PersonApplicant {
     public long getApplicationId() {
 		return applicationId;
 	}
-
+    
+   
 	public void setApplicationId(long applicationId) {
 		this.applicationId = applicationId;
 	}

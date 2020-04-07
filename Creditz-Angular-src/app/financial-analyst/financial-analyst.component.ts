@@ -1,41 +1,45 @@
-import {Component, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
-import {PersonService} from "../services/person.service";
-import {OrganizationService} from "../services/organization.service";
+ import {Component, OnInit, Input} from '@angular/core';
+ import {Observable} from "rxjs";
+ import {PersonService} from "../services/person.service";
+ import {OrganizationService} from "../services/organization.service";
+import { OrganizationApplicant } from '../model/organizationapplicant';
+import { trigger, state, style, transition, animate } from '@angular/animations';
+import { PersonApplicant } from '../model/personApplicant';
+import { ApplicationService } from '../services/application.service';
+import { MatTableDataSource } from '@angular/material/table';
 @Component({
-    selector: 'app-financial-analyst',
+  selector: 'app-financial-analyst',
     templateUrl: './financial-analyst.component.html',
-    styleUrls: ['./financial-analyst.component.css']
+    styleUrls: ['./financial-analyst.component.css'],
+    animations: [
+      trigger('detailExpand', [
+        state('collapsed', style({height: '0px', minHeight: '0'})),
+        state('expanded', style({height: '*'})),
+        transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+      ]),
+    ],
   })
-export class FinancialAnalystComponent implements OnInit {
-
-  topPersons$: Observable<any>;
-  topOrganizations:Observable<any>;
-  displayedColumns: string[] = ['personId',  'personName',  'contact',  'address', '#'];
-  displayedColumns1: string[] = ['organizationId'  , 'organizationName'  , 'contact'  , 'address'  , 'directorName'  ,'#'];
-  dataSource:any;
-  dataSource1:any;
-  constructor(private personService: PersonService,private organizationService:OrganizationService) { }
-  ngOnInit(){
-    const persons$ =this.personService.findAllTopIndividualCreditors();
-     persons$.subscribe({
-         next(person){ 
-           console.log("personname",person); 
-          },
-         complete() { console.log(''); }
-       });
-       const organizations$ =this.organizationService.findAllTopOrganizationCreditors();
-       this.topPersons$ =persons$;
-       this.dataSource=persons$;
-       console.log("ppp"+this.dataSource);
-       this.dataSource1=organizations$;
-      
-  }
-}
-
+export class FinancialAnalystComponent {
+  dataSource=new MatTableDataSource<any[]>();
+  dataSource1=new MatTableDataSource<any[]>();
+  columnsToDisplay = ['personId','personName','contact','address'];
+  columnsToDisplay1 = ['organizationId','organizationName','contact','address'];
+  expandedElement: PersonApplicant| null;
+  expandedElement1: OrganizationApplicant| null;
+  constructor(private applicationService: ApplicationService) { }
+   ngOnInit(){
+   this.applicationService.findAllTopIndividualCreditors().subscribe(stream=>
+    {
+       this.dataSource.data=stream as any;
+      // this.dataSource.paginator=this.paginator;
+    });  
+    this.applicationService.findAllTopOrganizationCreditors().subscribe(stream=>
+      {
+         this.dataSource1.data=stream as any;
+        // this.dataSource.paginator=this.paginator;
+      });   
   
 
+   }
 
-   
-
-
+  }

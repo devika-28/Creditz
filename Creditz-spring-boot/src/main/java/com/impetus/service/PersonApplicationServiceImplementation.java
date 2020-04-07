@@ -22,7 +22,8 @@ import com.impetus.repository.PersonRepository;
 
 @Service
 public class PersonApplicationServiceImplementation implements PersonApplicationService{
-
+ 
+	
 	@Autowired CibilReportRepository cibilReport;
 	
 	@Autowired PersonApplicationRepository personApplication;
@@ -138,8 +139,7 @@ public class PersonApplicationServiceImplementation implements PersonApplication
 	
 	
 	
-	public List<PersonApplicant> getAllPersonApplicant(Integer pageNo, Integer pageSize)
-    {
+	public List<PersonApplicant> getAllPersonApplicant(Integer pageNo, Integer pageSize){
         Pageable paging = PageRequest.of(pageNo, pageSize);
  
         Page<PersonApplicant> pagedResult = personApplication.findAll(paging);
@@ -150,5 +150,25 @@ public class PersonApplicationServiceImplementation implements PersonApplication
             return new ArrayList<PersonApplicant>();
         }
     }
+	
+
+   public List<PersonApplicant>findApplicants() {
+	   String emailStatus="False";
+	   List<PersonApplicant> result= personApplication.findByemailStatus(emailStatus);
+	   System.out.println("inside service");
+	   return result;
+	   
+	}
+
+
+
+
+public List<PersonApplicant> findTopPersonCreditors() {
+	List<PersonApplicant>result=personApplication.findTopPersonCreditors();
+	return result;
+}
+
+
+
 
 }

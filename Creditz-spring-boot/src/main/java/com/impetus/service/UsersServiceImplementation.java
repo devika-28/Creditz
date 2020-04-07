@@ -2,6 +2,7 @@ package com.impetus.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -13,6 +14,7 @@ import com.impetus.repository.UserRepository;
 
 @Service
 public class UsersServiceImplementation implements UsersService {
+	Logger logger=Logger.getLogger("UsersServiceImplementation");
 	@Autowired UserRepository user;
 	
 	@Override
@@ -26,7 +28,16 @@ public class UsersServiceImplementation implements UsersService {
         } else {
             return new ArrayList<User>();
         }
-    }
+	}
+
+	@Override
+	public void DeleteAnalyst(String userEmail) {
+	logger.info("userEmail :"+userEmail);	
+	user.delete(user.findByUserEmail(userEmail));
+	logger.info("Delete method runs successfully.");
+	}
+	
+	
 	}
 
 

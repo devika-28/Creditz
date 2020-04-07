@@ -53,18 +53,29 @@ public class OrganizationApplicant {
 
     /** Criminal record against applicant */
     @Column(name = "criminal_record", nullable = false)
-    private Boolean criminalRecord;
+    private boolean criminalRecord;
 
     /** is applicant is bankCorrupt */
     @Column(name = "bankruptcy", nullable = false)
-    private Boolean bankruptcy;
+    private boolean bankruptcy;
 
     /**
      *loan tenure
      */
     @Column(name = "loan_tenure", nullable = false)
     private int loanTenure;
-    /**
+    
+    @Column(name="email_status",nullable=false)
+    private String emailStatus;
+    public String getEmailStatus() {
+		return emailStatus;
+	}
+
+	public void setEmailStatus(String emailStatus) {
+		this.emailStatus = emailStatus;
+	}
+
+	/**
      * 
      */
     @OneToOne(fetch = FetchType.EAGER)

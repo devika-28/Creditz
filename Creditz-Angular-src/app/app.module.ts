@@ -68,6 +68,8 @@ import { AnalystRegistrationComponent } from './analyst-registration/analyst-reg
 import { OrganizationCreditorTableListComponent } from './organization-creditor-table-list/organization-creditor-table-list.component';
 import { ErrorComponent } from './error/error.component';
 import { ApplicationSubmittionComponent } from './application-submittion/application-submittion.component';
+import { SchedularComponent } from './schedular/schedular.component';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 
@@ -91,7 +93,17 @@ export const route: Routes = [
   { path: 'aboutUs', component: AboutUsComponent },
   { path: 'organization-user-calculator', component: OrganizationUserCalculatorComponent },
   { path: 'successful' , component: ApplicationSubmittionComponent },
-  { path: '**', component:ErrorComponent}
+  {path:"show-analyst",component:ShowAnalystComponent},
+  {path:"schedular",component:SchedularComponent},
+  { path: 'aboutUs', component: AboutUsComponent },
+  { path:"creditor-table-list",component:CreditorTableListComponent},
+  { path:"organization-creditor-table-list",component:OrganizationCreditorTableListComponent},
+  {path:"adminsidenav",component:AdminsidenavComponent},
+  {path:"admin",component:AdminComponent},
+  {path:"analyst-registration",component:AnalystRegistrationComponent},
+  {path:"show-analyst",component:ShowAnalystComponent},
+  {path:"schedular",component:SchedularComponent},
+  { path: '**', component:ErrorComponent},
 
 ];
 
@@ -138,6 +150,7 @@ firebase.initializeApp(firebaseConfig);
     OrganizationCreditorTableListComponent,
     ErrorComponent,
     ApplicationSubmittionComponent,
+    SchedularComponent ,
     
     // AuthenticateComponent,
     // HttpClientModule,
@@ -171,6 +184,7 @@ firebase.initializeApp(firebaseConfig);
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
+    MatExpansionModule
     // MatPaginatorModule,
   ],
   providers: [PersonService,OrganizationService],

@@ -9,4 +9,7 @@ import com.impetus.model.User;
 @Service
 public interface UsersService {
 	public List<User> getAllAnalyst(Integer pageNo, Integer pageSize);
+	public void DeleteAnalyst(String userEmail);
+	
+	
 }

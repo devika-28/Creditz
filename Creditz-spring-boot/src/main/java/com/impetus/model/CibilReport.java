@@ -9,8 +9,8 @@ import javax.validation.constraints.Size;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-@Entity(name = "cibil_Report")
-@Table(name = "cibil_Report")
+@Entity(name="cibil_report")
+@Table(name="cibil_report")
 @EntityListeners(AuditingEntityListener.class)
 public class CibilReport {
 

@@ -25,11 +25,12 @@ public class UserDAOImplementation implements User_DAO {
 	@Autowired	
 	private EntityManager entityManager;
 
-	/*
-	 * (
-	 * 
-	 * @see com.impetus.Dao.User_DAO#savePerson(com.impetus.Model.Person)
-	 */
+	
+	public User findUserByUserMail(String userMail ) {
+		return entityManager.find(User.class, userMail);
+		
+	}
+	
 	public boolean savePerson(Person user) {
 		boolean status = false;
 		entityManager = entityManager.getEntityManagerFactory().createEntityManager();
