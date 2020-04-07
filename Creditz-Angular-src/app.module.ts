@@ -70,7 +70,8 @@ import { ErrorComponent } from './error/error.component';
 import { ApplicationSubmittionComponent } from './application-submittion/application-submittion.component';
 import { SchedularComponent } from './schedular/schedular.component';
 import {MatExpansionModule} from '@angular/material/expansion';
-
+import { AnalystDialogBoxComponent } from './analyst-dialog-box/analyst-dialog-box.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 export const route: Routes = [
@@ -151,6 +152,7 @@ firebase.initializeApp(firebaseConfig);
     ErrorComponent,
     ApplicationSubmittionComponent,
     SchedularComponent ,
+    AnalystDialogBoxComponent
     
     // AuthenticateComponent,
     // HttpClientModule,
@@ -184,7 +186,9 @@ firebase.initializeApp(firebaseConfig);
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDialogModule
+    
     // MatPaginatorModule,
   ],
   providers: [PersonService,OrganizationService],
