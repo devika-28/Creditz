@@ -25,7 +25,8 @@ export class OrganizationalUserComponent implements OnInit {
 
   apply(){
     window.alert("We will use the information submitted by you at the registration as your contact details");
-    console.log(this.applicationModel.licenseNumber);
+    console.log(this.applicationModel.bankruptcy);
+
     this.applicationService.applyService(this.applicationModel.pancard,this.applicationModel.loanAmount,this.applicationModel.revenue,this.applicationModel.employeeCount,this.applicationModel.businessAge,this.applicationModel.licenseNumber,this.applicationModel.organizationType,this.applicationModel.criminalRecord,this.applicationModel.bankruptcy,this.applicationModel.loanTenure,this.applicationModel);
   }
 

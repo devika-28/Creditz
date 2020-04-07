@@ -4,8 +4,9 @@
 body {font-family: Arial, Helvetica, sans-serif;}
 form {border: 3px solid #f1f1f1;}
 
-input[type=text], input[type=password] {
-  width: 100%;
+input[type=text], input[type=number] {
+  width: 150%;
+
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -37,27 +38,27 @@ button:hover {
   background-color: #f44336;
 }
 
-.imgcontainer {
+/* .imgcontainer {
   text-align: center;
   margin: 24px 0 12px 0;
-}
+} */
 
-img.avatar {
+/* img.avatar {
   width: 10%;
   border-radius: 10%;
-}
+} */
 
 .container {
-  padding: 16px;
+  padding: 23px;
 }
-
+/* 
 span.psw {
   float: right;
   padding-top: 16px;
-}
+} */
 
 /* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
+/* @media screen and (max-width: 300px) {
   span.psw {
      display: block;
      float: none;
@@ -65,21 +66,21 @@ span.psw {
   .cancelbtn {
      width: 100%;
   }
-}
+} */
 
-* {
+/* * {
 	margin: 0px; 
 	padding: 0px; 
 	box-sizing: border-box;
-}
+} */
 
-body, html {
+/* body, html {
 	height: 100%;
 	font-family: Poppins-Regular, sans-serif;
-}
+} */
 
 /*---------------------------------------------*/
-a {
+/* a {
 	font-family: Poppins-Regular;
 	font-size: 14px;
 	line-height: 1.7;
@@ -89,7 +90,7 @@ a {
 	-webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
   -moz-transition: all 0.4s;
-}
+} */
 
 a:focus {
 	outline: none !important;
@@ -134,7 +135,7 @@ textarea:focus, input:focus {
   border-color: transparent !important;
 }
 
-input:focus::-webkit-input-placeholder { color:transparent; }
+/* input:focus::-webkit-input-placeholder { color:transparent; }
 input:focus:-moz-placeholder { color:transparent; }
 input:focus::-moz-placeholder { color:transparent; }
 input:focus:-ms-input-placeholder { color:transparent; }
@@ -152,7 +153,7 @@ input:-ms-input-placeholder { color: #999999; }
 textarea::-webkit-input-placeholder { color: #999999; }
 textarea:-moz-placeholder { color: #999999; }
 textarea::-moz-placeholder { color: #999999; }
-textarea:-ms-input-placeholder { color: #999999; }
+textarea:-ms-input-placeholder { color: #999999; } */
 
 /*---------------------------------------------*/
 button {
@@ -165,9 +166,9 @@ button:hover {
 	cursor: pointer;
 }
 
-iframe {
+/* iframe {
 	border: none !important;
-}
+} */
 
 
 /*//////////////////////////////////////////////////////////////////
@@ -243,7 +244,7 @@ iframe {
 }
 
 .wrap-login100 {
-  width: fit-content;
+  width: 30%;
   background: lightgray ;
   outline-style: double;
   outline-color: lightslategrey;
@@ -260,23 +261,23 @@ iframe {
  display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 8% 10% 10% 8%;
+  padding: 2% 2% 2% 2%;
   /* float:right; */
   /* padding-bottom: 50%; */
-  margin-left: 61%;
+  margin-left: 67%;
   margin-top: 2%;
   margin-right: 1%;
      position: relative;
 }
 
-.div3{
+/* .div3{
   height: 100pt;
   width: 100pt;
 background-color: brown;
 position: absolute;;
 margin-bottom: 66pt;
 display: flex;
-}
+} */
 /*------------------------------------------------------------------
 [  ]*/
 .login100-pic {
@@ -291,11 +292,11 @@ display: flex;
 /*------------------------------------------------------------------
 [  ]*/
 .login100-form {
-  width: 290px;
+  width: 220px;
 }
 
-.login100-form-title {
-  font-family: Poppins-Bold;
+/* .login100-form-title {
+  font-family: fantasy;
   font-size: 24px;
   color: #333333;
   line-height: 1.2;
@@ -304,7 +305,7 @@ display: flex;
   width: 100%;
   display: block;
   padding-bottom: 54px;
-}
+} */
 
 
 /*---------------------------------------------*/
@@ -332,7 +333,7 @@ display: flex;
 
 /*------------------------------------------------------------------
 [ Focus ]*/
-.focus-input100 {
+/* .focus-input100 {
   display: block;
   position: absolute;
   border-radius: 25px;
@@ -362,8 +363,8 @@ display: flex;
     box-shadow: 0px 0px 70px 25px;
     opacity: 0;
   }
-}
-
+} */
+/* 
 .symbol-input100 {
   font-size: 15px;
 
@@ -387,16 +388,16 @@ display: flex;
   -o-transition: all 0.4s;
   -moz-transition: all 0.4s;
   transition: all 0.4s;
-}
+} */
 
-.input100:focus + .focus-input100 + .symbol-input100 {
+/* .input100:focus + .focus-input100 + .symbol-input100 {
   color: #57b846;
   padding-left: 28px;
-}
+} */
 
 /*------------------------------------------------------------------
 [ Button ]*/
-.container-login100-form-btn {
+/* .container-login100-form-btn {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -406,7 +407,7 @@ display: flex;
   flex-wrap: wrap;
   justify-content: center;
   padding-top: 20px;
-}
+} */
 
 .login100-form-btn {
   font-family: Montserrat-Bold;
@@ -414,8 +415,9 @@ display: flex;
   line-height: 1.5;
   color: #fff;
   text-transform: uppercase;
-
-  width: 100%;
+  
+  margin-left: 0%;
+  width: 120%;
   height: 50px;
   border-radius: 25px;
   background: #57b846;
@@ -445,7 +447,7 @@ display: flex;
 
 
 
-@media (max-width: 992px) {
+/* @media (max-width: 992px) {
   .wrap-login100 {
     padding: 177px 90px 33px 85px;
   }
@@ -457,9 +459,9 @@ display: flex;
   .login100-form {
     width: 50%;
   }
-}
-
-@media (max-width: 768px) {
+} */
+ 
+/* @media (max-width: 768px) {
   .wrap-login100 {
     padding: 100px 80px 33px 80px;
   }
@@ -471,18 +473,18 @@ display: flex;
   .login100-form {
     width: 100%;
   }
-}
-
-@media (max-width: 576px) {
+} */
+/* 
+ @media (max-width: 576px) {
   .wrap-login100 {
     padding: 100px 15px 33px 15px;
   }
-}
+}   */
 
-
+ 
 /*------------------------------------------------------------------
 [ Alert validate ]*/
-
+/*
 .validate-input {
   position: relative;
 }
@@ -517,8 +519,8 @@ display: flex;
   -o-transition: opacity 0.4s;
   -moz-transition: opacity 0.4s;
   transition: opacity 0.4s;
-}
-
+} */
+/* 
 .alert-validate::after {
   content: "\f06a";
   font-family: FontAwesome;
@@ -533,16 +535,16 @@ display: flex;
   -o-transform: translateY(-50%);
   transform: translateY(-50%);
   right: 13px;
-}
+} */
 
-.alert-validate:hover:before {
+/* .alert-validate:hover:before {
   visibility: visible;
   opacity: 1;
-}
+} */
 
-@media (max-width: 992px) {
+/* @media (max-width: 992px) {
   .alert-validate::before {
     visibility: visible;
     opacity: 1;
   }
-}
+} */
