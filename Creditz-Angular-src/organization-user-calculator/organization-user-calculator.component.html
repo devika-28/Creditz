@@ -1,20 +1,37 @@
-<div style="display: block;  min-width: 40%; margin-right:2%; width: 50%; float: right; align: center" >
+<div style="display: block; min-width: 40%; margin-right:2%;  width: 50%; float: right; align: center" >
+<div >
+  <br>
+  <br>
+ <span style="color:midnightblue; font-size: large; font-style: oblique; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+   Check your Emi by yourself before Applying !!!! because we care about your credit score!</span>
     <br>
-    ABOUT Personal User Policies(key points)<br>
-    1.FLAT EMI POLICY<br>
-    2.13.5% intrest rate on organization Loan<br>
-    3.Secured loans<br>
-    4. Best loan for your buisness<br>
-    5. Want to start Startup? We are here<br>
-    6. What are our screening POLICY<br>
-    7. Check your Emi by yourself before Applying! because we care about your credit score!<br>
+    <br>
+    <div style="background-color: lightgrey ; padding-left: 10%;" >
+      <br>
+      
+    <span style="font-family: Georgia, 'Times New Roman', Times, serif ;font-size: large;">Beneficial Organization Policies With Us</span><br>
+    <br>
+    <span style="font-size: 120%;">
+    1. FLAT EMI POLICY<br><br>
+    2. 13.5% intrest rate on organizational Loan<br><br>
+    3. Secured loans<br><br>
+    4. Best loan for your buisness<br><br>
+    5. Want to start Startup? We are here<br><br>
+    6. What are our screening POLICY<br><br>
+    </span>
+    <br>
+  </div>
+  <br>
+  <br>
+  <span style="color:midnightblue; font-size: large; font-style: oblique; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+   WE help you in growing your business of your dreams!!!!</span>
     
         <div class="container-login100-form-btn" >
-          <button class="login100-form-btn" (click)="goToUrl('Orgnizational-user')">Apply Now</button>
+          <button class="login100-form-btn" (click)="goToUrl('Orgnizational-user')">Apply  Now</button>
         </div>
     
     </div>
-   
+   </div>
     
     <div style=" display:block; float: left; max-width:40%" >
     
@@ -32,12 +49,14 @@
     <div class="wrap-input100" >
           <input type="number" class="input100" placeholder="Loan Amount" name="principle" [(ngModel)] = calculatorModel.principle >
                              <span class="focus-input100"></span>
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
         </div>
     
     
         <div class="wrap-input100" >
           <input type="number" class="input100" placeholder="Loan Duration-Month" name="tenure" [(ngModel)] = calculatorModel.tenure><br>
                               <span class="focus-input100"></span>
+                                <i class="fa fa-lock" aria-hidden="true"></i>
         </div>
     
         <label aTilt><br>EMI: {{this.calculateEMI(calculatorModel.principle,calculatorModel.tenure)}}</label>

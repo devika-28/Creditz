@@ -4,7 +4,7 @@ import { EMI } from '../model/emi';
 @Component({
   selector: 'app-organization-user-calculator',
   templateUrl: './organization-user-calculator.component.html',
-  styleUrls: ['../individual-user/individual-user.component.css']
+  styleUrls: ['./organization-user-calculator.component.css']
 })
 export class OrganizationUserCalculatorComponent implements OnInit {
 
@@ -22,7 +22,7 @@ export class OrganizationUserCalculatorComponent implements OnInit {
    calculateEMI: any = function(principle:number, tenure:number){
       var p:number=principle;
       var t:number=tenure;
-    var interest = (p*13.5*t)/1200;
+    var interest = (p*11.5*t)/1200;
      return ((p+interest)/t);   
     
     }
