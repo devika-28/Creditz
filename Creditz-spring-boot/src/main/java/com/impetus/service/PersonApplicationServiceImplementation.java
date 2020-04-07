@@ -22,7 +22,8 @@ import com.impetus.repository.PersonRepository;
 
 @Service
 public class PersonApplicationServiceImplementation implements PersonApplicationService{
-
+ 
+	
 	@Autowired CibilReportRepository cibilReport;
 	
 	@Autowired PersonApplicationRepository personApplication;
@@ -150,5 +151,6 @@ public class PersonApplicationServiceImplementation implements PersonApplication
             return new ArrayList<PersonApplicant>();
         }
     }
+	
 
 }
