@@ -54,11 +54,13 @@ public class PersonApplicationServiceImplementation implements PersonApplication
 		Long userId = (application.getUserId()).getUserId();
 
 		Long personId = person.getPersonIdByUserId(userId);
+		
+		application.setEmailStatus("False");
 
 		personApplication.insertApplication(application.getPancard(), application.getLoanAmount(), application.getAge(),
 				application.getGender(), application.getOccupation(), application.getApplicationStatus(),
 				application.getCriminalRecord(), application.getBankruptcy(), application.getLoanTenure(), personId,
-				userId);
+				userId, application.getEmailStatus());
 
 		System.out.println("Person Application ID:" + personApplication.getApplicationId());
 		HashMap<String, Long> json = new HashMap<String, Long>();

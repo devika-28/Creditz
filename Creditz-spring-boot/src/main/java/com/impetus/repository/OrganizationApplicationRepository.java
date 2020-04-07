@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,8 +16,6 @@ import com.impetus.model.OrganizationApplicant;
 public interface OrganizationApplicationRepository extends JpaRepository<OrganizationApplicant, Long>
 {
 	@Transactional
-<<<<<<< HEAD
-=======
 	@Query(	value =  "insert into organizationapplicant ( bankruptcy,age,criminal_record,employee_count,licenseno,loan_amount,loan_tenure,organization_type,pan_card,revenue, application_status,organization_id,user_id)"
 			+ " values (:bankruptcy , :age, :criminalRecord, :employeeCount,:licenseNumber, :loanAmount , :loanTenure,:organizationType,:pancard,:revenue, :applicationStatus, :organizationId, :userId)", nativeQuery = true)
 	
@@ -35,7 +34,6 @@ public interface OrganizationApplicationRepository extends JpaRepository<Organiz
 			@Param("userId") long userId);
 	
 	
->>>>>>> 80813169cc27329ac8862c640cc0c27c55978bfa
 	@Query(nativeQuery=true, value="SELECT LAST_INSERT_ID()")
 	Long getApplicationId();
 	

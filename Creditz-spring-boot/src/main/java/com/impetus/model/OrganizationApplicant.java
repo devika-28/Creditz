@@ -11,6 +11,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
+import org.springframework.beans.factory.annotation.Value;
+
 @Entity(name = "organizationapplicant")
 @Table(name = "organizationapplicant")
 public class OrganizationApplicant {
@@ -65,13 +67,14 @@ public class OrganizationApplicant {
     @Column(name = "loan_tenure", nullable = false)
     private int loanTenure;
     
+    
     @Column(name="email_status",nullable=false)
     private String emailStatus;
     public String getEmailStatus() {
 		return emailStatus;
 	}
 
-	public void setEmailStatus(String emailStatus) {
+    public void setEmailStatus(String emailStatus) {
 		this.emailStatus = emailStatus;
 	}
 

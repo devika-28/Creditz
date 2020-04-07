@@ -12,17 +12,13 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-<<<<<<< HEAD
-=======
 import com.impetus.model.CibilReport;
->>>>>>> 80813169cc27329ac8862c640cc0c27c55978bfa
 import com.impetus.model.OrganizationApplicant;
+import com.impetus.repository.CibilReportRepository;
 import com.impetus.repository.OrganizationApplicationRepository;
 import com.impetus.repository.OrganizationRepository;
 import com.impetus.repository.PersonApplicationRepository;
 import com.impetus.repository.PersonRepository;
-
-import jdk.incubator.http.internal.common.Log;
 
 @Service
 public class OrganizationApplicationServiceImplementation implements OrganizationApplicationService{

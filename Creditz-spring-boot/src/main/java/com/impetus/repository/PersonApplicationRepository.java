@@ -2,6 +2,8 @@ package com.impetus.repository;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -15,8 +17,8 @@ public interface PersonApplicationRepository extends JpaRepository<PersonApplica
 
 	@Modifying
 	@Transactional
-	@Query(	value =  "insert into personapplicant ( pan_card, loan_amount, age, gender, occupation, application_status, criminal_record, bankruptcy, loan_tenure, person_id, user_id)"
-			+ " values (:pancard , :loanAmount , :age, :gender, :occupation, :applicationStatus, :criminalRecord, :bankruptcy , :loanTenure, :personId , :userId)", nativeQuery = true)
+	@Query(	value =  "insert into personapplicant ( pan_card, loan_amount, age, gender, occupation, application_status, criminal_record, bankruptcy, loan_tenure, person_id, user_id, email_Status)"
+			+ " values (:pancard , :loanAmount , :age, :gender, :occupation, :applicationStatus, :criminalRecord, :bankruptcy , :loanTenure, :personId , :userId, :emailStatus)", nativeQuery = true)
 	
 	void insertApplication(@Param("pancard")String pancard, 
 							@Param("loanAmount")int loanAmount, 
@@ -28,7 +30,8 @@ public interface PersonApplicationRepository extends JpaRepository<PersonApplica
 							@Param("bankruptcy") int bankruptcy, 
 							@Param("loanTenure") int loanTenure, 
 							@Param("personId") long personId,
-							@Param("userId") long userId);
+							@Param("userId") long userId, 
+							@Param("emailStatus") String emailStatus);
 	
 	
 	
