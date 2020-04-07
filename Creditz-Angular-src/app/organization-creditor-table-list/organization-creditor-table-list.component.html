@@ -35,10 +35,10 @@
         </a>
         <br>
 
-        <a mat-list-item>
-            <mat-icon>alarm</mat-icon>
-            <span> Schedular</span>
-        </a>
+        <a mat-list-item [routerLink]="'/schedular'"  >
+          <mat-icon>alarm</mat-icon>
+          <span> Schedular</span>
+      </a>
         <br>
 
           <!-- <a mat-list-item>
@@ -69,9 +69,9 @@
                 <mat-cell *matCellDef="let application"> {{application.applicationId}}</mat-cell>
               </ng-container>
         
-              <ng-container matColumnDef="personName">
+              <ng-container matColumnDef="organizationName">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
-                <mat-cell *matCellDef="let application"> {{application.organizationId.personName}}</mat-cell>
+                <mat-cell *matCellDef="let application"> {{application.organizationId.organizationName}}</mat-cell>
               </ng-container>
           
           

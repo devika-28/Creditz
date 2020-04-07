@@ -33,10 +33,10 @@
       </a>
       <br>
 
-      <a mat-list-item>
-          <mat-icon>alarm</mat-icon>
-          <span> Schedular</span>
-      </a>
+      <a mat-list-item [routerLink]="'/schedular'"  >
+        <mat-icon>alarm</mat-icon>
+        <span> Schedular</span>
+    </a>
       <br>
 
         <!-- <a mat-list-item>
@@ -51,28 +51,28 @@
     <div class="data-container mat-elevation-z12">
         <div class="example-header">
             <mat-form-field floatLabel="never">
-              <input matInput (keyup)="applyFilter($event.target.value)" [(ngModel)]="searchKey" placeholder="SearchByApplicationStatus">
+              <input matInput (keyup)="applyFilter($event.target.value)" [(ngModel)]="searchKey" placeholder="Search">
              <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="onSearchClear()">
              <mat-icon>close</mat-icon>
              </button>
             </mat-form-field>
           </div>
-    <table mat-table [dataSource]="dataSource" >
+    <table mat-table [dataSource]="dataSource" matSort >
             <ng-container matColumnDef="userId">
-            <mat-header-cell *matHeaderCellDef > Analyst ID </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header > Analyst ID </mat-header-cell>
             <mat-cell *matCellDef="let Analyst"> {{Analyst.userId}}</mat-cell>
           </ng-container>
       
           <!-- Name Column -->
           <ng-container matColumnDef="userEmail">
-            <mat-header-cell *matHeaderCellDef >Email</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
             <mat-cell *matCellDef="let Analyst"> {{Analyst.userEmail}}</mat-cell>
           </ng-container>
       
           <ng-container matColumnDef="actions">
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
-            <mat-cell *matCellDef="let person">
-              <button mat-icon-button color="warn"> <mat-icon> delete_outline</mat-icon></button>
+            <mat-cell *matCellDef="let Analyst">
+              <button mat-icon-button color="warn" (click)="deleteAnalyst(Analyst.userEmail)"> <mat-icon> delete_outline</mat-icon></button>
             </mat-cell>
           </ng-container>
       
@@ -82,9 +82,8 @@
           </mat-footer-cell>
             
            </ng-container>
-         
-      
-          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+       
+         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
           <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
           <mat-footer-row *matFooterRowDef="['loading']"[ngClass]="{'hide':dataSource!=null}"></mat-footer-row>
           

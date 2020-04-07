@@ -11,7 +11,7 @@ import { OrganizationApplicationService } from '../services/organization-applica
 })
 export class OrganizationCreditorTableListComponent implements OnInit {
 
-  displayedColumns: string[] = ['applicationId','personName','contact','address','loanAmount','loanTenure','applicationStatus'];
+  displayedColumns: string[] = ['applicationId','organizationName','contact','address','loanAmount','loanTenure','applicationStatus'];
   @ViewChild(MatSort) sort:MatSort;
   @ViewChild(MatPaginator) paginator:MatPaginator;
   dataSource=new MatTableDataSource<any[]>();
@@ -34,23 +34,12 @@ export class OrganizationCreditorTableListComponent implements OnInit {
       this.organizataionApplication.findAllOrganizationApplication(this.pageNo,this.pageSize).subscribe(stream=>
        {
           this.dataSource.data=stream as any;
+          this.dataSource.paginator=this.paginator;
        });
       
   }
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
-  }
-
-   ngAfterViewChecked()
-  {
-       this.pageSize=this.pageEvent.pageSize;
-       this.pageNo=this.pageEvent.pageIndex;
-       console.log(this.pageIndex+"check");
-       this.organizataionApplication.findAllOrganizationApplication(this.pageIndex,this.pageSize).subscribe(stream=>
-        {
-           this.dataSource.data=stream as any;
-           console.log(this.pageIndex);
-        });
   }
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace

@@ -4,7 +4,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSortModule, MatSort, Sort } from '@angular/material/sort';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { OrganizationApplicationService } from '../services/organization-application.service';
-import { $ } from 'protractor';
 import { PersonApplicant } from '../model/personApplicant';
 @Component({
   selector: 'app-creditor-table-list',
@@ -13,6 +12,7 @@ import { PersonApplicant } from '../model/personApplicant';
 })
 export class CreditorTableListComponent implements OnInit {
   topPersons$: Observable<PersonApplicant>;
+  public array:any;
   displayedColumns: string[] = ['applicationId','personName','contact','address','loanAmount','loanTenure','applicationStatus'];
   @ViewChild(MatSort) sort:MatSort;
   @ViewChild(MatPaginator) paginator:MatPaginator;
@@ -35,6 +35,7 @@ export class CreditorTableListComponent implements OnInit {
       this.organizataionApplication.findAllIndividualApplication(this.pageNo,this.pageSize).subscribe(stream=>
        {
           this.dataSource.data=stream as any;
+          this.dataSource.paginator=this.paginator;
        });
       
   }
@@ -42,18 +43,7 @@ export class CreditorTableListComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-   ngAfterViewChecked()
-  {
-       this.pageSize=this.pageEvent.pageSize;
-       this.pageNo=this.pageEvent.pageIndex;
-       console.log(this.pageIndex+"check");
-       this.organizataionApplication.findAllIndividualApplication(this.pageIndex,this.pageSize).subscribe(stream=>
-        {
-           this.dataSource.data=stream as any;
-           console.log(this.pageIndex);
-        });
-  }
-  applyFilter(filterValue: string) {
+    applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.dataSource.filter = filterValue;
