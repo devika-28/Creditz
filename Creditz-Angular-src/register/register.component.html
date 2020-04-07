@@ -73,11 +73,13 @@
               placeholder="Enter Password again" name="cpsw" ngModel required>
              <div *ngIf="confirmpassword.invalid"
              class="text-danger">
-         
+             <!-- <small *ngIf="(confirmpassword.errors?.notEqual)&& (confirmpassword.errors.required && confirmpassword.touched && confirmpassword.dirty)">
+              Password is required to enter again.
+            </small> -->
            <small *ngIf="(confirmpassword.errors.required &&  confirmpassword.touched) || (confirmpassword.errors.required && confirmpassword.dirty )">
              Password is required to enter again.
            </small>
-           <small *ngIf=" confirmpassword.touched && confirmpassword.errors?.notEqual && confirmpassword.dirty">password and confirmpassword does not match.
+           <small *ngIf=" confirmpassword.errors?.notEqual && !confirmpassword.errors.required  && (confirmpassword.touched ||confirmpassword.dirty)">password and confirmpassword does not match.
            </small>      
          </div>
             </div> 
@@ -105,15 +107,15 @@
          </div>
 </div>
 
-<div *ngIf="hasEmailverified && email.valid">
+<div *ngIf="!hasEmailverified && email.valid">
   <small>
-   Check your email,and verify your account after entering confirm password.
-   <button type="button" (click)="sendVerificationEmail(email.value,password.value)" >verify Email</button>
+    verify Email after fillng password and confirm password.
+   <button type="button" (click)="sendVerificationEmail(email.value,password.value)" style="font-size: medium;">verify Email</button>
   </small>
  </div>
  <br>
 <div class="form-group">
-            <button class="btn btn-success"  [disabled]="personForm.form.invalid" type="submit">Register</button>
+            <button class="btn btn-success"  [disabled]="personForm.form.invalid" type="submit" style="font-size: medium;">Register</button>
           </div>
     </form> </mat-tab>
 
@@ -191,9 +193,8 @@
              <small *ngIf="(ccpassword.errors.required &&  ccpassword.touched) || (ccpassword.errors.required && ccpassword.dirty )">
               Password is required to enter again.
             </small>
-            <small *ngIf=" ccpassword.touched && ccpassword.errors?.notEqual && ccpassword.dirty">
-              password and confirmpassword does not match.
-            </small>      
+            <small *ngIf=" ccpassword.errors?.notEqual && !ccpassword.errors.required  && (ccpassword.touched ||ccpassword.dirty)">password and confirmpassword does not match.
+            </small>     
          </div>
             </div>
 
@@ -227,15 +228,16 @@
            </small>      
          </div>          
             </div>      
-            <div *ngIf="hasEmailverified && mail.valid">
+            <div *ngIf="!hasEmailverified && mail.valid">
               <small>
-               Check your email,and verify your account before submitting form.
-               <button type="button" (click)="sendVerificationEmail(mail.value,cpassword.value)" >verify Email after fillng all credentials</button>
+                verify Email after fillng password and confirm password.
+               <button type="button" (click)="sendVerificationEmail(mail.value,cpassword.value)" style="font-size: medium;">
+                 verify Email </button>
               </small>
              </div>   
              <br>           
             <div class="form-group">
-            <button  class="btn btn-success" [disabled]="!organizationForm.form.valid" type="submit">Register</button>          
+            <button  class="btn btn-success" [disabled]="!organizationForm.form.valid" type="submit" style="font-size: medium;">Register</button>          
      </div>
     </form> </mat-tab>
 </mat-tab-group>
