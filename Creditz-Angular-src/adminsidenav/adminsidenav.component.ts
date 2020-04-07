@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./adminsidenav.component.css']
 })
 export class AdminsidenavComponent implements OnInit {
-
+  store = window.sessionStorage.getItem('userId');
+  storeRole = window.sessionStorage.getItem('role');
   constructor() { }
 
   ngOnInit(): void {

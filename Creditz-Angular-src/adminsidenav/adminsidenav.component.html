@@ -1,5 +1,6 @@
 
 <!--ss <div style="display: box; width: 90%; min-width: 400px;height:90%"> -->
+    <div *ngIf="this.storeRole=='Admin' and this.store!=null">
     <mat-sidenav-container>
     
         <mat-sidenav #start mode="side" opened >
@@ -51,6 +52,7 @@
         </mat-sidenav-content>
    
         </mat-sidenav-container>
+        </div>
         <router-outlet></router-outlet>
     
     

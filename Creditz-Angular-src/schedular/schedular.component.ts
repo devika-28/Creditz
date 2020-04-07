@@ -8,6 +8,8 @@ import { ScheduleService } from '../services/schedule.service';
 })
 export class SchedularComponent implements OnInit {
   panelOpenState =false;
+  store = window.sessionStorage.getItem('userId');
+  storeRole = window.sessionStorage.getItem('role');
   constructor( private scheduleService:ScheduleService) { }
 
   ngOnInit(): void {

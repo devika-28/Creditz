@@ -10,7 +10,8 @@ import { OrganizationApplicationService } from '../services/organization-applica
   styleUrls: ['./organization-creditor-table-list.component.css']
 })
 export class OrganizationCreditorTableListComponent implements OnInit {
-
+  store = window.sessionStorage.getItem('userId');
+  storeRole = window.sessionStorage.getItem('role');
   displayedColumns: string[] = ['applicationId','organizationName','contact','address','loanAmount','loanTenure','applicationStatus'];
   @ViewChild(MatSort) sort:MatSort;
   @ViewChild(MatPaginator) paginator:MatPaginator;

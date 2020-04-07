@@ -11,7 +11,8 @@ import { Observable } from 'rxjs';
   styleUrls: ['./show-analyst.component.css']
 })
 export class ShowAnalystComponent implements OnInit {
-
+  store = window.sessionStorage.getItem('userId');
+  storeRole = window.sessionStorage.getItem('role');
   displayedColumns: string[] = ['userId','userEmail','actions'];
   
   @ViewChild(MatPaginator) paginator:MatPaginator;

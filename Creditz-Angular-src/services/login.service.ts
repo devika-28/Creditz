@@ -55,7 +55,7 @@ goToUrl(url: string){
                            break; 
                         } 
                         case 'Admin': { 
-                          this.goToUrl('default');
+                          this.goToUrl('adminsidenav');
                           break; 
                        } 
                        case 'Analyst': { 
