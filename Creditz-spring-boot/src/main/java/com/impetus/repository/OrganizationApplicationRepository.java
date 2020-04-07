@@ -17,9 +17,9 @@ public interface OrganizationApplicationRepository extends JpaRepository<Organiz
 	@Query(	value =  "insert into organizationapplicant ( bankruptcy,age,criminal_record,employee_count,licenseno,loan_amount,loan_tenure,organization_type,pan_card,revenue, application_status,organization_id,user_id)"
 			+ " values (:bankruptcy , :age, :criminalRecord, :employeeCount,:licenseNumber, :loanAmount , :loanTenure,:organizationType,:pancard,:revenue, :applicationStatus, :organizationId, :userId)", nativeQuery = true)
 	
-	void insertApplication(@Param("bankruptcy") boolean bankruptcy,
+	void insertApplication(@Param("bankruptcy") Boolean bankruptcy,
 			@Param("age") int age,
-			@Param("criminalRecord") boolean criminalRecord, 
+			@Param("criminalRecord") Boolean criminalRecord, 
 			@Param("employeeCount") int employeeCount, 
 			@Param("licenseNumber")String licenseNumber,
 			@Param("loanAmount")int loanAmount,
@@ -35,9 +35,6 @@ public interface OrganizationApplicationRepository extends JpaRepository<Organiz
 	@Query(nativeQuery=true, value="SELECT LAST_INSERT_ID()")
 	Long getApplicationId();
 	
-	
-	//Long getApplicantIdByUserId(@Param("userId") Long userId);
-	Long getApplicationIdByUserId(@Param("userId") Long userId);
 	
 }
 

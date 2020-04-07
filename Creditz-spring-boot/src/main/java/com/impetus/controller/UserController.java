@@ -37,9 +37,7 @@ public class UserController {
     public String verify() {
         return "verified";
     }
-    
-    
-    
+
     /** Save person.
      *
      * @param user

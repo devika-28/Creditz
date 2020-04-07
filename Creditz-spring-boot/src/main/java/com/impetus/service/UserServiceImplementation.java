@@ -73,8 +73,6 @@ public class UserServiceImplementation implements UserService {
     {
     	return userdao.getUserById(userId);
     }
-    
-
 
 	@Override
 	public void deleteAnalyst(long userId) {

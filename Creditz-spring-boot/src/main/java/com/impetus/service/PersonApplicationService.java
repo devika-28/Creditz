@@ -13,7 +13,7 @@ import com.impetus.model.PersonApplicant;
 public interface PersonApplicationService {
 	
 	public HashMap<String,Long> RiskMitigate(PersonApplicant application);
-	
+	public HashMap<String,Long> organizationRiskMitigate(OrganizationApplicant application);
 	
 	public List<PersonApplicant> getAllPersonApplicant(Integer pageNo, Integer pageSize);
 

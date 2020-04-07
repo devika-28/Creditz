@@ -53,11 +53,11 @@ public class OrganizationApplicant {
 
     /** Criminal record against applicant */
     @Column(name = "criminal_record", nullable = false)
-    private boolean criminalRecord;
+    private Boolean criminalRecord;
 
     /** is applicant is bankCorrupt */
     @Column(name = "bankruptcy", nullable = false)
-    private boolean bankruptcy;
+    private Boolean bankruptcy;
 
     /**
      *loan tenure
