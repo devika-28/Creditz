@@ -56,7 +56,7 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
 
 
 .new_footer_top .f_widget.about-widget .f_list li a:hover {
-    color: #4CAF50;
+    color: #15a085;
 }
 .new_footer_top .f_widget.about-widget .f_list li {
     margin-bottom: 11px;
@@ -84,9 +84,9 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
     border-radius: 50%;
     font-size: 14px;
     line-height: 45px;
-    color: #4CAF50;
+    color: #15a085;
     display: inline-block;
-    background: #4CAF50;
+    background: #15a085;
     text-align: center;
     -webkit-transition: all 0.2s linear;
     -o-transition: all 0.2s linear;
@@ -106,7 +106,7 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
 }
 
 .btn_get_two {
-  background-color: #4CAF50;
+  background-color: #15a085;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -120,8 +120,8 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
 }
 
 .new_footer_top .f_social_icon a:hover {
-    background: #4CAF50;
-    border-color: #4CAF50;
+    background: #15a085;
+    border-color: #15a085;
   color:white;
 }
 .new_footer_top .f_social_icon a + a {
