@@ -2,60 +2,27 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css"; 
 
 body {font-family: Arial, Helvetica, sans-serif;}
-form {border: 1px solid #f1f1f1;}
+form {border: 3px solid #f1f1f1;}
 
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=email] {
   width: 100%;
-  padding: 12px 20px;
+  padding: 4% 5%;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #ccc;
+  border: 1% solid #ccc;
   box-sizing: border-box;
 }
-/* 
-.button {
-  display: inline-block;
-  height: 200px;
-  padding: 2px;
-  margin: 2px;
-  vertical-align: top;
-  width: 400px;
-} */
 
-.birdButton {
-   background-image: url(src\assets\birdButton3.png);
-   /*background-size: 100px 130px;*/
-   background-repeat: no-repeat;
-   position: fixed;
-   float: right;
-   margin-top: -6%;
-   margin-right: 5px;
-   margin-left: 78%;
-   z-index: 9;
-
-  }
-
-.image{
-  display:block;
-  margin-left: auto;
-  margin-top: auto;
-  height: 73%;
-  width: 65%;  
-  bottom: 2%;
-  position: fixed;
-  /* border-bottom-right-radius: 45%;
-  border-top-right-radius: 45%; */
-  }
 
 .click{
   cursor:pointer;
 }
 
 button {
-  background-color: #15a085;
+  background-color: #4CAF50;
   color: white;
-  padding: 100% 100%;
-  margin: 10% 0;
+  padding: 14px 20px;
+  margin: 8px 0;
   border: none;
   cursor: pointer;
   width: 100%;
@@ -67,7 +34,7 @@ button:hover {
 
 .imgcontainer {
   text-align: center;
-  margin: 0 0 0 0;
+  margin: auto;
 }
 
 img.avatar {
@@ -76,7 +43,7 @@ img.avatar {
 }
 
 .container {
-  padding: 2%;
+  padding: 16px;
 }
 
 span.psw {
@@ -84,6 +51,16 @@ span.psw {
   padding-top: 16px;
 }
 
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
 
 * {
 	margin: 0px; 
@@ -99,7 +76,7 @@ body, html {
 /*---------------------------------------------*/
 a {
 	font-family: Poppins-Regular;
-	font-size: 100%;
+	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;
 	margin: 0px;
@@ -128,11 +105,11 @@ p {
 	font-size: 14px;
 	line-height: 1.7;
 	color: #666666;
-	margin: 10%;
+	margin: 0px;
 }
 
 ul, li {
-	margin: 0%;
+	margin: 0px;
 	list-style-type: none;
 }
 
@@ -209,13 +186,13 @@ iframe {
 [ login ]*/
 
 .limiter {
-  width: 100%;
-  margin: 0 0;
+  width: 50%;
+  margin: 0 auto;
 }
 
 .container-login100 {
-  width: 100%;
-  min-height: fit-content;
+  min-width: 100%;
+  min-height: 100vh;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -224,18 +201,18 @@ iframe {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  padding: 5%;
-  background: #15a085;
-  background: -webkit-linear-gradient(-135deg, #15a085, #946bad);
-  background: -o-linear-gradient(-135deg, #8bc8f1, #946bad);
-  background: -moz-linear-gradient(-135deg, #8bc8f1, #946bad);
-  background: linear-gradient(-135deg, #8bc8f1, #946bad);
+  padding: 0%;
+  background: #9053c7;
+  background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
+  background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
+  background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
+  background: linear-gradient(-135deg, #c850c0, #4158d0);
 }
 
 .wrap-login100 {
   width:fit-content;
   background: #fff;
-  /* border-radius: 10%; */
+  border-radius: 10px;
   overflow: hidden;
   align-items:center;
   display: -webkit-box;
@@ -248,38 +225,47 @@ iframe {
   padding: 8% 10% 25% 10%;
 }
 
+/*------------------------------------------------------------------
+[  ]*/
+.login100-pic {
+  width: 80%;
+}
+
 .login100-pic img {
   max-width: 100%;
 }
 
+
+/*------------------------------------------------------------------
+[  ]*/
 .login100-form {
   width: 100%;
 }
 
 .login100-form-title {
   font-family: Poppins-Bold;
-  font-size: 32px;
+  font-size: 24px;
   color: #333333;
   line-height: 1.2;
   text-align: center;
 
   width: 100%;
   display: block;
-  padding-bottom: 2%;
+  padding-bottom: 54px;
 }
 
 
 /*---------------------------------------------*/
 .wrap-input100 {
-  position: relative;
+  position: initial;
   width: 100%;
   z-index: 1;
-  margin-bottom: 5%;
+  margin-bottom: 10px;
 }
 
 .input100 {
   font-family: Poppins-Medium;
-  font-size: 90%;
+  font-size: 15px;
   line-height: 1.5;
   color: #666666;
 
@@ -288,7 +274,7 @@ iframe {
   background: #e6e6e6;
   height: 50px;
   border-radius: 25px;
-  padding: 0 3% 0 6%;
+  padding: 0 30px 0 68px;
 }
 
 
@@ -367,7 +353,7 @@ iframe {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding-top: 2%;
+  padding-top: 20px;
 }
 
 .login100-form-btn {
@@ -388,7 +374,7 @@ iframe {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 2%;
+  padding: 0 25px;
 
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
@@ -409,7 +395,7 @@ iframe {
 
 @media (max-width: 992px) {
   .wrap-login100 {
-    padding: 15% 6% 2% 5%;
+    padding: 177px 90px 33px 85px;
   }
 
   .login100-pic {
@@ -423,7 +409,7 @@ iframe {
 
 @media (max-width: 768px) {
   .wrap-login100 {
-    padding: 8% 6% 2% 6%;
+    padding: 6% 5% 2% 5%;
   }
 
   .login100-pic {
@@ -435,63 +421,76 @@ iframe {
   }
 }
 
-@media (max-width: 30%) {
+@media (max-width: 576px) {
   .wrap-login100 {
-    padding: 100px 15px 33px 15px;
+    padding: 6% 1% 2% 1%;
   }
 }
 
 
+/*------------------------------------------------------------------
+[ Alert validate ]*/
 
-.container {
+.validate-input {
   position: relative;
-  text-align: center;
-  color: rgb(5, 64, 112);
 }
-  
-.center-left{
+
+.alert-validate::before {
+  content: attr(data-validate);
   position: absolute;
-  bottom:48%;
-  left:18%;
-}
+  max-width: 70%;
+  background-color: white;
+  border: 1px solid #c80000;
+  border-radius: 13px;
+  padding: 4px 25px 4px 10px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: 8px;
+  pointer-events: none;
 
-.bottom-right {
-position: absolute;
-bottom: 5%;
-left: 35%;
-}
-
-
-section.white {
-  /*background:url(/images/bg-section.png) repeat top center #fff;*/
-  background: #ffffff;
-  z-index: 3;
-  position: relative;
-}
-
-
-
-.orange-box {
-  background: #15a085;
-  color: #ffffff;
-  top: -76px;
-  position: relative;
+  font-family: Poppins-Medium;
+  color: #c80000;
+  font-size: 13px;
+  line-height: 1.4;
   text-align: left;
-  padding: 76px 94px;
-  max-width: 858px;
-  z-index: 5;
-  margin: 0 auto -76px auto;
+
+  visibility: hidden;
+  opacity: 0;
+
+  -webkit-transition: opacity 0.4s;
+  -o-transition: opacity 0.4s;
+  -moz-transition: opacity 0.4s;
+  transition: opacity 0.4s;
 }
 
-
-.row2col .col-left {
-  padding-right: 40px;
-  border-right: 1px solid #ffffff;
+.alert-validate::after {
+  content: "\f06a";
+  font-family: FontAwesome;
+  display: block;
+  position: absolute;
+  color: #c80000;
+  font-size: 15px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: 13px;
 }
-.row2col .col-right {
-  padding-left: 40px;
+
+.alert-validate:hover:before {
+  visibility: visible;
+  opacity: 1;
 }
 
-.col-md-6 {
-  width: 50%;
+@media (max-width: 992px) {
+  .alert-validate::before {
+    visibility: visible;
+    opacity: 1;
+  }
 }

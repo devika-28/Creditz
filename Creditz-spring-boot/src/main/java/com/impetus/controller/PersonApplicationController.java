@@ -30,8 +30,17 @@ public class PersonApplicationController {
     	
 	}
     
-   
-    
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+	@PostMapping("/individual-user/user-history")
+	public List<PersonApplicant> personHistory(@RequestBody PersonApplicant userId) {
+		
+//    	service.RiskMitigate(application);
+//    	System.out.println("controller transfered to service");
+		return service.getHistory(userId);
+
+    }
+      
+ 
     
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/getPersonApplicants")
@@ -44,7 +53,7 @@ public class PersonApplicationController {
  
        
     }
- @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/getTopPersonApplicants")
     public List<PersonApplicant>findTopPersonCreditors()
     {

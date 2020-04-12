@@ -5,11 +5,11 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.impetus.model.OrganizationApplicant;
 import com.impetus.model.PersonApplicant;
+import com.impetus.model.User;
 
 
-
+@Service
 public interface PersonApplicationService {
 	
 	public HashMap<String,Long> RiskMitigate(PersonApplicant application);
@@ -21,4 +21,9 @@ public interface PersonApplicationService {
     
 
 	public List<PersonApplicant> findTopPersonCreditors();
+
+
+	List<PersonApplicant> getHistory(PersonApplicant userId);
+
+
 }

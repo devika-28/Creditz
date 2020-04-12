@@ -11,6 +11,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.impetus.model.PersonApplicant;
+import com.impetus.model.User;
 
 @Repository
 public interface PersonApplicationRepository extends JpaRepository<PersonApplicant, Long> {
@@ -37,6 +38,9 @@ public interface PersonApplicationRepository extends JpaRepository<PersonApplica
 	
 	@Query(nativeQuery=true, value="SELECT LAST_INSERT_ID()")
 	Long getApplicationId();
+	
+	@Query(nativeQuery=true, value="Select * from personapplicant where user_id=:userId")
+	List<PersonApplicant> findByUserId(long userId);
 
  @Modifying
 	 @Transactional

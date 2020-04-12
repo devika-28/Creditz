@@ -25,5 +25,8 @@ export class HomeComponent implements OnInit {
   ngOnDestroy(){
     document.body.style.backgroundImage = "none";
   }
-
+ 
+  scroll(element) {
+    window.scrollTo(element.yPosition)
+}
 }

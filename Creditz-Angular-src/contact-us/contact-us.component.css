@@ -35,3 +35,27 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
+
+  
+
+ 
+.left {
+    float:left;
+    width:30%;
+}
+
+.center {
+    display: inline-block;
+    margin:0 auto;
+    width:30%;
+}
+
+.right {
+    float:right;
+    width:30%;
+}
+
+.container-black {
+  width:100%;
+  text-align:center;
+}

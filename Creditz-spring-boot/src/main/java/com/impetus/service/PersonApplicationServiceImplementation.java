@@ -10,10 +10,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-
 import com.impetus.model.CibilReport;
-import com.impetus.model.OrganizationApplicant;
 import com.impetus.model.PersonApplicant;
+import com.impetus.model.User;
 import com.impetus.repository.CibilReportRepository;
 import com.impetus.repository.OrganizationApplicationRepository;
 import com.impetus.repository.OrganizationRepository;
@@ -21,20 +20,23 @@ import com.impetus.repository.PersonApplicationRepository;
 import com.impetus.repository.PersonRepository;
 
 @Service
-public class PersonApplicationServiceImplementation implements PersonApplicationService{
- 
-	
-	@Autowired CibilReportRepository cibilReport;
-	
-	@Autowired PersonApplicationRepository personApplication;
-	
-	@Autowired PersonRepository person;
-	
-	@Autowired OrganizationApplicationRepository organizationApplication;
-	@Autowired OrganizationRepository organization;
-	
-	
-		@Override
+public class PersonApplicationServiceImplementation implements PersonApplicationService {
+
+	@Autowired
+	CibilReportRepository cibilReport;
+
+	@Autowired
+	PersonApplicationRepository personApplication;
+
+	@Autowired
+	PersonRepository person;
+
+	@Autowired
+	OrganizationApplicationRepository organizationApplication;
+	@Autowired
+	OrganizationRepository organization;
+
+	@Override
 	public HashMap<String, Long> RiskMitigate(PersonApplicant application) {
 
 		try {
@@ -54,7 +56,7 @@ public class PersonApplicationServiceImplementation implements PersonApplication
 		Long userId = (application.getUserId()).getUserId();
 
 		Long personId = person.getPersonIdByUserId(userId);
-		
+
 		application.setEmailStatus("False");
 
 		personApplication.insertApplication(application.getPancard(), application.getLoanAmount(), application.getAge(),
@@ -67,6 +69,7 @@ public class PersonApplicationServiceImplementation implements PersonApplication
 		json.put("Application_Id", personApplication.getApplicationId());
 		return json;
 	}
+
 	public String ApproveOrDisapprove(int bankrupt, int criminal, String assetCategory, int cibilScore, int loanAmount,
 			float creditUtilization, float creditLimit, int monthlyIncome, float monthlyLiablities,
 			float currentBalance) {
@@ -100,6 +103,7 @@ public class PersonApplicationServiceImplementation implements PersonApplication
 
 		return "Pending Internal Error";
 	}
+
 	public String validation(int limit, int loanAmount, float creditUtilization, float creditLimit, int monthlyIncome,
 			float monthlyLiablities, float currentBalance) {
 		if (loanAmount > limit) {
@@ -117,60 +121,41 @@ public class PersonApplicationServiceImplementation implements PersonApplication
 		return "Pending Internal Error";
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public List<PersonApplicant> getAllPersonApplicant(Integer pageNo, Integer pageSize){
-        Pageable paging = PageRequest.of(pageNo, pageSize);
- 
-        Page<PersonApplicant> pagedResult = personApplication.findAll(paging);
-         
-        if(pagedResult.hasContent()) {
-            return pagedResult.getContent();
-        } else {
-            return new ArrayList<PersonApplicant>();
-        }
-    }
-	
-
-   public List<PersonApplicant>findApplicants() {
-	   String emailStatus="False";
-	   List<PersonApplicant> result= personApplication.findByemailStatus(emailStatus);
-	   System.out.println("inside service");
-	   return result;
-	   
+	@Override
+	public List<PersonApplicant> getHistory(PersonApplicant userId) {
+		
+		List<PersonApplicant> application = (List<PersonApplicant>) personApplication.findByUserId((userId.getUserId()).getUserId());
+		
+//		personApplication.findByUserId(userId.getUserId());
+		
+		System.out.println(application);
+		return application;
 	}
 
+	public List<PersonApplicant> getAllPersonApplicant(Integer pageNo, Integer pageSize) {
+		Pageable paging = PageRequest.of(pageNo, pageSize);
 
+		Page<PersonApplicant> pagedResult = personApplication.findAll(paging);
 
+		if (pagedResult.hasContent()) {
+			return pagedResult.getContent();
+		} else {
+			return new ArrayList<PersonApplicant>();
+		}
+	}
 
-public List<PersonApplicant> findTopPersonCreditors() {
-	List<PersonApplicant>result=personApplication.findTopPersonCreditors();
-	return result;
-}
+	public List<PersonApplicant> findApplicants() {
+		String emailStatus = "False";
+		List<PersonApplicant> result = personApplication.findByemailStatus(emailStatus);
+		System.out.println("inside service");
+		return result;
 
+	}
 
+	public List<PersonApplicant> findTopPersonCreditors() {
+		List<PersonApplicant> result = personApplication.findTopPersonCreditors();
+		return result;
+	}
 
 
 }

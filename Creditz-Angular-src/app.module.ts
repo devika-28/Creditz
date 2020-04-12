@@ -72,6 +72,9 @@ import { SchedularComponent } from './schedular/schedular.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { AnalystDialogBoxComponent } from './analyst-dialog-box/analyst-dialog-box.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { HistoryComponent } from './history/history.component';
+
 
 
 export const route: Routes = [
@@ -104,7 +107,9 @@ export const route: Routes = [
   {path:"analyst-registration",component:AnalystRegistrationComponent},
   {path:"show-analyst",component:ShowAnalystComponent},
   {path:"schedular",component:SchedularComponent},
+  {path:"user-history",component:HistoryComponent},
   { path: '**', component:ErrorComponent},
+  
 
 ];
 
@@ -151,8 +156,9 @@ firebase.initializeApp(firebaseConfig);
     OrganizationCreditorTableListComponent,
     ErrorComponent,
     ApplicationSubmittionComponent,
-    SchedularComponent ,
-    AnalystDialogBoxComponent
+    SchedularComponent,
+    AnalystDialogBoxComponent,
+    HistoryComponent
     
     // AuthenticateComponent,
     // HttpClientModule,
@@ -187,8 +193,9 @@ firebase.initializeApp(firebaseConfig);
     AngularFirestoreModule,
     AngularFireStorageModule,
     MatExpansionModule,
-    MatDialogModule
-    
+    MatDialogModule,
+    MatTooltipModule,
+//<button type="submit" (click)="addUser()" mat-dialog-close [disabled]="formisvalid" mat-button>Submit</button>
     // MatPaginatorModule,
   ],
   providers: [PersonService,OrganizationService],
