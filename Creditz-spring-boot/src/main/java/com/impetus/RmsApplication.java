@@ -6,7 +6,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 import com.impetus.controller.UserController;
 import com.impetus.model.OrganizationApplicant;
-
+@EnableScheduling
 @SpringBootApplication
 public class RmsApplication {
 
