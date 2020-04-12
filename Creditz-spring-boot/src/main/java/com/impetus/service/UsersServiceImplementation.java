@@ -36,6 +36,12 @@ public class UsersServiceImplementation implements UsersService {
 	user.delete(user.findByUserEmail(userEmail));
 	logger.info("Delete method runs successfully.");
 	}
+
+	
+	public User uniqueCheckEmail(String userEmail) {
+		return user.findByUserEmail(userEmail);
+	
+	}
 	
 	
 	}

@@ -10,6 +10,6 @@ import com.impetus.model.User;
 public interface UsersService {
 	public List<User> getAllAnalyst(Integer pageNo, Integer pageSize);
 	public void DeleteAnalyst(String userEmail);
-	
+	public User uniqueCheckEmail(String userEmail);
 	
 }

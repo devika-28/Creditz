@@ -35,5 +35,14 @@ public class UsersController {
 	{
 		logger.info("Delete Request Arrived .");
 		service.DeleteAnalyst(userEmail);
+		
+	}
+	
+
+	 @CrossOrigin(origins = "*", allowedHeaders = "*")
+	@GetMapping("/checkUniqueUser")
+	User uniqueEmailCheck(@RequestParam String userEmail)
+	{
+		return service.uniqueCheckEmail(userEmail);
 	}
 }
