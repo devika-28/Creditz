@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EMI } from '../model/emi';
+import { MatDialog } from '@angular/material/dialog';
+import { IndividualUserApplicationComponent } from '../individual-user-application/individual-user-application.component';
 
 @Component({
   selector: 'app-individual-user',
@@ -9,7 +11,7 @@ import { EMI } from '../model/emi';
 export class IndividualUserComponent implements OnInit {
 
   calculatorModel = new EMI();
-  constructor() { }
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit() {
     console.log( this.calculateEMI(1000,6))
@@ -21,9 +23,25 @@ export class IndividualUserComponent implements OnInit {
 
    calculateEMI: any = function(principle:number, tenure:number){
       var p:number=principle;
+      if(p> 150000){
+        p=150000
+      }
       var t:number=tenure;
+      if(t>100){
+        t=100
+      }
     var interest = (p*11.5*t)/1200;
      return ((p+interest)/t);   
+    
+    }
+
+    openDialog() {
+      // const scrollStrategy = this.overlay.scrollStrategies.reposition();
+      const dialogRef = this.dialog.open(IndividualUserApplicationComponent, {
+        autoFocus: false,
+        maxHeight: '90vh' //you can adjust the value as per your view
+  
+      });
     
     }
 

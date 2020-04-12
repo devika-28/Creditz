@@ -29,15 +29,19 @@ goToUrl(url: string){
       
       return this.http.post(this.apiUrl+'/login',body,this.config)
                 .subscribe(
-
+                  
                   (res: Response)=> {  
+
                     if (res['userId']==null){
-                      console.log("INVALID USERID");
+                      // console.log("INVALID USERID");
                       // this.goToUrl('home');
                       alert("Invalid Credentials");
 
-                    }
+                      }
+
                     else{
+
+                      try{
                       console.log(res['role']);
                       
                       window.sessionStorage.setItem("userId",res['userId']);
@@ -67,6 +71,12 @@ goToUrl(url: string){
                            break; 
                         } 
                      } 
+                    }
+                    catch(Error){
+                      console.log(Error.message)
+                      alert("Sorry Cant log you in in the moment, it is not you it is us!")
+                    }
+                    
 
 
 
@@ -75,8 +85,12 @@ goToUrl(url: string){
                 (err: HttpErrorResponse) => {
                       if (err.error instanceof Error) {
                               console.log('Client-side error occured.');
+                              alert("Sorry Cant log you in in the moment, it is not you it is us!")
+
                       } else {
                               console.log('Server-side error occured.');
+                              alert("Sorry Cant log you in in the moment, it is not you it is us!")
+
                       }
                 });
      

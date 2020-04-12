@@ -22,15 +22,7 @@ const ELEMENT_DATA: History[] = [];
 })
 export class HistoryComponent implements OnInit {
 
-  constructor(private historyService: HistoryService) { 
-    this.historyService.showHistory(window.sessionStorage.getItem('userId'))
-    .subscribe((history:History[])=>{
-      history.forEach(i => {
-        var temp = {applicationId:i['applicationId'], loanAmount:i['loanAmount'], loanTenure:i['loanTenure'], applicationStatus:i['applicationStatus'], emailStatus:i['emailStatus']}
-        ELEMENT_DATA.push(temp)
-      });
-    })
-  }
+  constructor(private historyService: HistoryService) {  }
    
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   displayedColumns = ['applicationId', 'loanAmount', 'loanTenure', 'applicationStatus'];
@@ -41,8 +33,16 @@ export class HistoryComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.historyService.showHistory(window.sessionStorage.getItem('userId'))
+    .subscribe((history:History[])=>{
+      history.forEach(i => {
+        var temp = {applicationId:i['applicationId'], loanAmount:i['loanAmount'], loanTenure:i['loanTenure'], applicationStatus:i['applicationStatus'], emailStatus:i['emailStatus']}
+        ELEMENT_DATA.push(temp)
+      });
+    })
+
     this.dataSource.sort = this.sort;
-    // this.sort.sort(({ id: 'applicationId', start: 'asc'}) MatTableDataSource);
 
     // this.historyService.showHistory(window.sessionStorage.getItem('userId'));
   }

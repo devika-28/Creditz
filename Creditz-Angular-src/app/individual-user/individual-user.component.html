@@ -1,5 +1,5 @@
 <div style="max-width:50">
-<button class="birdButton" (click)="goToUrl('individual-user/individual-user-application')">Apply Here</button>
+<button class="birdButton" (click)="openDialog()">Apply Here</button>
 </div>
 
 <div style="min-width: 40%; margin-right:5%; width: 60%; float: right; align: right" >
@@ -34,18 +34,20 @@ ABOUT Personal User Policies(key points)<br>
                     <div class="row row2col">
                         <div class="col-md-6 col-left">
                             <p  style="color:white;"> 
-                              1. Flat EMI<br><br>
-                              2. 11.5% intrest rate on individual Loan<br><br>
-                              3. Un-Secured loans<br><br>
-                              4. Loans for you startup ideas.<br><br>
-                              5. Want to start Startup? We are here<br><br>
+                              <i>With an intrest rate of 11.5% we provide loans on flat EMis, we help you shape your dreams, ideas and any startup plans into reality<br><br>
+                              We beleive in giving the cosumers a great ecperience, henceforth, we provide you the loan without security, 
+                              'un-secured' loans, is our policy to help our consumers to have an amzing loaning experiance<br><br>
+                              We beleive in you!!!<br><br>
+                              Allow us help you in building your own empire, give us chance.<br><br> Apply for the loan <i>Now!!!</i></i><br><br>
 
                             </p>
                         </div>
                         <div class="col-md-6 col-right">
-                            <p  style="color:white;">      
-                            6. What are our screening POLICY<br><br>
-                            7. Check your Emi by yourself before Applying! because we care about your credit score!<br>
+                            <p  style="color:white;">     
+                            <i>We have a very easy but effective screening policy, we wont bother you with too many documents, we just need a pan card information
+                            for your application procedure, nad then we will send you an email regarding your application status, once you had received the email,
+                            for the next process, you just to visit your nearby branch And Voila! you are ready to go, to build your own buisness dynasty!<br><br>
+                            do not forget to Check your Emi by before Applying! because we care about your credit score!</i><br><br>
                             </p>
                             <p  style="color:white;"><i>Happy Loaning!</i></p>
                         </div>
@@ -58,10 +60,6 @@ ABOUT Personal User Policies(key points)<br>
 
 
 <!--===========================================================-->
-
-
-
-
 
 
 
@@ -89,7 +87,7 @@ ABOUT Personal User Policies(key points)<br>
     <form #calculator="ngForm" (ngSubmit)="calculateEMI()" class="login100-form" style="border:none;" ><br>
 
     				<div class="container" aTilt >
-					<img src="assets/calculator.jpeg" alt="IMG"  style="width:100%;height:100%;"> 
+					<img src="assets/brains2.png" alt="IMG"  style="width:100%;height:100%; "> <br><br>
 				</div>
 
 <div class="wrap-input100" >
@@ -99,12 +97,14 @@ ABOUT Personal User Policies(key points)<br>
 
 
     <div class="wrap-input100" >
-      <input type="number" class="input100" placeholder="Loan Duration-Month" name="tenure" [(ngModel)] = calculatorModel.tenure><br>
+      <input type="number" class="input100" placeholder="Loan Duration-Month" name="tenure" [(ngModel)] = calculatorModel.tenure>
   						<span class="focus-input100"></span>
     </div>
 
     <label aTilt><br>Your EMI Per Month: {{this.calculateEMI(calculatorModel.principle,calculatorModel.tenure)}}</label>
 
+  <br><br>Max Duration: 100 months<br>
+  Max Amount: 15Lakhs.
 
     </form>
     </div>

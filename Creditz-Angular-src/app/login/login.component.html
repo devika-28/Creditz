@@ -17,10 +17,9 @@
 								<br>
 									<mat-form-field appearance="none">
 									<div class="wrap-input100 validate-input">
-									<mat-label>Your Email</mat-label>
 									<input matInput 
 									matTooltip="Enter your email"	matTooltipPosition="after"
- 									placeholder="yourEmail" type="email"  class="input100" name="userEmail" #userEmail="ngModel" [(ngModel)]="loginModel.userEmail" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [class.is-invalid]="userEmail.invalid && userEmail.touched" required>
+ 									placeholder="your Email" type="email"  class="input100" name="userEmail" #userEmail="ngModel" [(ngModel)]="loginModel.userEmail" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [class.is-invalid]="userEmail.invalid && userEmail.touched" required>
 														<span class="focus-input100"></span>
 														<!--<i class="fa fa-envelope" aria-hidden="true"></i>-->
 									</div>
@@ -30,11 +29,10 @@
 									
 									<mat-form-field appearance="none">
 									<div class="wrap-input100 validate-input" placeholder="Password" data-validate = "password is required">
-									<mat-label>Password</mat-label>
 
 									<input matInput 
 									matTooltip="Enter your password"	matTooltipPosition="after"
-									type="password" class="input100" name="password" [(ngModel)]="loginModel.password" required>
+									placeholder="your Password" type="password" class="input100" name="password" [(ngModel)]="loginModel.password" required>
 														<span class="focus-input100"></span>
 														<!--<i class="fa fa-lock" aria-hidden="true"></i>-->
 									</div>

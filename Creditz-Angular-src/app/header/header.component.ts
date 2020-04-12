@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HistoryComponent } from '../history/history.component';
+import {MatDialog} from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-header',
@@ -8,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
   title = 'Risk Management System';
   store = window.sessionStorage.getItem('userId');
-  constructor() { }
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
   }
@@ -21,5 +24,10 @@ logout(){
   window.sessionStorage.removeItem('role');
   window.alert("You have been logged Out");
   window.location.reload()
+}
+
+openDialog() {
+  const dialogRef = this.dialog.open(HistoryComponent);
+
 }
 } 

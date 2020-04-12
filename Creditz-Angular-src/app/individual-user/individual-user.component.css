@@ -400,6 +400,9 @@ iframe {
   background: #333333;
 }
 
+.login100-form-btn:disabled{
+  cursor: not-allowed;
+}
 
 
 /*------------------------------------------------------------------
