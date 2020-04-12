@@ -74,6 +74,7 @@ import { AnalystDialogBoxComponent } from './analyst-dialog-box/analyst-dialog-b
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { HistoryComponent } from './history/history.component';
+import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 
 
 
@@ -158,7 +159,7 @@ firebase.initializeApp(firebaseConfig);
     ApplicationSubmittionComponent,
     SchedularComponent,
     AnalystDialogBoxComponent,
-    HistoryComponent
+    HistoryComponent,
     
     // AuthenticateComponent,
     // HttpClientModule,
@@ -195,6 +196,7 @@ firebase.initializeApp(firebaseConfig);
     MatExpansionModule,
     MatDialogModule,
     MatTooltipModule,
+    ShowHidePasswordModule ,
 //<button type="submit" (click)="addUser()" mat-dialog-close [disabled]="formisvalid" mat-button>Submit</button>
     // MatPaginatorModule,
   ],

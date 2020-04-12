@@ -24,4 +24,11 @@ export class AnalystService {
        return this.http.get("http://localhost:9999/getAllAnalyst",{params});
             
    }
+   checkUniqueEmail( userEmail:any): Observable<any>
+   {
+        let params = new HttpParams()
+        .set('userEmail',userEmail);
+        return this.http.get("http://localhost:9999/checkUniqueUser",{params});
+            
+   }
 }

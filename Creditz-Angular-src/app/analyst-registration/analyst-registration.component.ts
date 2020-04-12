@@ -5,6 +5,7 @@ import { AnalystService } from '../services/analyst.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { AnalystDialogBoxComponent } from '../analyst-dialog-box/analyst-dialog-box.component';
+import { isNull } from 'util';
 
 @Component({
   selector: 'app-analyst-registration',
@@ -19,6 +20,7 @@ export class AnalystRegistrationComponent implements OnInit {
   submitted = false;
   error: string;
   loading: false;
+  UserEmailCheck: any;
   constructor(private formBuilder: FormBuilder, private analystService:AnalystService,
     private router: Router,public dialog: MatDialog
     ) { }
@@ -58,6 +60,28 @@ openDialog(): void {
     // this.animal = result;
   });
 }
+
+  emailAlreadyExist="";
+ emailCheckUnique()
+  {
+    this.analystService.checkUniqueEmail(this.userModel1.userEmail).subscribe(res=>{
+      this.UserEmailCheck=res;
+       console.log("done");
+        if(this.UserEmailCheck!==null){
+          console.log("done");
+          this.emailAlreadyExist="Email Already Exist";
+        }
+          else
+          {
+           this.emailAlreadyExist="";
+          }
+        }
+      
+      
+    );
+
+  }
+
 
 }
 

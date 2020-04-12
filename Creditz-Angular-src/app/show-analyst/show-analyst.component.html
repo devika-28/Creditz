@@ -130,6 +130,9 @@
       </mat-toolbar> -->
   </mat-sidenav-container>
   </div>
+  <div *ngIf="this.store==null">
+  <app-login></app-login>
+  </div>
   
   <router-outlet></router-outlet>
 

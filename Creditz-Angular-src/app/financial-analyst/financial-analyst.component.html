@@ -1,4 +1,13 @@
 
+<div style=" min-width:50%; max-width:50%;float:right;">
+  <div class="container" >
+    <img src="assets/discussion.jpg" alt="IMG" class="image">
+  </div>
+</div>
+
+
+<div style="max-width:50%; min-width:50%; float:left;"> 
+<!-- <div *ngIf="this.storeRole=='Analyst' and this.store!=null"> -->
 <mat-tab-group animationDuration="1000ms">
 <mat-tab label ="Top Individual Creditors">
 <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
@@ -35,11 +44,11 @@
         <div class="example-element-weight"> {{element.weight}} </div>
       </div> -->
       <div class="example-element-description">
-        <h4> ApplicantId  :{{element.applicationId}}</h4>
-        <h4> LoanAmount :{{element.loanAmount}}</h4>
-        <h4> Occupation :{{element.occupation}}</h4>
+        <h4> Applicant Id  :{{element.applicationId}}</h4>
+        <h4> Loan Amount   :{{element.loanAmount}}</h4>
+        <h4> Occupation   :{{element.occupation}}</h4>
         <!-- <h4> Email  :{{element.user.userEmail}}</h4> -->
-        <h4> Loan tenture :{{element.loanTenure}}</h4>
+        <h4> Loan Tenure:{{element.loanTenure}}</h4>
       </div>
     </div>
   </td>
@@ -82,7 +91,7 @@
     <ng-container matColumnDef="expandedDetail">
       <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay1.length">
         <div class="example-element-detail"
-             [@detailExpand]="element == expandedElement1 ? 'expanded' : 'collapsed'">
+        [@detailExpand]="element == expandedElement1 ? 'expanded' : 'collapsed'">
           <!-- <div class="example-element-diagram">
             <div class="example-element-position"> {{element.position}} </div>
             <div class="example-element-symbol"> {{element.symbol}} </div>
@@ -90,8 +99,12 @@
             <div class="example-element-weight"> {{element.weight}} </div>
           </div> -->
           <div class="example-element-description">
-            {{element.description}}
-            
+            <h4> ApplicantId   :{{ element.applicationId }}</h4>
+            <h4> LoanAmount    :{{element.loanAmount}}</h4>
+            <h4> Revenue       :{{element.revenue}}</h4>
+            <!-- <h4> Email  :{{element.user.userEmail}}</h4> -->
+            <h4> Loan tenture  :{{element.loanTenure}}</h4>
+            <h4> Director Name :{{element.organizationId.directorName}}</h4>
           </div>
         </div>
       </td>
@@ -109,9 +122,12 @@
       </table>
     </mat-tab>
     
-
-
 </mat-tab-group>
+</div>
 
+<!-- <div *ngIf="this.store==null">
+<app-login></app-login>
+</div> 
+ --> 
 
 
