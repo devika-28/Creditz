@@ -12,13 +12,47 @@ input[type=text], input[type=password] {
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
+/* 
+.button {
+  display: inline-block;
+  height: 200px;
+  padding: 2px;
+  margin: 2px;
+  vertical-align: top;
+  width: 400px;
+} */
+
+.birdButton {
+   background-image: url(src\assets\birdButton3.png);
+   /*background-size: 100px 130px;*/
+   background-repeat: no-repeat;
+   position: fixed;
+   float: right;
+   margin-top: -6%;
+   margin-right: 5px;
+   margin-left: 78%;
+   z-index: 9;
+
+  }
+
+.image{
+  display:block;
+  margin-left: auto;
+  margin-top: auto;
+  height: 73%;
+  width: 65%;  
+  bottom: 2%;
+  position: fixed;
+  /* border-bottom-right-radius: 45%;
+  border-top-right-radius: 45%; */
+  }
 
 .click{
   cursor:pointer;
 }
 
 button {
-  background-color: #4CAF50;
+  background-color: #15a085;
   color: white;
   padding: 100% 100%;
   margin: 10% 0;
@@ -191,17 +225,17 @@ iframe {
   justify-content: center;
   align-items: center;
   padding: 5%;
-  background: #9053c7;
-  background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: linear-gradient(-135deg, #c850c0, #4158d0);
+  background: #15a085;
+  background: -webkit-linear-gradient(-135deg, #15a085, #946bad);
+  background: -o-linear-gradient(-135deg, #8bc8f1, #946bad);
+  background: -moz-linear-gradient(-135deg, #8bc8f1, #946bad);
+  background: linear-gradient(-135deg, #8bc8f1, #946bad);
 }
 
 .wrap-login100 {
   width:fit-content;
   background: #fff;
-  border-radius: 10%;
+  /* border-radius: 10%; */
   overflow: hidden;
   align-items:center;
   display: -webkit-box;
@@ -405,4 +439,59 @@ iframe {
   .wrap-login100 {
     padding: 100px 15px 33px 15px;
   }
+}
+
+
+
+.container {
+  position: relative;
+  text-align: center;
+  color: rgb(5, 64, 112);
+}
+  
+.center-left{
+  position: absolute;
+  bottom:48%;
+  left:18%;
+}
+
+.bottom-right {
+position: absolute;
+bottom: 5%;
+left: 35%;
+}
+
+
+section.white {
+  /*background:url(/images/bg-section.png) repeat top center #fff;*/
+  background: #ffffff;
+  z-index: 3;
+  position: relative;
+}
+
+
+
+.orange-box {
+  background: #15a085;
+  color: #ffffff;
+  top: -76px;
+  position: relative;
+  text-align: left;
+  padding: 76px 94px;
+  max-width: 858px;
+  z-index: 5;
+  margin: 0 auto -76px auto;
+}
+
+
+.row2col .col-left {
+  padding-right: 40px;
+  border-right: 1px solid #ffffff;
+}
+.row2col .col-right {
+  padding-left: 40px;
+}
+
+.col-md-6 {
+  width: 50%;
 }

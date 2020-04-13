@@ -22,7 +22,7 @@ export class OrganizationUserCalculatorComponent implements OnInit {
    calculateEMI: any = function(principle:number, tenure:number){
       var p:number=principle;
       var t:number=tenure;
-    var interest = (p*11.5*t)/1200;
+    var interest = (p*13.5*t)/1200;
      return ((p+interest)/t);   
     
     }

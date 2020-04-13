@@ -55,11 +55,11 @@ public class OrganizationApplicant {
 
     /** Criminal record against applicant */
     @Column(name = "criminal_record", nullable = false)
-    private boolean criminalRecord;
+    private int criminalRecord;
 
     /** is applicant is bankCorrupt */
     @Column(name = "bankruptcy", nullable = false)
-    private boolean bankruptcy;
+    private int bankruptcy;
 
     /**
      *loan tenure
@@ -85,9 +85,27 @@ public class OrganizationApplicant {
     @JoinColumn(name = "organization_id")
     private Organization organizationId;
 
-    @OneToOne(fetch = FetchType.EAGER)
+
+	@OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User userId;
+
+	
+    public int getCriminalRecord() {
+		return criminalRecord;
+	}
+
+	public void setCriminalRecord(int criminalRecord) {
+		this.criminalRecord = criminalRecord;
+	}
+
+	public int getBankruptcy() {
+		return bankruptcy;
+	}
+
+	public void setBankruptcy(int bankruptcy) {
+		this.bankruptcy = bankruptcy;
+	}
 
 
     public long getApplicationId() {
@@ -162,22 +180,7 @@ public class OrganizationApplicant {
 		this.applicationStatus = applicationStatus;
 	}
 
-	public Boolean getCriminalRecord() {
-		return criminalRecord;
-	}
-
-	public void setCriminalRecord(Boolean criminalRecord) {
-		this.criminalRecord = criminalRecord;
-	}
-
-	public Boolean getBankruptcy() {
-		return bankruptcy;
-	}
-
-	public void setBankruptcy(Boolean bankruptcy) {
-		this.bankruptcy = bankruptcy;
-	}
-
+	
 	public int getLoanTenure() {
 		return loanTenure;
 	}

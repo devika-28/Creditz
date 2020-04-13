@@ -15,13 +15,14 @@ import com.impetus.model.OrganizationApplicant;
 @Repository
 public interface OrganizationApplicationRepository extends JpaRepository<OrganizationApplicant, Long>
 {
+	@Modifying
 	@Transactional
-	@Query(	value =  "insert into organizationapplicant ( bankruptcy,age,criminal_record,employee_count,licenseno,loan_amount,loan_tenure,organization_type,pan_card,revenue, application_status,organization_id,user_id)"
-			+ " values (:bankruptcy , :age, :criminalRecord, :employeeCount,:licenseNumber, :loanAmount , :loanTenure,:organizationType,:pancard,:revenue, :applicationStatus, :organizationId, :userId)", nativeQuery = true)
+	@Query(	value =  "insert into organizationapplicant ( bankruptcy,age,criminal_record,employee_count,licenseno,loan_amount,loan_tenure,organization_type,pan_card,revenue, application_status,organization_id,user_id,email_status)"
+			+ " values (:bankruptcy , :age, :criminalRecord, :employeeCount,:licenseNumber, :loanAmount , :loanTenure,:organizationType,:pancard,:revenue, :applicationStatus, :organizationId, :userId , :emailStatus)", nativeQuery = true)
 	
-	void insertApplication(@Param("bankruptcy") boolean bankruptcy,
+	void insertApplication(@Param("bankruptcy") int bankruptcy,
 			@Param("age") int age,
-			@Param("criminalRecord") boolean criminalRecord, 
+			@Param("criminalRecord") int criminalRecord, 
 			@Param("employeeCount") int employeeCount, 
 			@Param("licenseNumber")String licenseNumber,
 			@Param("loanAmount")int loanAmount,
@@ -31,7 +32,8 @@ public interface OrganizationApplicationRepository extends JpaRepository<Organiz
 			@Param("revenue")long revenue, 
     		@Param("applicationStatus") String applicationStatus, 
 			@Param("organizationId") long organizationId,
-			@Param("userId") long userId);
+			@Param("userId") long userId,
+			@Param("emailStatus") String emailStatus);
 	
 	
 	@Query(nativeQuery=true, value="SELECT LAST_INSERT_ID()")

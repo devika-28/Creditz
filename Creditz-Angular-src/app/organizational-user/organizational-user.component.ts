@@ -9,11 +9,11 @@ import { OrganizationUserApplicationService } from '../services/organization-use
   styleUrls: ['./organizational-user.component.css']
 })
 export class OrganizationalUserComponent implements OnInit {
-  
+  City: any = ['Not registered', 'one person company', 'Partnership', 'Limited company','pvt. ltd.']
   store = window.sessionStorage.getItem('userId');
   storeRole = window.sessionStorage.getItem('role');
   
-  applicationModel = new OrganizationApplicant("", 0, 0,0,0, "", "", "",false, false, 0);
+  applicationModel = new OrganizationApplicant("", 0, 0,0,0, "", "", "",0,0 , 0);
   
 
   constructor(private applicationService: OrganizationUserApplicationService) {

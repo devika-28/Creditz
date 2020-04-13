@@ -11,8 +11,8 @@ export class OrganizationApplicant
     licenseNumber:string;    
     organizationType:string;
     applicationStatus:string;
-    criminalRecord:boolean;
-    bankruptcy:boolean;
+    criminalRecord:number;
+    bankruptcy:number;
     loanTenure:number;
     organizationId:number; 
     userId:number; 
@@ -25,8 +25,8 @@ export class OrganizationApplicant
         licenseno:string,  
         organizationType:string,
         applicationStatus:string,
-        criminalRecord:boolean,
-        bankruptcy:boolean,
+        criminalRecord:number,
+        bankruptcy:number,
         loanTenure:number,
          ){}
     

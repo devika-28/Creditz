@@ -36,13 +36,6 @@ public class OrganizationApplicationServiceImplementation implements Organizatio
 
 	public HashMap<String,Long> organizationRiskMitigate(OrganizationApplicant application){
 		HashMap<String, Long> json = new HashMap<>();
-		int bankrupcy;
-		int cri;
-		if(application.getBankruptcy()==null) {
-			application.setBankruptcy(false);}
-		if(application.getCriminalRecord()==null) {
-			application.setCriminalRecord(false);
-		}
 		
 		System.out.println(application.getBankruptcy());
 		System.out.println(application.getCriminalRecord());
@@ -62,10 +55,10 @@ System.out.println("after cibil");
       catch(Exception e)
       {
     	
-    	//application.setApplicationStatus("");
-    	  json.put("enter valid pan no", (long) 999999999);
-    	  return json;
-      }
+    	application.setApplicationStatus("record not found");
+    	  
+    	  
+      }  
       
 System.out.println("userId: "+ (application.getUserId()).getUserId());
 		
@@ -76,13 +69,31 @@ System.out.println("userId: "+ (application.getUserId()).getUserId());
 		System.out.println("before orap");
 //		if(orap==null) {
 //		
-		
+		//Long personId = person.getPersonIdByUserId(userId);
 		Long organizatinId = organization.getOrganizationIdByUserId(userId);
+		System.out.println(organizatinId);
 		System.out.println("inside null check");
+		
+		application.setEmailStatus("False");
+		System.out.println(application.getBankruptcy());
+		System.out.println(application.getBusinessAge());
+		System.out.println(application.getCriminalRecord());
+		System.out.println(application.getEmployeeCount());
+		System.out.println(application.getLicenseNumber());
+		System.out.println(application.getLoanAmount());
+		System.out.println(application.getLoanTenure());
+		System.out.println(application.getOrganizationType());
+		System.out.println(application.getPancard());
+		System.out.println(application.getApplicationStatus());
+		System.out.println(organizatinId);
+		System.out.println(application.getEmailStatus());
+		
 		
 	organizationApplication.insertApplication(application.getBankruptcy(), application.getBusinessAge(), application.getCriminalRecord(), application.getEmployeeCount(), 
 										application.getLicenseNumber(), application.getLoanAmount(),application.getLoanTenure(),application.getOrganizationType(),application.getPancard(),
-										application.getRevenue(), application.getApplicationStatus(), organizatinId, userId);		
+										application.getRevenue(), 
+										application.getApplicationStatus(), 
+										organizatinId, userId,application.getEmailStatus());		
 	
 	System.out.println("Organization Application ID:"+ organizationApplication.getApplicationId());
  json = new HashMap<String,Long>();
@@ -109,10 +120,10 @@ System.out.println("userId: "+ (application.getUserId()).getUserId());
 	
 	
 	
-	public String ApproveOrDisapprove(boolean bankrupt, boolean criminal, String assetCategory, int cibilScore, int loanAmount,
+	public String ApproveOrDisapprove(int bankrupt, int criminal, String assetCategory, int cibilScore, int loanAmount,
 			float creditUtilization, float creditLimit, int monthlyIncome, float monthlyLiablities,
 			float currentBalance,int loanTenure,float assetCost,float liabilites) {
-		if (bankrupt == false || criminal == false) {
+		if (bankrupt == 1 || criminal == 1) {
 			return "Rejected";
 		}
 

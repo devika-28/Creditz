@@ -13,6 +13,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 
 import * as firebase from 'firebase';
 import { stringToKeyValue } from '@angular/flex-layout/extended/typings/style/style-transforms';
+import { ThrowStmt } from '@angular/compiler';
 //import { MustMatch } from '../shared/confirm-equal-validator.directive';
 
 @Component({
@@ -43,18 +44,18 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private _registerService:RegistrationService,
     public afAuth:AngularFireAuth) {
-      document.body.style.backgroundImage = "url('assets/img/images.jpg')";
-      document.body.style.backgroundPosition = "center center";
-      document.body.style.backgroundRepeat = "no-repeat";
-      document.body.style.backgroundAttachment = "fixed";
-      document.body.style.backgroundSize = "cover";
+      //  document.body.style.backgroundImage = "url('assets/img/signupbackground.png')";
+      //  document.body.style.backgroundPosition = "center center";
+      //  document.body.style.backgroundRepeat = "no-repeat";
+       // document.body.style.backgroundAttachment = "fixed";
+      //  document.body.style.backgroundSize = "cover";
 
         firebase.auth().onAuthStateChanged(function(user){
           if(user){
          var user=firebase.auth().currentUser;
          if(user!=null){
            this.hasEmailverified=user.emailVerified;
-           console.log(this.hasEmailverified);
+           console.log(`${this.hasEmailverified}aaaa`);
           // window.alert("")
          }
 
@@ -80,10 +81,10 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
 }
-check:Boolean;
+// check:Boolean;
 sendVerificationEmail(email,pass){
   console.log('verify email'); 
- this.check=true;
+//  this.check=true;
  var auth = firebase.auth();
  var user = firebase.auth().currentUser;
 
@@ -91,24 +92,29 @@ sendVerificationEmail(email,pass){
   var promise = auth.createUserWithEmailAndPassword(email, pass).catch(function(error){
     var errorCode=error.code;
     var errormsg=error.message;
-    this.check=false;
+    // this.check=false;
     window.alert("Error :"+errormsg);
-    this.check=false;
+    // this.check=false;
   });
-  if(this.check){
+  // if(this.check){
  var result=user.sendEmailVerification().then(()=>{
     window.alert('check your mail to verify email otherwise you are unable to log in');
   }).catch(function(error){
     var errorCode=error.code;
     var errormsg=error.message;
-    this.check=false;
+    // this.check=false;
      window.alert("Error :"+errormsg);
   });
-  if(this.check){
-    console.log('email verified');
-   this.hasEmailverified=true;
-  }
-}
+  // if(this.check){
+  //   console.log('email verified');
+  //  this.hasEmailverified=true;
+  // }
+
+
+  // if(user.getIdToken()){
+  //   this.hasEmailverified=true;
+  // }
+
  
 //  if(check==1){
 //   this.hasEmailverified=false;
@@ -119,7 +125,10 @@ sendVerificationEmail(email,pass){
 
 
 onSubmit1() {
-
+  console.log(firebase.auth().currentUser.reload())
+var user=firebase.auth().currentUser;
+console.log(user.emailVerified)
+  if(user.emailVerified){
   this.submitted = true;
   console.log(this.personModel)
   console.log(this.userModel1)
@@ -133,11 +142,15 @@ onSubmit1() {
       this.error = error;
       this.loading = false;
       console.error('Error!',error)
-  });
+  });}
+  if(!this.hasEmailverified){
+    window.alert("email not verified");
+  }
 }
 
 
 onSubmit2() {
+  if(this.hasEmailverified){
   this.submitted = true;
 
   console.log(this.organizationModel)
@@ -153,6 +166,11 @@ onSubmit2() {
       this.loading = false;
       console.error('Error!',error)
   });
+}
+if(!this.hasEmailverified){
+  window.alert("email not verified");
+}
+
 }
 
 

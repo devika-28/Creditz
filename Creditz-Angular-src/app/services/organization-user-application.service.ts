@@ -14,7 +14,7 @@ export class OrganizationUserApplicationService {
   constructor(private http: HttpClient) { }
 
   
-  applyService(pancard: string, loanAmount: number, revenue: number, employeeCount: number, businessAge: number, licenseNumber: string, organizationType: string, criminalRecord: boolean,bankruptcy:boolean,loanTenure:number, applicationModel: import("../model/organizationapplicant").OrganizationApplicant) {
+  applyService(pancard: string, loanAmount: number, revenue: number, employeeCount: number, businessAge: number, licenseNumber: string, organizationType: string, criminalRecord: number,bankruptcy:number,loanTenure:number, applicationModel: import("../model/organizationapplicant").OrganizationApplicant) {
    console.log(licenseNumber);
     const body = {
       "pancard": pancard,

@@ -1,4 +1,4 @@
- @import "~@angular/material/prebuilt-themes/indigo-pink.css"; 
+@import "~@angular/material/prebuilt-themes/indigo-pink.css"; 
 body {font-family: Arial, Helvetica, sans-serif;}
 form {border: 3px solid #f1f1f1;}
 
@@ -6,12 +6,18 @@ input[type=text], input[type=password], input[type=email], input[type=address] {
   width: 100%;
   height: 20%;
   font-size: medium;
+  border-style: solid;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #ccc;
+  border: 1px solid black;
+  border-radius: 10%;
   box-sizing: border-box;
+  background-color:whitesmoke;
 }
+
+
+
 
  button {
   background-color: #4CAF50;
@@ -35,7 +41,7 @@ button:hover {
 
 .imgcontainer {
   /* text-align: center; */
-  margin: 24px 0 12px 0;
+  margin: 24px 0 11px 0;
  
 }
 
@@ -47,7 +53,7 @@ button:hover {
 
 .content {
   display: flex;
-  background-color: darkblue;
+  background-color: white;
   margin: 82px auto 32px;
   padding: 0 16px;
   max-width: 960px;
@@ -70,6 +76,18 @@ svg#clouds {
   padding: 16px;
 }
 
+.c1{
+   height: 1000px; 
+  width: 1200px;
+  /* max-height: max-content; */
+  background-color:  black;
+  object-position: center;
+  border-bottom-left-radius: 22%;
+  border-top-left-radius: 2%;
+  border-top-right-radius: 2%;
+  /* margin-left: 10%; */
+}
+
 /*span.psw {
   float: right;
   padding-top: 16px;
@@ -87,9 +105,9 @@ svg#clouds {
 
   .matt{
      height: 100%;
-     width: 50%;
+     width: 72%;
      /* float: left; */
-     background-color: blue;
-      /* align-content: left; */
-      margin-right: 40%;
+     /* background-color: blue;*/
+      align-content: left; 
+      margin-right: 70%;
   }
