@@ -28,6 +28,5 @@ logout(){
 
 openDialog() {
   const dialogRef = this.dialog.open(HistoryComponent);
-
 }
 } 

@@ -198,3 +198,8 @@
     <div *ngIf="this.store==null">
       <app-login></app-login>
       </div>
+
+      <div *ngIf="this.store!=null && this.storeRole=='Person'">
+       <span style="font-style: normal; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">sorry !!!!!! Need to log out. you are organizational user.... </span>
+        </div>
+  

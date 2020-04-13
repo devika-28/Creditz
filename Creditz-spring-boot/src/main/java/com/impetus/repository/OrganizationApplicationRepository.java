@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.impetus.model.OrganizationApplicant;
+import com.impetus.model.PersonApplicant;
 
 
 @Repository
@@ -51,6 +52,9 @@ public interface OrganizationApplicationRepository extends JpaRepository<Organiz
 	@Query(nativeQuery=true,value="SELECT *FROM organizationapplicant,cibil_report WHERE organizationapplicant.pan_card=cibil_report.pan_card ORDER BY credit_score DESC LIMIT 10") 
     List<OrganizationApplicant> findTopPersonCreditors();
 	
+	@Query(nativeQuery=true, value="Select * from organizationapplicant where user_id=:userId")
+	List<OrganizationApplicant> findByUserId(long userId);
+
 	
 	//Long getApplicantIdByUserId(@Param("userId") Long userId);
 	Long getApplicationIdByUserId(@Param("userId") Long userId);

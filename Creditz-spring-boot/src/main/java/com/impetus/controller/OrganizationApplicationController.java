@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.impetus.model.OrganizationApplicant;
+import com.impetus.model.PersonApplicant;
 import com.impetus.service.OrganizationApplicationService;
 import com.impetus.service.PersonApplicationService;
 
@@ -33,6 +34,12 @@ public class OrganizationApplicationController {
 
 	       	
 	   	}
+	 @CrossOrigin(origins = "*", allowedHeaders = "*")
+		@PostMapping("/organization-user/user-history")
+		public List<OrganizationApplicant> organizationHistory(@RequestBody OrganizationApplicant userId) {
+			return service.getHistory(userId);
+
+	    }
 	    
 	
 	 @CrossOrigin(origins = "*", allowedHeaders = "*")

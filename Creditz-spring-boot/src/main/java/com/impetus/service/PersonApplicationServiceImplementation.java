@@ -31,11 +31,6 @@ public class PersonApplicationServiceImplementation implements PersonApplication
 	@Autowired
 	PersonRepository person;
 
-	@Autowired
-	OrganizationApplicationRepository organizationApplication;
-	@Autowired
-	OrganizationRepository organization;
-
 	@Override
 	public HashMap<String, Long> RiskMitigate(PersonApplicant application) {
 

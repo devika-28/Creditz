@@ -17,8 +17,6 @@ import com.impetus.model.OrganizationApplicant;
 import com.impetus.repository.CibilReportRepository;
 import com.impetus.repository.OrganizationApplicationRepository;
 import com.impetus.repository.OrganizationRepository;
-import com.impetus.repository.PersonApplicationRepository;
-import com.impetus.repository.PersonRepository;
 
 @Service
 public class OrganizationApplicationServiceImplementation implements OrganizationApplicationService{
@@ -181,7 +179,18 @@ System.out.println("userId: "+ (application.getUserId()).getUserId());
 //			return "Rejected Bad History";
 //		}
 
-	
+	@Override
+	public List<OrganizationApplicant> getHistory(OrganizationApplicant userId) {
+		
+		List<OrganizationApplicant> application = (List<OrganizationApplicant>) organizationApplication.findByUserId((userId.getUserId()).getUserId());
+		
+//		personApplication.findByUserId(userId.getUserId());
+		
+		System.out.println(application.get(0));
+		
+		return application;
+	}
+
 	
 	
 	
