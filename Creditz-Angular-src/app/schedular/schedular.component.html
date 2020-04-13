@@ -1,76 +1,75 @@
 <div *ngIf="this.storeRole=='Admin' and this.store!=null">
-<mat-sidenav-container>
-    
-    <mat-sidenav #start mode="side" opened >
-            <mat-nav-list>
-            <div class="profile-card">
-                <img width:200px
-                    height:50px
-                    object-fit:cover
-                    src="assets\admin.jpg" alt="admin.jpg">
-                    <div class="header">
-                       <h5>M.N.Rao</h5>
-                    </div>
-           </div>
-            <a mat-list-item [routerLink]="'/organization-creditor-table-list'">
-                <mat-icon>question_answer</mat-icon>
-                <span>Organization Applications</span>
-            </a>
-            <br>
-            <a mat-list-item [routerLink]="'/adminsidenav'">
-                <mat-icon>question_answer</mat-icon>
-                <span>Person Applications</span>
-            </a>
-            <br>
-            <a mat-list-item [routerLink]="'/analyst-registration'">
-                <mat-icon>person_add</mat-icon>
-                <span>RegisterAnalyst</span>
-            </a>
-            <br>
-
-            <a mat-list-item [routerLink]="'/show-analyst'">
-                <mat-icon>delete</mat-icon>
-                <span> Show Analyst</span>
-            </a>
-            <br>
-
-            <a mat-list-item [routerLink]="'/schedular'"  >
-                <mat-icon>alarm</mat-icon>
-                <span> Schedular</span>
-            </a>
-            <br>
-        </mat-nav-list>
+    <mat-sidenav-container>
         
-    </mat-sidenav>
-    <mat-sidenav-content>
-        <mat-accordion>
-            <mat-expansion-panel>
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  Schedular
-                </mat-panel-title>
-                <mat-panel-description>
-                  Send Application Status
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-               <mat-action-row>
-              <button mat-button (click)="personApplicantClick()">PersonApplicant</button>
-               <button mat-button (click)="organizationApplicantClick()">OrganizationApplicant</button>
-            </mat-action-row>
-            <h4>On click on Person Applicant button you can send application Status to person applicant.</h4>
-            <h4> On click on Organization Applicant button you can send Application status to Person applicant</h4>
-            
-          </mat-expansion-panel>
-            
-          </mat-accordion>
-         <img src="assets/alarm1.jpg" style="width:100%;height:500px;">
+        <mat-sidenav #start mode="side" opened >
+                <mat-nav-list>
+                <div class="profile-card">
+                    <img width:200px
+                        height:50px
+                        object-fit:cover
+                        src="assets\admin.jpg" alt="admin.jpg">
+                        <div class="header">
+                           <h5>M.N.Rao</h5>
+                        </div>
+               </div>
+                <a mat-list-item [routerLink]="'/organization-creditor-table-list'">
+                    <mat-icon>question_answer</mat-icon>
+                    <span>Organization Applications</span>
+                </a>
+                <br>
+                <a mat-list-item [routerLink]="'/adminsidenav'">
+                    <mat-icon>question_answer</mat-icon>
+                    <span>Person Applications</span>
+                </a>
+                <br>
+                <a mat-list-item [routerLink]="'/analyst-registration'">
+                    <mat-icon>person_add</mat-icon>
+                    <span>RegisterAnalyst</span>
+                </a>
+                <br>
     
-    </mat-sidenav-content>
-
-    </mat-sidenav-container>
-    </div>
-    <div *ngIf="this.store==null">
-        <app-login></app-login>
-     </div>
-    <router-outlet></router-outlet>
-       
+                <a mat-list-item [routerLink]="'/show-analyst'">
+                    <mat-icon>delete</mat-icon>
+                    <span> Show Analyst</span>
+                </a>
+                <br>
+    
+                <a mat-list-item [routerLink]="'/schedular'"  >
+                    <mat-icon>alarm</mat-icon>
+                    <span> Schedular</span>
+                </a>
+                <br>
+            </mat-nav-list>
+            
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <mat-accordion>
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Schedular
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      Send Application Status
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                   <mat-action-row>
+                  <button mat-button (click)="personApplicantClick()">PersonApplicant</button>
+                   <button mat-button (click)="organizationApplicantClick()">OrganizationApplicant</button>
+                </mat-action-row>
+                <h4>On click on Person Applicant button you can send application Status to person applicant.</h4>
+                <h4> On click on Organization Applicant button you can send Application status to Person applicant</h4>
+                
+              </mat-expansion-panel>
+                
+              </mat-accordion>
+             <img src="assets/alarm1.jpg" style="width:100%;height:500px;">
+        
+        </mat-sidenav-content>
+    
+        </mat-sidenav-container>
+        </div>
+        <div *ngIf="this.store==null">
+            <app-login></app-login>
+         </div>
+        <router-outlet></router-outlet>
