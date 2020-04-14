@@ -1,6 +1,11 @@
 mat-table {
     width: 400%;
   }
+  h1{
+    font-family:'Times New Roman', Times, serif;
+  font-size: 40px;color: darkblue; 
+  text-align: center;
+  }
   mat-header-cell 
   {
   font-family:'Times New Roman', Times, serif;
@@ -15,6 +20,7 @@ mat-table {
    }
    /* filter control */
   
+
   .example-header {
   min-height: 64px;
   padding: 8px 24px 0;

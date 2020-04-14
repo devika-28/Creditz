@@ -14,7 +14,12 @@ font-size: 15px;color: darkblue;
    font-style:italic;
  }
  /* filter control */
-
+ h1{
+  font-family:'Times New Roman', Times, serif;
+  color: darkblue; 
+  text-align: center;
+  font-size: 40px;
+}
 .example-header {
 min-height: 64px;
 padding: 8px 24px 0;
