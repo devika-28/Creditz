@@ -11,7 +11,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.impetus.model.PersonApplicant;
-import com.impetus.model.User;
+
 
 @Repository
 public interface PersonApplicationRepository extends JpaRepository<PersonApplicant, Long> {

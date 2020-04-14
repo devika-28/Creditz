@@ -40,7 +40,7 @@ public class UsersController {
 	
 
 	 @CrossOrigin(origins = "*", allowedHeaders = "*")
-	@GetMapping("/checkUniqueUser")
+	 @GetMapping("/checkUniqueUser")
 	User uniqueEmailCheck(@RequestParam String userEmail)
 	{
 		return service.uniqueCheckEmail(userEmail);

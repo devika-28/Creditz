@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.impetus.model.OrganizationApplicant;
-import com.impetus.model.PersonApplicant;
+
 
 @Service
 public interface OrganizationApplicationService {

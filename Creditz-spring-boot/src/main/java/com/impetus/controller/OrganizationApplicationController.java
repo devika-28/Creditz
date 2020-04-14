@@ -12,9 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.impetus.model.OrganizationApplicant;
-import com.impetus.model.PersonApplicant;
 import com.impetus.service.OrganizationApplicationService;
-import com.impetus.service.PersonApplicationService;
+
 
 @RestController
 public class OrganizationApplicationController {

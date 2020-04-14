@@ -20,6 +20,8 @@ import { MatTableDataSource } from '@angular/material/table';
     ],
   })
 export class FinancialAnalystComponent {
+  store = window.sessionStorage.getItem('userId');
+  storeRole = window.sessionStorage.getItem('role');
   dataSource=new MatTableDataSource<any[]>();
   dataSource1=new MatTableDataSource<any[]>();
   columnsToDisplay = ['personId','personName','contact','address'];

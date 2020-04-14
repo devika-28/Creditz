@@ -1,5 +1,5 @@
 
-<!-- <div style="display: box; width: 90%; min-width: 400px;height:90%"> -->
+
     <div *ngIf="this.storeRole=='Admin' and this.store!=null">
     <mat-sidenav-container  >
     
@@ -42,23 +42,20 @@
             </a>
             <br>
 
-              <!-- <a mat-list-item>
-                <mat-icon>account_circle</mat-icon>
-                <span>Logout</span>
-            </a>        <br>  -->
+            
 
         </mat-nav-list>
             
         </mat-sidenav>
         <mat-sidenav-content>
-        <!-- <div style="height: 100vh,100ch;"> -->
+       
             <div style="display: block; width:100%; min-width:400px;">
                 <head> 
                 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
                 </head>
-                <!------ Include the above in your HEAD tag ---------->
+               
                 <body id="LoginForm">
                 <div class="container">
                 <div class="login-form">
@@ -152,42 +149,15 @@
             </div>
             
            
-        <!-- </div> -->
-    <!-- <app-creditor-table-list></app-creditor-table-list> -->
+      
         </mat-sidenav-content>
-    <!-- <mat-toolbar color="primary">
-            <mat-toolbar-row>
-            <button mat-icon-button (click)="start.open('mouse')">
-                <mat-icon>menu</mat-icon>
-            </button>
-                 <span>C₹ED!TZ</span>
-                    <div fxFlex fxLayoutAlign="flex-end">
-                        <ul fxLayout="row" fxLayoutGAP="20px" fxFlexAlign="auto">
-                            <li> 
-                                <a href='home'> 
-                                <h4> Home</h4>
-                                </a>
-                            </li>
-                        <li>
-                            <button mat-button [matMenuTriggerFor]="menu">
-                            <mat-icon>person_outline</mat-icon>
-                            </button>
-                            <mat-menu #menu="matMenu">
-                            <button mat-menu-item>
-                             SignOut
-                            </button>
-                            </mat-menu>
-                        </li>
-                    </ul>
-                   </div>
-                </mat-toolbar-row>
-            </mat-toolbar> -->
+    
         </mat-sidenav-container>
     </div> 
      <div *ngIf="this.store==null">
      <app-login></app-login>
      </div> 
-        <!-- </div> -->
+       
         <router-outlet></router-outlet>
     
     

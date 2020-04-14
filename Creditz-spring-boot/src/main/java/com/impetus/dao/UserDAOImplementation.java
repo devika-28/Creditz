@@ -3,7 +3,7 @@ package com.impetus.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+
 
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -119,13 +119,6 @@ public class UserDAOImplementation implements User_DAO {
 		}
 
 	    
-//	    public boolean deleteAnalyst(User user) {
-//	        boolean status = false;
-//	        entityManager = entityManager.getEntityManagerFactory().createEntityManager();
-//	        Session currentSession = (Session) entityManager.unwrap(Session.class);
-//	        currentSession.delete(user);
-//	        return status;
-//	       }
 
 	    
 	}

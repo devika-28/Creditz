@@ -39,16 +39,10 @@
         <span> Schedular</span>
     </a>
       <br>
-
-        <!-- <a mat-list-item>
-          <mat-icon>account_circle</mat-icon>
-          <span>Logout</span>
-      </a>        <br>  -->
-
-  </mat-nav-list>
+   </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <!-- <div style="display: block; width:100%;"> -->
+    
     <div class="data-container mat-elevation-z12">
         <div class="example-header">
             <mat-form-field floatLabel="never">
@@ -64,7 +58,7 @@
             <mat-cell *matCellDef="let Analyst"> {{Analyst.userId}}</mat-cell>
           </ng-container>
       
-          <!-- Name Column -->
+        
           <ng-container matColumnDef="userEmail">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
             <mat-cell *matCellDef="let Analyst"> {{Analyst.userEmail}}</mat-cell>
@@ -96,38 +90,8 @@
       </mat-paginator>
       
       </div> 
-      <!-- </div> -->
-      <!-- <router-outlet></router-outlet>  -->
-      
-      
-  </mat-sidenav-content>
-<!-- <mat-toolbar color="primary">
-      <mat-toolbar-row>
-      <button mat-icon-button (click)="start.open('mouse')">
-          <mat-icon>menu</mat-icon>
-      </button>
-           <span>C₹ED!TZ</span>
-              <div fxFlex fxLayoutAlign="flex-end">
-                  <ul fxLayout="row" fxLayoutGAP="20px" fxFlexAlign="auto">
-                      <li> 
-                          <a href='home'> 
-                          <h4> Home</h4>
-                          </a>
-                      </li>
-                  <li>
-                      <button mat-button [matMenuTriggerFor]="menu">
-                      <mat-icon>person_outline</mat-icon>
-                      </button>
-                      <mat-menu #menu="matMenu">
-                      <button mat-menu-item>
-                       SignOut
-                      </button>
-                      </mat-menu>
-                  </li>
-              </ul>
-             </div>
-          </mat-toolbar-row>
-      </mat-toolbar> -->
+</mat-sidenav-content>
+
   </mat-sidenav-container>
   </div>
   <div *ngIf="this.store==null">

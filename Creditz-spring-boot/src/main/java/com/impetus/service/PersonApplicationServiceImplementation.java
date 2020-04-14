@@ -12,10 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.impetus.model.CibilReport;
 import com.impetus.model.PersonApplicant;
-import com.impetus.model.User;
 import com.impetus.repository.CibilReportRepository;
-import com.impetus.repository.OrganizationApplicationRepository;
-import com.impetus.repository.OrganizationRepository;
 import com.impetus.repository.PersonApplicationRepository;
 import com.impetus.repository.PersonRepository;
 

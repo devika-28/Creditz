@@ -1,4 +1,5 @@
 package com.impetus.service;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,36 +15,33 @@ import com.impetus.repository.UserRepository;
 
 @Service
 public class UsersServiceImplementation implements UsersService {
-	Logger logger=Logger.getLogger("UsersServiceImplementation");
-	@Autowired UserRepository user;
-	
+	Logger logger = Logger.getLogger("UsersServiceImplementation");
+	@Autowired
+	UserRepository user;
+
 	@Override
 	public List<User> getAllAnalyst(Integer pageNo, Integer pageSize) {
 		Pageable paging = PageRequest.of(pageNo, pageSize);
-		String role="Analyst";
-        Page<User>pagedResult = user.findByRole(role,paging);
-         
-        if(pagedResult.hasContent()) {
-            return pagedResult.getContent();
-        } else {
-            return new ArrayList<User>();
-        }
+		String role = "Analyst";
+		Page<User> pagedResult = user.findByRole(role, paging);
+
+		if (pagedResult.hasContent()) {
+			return pagedResult.getContent();
+		} else {
+			return new ArrayList<User>();
+		}
 	}
 
 	@Override
 	public void DeleteAnalyst(String userEmail) {
-	logger.info("userEmail :"+userEmail);	
-	user.delete(user.findByUserEmail(userEmail));
-	logger.info("Delete method runs successfully.");
+		logger.info("userEmail :" + userEmail);
+		user.delete(user.findByUserEmail(userEmail));
+		logger.info("Delete method runs successfully.");
 	}
 
-	
 	public User uniqueCheckEmail(String userEmail) {
 		return user.findByUserEmail(userEmail);
-	
-	}
-	
-	
+
 	}
 
-
+}
