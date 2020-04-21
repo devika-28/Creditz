@@ -10,6 +10,13 @@ import com.impetus.model.User;
 
 /** The Interface UserService. */
 public interface UserService {
+	
+	
+	
+	
+	
+	public  String GenerateOTP(); 
+    public String sendOTP(String userEmail) ;
 
 	/**
 	 * Save person.

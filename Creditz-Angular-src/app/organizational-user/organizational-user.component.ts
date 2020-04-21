@@ -13,7 +13,7 @@ export class OrganizationalUserComponent implements OnInit {
   store = window.sessionStorage.getItem('userId');
   storeRole = window.sessionStorage.getItem('role');
   
-  applicationModel = new OrganizationApplicant("", 0, 0,0,0, "", "", "",0,0 , 0);
+  applicationModel = new OrganizationApplicant("", 0, 0,0,0, "", "Type of organization", "",0,0 , 0);
   
 
   constructor(private applicationService: OrganizationUserApplicationService) {

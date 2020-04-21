@@ -9,6 +9,8 @@ import { IndividualUserApplicationComponent } from '../individual-user-applicati
   styleUrls: ['./individual-user.component.css']
 })
 export class IndividualUserComponent implements OnInit {
+  store = window.sessionStorage.getItem('userId');
+  role=window.sessionStorage.getItem('role');
 
   calculatorModel = new EMI();
   constructor(public dialog: MatDialog) {}
@@ -36,13 +38,19 @@ export class IndividualUserComponent implements OnInit {
     }
 
     openDialog() {
-      // const scrollStrategy = this.overlay.scrollStrategies.reposition();
+
+
+      if(this.store!=null && this.role=='Organization')
+{
+  window.alert("Sorry!!!you are organization user,need to log out to apply");
+}
+    else{  // const scrollStrategy = this.overlay.scrollStrategies.reposition();
       const dialogRef = this.dialog.open(IndividualUserApplicationComponent, {
         autoFocus: false,
         height: '80%',
         width: '50%',
       });
-    
+    }
     }
 
 

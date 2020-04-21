@@ -130,5 +130,32 @@ public class MailService {
 		 */
 		javaMailSender.send(mail);
 	}
+	
+	
+	
+	
+	
+	public void	sendEmailToUser(String userEmail,String otp) throws  MailException {
+		
+		
+		System.out.println("inside mail Service for otp");
+		SimpleMailMessage mail = new SimpleMailMessage();
+		System.out.println(otp);
+		mail.setTo(userEmail);
+		mail.setSubject("Email OTP Verification");
+		   mail.setText("Hello,\n Thank you for register at our website\n please verify your otp ,Your otp numberis below \n"+otp);
+		
+		/*
+		 * This send() contains an Object of SimpleMailMessage as an Parameter
+		 */
+		   System.out.println("sending mail");
+		javaMailSender.send(mail);
+		System.out.println("mail sent with otp");
+			
+			
+			
+		}
+	
+	
 
 }

@@ -132,10 +132,11 @@
       </div>
         
         <div class="wrap-input100">
-          <select class="custom-select"  #organizationType="ngModel" 
-          value="Type of Organization" class="input100" name="organizationType"
+          <select   #organizationType="ngModel" 
+           class="input100" name="organizationType"
            [(ngModel)]="applicationModel.organizationType" required style="width: 150%;">
-            <option value="" >Type of Organization</option>
+            <!-- <option value="" ></option>Type of Organization</option> -->
+            <option value=""  [selected] > Type of organization</option>
             <option *ngFor="let city of City" [ngValue]="city">{{city}}</option>
          </select>
           <!-- <input type="text" #organizationType="ngModel" placeholder="Type of Organization" class="input100" name="organizationType" [(ngModel)]="applicationModel.organizationType" required>           -->
@@ -199,8 +200,9 @@
       <app-login></app-login>
       </div>
 
-      <div *ngIf="this.store!=null && this.storeRole=='Person'">
+      <!-- <div *ngIf="this.store!=null && this.storeRole=='Person'">
 
-       <span style="font-style: normal;font-size: x-large; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">sorry !!!!!! Need to log out. you are organizational user.... </span>
+        <span style="font-style: normal;font-size: x-large; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;"></span> 
+       alert("Sorry !!!!!! Need to log out. you are not organizational user.... ")
         </div>
-  
+   -->

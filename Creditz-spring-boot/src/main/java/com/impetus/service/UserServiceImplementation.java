@@ -1,6 +1,7 @@
 package com.impetus.service;
 
 import java.util.List;
+import java.util.Random;
 
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,36 @@ public class UserServiceImplementation implements UserService {
 
 	@Autowired
 	private User_DAO userdao;
+	 @Autowired private MailService notificationService;
+	
+	
+	
+	
+	
+	
+	
+	 public  String GenerateOTP() {
+	    	String numbers="0123456789";
+	    	String o = "";
+	    	Random r=new Random();
+	    	char otp[]=new char[6];
+	    	for(int i=0;i<otp.length;i++) {
+	    		otp[i]=numbers.charAt(r.nextInt(numbers.length()));	
+	    		System.out.println(otp[i]);
+	    		o=o+otp[i];
+	    	}   	
+	    	return o;
+	    } 
+
+	    
+	    public String sendOTP(String userEmail) {
+	    	
+	    	String otp=this.GenerateOTP();
+	    	System.out.println(otp+"in string form");
+	        notificationService.sendEmailToUser(userEmail,otp);
+			return otp;
+		}
+	    
 
 	/**
 	 * Save person.

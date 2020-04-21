@@ -12,8 +12,8 @@
   <!-- </div> -->
   
   
-  <div class="contain"  style=" margin-top: 4.2%; margin-left: 1.15%; background-color: darkblue;height: 132%; width: 45%; position: absolute;" >
-    <img src="assets/img/register1.jpg" alt="IMG" class="img1" width="100%" height="100%" >
+  <div class="contain"  style=" margin-top: 4.1%; margin-left: 1.15%; background-color: darkblue;height: 124%; width: 44%; position: absolute;" >
+    <img src="assets/img/register4.jpg" alt="IMG" class="img1" width="100%" height="100%" >
   </div>
   
   
@@ -31,7 +31,7 @@
                   alt="Avatar" class="avatar" height=10% width=10%>
           </div>
           </div>
-          <div  class="matt" style="border-color: lightsalmon; border-style: solid; background-color:whitesmoke; float: right; margin-left:30% ; margin-right: 2%;">
+          <div  class="matt" style="border-color: whitesmoke;border-top-left-radius: 5%; border-bottom-left-radius: 5%; border-bottom-right-radius: 5%;  border-top-right-radius: 5%; border-style: solid; background-color:whitesmoke; float: right; margin-left:30% ; margin-right: 2%;">
           <mat-tab-group >
     <mat-tab label=" Registration  for  Person/Individual">
      <form #personForm="ngForm"  (ngSubmit)="onSubmit1()" novalidate>
@@ -49,7 +49,10 @@
       </div>
   <div class="form-group">
              <label for="pemail"><b>Email</b></label>
-             <input type="text" #email="ngModel" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [class.is-invalid]="email.invalid && email.touched" class="form-control" placeholder="Enter email" name="pemail" [(ngModel)]="userModel1.userEmail" required>
+             <input type="text" #email="ngModel" 
+             pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+              [class.is-invalid]="email.invalid && email.touched" class="form-control" 
+              placeholder="Enter email" name="pemail"  (change)="emailCheckUnique1()"  [(ngModel)]="userModel1.userEmail" required>
              <div *ngIf="email.invalid && (email.dirty || email.touched)"
              class="text-danger">
          
@@ -58,8 +61,12 @@
            </small>
            <small *ngIf="email.errors.pattern">
             Enter in email format.
-           </small>      
+           </small>   
          </div>
+         <div *ngIf="emailAlreadyExist!=''" class="text-danger">
+          <small>{{emailAlreadyExist}}</small> 
+      
+      </div>
   </div>
   <div class="form-group">
   
@@ -120,16 +127,34 @@
   
   <div *ngIf="!hasEmailverified && email.valid">
     <small>
-      verify Email after fillng password and confirm password.
-     <button type="button" [disabled]="personForm.form.invalid" (click)="sendVerificationEmail(email.value,password.value) " style="font-size: medium;">verify Email</button>
-    </small>
+      verify your account to register. </small>
+     <button type="button" [disabled]="!personForm.form.valid && emailAlreadyExist==''" (click)="sendVerificationEmail(email.value)" style="font-size: medium;">
+       verify Account</button>
+    
    </div>
-   <br>
-   
-   
+
+    
+<!-- for getting otp from user -->
+  <div *ngIf="enterotp">
+   <div class="form-group">
+    <label for="potp"><b>Enter OTP</b></label>
+    <input type="text" #potp
+     class="form-control" placeholder="Enter otp sent to your entered email" name="potp"
+       required>           
+    </div>
+       <button type="button" [disabled]="!personForm.form.valid && emailAlreadyExist==''" (click)="checkotp(potp.value)" style="font-size: medium;">
+         Enter</button>
+      
+     </div> 
+
+
+
+
+   <br>  
+   <div *ngIf=hasEmailverified>
   <div class="form-group">
-              <button class="btn btn-success"  [disabled]="personForm.form.invalid" type="submit" style="font-size: medium;">Register</button>
-            </div>
+  <button  class="btn btn-success" [disabled]="!personForm.form.valid" type="submit" style="font-size: medium;">Register</button>          
+</div> </div>
            
       </form> </mat-tab>
   
@@ -137,7 +162,7 @@
   
     <mat-tab label=" Registration for Organization/Company">
   
-    <form #organizationForm="ngForm"  (ngSubmit)="onSubmit2()" novalidate> 
+    <form #organizationForm="ngForm"   novalidate> 
   
       <br>
      <div class="form-group">
@@ -152,7 +177,8 @@
   </div>
   <div class="form-group">
               <label for="dname"><b>Director Name</b></label>
-             <input type="text" #dirname="ngModel" [class.is-invalid]="dirname.invalid && dirname.touched" class="form-control" placeholder="Enter director name" name="dname" [(ngModel)]="organizationModel.directorName" required>
+             <input type="text" #dirname="ngModel" [class.is-invalid]="dirname.invalid && dirname.touched" 
+             class="form-control" placeholder="Enter director name" name="dname" [(ngModel)]="organizationModel.directorName" required>
              <div *ngIf="dirname.invalid && (dirname.dirty || dirname.touched)"
              class="text-danger">      
            <small *ngIf="dirname.errors.required">
@@ -165,7 +191,7 @@
               <label for="email"><b>Organization/Company Email</b></label>
                <input type="email" #mail="ngModel" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
                [class.is-invalid]="mail.invalid && mail.touched" class="form-control" 
-               placeholder="Enter email" name="email" [(ngModel)]="userModel2.userEmail" required>
+               placeholder="Enter email" name="email" (change)="emailCheckUnique2()" [(ngModel)]="userModel2.userEmail" required>
                <div *ngIf="mail.invalid && (mail.dirty || mail.touched)"
                class="text-danger">
            
@@ -174,8 +200,11 @@
              </small>
              <small *ngIf="mail.errors.pattern">
               Enter in email format.
-             </small>                
+             </small>    
            </div>
+           <div *ngIf="emailAlreadyExist!='' && mail.valid" class="text-danger">
+            <small>{{emailAlreadyExist}} </small>
+        </div>
           
           
     </div>
@@ -231,7 +260,8 @@
   </div>
   <div class="form-group">
               <label for="contact"><b>Contact No.</b></label>
-              <input type="text" #ccontact="ngModel" pattern="^\d{10}" [class.is-invalid]="ccontact.invalid && ccontact.touched" class="form-control" placeholder="Enter contact no." name="contact" [(ngModel)]="organizationModel.contact" required>
+              <input type="text" #ccontact="ngModel" pattern="^\d{10}" [class.is-invalid]="ccontact.invalid && ccontact.touched"
+               class="form-control" placeholder="Enter contact no." name="contact" [(ngModel)]="organizationModel.contact" required>
               <div *ngIf="ccontact.invalid && (ccontact.dirty || ccontact.touched)"
                class="text-danger">
            
@@ -241,19 +271,34 @@
              <small *ngIf="ccontact.errors.pattern">Number should be in 10 digit.
              </small>      
            </div>          
-              </div>      
-              <div *ngIf="!hasEmailverified && mail.valid">
+              </div>     
+               <div *ngIf="!hasEmailverified && mail.valid">
                 <small>
-                  verify Email after fillng password and confirm password.
-                 <button type="button" [disabled]="!organizationForm.form.valid" (click)="sendVerificationEmail(mail.value,cpassword.value)" style="font-size: medium;">
-                   verify Email </button>
+                  verify your account to register. 
+                 <button type="button" [disabled]="!organizationForm.form.valid && emailAlreadyExist==''" (click)="sendVerificationEmail(mail.value)" style="font-size: medium;">
+                   verify Account</button>
                 </small>
-               </div>   
+               </div> 
+
+
+
+           <!-- for getting otp from user -->
+               <div *ngIf="enterotp">
+                <div class="form-group">
+                 <label for="cotp"><b>Enter OTP</b></label>
+                 <input type="text" #cotp
+                  class="form-control" placeholder="Enter otp sent to your entered email" name="cotp"
+                    required>           
+                 </div>
+                    <button type="button" [disabled]="!organizationForm.form.valid && emailAlreadyExist==''" (click)="checkotp(cotp.value)" style="font-size: medium;">
+                      Enter</button>      
+                  </div> 
+
                <br>  
-               <!-- <div *ngIf="hasEmailverified">          -->
+               <div *ngIf=hasEmailverified>
               <div class="form-group">
-              <button  class="btn btn-success" [disabled]="!organizationForm.form.valid" type="submit" style="font-size: medium;">Register</button>          
-       <!-- </div> --></div>
+              <button  class="btn btn-success" (click)="onSubmit2()" [disabled]="!organizationForm.form.valid && emailAlreadyExist==''" type="submit" style="font-size: medium;">Register</button>          
+       </div></div>
       </form> </mat-tab>
   </mat-tab-group>
   </div>

@@ -38,6 +38,15 @@ public class UserController {
 	public String verify() {
 		return "verified";
 	}
+	
+	
+	
+	
+	 @RequestMapping("/otp")
+	    public String sendOTP(String userEmail) {
+			return userservice.sendOTP(userEmail);
+		
+		}
 
 	/**
 	 * Save person.
