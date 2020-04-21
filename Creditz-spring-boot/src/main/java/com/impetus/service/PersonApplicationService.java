@@ -7,23 +7,46 @@ import org.springframework.stereotype.Service;
 
 import com.impetus.model.PersonApplicant;
 
-
-
 @Service
 public interface PersonApplicationService {
-	
-	public HashMap<String,Long> RiskMitigate(PersonApplicant application);
-	
-	
+
+	public HashMap<String, Long> RiskMitigate(PersonApplicant application);
+
+	/**
+	 * find person applications in particular page with no of records
+	 *
+	 * @param Integer
+	 * 
+	 * @param Integer
+	 * 
+	 * @return list of Person Applicants
+	 */
+
 	public List<PersonApplicant> getAllPersonApplicant(Integer pageNo, Integer pageSize);
+
+	/** 
+	 * @return list of Person Applicants
+	 */
+
+	public List<PersonApplicant> findApplicants();
+
+	/**
+	 * find top creditors
 	
-    public List<PersonApplicant>findApplicants();
-    
+	 * @return list of Person Applicants
+	 */
 
 	public List<PersonApplicant> findTopPersonCreditors();
 
-
+	/**
+	 * find person applications corresponding to particular Id
+	 *
+	 * @param userID
+	 * 
+	 * @param Integer
+	 * 
+	 * @return list of Person Applicants
+	 */
 	List<PersonApplicant> getHistory(PersonApplicant userId);
-
 
 }

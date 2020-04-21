@@ -113,17 +113,37 @@ public class PersonApplicationServiceImplementation implements PersonApplication
 		return "Pending Internal Error";
 	}
 
+	/**
+	 * find person applications corresponding to particular Id
+	 *
+	 * @param userID
+	 * 
+	 * @param Integer
+	 * 
+	 * @return list of Person Applicants
+	 */
+
 	@Override
 	public List<PersonApplicant> getHistory(PersonApplicant userId) {
-		
-		List<PersonApplicant> application = (List<PersonApplicant>) personApplication.findByUserId((userId.getUserId()).getUserId());
-		
+
+		List<PersonApplicant> application = (List<PersonApplicant>) personApplication
+				.findByUserId((userId.getUserId()).getUserId());
+
 //		personApplication.findByUserId(userId.getUserId());
-		
+
 		System.out.println(application);
 		return application;
 	}
 
+	/**
+	 * find person applications in particular page with no of records
+	 *
+	 * @param Integer
+	 * 
+	 * @param Integer
+	 * 
+	 * @return list of Person Applicants
+	 */
 	public List<PersonApplicant> getAllPersonApplicant(Integer pageNo, Integer pageSize) {
 		Pageable paging = PageRequest.of(pageNo, pageSize);
 
@@ -136,6 +156,9 @@ public class PersonApplicationServiceImplementation implements PersonApplication
 		}
 	}
 
+	/**
+	 * @return list of Person Applicants
+	 */
 	public List<PersonApplicant> findApplicants() {
 		String emailStatus = "False";
 		List<PersonApplicant> result = personApplication.findByemailStatus(emailStatus);
@@ -144,10 +167,14 @@ public class PersonApplicationServiceImplementation implements PersonApplication
 
 	}
 
+	/**
+	 * find top creditors
+	 * 
+	 * @return list of Person Applicants
+	 */
 	public List<PersonApplicant> findTopPersonCreditors() {
 		List<PersonApplicant> result = personApplication.findTopPersonCreditors();
 		return result;
 	}
-
 
 }

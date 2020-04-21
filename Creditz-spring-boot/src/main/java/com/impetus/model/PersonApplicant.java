@@ -11,78 +11,74 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
-
-@Entity(name ="personapplicant")
-@Table(name ="personapplicant")
+@Entity(name = "personapplicant")
+@Table(name = "personapplicant")
 public class PersonApplicant {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long applicationId;
-    
-    /** The panCard */
-    
-    @Size(max = 10)
-    @Column(name = "pan_card", nullable = false)
-    private String pancard;
-    
-    /** amount of loan */
-    @Column(name = "loan_amount", nullable = false)
-    private int loanAmount;
-    
-    /** age of applicant */
-    @Column(name = "age", nullable = false)
-    private int age;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long applicationId;
 
-    /** gender of applicant */
-    @Column(name = "gender", nullable = false)
-    private String gender;
+	/** The panCard */
 
-    /** occupation of applicant */
-    @Column(name = "occupation", nullable = false)
-    private String occupation;
+	@Size(max = 10)
+	@Column(name = "pan_card", nullable = false)
+	private String pancard;
 
-    /** status of application */
-    @Column(name = "application_status", nullable = false)
-    private String applicationStatus;
+	/** amount of loan */
+	@Column(name = "loan_amount", nullable = false)
+	private int loanAmount;
+
+	/** age of applicant */
+	@Column(name = "age", nullable = false)
+	private int age;
+
+	/** gender of applicant */
+	@Column(name = "gender", nullable = false)
+	private String gender;
+
+	/** occupation of applicant */
+	@Column(name = "occupation", nullable = false)
+	private String occupation;
+
+	/** status of application */
+	@Column(name = "application_status", nullable = false)
+	private String applicationStatus;
 
 	/** criminal record against applicant */
-    @Column(name = "criminal_record", nullable = false)
-    private int criminalRecord;
+	@Column(name = "criminal_record", nullable = false)
+	private int criminalRecord;
 
-    /** is applicant is bankCorrupt */
-    @Column(name = "bankruptcy", nullable = false)
-    private int bankruptcy;
+	/** is applicant is bankCorrupt */
+	@Column(name = "bankruptcy", nullable = false)
+	private int bankruptcy;
 
-    /** loan tenure */
-    @Column(name = "loan_tenure", nullable = false)
-    private int loanTenure;
-   
-    @Column(name="email_status" ,nullable=false)
-    private String emailStatus;
-    
-    public String getEmailStatus() {
+	/** loan tenure */
+	@Column(name = "loan_tenure", nullable = false)
+	private int loanTenure;
+
+	@Column(name = "email_status", nullable = false)
+	private String emailStatus;
+
+	public String getEmailStatus() {
 		return emailStatus;
 	}
-
 
 	public void setEmailStatus(String emailStatus) {
 		this.emailStatus = emailStatus;
 	}
 
 	@ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "person_id")
-    private Person  personId;
-    
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id")
-    private User  userId;
+	@JoinColumn(name = "person_id")
+	private Person personId;
 
-    
-    public long getApplicationId() {
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "user_id")
+	private User userId;
+
+	public long getApplicationId() {
 		return applicationId;
 	}
-    
-   
+
 	public void setApplicationId(long applicationId) {
 		this.applicationId = applicationId;
 	}
@@ -175,5 +171,4 @@ public class PersonApplicant {
 		this.userId = userId;
 	}
 
-	
 }

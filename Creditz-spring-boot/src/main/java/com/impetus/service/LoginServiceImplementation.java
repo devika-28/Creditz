@@ -14,7 +14,14 @@ public class LoginServiceImplementation implements LoginService {
 
 	@Autowired
 	private LoginRepository loginRepo;
-
+	
+	/**
+	 * check is there any User corresponding to particular email Address
+	 *
+	 * @param User
+	 * 
+	 * @return hash map if user Exist
+	 */
 	@Override
 	public HashMap<String, String> isValidUser(User login) {
 

@@ -9,7 +9,13 @@ import com.impetus.model.User;
 @Service
 public interface LoginService {
 
-      
-       HashMap<?,?> isValidUser(User login);
+	/**
+	 * check is there any User corresponding to particular email Address
+	 *
+	 * @param User
+	 * 
+	 * @return hash map if user Exist
+	 */
+       HashMap<?,?>isValidUser(User login);
 
 }

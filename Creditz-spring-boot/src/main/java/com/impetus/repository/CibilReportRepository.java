@@ -9,7 +9,7 @@ import com.impetus.model.CibilReport;;
 @Repository
 public interface CibilReportRepository extends JpaRepository<CibilReport, String> {
 
-    @Query("SELECT cr FROM cibil_Report cr WHERE cr.panCard = :panCard")
-    CibilReport findByPanCard (String panCard);
+	@Query("SELECT cr FROM cibil_Report cr WHERE cr.panCard = :panCard")
+	CibilReport findByPanCard(String panCard);
 
 }

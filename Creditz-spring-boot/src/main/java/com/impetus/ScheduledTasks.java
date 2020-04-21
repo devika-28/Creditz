@@ -6,6 +6,7 @@ import java.util.Iterator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailException;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -20,7 +21,7 @@ import com.impetus.service.PersonApplicationService;
 @Component
 public class ScheduledTasks {
 
-	private static final Logger logger = LoggerFactory.getLogger(ScheduledTasks.class);
+	private static final Logger LOG = LoggerFactory.getLogger(ScheduledTasks.class);
 
 	@Autowired
 	PersonApplicationRepository personRepository;
@@ -39,7 +40,6 @@ public class ScheduledTasks {
 
 	static final String status = "True";
 
-	// @Scheduled(cron ="0 * * * * ?")
 	@Scheduled(cron = "0 0 */4 * * *")
 	public void scheduleTaskWithCronExpression() {
 		ArrayList<PersonApplicant> personApplicants = new ArrayList<PersonApplicant>();
@@ -50,12 +50,15 @@ public class ScheduledTasks {
 			String email = applicants.getUserId().getUserEmail();
 			String estatus = applicants.getEmailStatus();
 			String applicationStatus = applicants.getApplicationStatus();
-			notificationService.sendEmailToApplicants(email, estatus, applicationStatus);
+			try {
+				notificationService.sendEmailToApplicants(email, estatus, applicationStatus);
+			} catch (MailException mailException) {
+				LOG.error("exception ocuured", mailException);
+			}
 			personRepository.updateEmailStatus(applicants.getApplicationId(), status);
 		}
 	}
 
-	// @Scheduled(cron ="0 * * * * ?")
 	@Scheduled(cron = "0 0 */4 * * *")
 	public void scheduleTaskWithExpression() {
 		ArrayList<OrganizationApplicant> organizationApplicants = new ArrayList<OrganizationApplicant>();
@@ -66,7 +69,11 @@ public class ScheduledTasks {
 			String email = applicants.getUserId().getUserEmail();
 			String estatus = applicants.getEmailStatus();
 			String applicationStatus = applicants.getApplicationStatus();
-			notificationService.sendEmailToApplicants(email, estatus, applicationStatus);
+			try {
+				notificationService.sendEmailToApplicants(email, estatus, applicationStatus);
+			} catch (MailException mailException) {
+				LOG.error("exception ocuured", mailException);
+			}
 			Repository.updateEmailStatus(applicants.getApplicationId(), status);
 		}
 	}

@@ -12,9 +12,6 @@ public class CibilReportService {
     
     CibilReport getCibilReport(CibilReport cibilReport){
         return cibilRepo.findByPanCard(cibilReport.getPanCard());
-//        System.out.println(currentUser.getAssetCost());
-//        System.out.println(currentUser.getCategory());
-//        System.out.println(currentUser.getCreditLimit());
     }
     
 }

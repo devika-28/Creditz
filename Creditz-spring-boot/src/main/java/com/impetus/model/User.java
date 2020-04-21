@@ -15,80 +15,75 @@ import org.springframework.stereotype.Component;
 @Table(name = "user")
 @EntityListeners(AuditingEntityListener.class)
 @Component
-public class User { 
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long userId;
-    
+public class User {
 
-    @Column(name = "user_email", nullable = false)
-    private String userEmail;
-    
-    @Column(name = "role", nullable = false)
-    private String role;
-    
-    @Column(name = "password", nullable = false)
-    private String password;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long userId;
 
-    /**
-     * @return the userId
-     */
-    public long getUserId() {
-        return userId;
-    }
+	@Column(name = "user_email", nullable = false)
+	private String userEmail;
 
-    /**
-     * @param userId the userId to set
-     */
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
+	@Column(name = "role", nullable = false)
+	private String role;
 
-    /**
-     * @return the userEmail
-     */
-    public String getUserEmail() {
-        return userEmail;
-    }
+	@Column(name = "password", nullable = false)
+	private String password;
 
-    /**
-     * @param userEmail the userEmail to set
-     */
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
-    }
+	/**
+	 * @return the userId
+	 */
+	public long getUserId() {
+		return userId;
+	}
 
-    /**
-     * @return the role
-     */
-    public String getRole() {
-        return role;
-    }
+	/**
+	 * @param userId the userId to set
+	 */
+	public void setUserId(long userId) {
+		this.userId = userId;
+	}
 
-    /**
-     * @param role the role to set
-     */
-    public void setRole(String role) {
-        this.role = role;
-    }
+	/**
+	 * @return the userEmail
+	 */
+	public String getUserEmail() {
+		return userEmail;
+	}
 
-    /**
-     * @return the password
-     */
-    public String getPassword() {
-        return password;
-    }
+	/**
+	 * @param userEmail the userEmail to set
+	 */
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+	}
 
-    /**
-     * @param password the password to set
-     */
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	/**
+	 * @return the role
+	 */
+	public String getRole() {
+		return role;
+	}
 
-	
+	/**
+	 * @param role the role to set
+	 */
+	public void setRole(String role) {
+		this.role = role;
+	}
 
+	/**
+	 * @return the password
+	 */
+	public String getPassword() {
+		return password;
+	}
+
+	/**
+	 * @param password the password to set
+	 */
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 }
-

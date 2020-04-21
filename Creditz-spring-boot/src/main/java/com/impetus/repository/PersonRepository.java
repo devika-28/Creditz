@@ -7,8 +7,10 @@ import org.springframework.data.repository.query.Param;
 import com.impetus.model.Person;
 
 public interface PersonRepository extends JpaRepository<Person, Long> {
-	
-	@Query(nativeQuery=true, value="select person_id from person where user_id= :userId")
+
+	@Query(nativeQuery = true, value = "select person_id from person where user_id= :userId")
 	Long getPersonIdByUserId(@Param("userId") Long userId);
 
+	@Query(nativeQuery = true, value = " Select * from person where user_id=:userId")
+	Person findPersonByUserId(Long userId);
 }

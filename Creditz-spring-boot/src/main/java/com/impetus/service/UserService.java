@@ -10,65 +10,46 @@ import com.impetus.model.User;
 
 /** The Interface UserService. */
 public interface UserService {
-	
-    /** Save person.
-     *
-     * @param user
-     *            the user
-     * @return true, if successful */
-    public boolean savePerson(Person user);
 
-    /** * @param user the user
-     * 
-     * @return true, if successful */
-    public boolean saveOrganization(Organization user);
+	/**
+	 * Save person.
+	 *
+	 * @param user the user
+	 * @return true, if successful
+	 */
+	public boolean savePerson(Person user);
 
-    /** @return person list */
-    public List<Person> findAllPersons();
+	/**
+	 * * @param user the user
+	 * 
+	 * @return true, if successful
+	 */
+	public boolean saveOrganization(Organization user);
 
-    /** @return organization list */
-    public List<Organization> findAllOrganizations();
+	/** @return person list */
+	public List<Person> findAllPersons();
 
-    /** @param userId
-     * @return list of person applicant */
-    public List<PersonApplicant> findPersonApplicantByUserId(int userId);
+	/** @return organization list */
+	public List<Organization> findAllOrganizations();
 
-    /** @param userId
-     * @return list of organization Applicant */
-    public List<OrganizationApplicant> findOrganizationApplicantByUserId(int userId);
+	/**
+	 * @param int
+	 * @return list of person applicant
+	 */
+	public List<PersonApplicant> findPersonApplicantByUserId(int userId);
 
-    public boolean saveAnalyst(User user);
-   // public boolean deleteAnalyst(User user);
-    public User getUserById(long userId);
-    void deleteAnalyst(long userId);
+	/**
+	 * @param int
+	 * @return list of organization Applicant
+	 */
+	public List<OrganizationApplicant> findOrganizationApplicantByUserId(int userId);
+
+	/**
+	 * Save Analyst
+	 *
+	 * @param user the user
+	 * @return true, if successful
+	 */
+	public boolean saveAnalyst(User user);
+
 }
-
-
-//package com.impetus.service;
-//
-//import com.impetus.model.Person;
-//import com.impetus.model.Organization;
-//
-//
-///**
-// * The Interface UserService.
-// */
-//public interface UserService {
-//
-//	/**
-//	 * Save person.
-//	 *
-//	 * @param user the user
-//	 * @return true, if successful
-//	 */
-//	public boolean savePerson(Person user);
-//
-//	/**
-//	 * Save organization.
-//	 *
-//	 * @param user the user
-//	 * @return true, if successful
-//	 */
-//	public boolean saveOrganization(Organization user);
-//
-//}

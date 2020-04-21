@@ -14,51 +14,62 @@ import org.springframework.web.bind.annotation.RestController;
 import com.impetus.model.OrganizationApplicant;
 import com.impetus.service.OrganizationApplicationService;
 
-
 @RestController
 public class OrganizationApplicationController {
-	
-	@Autowired(required=true) 
+
+	@Autowired(required = true)
 	OrganizationApplicationService organizationservice;
 	@Autowired
 	OrganizationApplicationService service;
-	
-	 @CrossOrigin(origins = "*", allowedHeaders = "*")
-	   	@PostMapping("/organization-user/user-application")
-	   	public HashMap<String,Long> organizationApplicantApplicationSubmit(@RequestBody OrganizationApplicant application) {
-	   		
-//	       	service.RiskMitigate(application);
-//	       	System.out.println("controller transfered to service");
-	   		return service.organizationRiskMitigate(application);
 
-	       	
-	   	}
-	 @CrossOrigin(origins = "*", allowedHeaders = "*")
-		@PostMapping("/organization-user/user-history")
-		public List<OrganizationApplicant> organizationHistory(@RequestBody OrganizationApplicant userId) {
-			return service.getHistory(userId);
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
+	@PostMapping("/organization-user/user-application")
+	public HashMap<String, Long>organizationApplicantApplicationSubmit(
+			@RequestBody OrganizationApplicant application) {
+		return service.organizationRiskMitigate(application);
 
-	    }
-	    
-	
-	 @CrossOrigin(origins = "*", allowedHeaders = "*")
-	 @GetMapping("/getOrganizationApplicants")
-	 public List<OrganizationApplicant>getAllPersonApplicant(
-             @RequestParam(defaultValue="0") int pageNo, 
-             @RequestParam(defaultValue="1") int pageSize)
-       {
-           System.out.println(pageNo);
-          return organizationservice.getAllOrganizationApplicant(pageNo, pageSize);
-       }
-	 
-	 
-	 @CrossOrigin(origins = "*", allowedHeaders = "*")
-	 @GetMapping("/getTopOrganizationApplicants")
-	 public List<OrganizationApplicant>findTopPersonCreditors()
-	 {
-	      return organizationservice.findTopPersonCreditors();
-	 
-	 }
-	 
-	
+	}
+	/**
+	 * find out all application associated with particular userId
+	 *
+	 * @param userId
+	 * 
+	 * @return list of Organization Applicants
+	 */
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
+	@PostMapping("/organization-user/user-history")
+	public List<OrganizationApplicant> organizationHistory(@RequestBody OrganizationApplicant userId) {
+		return service.getHistory(userId);
+
+	}
+
+	/**
+	 * get organization applications in particular page with no of records
+	 *
+	 * @param Integer
+	 * 
+	 * @param Integer
+	 * 
+	 * @return list of Organization Applicants
+	 */
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
+	@GetMapping("/getOrganizationApplicants")
+	public List<OrganizationApplicant> getAllOrganizationApplicant(@RequestParam(defaultValue = "0") int pageNo,
+			@RequestParam(defaultValue = "1") int pageSize) {
+		System.out.println(pageNo);
+		return organizationservice.getAllOrganizationApplicant(pageNo, pageSize);
+	}
+
+	/**
+	 * find out top creditors
+	 * 
+	 * @return list of Organization Applicants
+	 */
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
+	@GetMapping("/getTopOrganizationApplicants")
+	public List<OrganizationApplicant> findTopPersonCreditors() {
+		return organizationservice.findTopPersonCreditors();
+
+	}
+
 }

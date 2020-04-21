@@ -12,47 +12,36 @@ import org.springframework.stereotype.Repository;
 
 import com.impetus.model.PersonApplicant;
 
-
 @Repository
 public interface PersonApplicationRepository extends JpaRepository<PersonApplicant, Long> {
 
 	@Modifying
 	@Transactional
-	@Query(	value =  "insert into personapplicant ( pan_card, loan_amount, age, gender, occupation, application_status, criminal_record, bankruptcy, loan_tenure, person_id, user_id, email_Status)"
+	@Query(value = "insert into personapplicant ( pan_card, loan_amount, age, gender, occupation, application_status, criminal_record, bankruptcy, loan_tenure, person_id, user_id, email_Status)"
 			+ " values (:pancard , :loanAmount , :age, :gender, :occupation, :applicationStatus, :criminalRecord, :bankruptcy , :loanTenure, :personId , :userId, :emailStatus)", nativeQuery = true)
-	
-	void insertApplication(@Param("pancard")String pancard, 
-							@Param("loanAmount")int loanAmount, 
-							@Param("age") int age, 
-							@Param("gender") String gender, 
-							@Param("occupation") String occupation,
-							@Param("applicationStatus") String applicationStatus, 
-							@Param("criminalRecord") int criminalRecord, 
-							@Param("bankruptcy") int bankruptcy, 
-							@Param("loanTenure") int loanTenure, 
-							@Param("personId") long personId,
-							@Param("userId") long userId, 
-							@Param("emailStatus") String emailStatus);
-	
-	
-	
-	@Query(nativeQuery=true, value="SELECT LAST_INSERT_ID()")
+
+	void insertApplication(@Param("pancard") String pancard, @Param("loanAmount") int loanAmount, @Param("age") int age,
+			@Param("gender") String gender, @Param("occupation") String occupation,
+			@Param("applicationStatus") String applicationStatus, @Param("criminalRecord") int criminalRecord,
+			@Param("bankruptcy") int bankruptcy, @Param("loanTenure") int loanTenure, @Param("personId") long personId,
+			@Param("userId") long userId, @Param("emailStatus") String emailStatus);
+
+	@Query(nativeQuery = true, value = "SELECT LAST_INSERT_ID()")
 	Long getApplicationId();
-	
-	@Query(nativeQuery=true, value="Select * from personapplicant where user_id=:userId")
+
+	@Query(nativeQuery = true, value = "Select * from personapplicant where user_id=:userId")
 	List<PersonApplicant> findByUserId(long userId);
 
- @Modifying
-	 @Transactional
-     @Query(nativeQuery = true,value="UPDATE personapplicant p SET p.email_status =:status WHERE p.application_id = :applicationId")
-     void updateEmailStatus(long applicationId, String status);
-     List<PersonApplicant> findByemailStatus(String emailStatus);
-     
-     @Modifying
-	 @Transactional
-	 @Query(nativeQuery=true,value="SELECT *FROM personapplicant,cibil_report WHERE personapplicant.pan_card=cibil_report.pan_card ORDER BY credit_score DESC LIMIT 10") 
-     List<PersonApplicant> findTopPersonCreditors();
-	
+	@Modifying
+	@Transactional
+	@Query(nativeQuery = true, value = "UPDATE personapplicant p SET p.email_status =:status WHERE p.application_id = :applicationId")
+	void updateEmailStatus(long applicationId, String status);
+
+	List<PersonApplicant> findByemailStatus(String emailStatus);
+
+	@Modifying
+	@Transactional
+	@Query(nativeQuery = true, value = "SELECT *FROM personapplicant,cibil_report WHERE personapplicant.pan_card=cibil_report.pan_card ORDER BY credit_score DESC LIMIT 10")
+	List<PersonApplicant> findTopPersonCreditors();
+
 }
-
-

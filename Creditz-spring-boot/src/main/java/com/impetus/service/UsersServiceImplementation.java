@@ -2,8 +2,11 @@ package com.impetus.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
-import org.jboss.logging.Logger;
+import org.mindrot.jbcrypt.BCrypt;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -15,10 +18,22 @@ import com.impetus.repository.UserRepository;
 
 @Service
 public class UsersServiceImplementation implements UsersService {
-	Logger logger = Logger.getLogger("UsersServiceImplementation");
+	private static final Logger LOG = LoggerFactory.getLogger(UsersServiceImplementation.class);
 	@Autowired
 	UserRepository user;
 
+	@Autowired
+	private MailService notificationService;
+
+	/**
+	 * get Details of all Analyst
+	 *
+	 * @param pageno
+	 * 
+	 * @param pagesize
+	 * 
+	 * @return List of all Analyst
+	 */
 	@Override
 	public List<User> getAllAnalyst(Integer pageNo, Integer pageSize) {
 		Pageable paging = PageRequest.of(pageNo, pageSize);
@@ -32,16 +47,109 @@ public class UsersServiceImplementation implements UsersService {
 		}
 	}
 
+	/**
+	 * delete Analyst details corresponding to particular userEmail
+	 *
+	 * @param userEmail
+	 *
+	 */
 	@Override
 	public void DeleteAnalyst(String userEmail) {
-		logger.info("userEmail :" + userEmail);
+		LOG.info("userEmail :" + userEmail);
 		user.delete(user.findByUserEmail(userEmail));
-		logger.info("Delete method runs successfully.");
+		LOG.info("Delete method runs successfully.");
 	}
 
+	/**
+	 * check is there any User corresponding to particular email Address
+	 *
+	 * @param userEmail
+	 * 
+	 * @return User
+	 */
 	public User uniqueCheckEmail(String userEmail) {
-		return user.findByUserEmail(userEmail);
+		try {
+			return user.findByUserEmail(userEmail);
+		} catch (NullPointerException e) {
+			User user1 = new User();
+			user1.setUserEmail(null);
+			user1.setPassword(null);
+			return user1;
+		}
 
+	}
+
+	/**
+	 * generate One Time Password
+	 *
+	 * @return String
+	 */
+	@Override
+	public String generateOtp() {
+		String numbers = "0123456789";
+		Random r = new Random();
+		char otp[] = new char[6];
+		for (int i = 0; i < otp.length; i++) {
+			otp[i] = numbers.charAt(r.nextInt(numbers.length()));
+		}
+		String otpstring = new String(otp);
+		return otpstring;
+	}
+
+	/**
+	 * send one time password to userEmail
+	 *
+	 * @param user the user
+	 * 
+	 * @return true, if successful
+	 */
+	@Override
+	public String sendOtp(String userEmail) {
+		String otp = this.generateOtp();
+		notificationService.sendOtpToUser(userEmail, otp);
+		return otp;
+	}
+
+	/**
+	 * update the user password of particular user
+	 *
+	 * @param user the user
+	 * 
+	 * @return true, if successful
+	 */
+	@Override
+	public boolean updateUserPassword(User users) {
+		boolean ans = false;
+		try {
+			user.updatePassword(users.getUserEmail(), hashPassword(users.getPassword()));
+			ans = true;
+			return ans;
+		} catch (Exception e) {
+			return ans;
+		}
+	}
+
+	private String hashPassword(String plainTextPassword) {
+		return BCrypt.hashpw(plainTextPassword, BCrypt.gensalt());
+	}
+
+	/**
+	 * Find User on the basis of userEmail and password
+	 *
+	 * @param userEmail
+	 * 
+	 * @param password
+	 * 
+	 * @return true, if successful
+	 */
+	@Override
+	public User findUserByEmailPassword(String userEmail, String password) {
+		User dummyuser = new User();
+		User user1 = user.findByUserEmail(userEmail);
+		if (BCrypt.checkpw(password, user1.getPassword())) {
+			return user1;
+		}
+		return dummyuser;
 	}
 
 }

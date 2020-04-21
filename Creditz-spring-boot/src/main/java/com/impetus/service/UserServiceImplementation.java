@@ -17,70 +17,82 @@ import com.impetus.model.User;
 @Service
 public class UserServiceImplementation implements UserService {
 
-    @Autowired
-    private User_DAO userdao;
+	@Autowired
+	private User_DAO userdao;
 
-    @Transactional
-    @Override
-
-    public boolean savePerson(Person user) {
-        User user1 = user.getUser();
-        user1.setPassword(hashPassword(user1.getPassword()));
-        user.setUser(user1);
-        return userdao.savePerson(user);
-    }
-
-    @Override
-    public boolean saveOrganization(Organization user) {
-        User user1 = user.getUser();
-        user1.setPassword(hashPassword(user1.getPassword()));
-        user.setUser(user1);
-        return userdao.saveOrganization(user);
-    }
-
-    private String hashPassword(String plainTextPassword) {
-        return BCrypt.hashpw(plainTextPassword, BCrypt.gensalt());
-    }
-
-    @Override
-    public boolean saveAnalyst(User user) {
-        user.setPassword(hashPassword(user.getPassword()));
-        return userdao.saveAnalyst(user);
-    }
-
-    @Override
-    public List<Person> findAllPersons() {
-        return userdao.findAllPersons();
-    }
-
-    @Override
-    public List<Organization> findAllOrganizations() {
-        return userdao.findAllOrganizations();
-    }
-
-    @Override
-    public List<PersonApplicant> findPersonApplicantByUserId(int userId) {
-        return userdao.findPersonApplicantByUserId(userId);
-    }
-
-    @Override
-    public List<OrganizationApplicant> findOrganizationApplicantByUserId(int userId) {
-
-        return userdao.findOrganizationApplicantByUserId(userId);
-    }
-
-    public User getUserById(long userId)
-    {
-    	return userdao.getUserById(userId);
-    }
-    
-
-
+	/**
+	 * Save person.
+	 *
+	 * @param user the user
+	 * @return true, if successful
+	 */
+	@Transactional
 	@Override
-	public void deleteAnalyst(long userId) {
-       userdao.deleteAnalyst(userId);
-		
+	public boolean savePerson(Person user) {
+		User user1 = user.getUser();
+		user1.setPassword(hashPassword(user1.getPassword()));
+		user.setUser(user1);
+		return userdao.savePerson(user);
 	}
-    
+
+	/**
+	 * * @param user the user
+	 * 
+	 * @return true, if successful
+	 */
+	@Override
+	public boolean saveOrganization(Organization user) {
+		User user1 = user.getUser();
+		user1.setPassword(hashPassword(user1.getPassword()));
+		user.setUser(user1);
+		return userdao.saveOrganization(user);
+	}
+
+	private String hashPassword(String plainTextPassword) {
+		return BCrypt.hashpw(plainTextPassword, BCrypt.gensalt());
+	}
+
+	/**
+	 * Save Analyst
+	 *
+	 * @param user the user
+	 * @return true, if successful
+	 */
+	@Override
+	public boolean saveAnalyst(User user) {
+		user.setPassword(hashPassword(user.getPassword()));
+		return userdao.saveAnalyst(user);
+	}
+
+	/** @return person list */
+	@Override
+	public List<Person> findAllPersons() {
+		return userdao.findAllPersons();
+	}
+
+	/** @return organization list */
+	@Override
+	public List<Organization> findAllOrganizations() {
+		return userdao.findAllOrganizations();
+	}
+
+	/**
+	 * @param userId
+	 * @return list of person applicant
+	 */
+	@Override
+	public List<PersonApplicant> findPersonApplicantByUserId(int userId) {
+		return userdao.findPersonApplicantByUserId(userId);
+	}
+
+	/**
+	 * @param userId
+	 * @return list of organization Applicant
+	 */
+	@Override
+	public List<OrganizationApplicant> findOrganizationApplicantByUserId(int userId) {
+
+		return userdao.findOrganizationApplicantByUserId(userId);
+	}
 
 }
