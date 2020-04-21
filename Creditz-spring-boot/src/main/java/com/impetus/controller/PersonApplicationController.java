@@ -50,11 +50,11 @@ public class PersonApplicationController {
 	}
 
 	/**
-	 * find person applications corresponding to particular Id
+	 * find all person applicants
 	 *
-	 * @param userID
+	 * @param Integer pageSize
 	 * 
-	 * @param Integer
+	 * @param Integer pageSize
 	 * 
 	 * @return list of person Applicants
 	 */
