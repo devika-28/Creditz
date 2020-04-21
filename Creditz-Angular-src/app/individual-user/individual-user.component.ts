@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EMI } from '../model/emi';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { IndividualUserApplicationComponent } from '../individual-user-application/individual-user-application.component';
 
 @Component({
@@ -39,8 +39,8 @@ export class IndividualUserComponent implements OnInit {
       // const scrollStrategy = this.overlay.scrollStrategies.reposition();
       const dialogRef = this.dialog.open(IndividualUserApplicationComponent, {
         autoFocus: false,
-        maxHeight: '90vh' //you can adjust the value as per your view
-  
+        height: '80%',
+        width: '50%',
       });
     
     }

@@ -1,45 +1,44 @@
 <!--<div class="limiter" style=" width:50%; margin-left:25% "  *ngIf="this.storeRole==null and this.store==null">-->
-<div class="limiter" style=" width:50%; margin-left:25% "  *ngIf="this.storeRole==null and this.store==null">
+<div class="limiter" style=" width:40%; margin-left:30%;"   *ngIf="this.storeRole==null and this.store==null" align="center">
 				<div class="container-login100">
 							<div class="wrap-login100">
 
-								<div style=" float: left; margin:0% " >
-													<img class="login100-pic img" aTilt src="assets/img-01.png" alt="IMG" >
-								</div>
+
 
 								<div style=" float: right; margin:0%">
-									<form #loginForm="ngForm" (ngSubmit)="onSubmit()" method="POST" class="login100-form validate-form" style="border:none;" novalidate>
-								<br>
-								<!--   {{ loginForm.value | json}}
-									<hr/><br>
-									{{ loginModel|json }} 
-									-->
-								<br>
+									<form class="login100-form validate-form" style="border:none;" novalidate>
+							          <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
+                        <div class="alert alert-success" *ngIf='loginSuccess'>{{successMessage}}</div>
+								          <div style=" margin-left:1%; align:center" >
+							      						<img class="login100-pic img" aTilt src="assets/img-01.png" alt="IMG" >
+							          	</div>
+              
 									<mat-form-field appearance="none">
 									<div class="wrap-input100 validate-input">
+
+                  
 									<input matInput 
-									matTooltip="Enter your email"	matTooltipPosition="after"
- 									placeholder="your Email" type="email"  class="input100" name="userEmail" #userEmail="ngModel" [(ngModel)]="loginModel.userEmail" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [class.is-invalid]="userEmail.invalid && userEmail.touched" required>
+									matTooltip="Enter your Email"	matTooltipPosition="below"
+ 									placeholder="Enter Email" type="email"  class="input100" id="username" name="username" #userEmail="ngModel" [(ngModel)]="username" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [class.is-invalid]="userEmail.invalid && userEmail.touched" required>
 														<span class="focus-input100"></span>
 														<!--<i class="fa fa-envelope" aria-hidden="true"></i>-->
 									</div>
-									</mat-form-field><br>
+									</mat-form-field>
 
 
 									
 									<mat-form-field appearance="none">
-									<div class="wrap-input100 validate-input" placeholder="Password" data-validate = "password is required">
-
+									<div class="wrap-input100 validate-input" data-validate = "password is required">
 									<input matInput 
-									matTooltip="Enter your password"	matTooltipPosition="after"
-									placeholder="your Password" type="password" class="input100" name="password" [(ngModel)]="loginModel.password" required>
+									matTooltip="Enter your Password"	matTooltipPosition="below"
+									placeholder="Enter Password" type="password" class="input100" id="password" [(ngModel)]="password" name="password" required>
 														<span class="focus-input100"></span>
 														<!--<i class="fa fa-lock" aria-hidden="true"></i>-->
 									</div>
 									</mat-form-field>
 
 									<div class="container-login100-form-btn" >
-									<button type="submit" class="login100-form-btn" [disabled]="loginForm.form.invalid" id="submit" >Login</button>
+									<button type="submit" (click)=handleLogin() class="login100-form-btn" id="submit">Login</button>
 									</div>
 
 									
@@ -47,7 +46,7 @@
 														<span class="txt1">
 															Forgot
 														</span>
-														<a class="txt2" href="forgot-password">
+														<a class="txt2" href="register">
 															Username / Password?
 														</a>
 													</div>
@@ -56,11 +55,6 @@
 														<a class="txt2" href="register">
 															Create your Account
 															<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-														</a>
-													</div>
-													<div class="text-center p-t-12">
-								                    <a class="txt2" href="reset-password">
-															change password?
 														</a>
 													</div>
 								</form>

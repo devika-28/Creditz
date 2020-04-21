@@ -1,5 +1,5 @@
 export class History {
-        applicationId:BigInt
+        applicationId: Number
         loanAmount: Number
         applicationStatus: String
         loanTenure: Number

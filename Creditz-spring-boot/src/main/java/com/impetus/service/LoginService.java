@@ -12,10 +12,11 @@ public interface LoginService {
 	/**
 	 * check is there any User corresponding to particular email Address
 	 *
-	 * @param User
+	 * @param userEmail
 	 * 
 	 * @return hash map if user Exist
 	 */
-       HashMap<?,?>isValidUser(User login);
+   	public HashMap<?,?> PostLoginDetails(String userEmail);
+
 
 }

@@ -6,7 +6,7 @@ import {MatSort, Sort} from '@angular/material/sort';
 import { BehaviorSubject } from 'rxjs';
 
 export interface History {
-  applicationId:BigInt
+  applicationId: bigint
   loanAmount: Number
   applicationStatus: String
   loanTenure: Number
@@ -27,10 +27,7 @@ export class HistoryComponent implements OnInit {
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   displayedColumns = ['applicationId', 'loanAmount', 'loanTenure', 'applicationStatus'];
 
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
-  private someMethod(): void {
-    this.sort.sort({ id: 'applicationId', start: 'asc', disableClear: false });
-  }
+  @ViewChild(MatSort, {static: false}) sort: MatSort;
 
   ngOnInit() {
 
@@ -43,6 +40,11 @@ export class HistoryComponent implements OnInit {
     })
 
     this.dataSource.sort = this.sort;
+    
+    const sortState: Sort = {active: 'applicationId', direction: 'desc'};
+    this.sort.active = sortState.active;
+    this.sort.direction = sortState.direction;
+    this.sort.sortChange.emit(sortState);
 
     // this.historyService.showHistory(window.sessionStorage.getItem('userId'));
   }

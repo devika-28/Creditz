@@ -13,6 +13,9 @@ input[type=text], input[type=password], input[type=email] {
   box-sizing: border-box;
 }
 
+.login100-form-btn:disabled{
+  cursor: not-allowed;
+}
 
 .click{
   cursor:pointer;
@@ -184,15 +187,11 @@ iframe {
 
 /*//////////////////////////////////////////////////////////////////
 [ login ]*/
-
-.limiter {
-  width: 50%;
-  margin: 0 auto;
-}
-
+  
 .container-login100 {
-  min-width: 100%;
-  min-height: 100vh;
+  width: 50%;
+  min-height: fit-content;
+  min-width: 80%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -201,14 +200,17 @@ iframe {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  padding: 0%;
-  background: #9053c7;
-  background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: linear-gradient(-135deg, #c850c0, #4158d0);
+  padding: 5%;
+  background: #15a085;
+  background: -webkit-linear-gradient(-135deg, #15a085, #946bad);
+  background: -o-linear-gradient(-135deg, #8bc8f1, #946bad);
+  background: -moz-linear-gradient(-135deg, #8bc8f1, #946bad);
+  background: linear-gradient(-135deg, #8bc8f1, #946bad);
 }
-
+.limiter {
+  width: 100%;
+  margin: 0 0;
+}
 .wrap-login100 {
   width:fit-content;
   background: #fff;
