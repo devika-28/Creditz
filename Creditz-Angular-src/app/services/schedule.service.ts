@@ -9,15 +9,13 @@ import { Observable } from 'rxjs';
 )
 export class ScheduleService {
     
-    constructor(private http:HttpClient) {
-}
+    constructor(private http:HttpClient) {}
 
      scheduleEmailUpdatePersonApplicant():Observable<any>{
      return this.http.get("http://localhost:9999/sendUpdatePerson");
-            
     }
-    scheduleEmailUOdateOrganizaionApplicant():Observable<any>
-    {
+
+    scheduleEmailUOdateOrganizaionApplicant():Observable<any>{
       return this.http.get("http://localhost:9999/sendUpdateOrganization");
     }
 

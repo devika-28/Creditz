@@ -75,6 +75,11 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { HistoryComponent } from './history/history.component';
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { MatStepperModule } from '@angular/material/stepper';
+import { PersonProfileComponent } from './person-profile/person-profile.component';
+import { OrganizationProfileComponent } from './organization-profile/organization-profile.component';
 
 
 
@@ -109,6 +114,10 @@ export const route: Routes = [
   {path:"show-analyst",component:ShowAnalystComponent},
   {path:"schedular",component:SchedularComponent},
   {path:"user-history",component:HistoryComponent},
+  {path:"forgot-password",component:ForgotPasswordComponent},
+  {path:"reset-password",component:ResetPasswordComponent},
+  {path:"organization-profile",component:OrganizationProfileComponent},
+  {path:"person-profile",component:PersonProfileComponent},
   { path: '**', component:ErrorComponent},
   
 
@@ -160,6 +169,11 @@ firebase.initializeApp(firebaseConfig);
     SchedularComponent,
     AnalystDialogBoxComponent,
     HistoryComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
+    PersonProfileComponent,
+    OrganizationProfileComponent,
+  
     
     // AuthenticateComponent,
     // HttpClientModule,
@@ -197,6 +211,7 @@ firebase.initializeApp(firebaseConfig);
     MatDialogModule,
     MatTooltipModule,
     ShowHidePasswordModule ,
+    MatStepperModule,
 //<button type="submit" (click)="addUser()" mat-dialog-close [disabled]="formisvalid" mat-button>Submit</button>
     // MatPaginatorModule,
   ],

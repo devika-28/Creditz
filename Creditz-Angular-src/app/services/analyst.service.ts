@@ -16,16 +16,14 @@ export class AnalystService {
    }
 
 
-   findAllAnalyst(pageNo: any ,pageSize: any): Observable<any>
-   {
+   findAllAnalyst(pageNo: any ,pageSize: any): Observable<any>{
        const params = new HttpParams()
        .set('pageNo', pageNo+"")
        .append('pageSize', pageSize+"");
        return this.http.get("http://localhost:9999/getAllAnalyst",{params});
             
    }
-   checkUniqueEmail( userEmail:any): Observable<any>
-   {
+   checkUniqueEmail( userEmail:any): Observable<any>{
         let params = new HttpParams()
         .set('userEmail',userEmail);
         return this.http.get("http://localhost:9999/checkUniqueUser",{params});

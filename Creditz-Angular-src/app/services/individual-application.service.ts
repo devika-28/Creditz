@@ -37,7 +37,5 @@ export class IndividualApplicationService {
           }
         )
         
-    
-
   }
 }

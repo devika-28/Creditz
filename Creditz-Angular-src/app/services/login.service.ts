@@ -23,8 +23,7 @@ goToUrl(url: string){
     window.open(url,"_self");
 }
 
-
-   login(userEmail: String, password: String) {
+ login(userEmail: String, password: String) {
     const body = {'userEmail': userEmail, 'password': password};
       
       return this.http.post(this.apiUrl+'/login',body,this.config)
