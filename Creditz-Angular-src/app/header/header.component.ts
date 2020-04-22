@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HistoryComponent } from '../history/history.component';
 import {MatDialog} from '@angular/material/dialog';
 import { HomeComponent } from '../home/home.component';
+import { ThrowStmt } from '@angular/compiler';
 
 
 @Component({
@@ -12,8 +13,20 @@ import { HomeComponent } from '../home/home.component';
 export class HeaderComponent implements OnInit {
   title = 'Risk Management System';
   store = window.sessionStorage.getItem('userId');
+  storeRole = window.sessionStorage.getItem('role');
   constructor(public dialog: MatDialog) {}
 
+  showInHeader(){
+  if (this.store !=null){
+     if (this.storeRole == "Person" || this.storeRole=="Organization"){
+
+    return true;
+  }
+  }
+  else{
+    return false;
+  }
+}
   ngOnInit(): void {
   }
 

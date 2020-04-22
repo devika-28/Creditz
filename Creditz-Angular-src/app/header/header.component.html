@@ -12,7 +12,7 @@
         <a class="nav-link" href="home" >      Home  </a>
       </li>
             
-      <li class="nav-item" *ngIf="this.store!=null">
+      <li class="nav-item" *ngIf="showInHeader()">
         <a class="nav-link" href="user-history">     Applications  </a>
       </li>
 
@@ -50,7 +50,7 @@
 
     </ul>
   <form class="form-inline my-2 my-lg-0" >
-<div style="max-width:50" *ngIf="this.store!=null">
+<div style="max-width:50" *ngIf="showInHeader()">
 <!--<img src="./assets/profile.png" (click)="openProfileDialog()">-->
 <button class="profileButton" (click)="openProfileDialog()"></button>
 </div>
