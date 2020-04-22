@@ -35,9 +35,9 @@ input[type=text], input[type=password] {
    background-repeat: no-repeat;
    position: fixed;
    float: right;
-   margin-top: -6%;
+   margin-top: -2%;
    margin-right: 5px;
-   margin-left: 78%;
+   margin-left: 80%;
    z-index: 9;
 
   }
