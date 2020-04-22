@@ -24,7 +24,7 @@ public interface PersonApplicationService {
 
 	public List<PersonApplicant> getAllPersonApplicant(Integer pageNo, Integer pageSize);
 
-	/** 
+	/**
 	 * @return list of Person Applicants
 	 */
 
@@ -32,7 +32,7 @@ public interface PersonApplicationService {
 
 	/**
 	 * find top creditors
-	
+	 * 
 	 * @return list of Person Applicants
 	 */
 

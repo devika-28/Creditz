@@ -33,8 +33,6 @@ public class OrganizationApplicationServiceImplementation implements Organizatio
 
 		System.out.println(application.getBankruptcy());
 		System.out.println(application.getCriminalRecord());
-		// System.out.println(application.getLicenseNumber());
-		// System.out.println(application.getPancard());
 		try {
 			CibilReport reportOfCurrentUser = cibilReport.findByPanCard(application.getPancard());
 			System.out.println("before cibil ");

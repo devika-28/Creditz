@@ -4,10 +4,8 @@ import org.springframework.stereotype.Service;
 
 import com.impetus.model.Person;
 
-
 @Service
 public interface PersonService {
-    
 	/**
 	 * Find User on the basis of userId
 	 *
@@ -16,5 +14,5 @@ public interface PersonService {
 	 * @return Person
 	 */
 	public Person findPersonByUserId(Long userId);
-	
+
 }

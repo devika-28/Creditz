@@ -37,8 +37,7 @@ public class MailService {
 	static final String RECORDNOTFOUND = "You dont have sufficient Credit History, please try again after some months wih some credit history.";
 	static final String REJECTEDBADHISTORY = "As per your past loan history we are not seeing you as reliable person.";
 	static final String ENDDATA = "Regards," + "\n\n" + "Creditz Group";
-	static final String ADDITIONALDATA = "\r"
-			+ "You can visit our nearest Branch with all documents proof as u have mentioned in your loan application for further processing. ";
+	static final String ADDITIONALDATA = "\r"+ "You can visit our nearest Branch with all documents proof as u have mentioned in your loan application for further processing. ";
 	static final String OTPCONTENT = "As per your Request you want to change your password here is the otp to proceed further";
 
 	/**
@@ -130,32 +129,25 @@ public class MailService {
 		 */
 		javaMailSender.send(mail);
 	}
-	
-	
-	
-	
-	
-	public void	sendEmailToUser(String userEmail,String otp) throws  MailException {
-		
-		
+
+	public void sendEmailToUser(String userEmail, String otp) throws MailException {
+
 		System.out.println("inside mail Service for otp");
 		SimpleMailMessage mail = new SimpleMailMessage();
 		System.out.println(otp);
 		mail.setTo(userEmail);
 		mail.setSubject("Email OTP Verification");
-		   mail.setText("Hello,\n Thank you for register at our website\n please verify your otp ,Your otp numberis below \n"+otp);
-		
+		mail.setText(
+				"Hello,\n Thank you for register at our website\n please verify your otp ,Your otp numberis below \n"
+						+ otp);
+
 		/*
 		 * This send() contains an Object of SimpleMailMessage as an Parameter
 		 */
-		   System.out.println("sending mail");
+		System.out.println("sending mail");
 		javaMailSender.send(mail);
 		System.out.println("mail sent with otp");
-			
-			
-			
-		}
-	
-	
+
+	}
 
 }

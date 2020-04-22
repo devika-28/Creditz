@@ -4,8 +4,6 @@ import java.util.HashMap;
 
 import org.springframework.stereotype.Service;
 
-import com.impetus.model.User;
-
 @Service
 public interface LoginService {
 
@@ -16,7 +14,6 @@ public interface LoginService {
 	 * 
 	 * @return hash map if user Exist
 	 */
-   	public HashMap<?,?> PostLoginDetails(String userEmail);
-
+	public HashMap<?, ?> PostLoginDetails(String userEmail);
 
 }
