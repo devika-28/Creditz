@@ -13,10 +13,10 @@ export class PersonService {
         return this.http.get("http://localhost:9999/api/getPerson");
    }
 
-     findPersonByUserId(userid:Number):Observable<any>
+     findPersonByUserId(userid:any):Observable<any>
      {
         const params = new HttpParams()
-        .set('userId', userid+""); 
+        .set('userId', userid); 
         return this.http.get("http://localhost:9999/findPersonByUserId",{params}); 
      }
 

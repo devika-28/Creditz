@@ -18,10 +18,10 @@ export class OrganizationService {
         return this.http.get("http://localhost:9999/api/getOrganizationApplicant",{params});
              
     }
-    findOrganizationByUserId(userid:Number):Observable<any>
+    findOrganizationByUserId(userid:any):Observable<any>
     {
        const params = new HttpParams()
-       .set('userId', userid+""); 
+       .set('userId', userid); 
        return this.http.get("http://localhost:9999/findOrganizationByUserId",{params}); 
     }
 

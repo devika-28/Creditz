@@ -78,36 +78,35 @@ import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { MatStepperModule } from '@angular/material/stepper';
-import { PersonProfileComponent } from './person-profile/person-profile.component';
-import { OrganizationProfileComponent } from './organization-profile/organization-profile.component';
+import { ApplicantProfileComponent } from './applicant-profile/applicant-profile.component';
 
 
 
 export const route: Routes = [
-  { path: " creditor-table-list",component:CreditorTableListComponent},
-  { path: '', component: HomeComponent },
-  { path: '#', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'admin', component: AdminComponent },
-  { path: 'financial-analyst', component: FinancialAnalystComponent },
-  { path: 'individual-user', component: IndividualUserComponent },
-  { path: 'individual-user/individual-user-application', component: IndividualUserApplicationComponent },
-  { path: 'Orgnizational-user', component: OrganizationalUserComponent },
+  {path: " creditor-table-list",component:CreditorTableListComponent},
+  {path: '', component: HomeComponent },
+  {path: '#', component: HomeComponent },
+  {path: 'login', component: LoginComponent },
+  {path: 'home', component: HomeComponent },
+  {path: 'register', component: RegisterComponent },
+  {path: 'admin', component: AdminComponent },
+  {path: 'financial-analyst', component: FinancialAnalystComponent },
+  {path: 'individual-user', component: IndividualUserComponent },
+  {path: 'individual-user/individual-user-application', component: IndividualUserApplicationComponent },
+  {path: 'Orgnizational-user', component: OrganizationalUserComponent },
   {path: "financial-analyst/person-application", component: PersonApplicationComponent },
   {path: "financial-analyst/organization-application", component: OrganizationApplicationComponent },
-  { path: 'contactUs', component: ContactUsComponent },
-  { path: 'ourPolicies', component: OurPoliciesComponent },
-  { path: 'faq', component: FAQComponent },
-  { path: 'aboutUs', component: AboutUsComponent },
-  { path: 'organization-user-calculator', component: OrganizationUserCalculatorComponent },
-  { path: 'successful' , component: ApplicationSubmittionComponent },
+  {path: 'contactUs', component: ContactUsComponent },
+  {path: 'ourPolicies', component: OurPoliciesComponent },
+  {path: 'faq', component: FAQComponent },
+  {path: 'aboutUs', component: AboutUsComponent },
+  {path: 'organization-user-calculator', component: OrganizationUserCalculatorComponent },
+  {path: 'successful' , component: ApplicationSubmittionComponent },
   {path:"show-analyst",component:ShowAnalystComponent},
   {path:"schedular",component:SchedularComponent},
-  { path: 'aboutUs', component: AboutUsComponent },
-  { path:"creditor-table-list",component:CreditorTableListComponent},
-  { path:"organization-creditor-table-list",component:OrganizationCreditorTableListComponent},
+  {path: 'aboutUs', component: AboutUsComponent },
+  {path:"creditor-table-list",component:CreditorTableListComponent},
+  {path:"organization-creditor-table-list",component:OrganizationCreditorTableListComponent},
   {path:"adminsidenav",component:AdminsidenavComponent},
   {path:"admin",component:AdminComponent},
   {path:"analyst-registration",component:AnalystRegistrationComponent},
@@ -116,11 +115,8 @@ export const route: Routes = [
   {path:"user-history",component:HistoryComponent},
   {path:"forgot-password",component:ForgotPasswordComponent},
   {path:"reset-password",component:ResetPasswordComponent},
-  {path:"organization-profile",component:OrganizationProfileComponent},
-  {path:"person-profile",component:PersonProfileComponent},
-  { path: '**', component:ErrorComponent},
-  
-
+  {path:"applicant-profile",component:ApplicantProfileComponent},
+  {path: '**', component:ErrorComponent},
 ];
 
 
@@ -171,8 +167,7 @@ firebase.initializeApp(firebaseConfig);
     HistoryComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
-    PersonProfileComponent,
-    OrganizationProfileComponent,
+    ApplicantProfileComponent,
   
     
     // AuthenticateComponent,
