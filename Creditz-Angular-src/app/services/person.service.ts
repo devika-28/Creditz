@@ -8,10 +8,6 @@ export class PersonService {
     
  }
 
-   findAllTopIndividualCreditors(): Observable<any> {
-        console.log("hello");
-        return this.http.get("http://localhost:9999/api/getPerson");
-   }
 
      findPersonByUserId(userid:any):Observable<any>
      {
@@ -21,12 +17,4 @@ export class PersonService {
      }
 
             
-
-
-findApplicationByAppliId(userid:Number):Observable<any>    {
-        const params = new HttpParams()
-       .set('userId', userid+"");
-        return this.http.get("http://localhost:9999/api/getPersonApplicant",{params});
-             
-    }
-}
+ }

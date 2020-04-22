@@ -13,14 +13,9 @@ import { RegisterComponent } from './register/register.component';
 import { NgForm } from '@angular/forms';
 // import {HttpModule} from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-import { AdminComponent } from './admin/admin.component';
 import { IndividualUserComponent } from './individual-user/individual-user.component';
 import { OrganizationalUserComponent } from './organizational-user/organizational-user.component';
 import { FinancialAnalystComponent } from './financial-analyst/financial-analyst.component';
-import { OrganizationApplicationComponent } from './organization-application/organization-application.component';
-import { OrganizationApplicationListComponent } from './organization-application-list/organization-application-list.component';
-import { PersonApplicationComponent } from './person-application/person-application.component';
-import { PersonApplicationListComponent } from './person-application-list/person-application-list.component';
 // import { AuthenticateComponent } from './authenticate/authenticate.component';
 // import {MatTableModule} from '@angular/material/table';
 import {MatTabsModule} from '@angular/material/tabs';
@@ -80,35 +75,29 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { MatStepperModule } from '@angular/material/stepper';
 import { ApplicantProfileComponent } from './applicant-profile/applicant-profile.component';
 
-
-
 export const route: Routes = [
-  {path: " creditor-table-list",component:CreditorTableListComponent},
-  {path: '', component: HomeComponent },
-  {path: '#', component: HomeComponent },
-  {path: 'login', component: LoginComponent },
-  {path: 'home', component: HomeComponent },
-  {path: 'register', component: RegisterComponent },
-  {path: 'admin', component: AdminComponent },
-  {path: 'financial-analyst', component: FinancialAnalystComponent },
-  {path: 'individual-user', component: IndividualUserComponent },
-  {path: 'individual-user/individual-user-application', component: IndividualUserApplicationComponent },
-  {path: 'Orgnizational-user', component: OrganizationalUserComponent },
-  {path: "financial-analyst/person-application", component: PersonApplicationComponent },
-  {path: "financial-analyst/organization-application", component: OrganizationApplicationComponent },
-  {path: 'contactUs', component: ContactUsComponent },
-  {path: 'ourPolicies', component: OurPoliciesComponent },
-  {path: 'faq', component: FAQComponent },
-  {path: 'aboutUs', component: AboutUsComponent },
-  {path: 'organization-user-calculator', component: OrganizationUserCalculatorComponent },
-  {path: 'successful' , component: ApplicationSubmittionComponent },
+  { path: " creditor-table-list",component:CreditorTableListComponent},
+  { path: '', component: HomeComponent },
+  { path: '#', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'financial-analyst', component: FinancialAnalystComponent },
+  { path: 'individual-user', component: IndividualUserComponent },
+  { path: 'individual-user/individual-user-application', component: IndividualUserApplicationComponent },
+  { path: 'Orgnizational-user', component: OrganizationalUserComponent },
+  { path: 'contactUs', component: ContactUsComponent },
+  { path: 'ourPolicies', component: OurPoliciesComponent },
+  { path: 'faq', component: FAQComponent },
+  { path: 'aboutUs', component: AboutUsComponent },
+  { path: 'organization-user-calculator', component: OrganizationUserCalculatorComponent },
+  { path: 'successful' , component: ApplicationSubmittionComponent },
   {path:"show-analyst",component:ShowAnalystComponent},
   {path:"schedular",component:SchedularComponent},
-  {path: 'aboutUs', component: AboutUsComponent },
-  {path:"creditor-table-list",component:CreditorTableListComponent},
-  {path:"organization-creditor-table-list",component:OrganizationCreditorTableListComponent},
+  { path: 'aboutUs', component: AboutUsComponent },
+  { path:"creditor-table-list",component:CreditorTableListComponent},
+  { path:"organization-creditor-table-list",component:OrganizationCreditorTableListComponent},
   {path:"adminsidenav",component:AdminsidenavComponent},
-  {path:"admin",component:AdminComponent},
   {path:"analyst-registration",component:AnalystRegistrationComponent},
   {path:"show-analyst",component:ShowAnalystComponent},
   {path:"schedular",component:SchedularComponent},
@@ -116,7 +105,9 @@ export const route: Routes = [
   {path:"forgot-password",component:ForgotPasswordComponent},
   {path:"reset-password",component:ResetPasswordComponent},
   {path:"applicant-profile",component:ApplicantProfileComponent},
-  {path: '**', component:ErrorComponent},
+  { path: '**', component:ErrorComponent},
+  
+
 ];
 
 
@@ -139,14 +130,9 @@ firebase.initializeApp(firebaseConfig);
     HeaderComponent,
     HomeComponent,
     RegisterComponent,
-    AdminComponent,
     IndividualUserComponent,
     OrganizationalUserComponent,
     FinancialAnalystComponent,
-    OrganizationApplicationComponent,
-    OrganizationApplicationListComponent,
-    PersonApplicationComponent,
-    PersonApplicationListComponent,
     IndividualUserApplicationComponent,
     AboutUsComponent,
     FAQComponent,
@@ -167,8 +153,8 @@ firebase.initializeApp(firebaseConfig);
     HistoryComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
-    ApplicantProfileComponent,
-  
+    ApplicantProfileComponent
+    
     
     // AuthenticateComponent,
     // HttpClientModule,

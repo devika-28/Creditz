@@ -6,18 +6,6 @@ export class OrganizationService {
     
     constructor(private http:HttpClient) {
 }
-
-    findAllTopOrganizationCreditors(): Observable<any> {
-        return this.http.get("http://localhost:9999/api/getOrganization")
-            
-    }
-    
-    findApplicationByAppliId(organizationid:Number):Observable<any>{
-        const params = new HttpParams()
-        .set('userId', organizationid+"");
-        return this.http.get("http://localhost:9999/api/getOrganizationApplicant",{params});
-             
-    }
     findOrganizationByUserId(userid:any):Observable<any>
     {
        const params = new HttpParams()
