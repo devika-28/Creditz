@@ -3,10 +3,10 @@
 }
 
 .profileButton {
-  background-image: url(src\assets\profile1.png);
-    background-size: 70px 70px;
-    width: 70px; 
-    height: 70px; 
+  background-image: url(src\assets\sinpleIcon.png);
+    background-size: 100px 100px;
+    width: 100px; 
+    height: 90px; 
     background-color: transparent;
     border: transparent;
     margin-top: 2px;

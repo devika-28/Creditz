@@ -1,0 +1,26 @@
+<div class='md-padding' layout="row" layout-wrap>
+
+    <mat-card flex="2" *ngFor="let organizationapplicant of organizationapplicants" class="application-card" mat-elevation-z10>
+    <mat-card-header>
+        <mat-card-title class="title">User Application!!</mat-card-title>
+        </mat-card-header>
+         <mat-card-content>
+           <br/><h1> ApplicantId :</h1>
+            <h1> LoanAmount  :</h1>
+            <h1> Occupation  :</h1>
+            <h1> Panacard    :</h1>
+            <h1> Loan tenture :</h1>
+         </mat-card-content>
+        </mat-card>
+        <div>
+    
+    
+     <!-- </mat-card-content> -->
+        <br>
+        <mat-card-actions class="application-actions" style="position: absolute;right:0;    bottom:   0;">
+        <button mat-button class="mat-raised-button mat-primary"[routerLink]="['financial-analyst']">
+         Take Me Back
+        </button>
+    </mat-card-actions>
+    
+    
