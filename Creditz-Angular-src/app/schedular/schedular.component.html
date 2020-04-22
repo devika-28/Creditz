@@ -9,7 +9,7 @@
                         object-fit:cover
                         src="assets\admin.jpg" alt="admin.jpg">
                         <div class="header">
-                           <h5>M.N.Rao</h5>
+                           <h4>Admin</h4>
                         </div>
                </div>
                 <a mat-list-item [routerLink]="'/organization-creditor-table-list'">
@@ -54,11 +54,11 @@
                     </mat-panel-description>
                   </mat-expansion-panel-header>
                    <mat-action-row>
-                  <button mat-button (click)="personApplicantClick()">PersonApplicant</button>
-                   <button mat-button (click)="organizationApplicantClick()">OrganizationApplicant</button>
+                  <button mat-button mat-raised-button color="primary"  (click)="personApplicantClick()">Individual Applications</button>
+                   <button mat-button mat-raised-button color="primary"  (click)="organizationApplicantClick()">Organization Applications</button>
                 </mat-action-row>
-                <h4>On click on Person Applicant button you can send application Status to person applicant.</h4>
-                <h4> On click on Organization Applicant button you can send Application status to Person applicant</h4>
+                <h4>On click on Person Applicantions button you can send application Status to person applicants.</h4>
+                <h4>On click on Organization Applicantions button you can send Application status to Organization applicants</h4>
                 
               </mat-expansion-panel>
                 
