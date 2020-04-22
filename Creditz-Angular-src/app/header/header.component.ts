@@ -3,6 +3,7 @@ import { HistoryComponent } from '../history/history.component';
 import {MatDialog} from '@angular/material/dialog';
 import { HomeComponent } from '../home/home.component';
 import { ThrowStmt } from '@angular/compiler';
+import { ApplicantProfileComponent } from '../applicant-profile/applicant-profile.component';
 
 
 @Component({
@@ -41,7 +42,7 @@ logout(){
 }
 
 openProfileDialog() {
-  const dialogRef = this.dialog.open(HomeComponent);
+  const dialogRef = this.dialog.open(ApplicantProfileComponent);
 }
 
 openDialog() {

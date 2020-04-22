@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { AnalystDialogBoxComponent } from '../analyst-dialog-box/analyst-dialog-box.component';
 import { isNull } from 'util';
+import { MailService } from '../services/mail.service';
 
 @Component({
   selector: 'app-analyst-registration',
@@ -22,29 +23,30 @@ export class AnalystRegistrationComponent implements OnInit {
   loading: false;
   UserEmailCheck: any;
   constructor(private formBuilder: FormBuilder, private analystService:AnalystService,
+    private mailService:MailService,
     private router: Router,public dialog: MatDialog
     ) { }
   ngOnInit(){
     
   }
   
-onSubmit1() {
-  this.submitted = true;
-  this.openDialog();
-  console.log(this.userModel1);
-  this.analystService.registerAnalyst(this.userModel1).subscribe(  
+  onSubmit1() {
+    this.submitted = true;
+    console.log(this.userModel1);
+   
+    this.analystService.registerAnalyst(this.userModel1).subscribe(  
     data => {console.log('success'!,data)
+    this.mailService.sendMail(this.userModel1.userEmail,this.userModel1.password).subscribe
+    (data=>console.log('success',data))
     this.openDialog();
-    this.router.navigate(['adminsidenav'], { queryParams: { registered: true }});
-  },
-  error => {
-    
-      this.error = error;
-      this.loading = false;
-      console.error('Error!',error)
-      this.router.navigate(['analyst-registration'], { queryParams: { registered: true } });
-  });
-}
+    this.router.navigate(['adminsidenav'], {queryParams: { registered: true }});
+    },
+    error => {
+        this.error = error;
+        this.loading = false;
+        console.error('Error!',error)
+    });
+  }
 goToUrl(url: any){
 window.open(url,"_self");
 }
