@@ -35,7 +35,7 @@ export class OrganizationUserApplicationService {
             this.applicationId = res['Application_Id'];
           //console.log(this.applicationId);
             window.open("successful","_self");
-            window.alert("Thanks!\nYour Application is not taken into consideration\nEnter valid pan number");
+            window.alert("Thanks!\nYour Application is taken into consideration\nWe will inform you soon about your application status");
           }
         )
       }
