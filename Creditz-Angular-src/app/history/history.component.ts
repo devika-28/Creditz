@@ -22,6 +22,7 @@ const ELEMENT_DATA: History[] = [];
 })
 export class HistoryComponent implements OnInit {
 
+  store = window.sessionStorage.getItem('userId');
   constructor(private historyService: HistoryService) {  }
    
   dataSource = new MatTableDataSource(ELEMENT_DATA);
@@ -34,7 +35,32 @@ export class HistoryComponent implements OnInit {
     this.historyService.showHistory(window.sessionStorage.getItem('userId'))
     .subscribe((history:History[])=>{
       history.forEach(i => {
-        var temp = {applicationId:i['applicationId'], loanAmount:i['loanAmount'], loanTenure:i['loanTenure'], applicationStatus:i['applicationStatus'], emailStatus:i['emailStatus']}
+        status='Pending'
+        switch(i['applicationStatus']){
+          case 'Rejected':
+            status='Rejected'
+            break;
+          case 'Rejected Bad History':
+            status='Rejected'
+            break;  
+          case 'Rejected Low Credits':
+            status='Rejected'
+            break; 
+          case 'Approved':
+            status='Approved'
+            break;
+          case 'Rejected Amount Declined':
+            status='Rejected'
+            break;
+          case 'Pending Internal Error':
+            status='Pending'
+            break;
+          case 'Record Not Found':
+            status='Rejected'
+            break;
+          
+        }
+        var temp = {applicationId:i['applicationId'], loanAmount:i['loanAmount'], loanTenure:i['loanTenure'], applicationStatus:status, emailStatus:i['emailStatus']}
         ELEMENT_DATA.push(temp)
       });
     })
