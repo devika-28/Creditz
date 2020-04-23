@@ -28,8 +28,8 @@ public interface PersonApplicationRepository extends JpaRepository<PersonApplica
 
 	@Query(nativeQuery = true, value = "SELECT LAST_INSERT_ID()")
 	Long getApplicationId();
-
-	@Query(nativeQuery = true, value = "Select * from personapplicant where user_id=:userId")
+	
+	@Query(nativeQuery = true, value = "Select * from personapplicant where user_id=1 and email_status=\"True\"\r\n" + "")
 	List<PersonApplicant> findByUserId(long userId);
 
 	@Modifying
