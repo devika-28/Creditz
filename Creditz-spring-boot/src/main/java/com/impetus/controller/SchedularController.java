@@ -63,6 +63,7 @@ public class SchedularController {
 
 			try {
 				notificationService.sendEmailToApplicants(email, estatus, applicationStatus);
+				LOG.info("Application status has send to" +email);
 				personRepository.updateEmailStatus(applicants.getApplicationId(), status);
 			} catch (MailException mailException) {
 				LOG.error("exception ocuured", mailException);
@@ -94,6 +95,7 @@ public class SchedularController {
 
 			try {
 				notificationService.sendEmailToApplicants(email, estatus, applicationStatus);
+				LOG.info("Application status has send to" +email);
 				Repository.updateEmailStatus(applicants.getApplicationId(), status);
 			} catch (MailException mailException) {
 				LOG.error("exception ocuured", mailException);
