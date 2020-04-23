@@ -10,13 +10,38 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.impetus.model.User;
 
+/**
+ * Repository to fetch data from User
+ */
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-	Page<User>findByRole(String role, Pageable pageable);
+	/**
+	 * find user by role in particular page size and and number of records
+	 * 
+	 * @param role
+	 * 
+	 *   @ return page of type user
+	 */
+	Page<User> findByRole(String role, Pageable pageable);
+
+	/**
+	 * find user by email
+	 * 
+	 * @param userId user id
+	 * 
+	 * @return user
+	 */
 
 	User findByUserEmail(String userEmail);
 
+	/**
+	 * find user by email and password combination
+	 * 
+	 * @param userEmail
+	 * 
+	 * @param password
+	 */
 	@Transactional
 	@Modifying
 	@Query("UPDATE user u SET u.password=:password where u.userEmail=:userEmail")

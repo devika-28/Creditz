@@ -50,6 +50,7 @@ public interface PersonApplicationRepository extends JpaRepository<PersonApplica
 	 * update email status with respect to the application ID
 	 * 
 	 * @param applicationId application id
+	 * 
 	 * @param status        status of the application
 	 */
 	@Modifying
@@ -57,16 +58,22 @@ public interface PersonApplicationRepository extends JpaRepository<PersonApplica
 	@Query(nativeQuery = true, value = "UPDATE personapplicant p SET p.email_status =:status WHERE p.application_id = :applicationId")
 	void updateEmailStatus(long applicationId, String status);
 
-	
 	/**
 	 * Find the application by email status
-	 * @param emailStatus email status, wether email is sent or not*/
+	 * 
+	 * @param emailStatus email status, whether email is sent or not
+	 * 
+	 * @return list of person applicants
+	 */
 	List<PersonApplicant> findByemailStatus(String emailStatus);
 
-	
 	/**
 	 * find top 10 creditors from the application.
-	 * @param applicationStatus application status*/
+	 * 
+	 * @param applicationStatus application status
+	 * 
+	 * @return list of person applicants
+	 */
 	@Modifying
 	@Transactional
 	@Query(nativeQuery = true, value = "SELECT*FROM personapplicant,cibil_report WHERE personapplicant.pan_card=cibil_report.pan_card AND application_status= :applicationStatus GROUP BY user_id  ORDER BY credit_score DESC LIMIT 10")

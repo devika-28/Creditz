@@ -11,6 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.impetus.model.OrganizationApplicant;
 
+/**
+ * Deal with organization applications stored in database
+ */
 @Repository
 public interface OrganizationApplicationRepository extends JpaRepository<OrganizationApplicant, Long> {
 	@Modifying
@@ -29,13 +32,34 @@ public interface OrganizationApplicationRepository extends JpaRepository<Organiz
 	@Query(nativeQuery = true, value = "SELECT LAST_INSERT_ID()")
 	Long getApplicationId();
 
+	/**
+	 * Find the application by email status
+	 * 
+	 * @param emailStatus email status, whether email is sent or not
+	 * 
+	 * @return list of organization applicants
+	 */
 	List<OrganizationApplicant> findByemailStatus(String emailStatus);
 
+	/**
+	 * update email status with respect to the application ID
+	 * 
+	 * @param applicationId application id
+	 * 
+	 * @param status        status of the application
+	 */
 	@Modifying
 	@Transactional
 	@Query(nativeQuery = true, value = "UPDATE organizationapplicant p SET p.email_status =:status WHERE p.application_id = :applicationId")
 	void updateEmailStatus(long applicationId, String status);
 
+	/**
+	 * find top 10 creditors from the organization applications.
+	 * 
+	 * @param applicationStatus application status
+	 * 
+	 * @return list of organization applicants
+	 */
 	@Modifying
 	@Transactional
 	@Query(nativeQuery = true, value = "SELECT *FROM organizationapplicant,cibil_report WHERE organizationapplicant.pan_card=cibil_report.pan_card  AND application_status= :applicationStatus GROUP BY user_id  ORDER BY credit_score DESC LIMIT 10")
