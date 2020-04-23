@@ -10,8 +10,18 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * CORS filter, for HTTP Header, configurations
+ */
 public class CORSFilter implements Filter {
 
+	/**
+	 * Filter servlet requests and set header.
+	 * 
+	 * @param req   Servlet Request
+	 * @param res   Servlet response
+	 * @param chain Filter chain
+	 */
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
 			throws IOException, ServletException {
 		HttpServletResponse response = (HttpServletResponse) res;
@@ -24,6 +34,9 @@ public class CORSFilter implements Filter {
 		chain.doFilter(req, res);
 	}
 
+	/**
+	 * @param filterConfig filter Configuration
+	 */
 	public void init(FilterConfig filterConfig) {
 	}
 

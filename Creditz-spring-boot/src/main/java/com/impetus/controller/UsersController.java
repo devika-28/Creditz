@@ -15,10 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.impetus.model.User;
 import com.impetus.service.UsersService;
 
-/**
- * @author pia jaiswal
- *
- */
 @RestController
 public class UsersController {
 

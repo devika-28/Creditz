@@ -19,8 +19,8 @@ import com.impetus.repository.PersonRepository;
 @Service
 public class PersonApplicationServiceImplementation implements PersonApplicationService {
 
-                    static final String APPLICATIONSTATUS="Approved";
-                    static final String EMAILSTATUS = "False";
+	static final String APPLICATIONSTATUS = "Approved";
+	static final String EMAILSTATUS = "False";
 	@Autowired
 	CibilReportRepository cibilReport;
 
@@ -30,6 +30,12 @@ public class PersonApplicationServiceImplementation implements PersonApplication
 	@Autowired
 	PersonRepository person;
 
+	/**
+	 * process the submitted application and calculate the risk
+	 * 
+	 * @param application user application
+	 * @return hash map consisting of application ID
+	 */
 	@Override
 	public HashMap<String, Long> RiskMitigate(PersonApplicant application) {
 
@@ -64,6 +70,21 @@ public class PersonApplicationServiceImplementation implements PersonApplication
 		return json;
 	}
 
+	/**
+	 * function to calculate approve or disapprove
+	 * 
+	 * @param bankrupt
+	 * @param criminal
+	 * @param assetCategory
+	 * @param cibilScore
+	 * @param loanAmount
+	 * @param creditUtilization
+	 * @param creditLimit
+	 * @param monthlyIncome
+	 * @param monthlyLiablities
+	 * @param currentBalance
+	 * @return status
+	 */
 	public String ApproveOrDisapprove(int bankrupt, int criminal, String assetCategory, int cibilScore, int loanAmount,
 			float creditUtilization, float creditLimit, int monthlyIncome, float monthlyLiablities,
 			float currentBalance) {
@@ -98,6 +119,19 @@ public class PersonApplicationServiceImplementation implements PersonApplication
 		return "Pending Internal Error";
 	}
 
+	/**
+	 * validation function
+	 * 
+	 * @param limit
+	 * @param loanAmount
+	 * @param creditUtilization
+	 * @param creditLimit
+	 * @param monthlyIncome
+	 * @param monthlyLiablities
+	 * @param currentBalance
+	 * 
+	 * @return status
+	 */
 	public String validation(int limit, int loanAmount, float creditUtilization, float creditLimit, int monthlyIncome,
 			float monthlyLiablities, float currentBalance) {
 		if (loanAmount > limit) {
@@ -162,7 +196,7 @@ public class PersonApplicationServiceImplementation implements PersonApplication
 	 * @return list of Person Applicants
 	 */
 	public List<PersonApplicant> findApplicants() {
-		
+
 		List<PersonApplicant> result = personApplication.findByemailStatus(EMAILSTATUS);
 		System.out.println("inside service");
 		return result;

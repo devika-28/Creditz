@@ -20,6 +20,11 @@ public class LoginController {
 	@Autowired
 	LoginService userService; // Service which will do all data retrieval/manipulation work
 
+	/**
+	 * login function
+	 * 
+	 * @return Hash map containing role and user id of current user
+	 */
 	@SuppressWarnings("unchecked")
 	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@RequestMapping(value = "/login", method = RequestMethod.GET)

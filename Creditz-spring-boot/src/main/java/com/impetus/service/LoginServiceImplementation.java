@@ -13,6 +13,12 @@ public class LoginServiceImplementation implements LoginService {
 	@Autowired
 	private LoginRepository loginRepo;
 
+	/**
+	 * after authentication it will return user id and role to front end.
+	 * 
+	 * @param userEmail user email
+	 * @return hash map of userid and role
+	 */
 	@Override
 	public HashMap<String, String> PostLoginDetails(String userEmail) {
 

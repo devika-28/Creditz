@@ -25,6 +25,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	private static String REALM = "RMS_REALM";
 
+	/**
+	 * User details service it fetch user email from database, validate the input
+	 * password with the salted password, stored in database and return the the
+	 * JDBCDaoImpl
+	 * 
+	 * @return JDBC DAO implementation
+	 */
 	@Bean(name = "userDetailsService")
 	public UserDetailsService userDetailsService() {
 		JdbcDaoImpl jdbcImpl = new JdbcDaoImpl();
@@ -34,11 +41,21 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		return jdbcImpl;
 	}
 
+	/**
+	 * using password encoder it decode the password from the database.
+	 * 
+	 * @param auth Authentication Manager Builder
+	 */
 	@Autowired
 	public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService()).passwordEncoder(passwordencoder());
 	}
 
+	/**
+	 * using the authentication, it authenticate the url with respect to roles.
+	 * 
+	 * @param http HTTP Security
+	 */
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
@@ -46,16 +63,27 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.authenticationEntryPoint(getBasicAuthEntryPoint());
 	}
 
+	/**
+	 * Custom authentication entry point.
+	 * 
+	 * @return new auth entry point
+	 */
 	@Bean
 	public CustomBasicAuthenticationEntryPoint getBasicAuthEntryPoint() {
 		return new CustomBasicAuthenticationEntryPoint();
 	}
 
+	/** Configure web security. */
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");
 	}
 
+	/**
+	 * password encoder.
+	 * 
+	 * @return bCruptPasswordEncoder
+	 */
 	@Bean(name = "passwordEncoder")
 	public PasswordEncoder passwordencoder() {
 		return new BCryptPasswordEncoder();

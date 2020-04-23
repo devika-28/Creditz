@@ -20,12 +20,16 @@ public class PersonApplicationController {
 	@Autowired
 	PersonApplicationService service;
 
+	/**
+	 * Function to calculate risk on the basis of persons application
+	 * 
+	 * @param application Person application
+	 * @return set the risk status into database
+	 */
 	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@PostMapping("/individual-user/user-application")
 	public HashMap<String, Long> personApplicantApplicationSubmit(@RequestBody PersonApplicant application) {
 
-//    	service.RiskMitigate(application);
-//    	System.out.println("controller transfered to service");
 		return service.RiskMitigate(application);
 
 	}
@@ -43,8 +47,6 @@ public class PersonApplicationController {
 	@PostMapping("/individual-user/user-history")
 	public List<PersonApplicant> personHistory(@RequestBody PersonApplicant userId) {
 
-//    	service.RiskMitigate(application);
-//    	System.out.println("controller transfered to service");
 		return service.getHistory(userId);
 
 	}

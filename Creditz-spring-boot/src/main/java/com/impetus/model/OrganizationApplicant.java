@@ -11,86 +11,83 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
-
 @Entity(name = "organizationapplicant")
 @Table(name = "organizationapplicant")
 public class OrganizationApplicant {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long applicationId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long applicationId;
 
-    /** The panCard */
-    @Size(max = 10)
-    @Column(name = "pan_card", nullable = false)
-    private String pancard;
-    
-    /** Loan Amount */
-    @Column(name = "loan_amount", nullable = false)
-    private int loanAmount;
+	/** The panCard */
+	@Size(max = 10)
+	@Column(name = "pan_card", nullable = false)
+	private String pancard;
 
-    /** Revenue of Organization */
-    @Column(name = "revenue", nullable = false)
-    private long revenue;
+	/** Loan Amount */
+	@Column(name = "loan_amount", nullable = false)
+	private int loanAmount;
 
-    /** No of Employees in Organization */
-    @Column(name = "employee_count", nullable = false)
-    private int employeeCount;
+	/** Revenue of Organization */
+	@Column(name = "revenue", nullable = false)
+	private long revenue;
 
-    /** the no years business is running */
-    @Column(name = "age", nullable = false)
-    private int businessAge;
-    
+	/** No of Employees in Organization */
+	@Column(name = "employee_count", nullable = false)
+	private int employeeCount;
+
+	/** the no years business is running */
+	@Column(name = "age", nullable = false)
+	private int businessAge;
+
 	/** license no of organization */
-    @Column(name = "licenseno", nullable = false)
-    private String licenseNumber;
+	@Column(name = "licenseno", nullable = false)
+	private String licenseNumber;
 
-    /** field of organization */
-    @Column(name = "organization_type", nullable = false)
-    private String organizationType;
+	/** field of organization */
+	@Column(name = "organization_type", nullable = false)
+	private String organizationType;
 
-    /** application status approved or pending or approved */
-    @Column(name = "application_status", nullable = false)
-    private String applicationStatus;
+	/** application status approved or pending or approved */
+	@Column(name = "application_status", nullable = false)
+	private String applicationStatus;
 
-    /** Criminal record against applicant */
-    @Column(name = "criminal_record", nullable = false)
-    private int criminalRecord;
+	/** Criminal record against applicant */
+	@Column(name = "criminal_record", nullable = false)
+	private int criminalRecord;
 
-    /** is applicant is bankCorrupt */
-    @Column(name = "bankruptcy", nullable = false)
-    private int bankruptcy;
+	/** is applicant is bankCorrupt */
+	@Column(name = "bankruptcy", nullable = false)
+	private int bankruptcy;
 
-    /**
-     *loan tenure
-     */
-    @Column(name = "loan_tenure", nullable = false)
-    private int loanTenure;
-    
-    
-    @Column(name="email_status",nullable=false)
-    private String emailStatus;
-    public String getEmailStatus() {
+	/**
+	 * loan tenure
+	 */
+	@Column(name = "loan_tenure", nullable = false)
+	private int loanTenure;
+
+	@Column(name = "email_status", nullable = false)
+	private String emailStatus;
+
+	public String getEmailStatus() {
 		return emailStatus;
 	}
 
-    public void setEmailStatus(String emailStatus) {
+	public void setEmailStatus(String emailStatus) {
 		this.emailStatus = emailStatus;
 	}
 
 	/**
-     * 
-     */
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "organization_id")
-    private Organization organizationId;
-
+	 * 
+	 */
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "organization_id")
+	private Organization organizationId;
 
 	@OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id")
-    private User userId;
+	@JoinColumn(name = "user_id")
+	private User userId;
 
-	
-    public int getCriminalRecord() {
+	public int getCriminalRecord() {
 		return criminalRecord;
 	}
 
@@ -106,8 +103,7 @@ public class OrganizationApplicant {
 		this.bankruptcy = bankruptcy;
 	}
 
-
-    public long getApplicationId() {
+	public long getApplicationId() {
 		return applicationId;
 	}
 
@@ -179,7 +175,6 @@ public class OrganizationApplicant {
 		this.applicationStatus = applicationStatus;
 	}
 
-	
 	public int getLoanTenure() {
 		return loanTenure;
 	}
@@ -204,7 +199,4 @@ public class OrganizationApplicant {
 		this.userId = userId;
 	}
 
-
-    
-    
 }
