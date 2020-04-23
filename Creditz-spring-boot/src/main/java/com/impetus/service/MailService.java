@@ -11,6 +11,8 @@ import com.impetus.model.User;
 @Service
 public class MailService {
 
+	static final String APPPLICATION_UPDATE_SUBJECT = "Loan application Status";
+	static final String ANALYST_SUBJECT = "Financial Analyst Login Credentials";
 	/*
 	 * The Spring Framework provides an easy abstraction for sending email by using
 	 * the JavaMailSender interface, and Spring Boot provides auto-configuration for
@@ -37,7 +39,8 @@ public class MailService {
 	static final String RECORDNOTFOUND = "You dont have sufficient Credit History, please try again after some months wih some credit history.";
 	static final String REJECTEDBADHISTORY = "As per your past loan history we are not seeing you as reliable person.";
 	static final String ENDDATA = "Regards," + "\n\n" + "Creditz Group";
-	static final String ADDITIONALDATA = "\r"+ "You can visit our nearest Branch with all documents proof as u have mentioned in your loan application for further processing. ";
+	static final String ADDITIONALDATA = "\r"
+			+ "You can visit our nearest Branch with all documents proof as u have mentioned in your loan application for further processing. ";
 	static final String OTPCONTENT = "As per your Request you want to change your password here is the otp to proceed further";
 
 	/**
@@ -59,7 +62,7 @@ public class MailService {
 		SimpleMailMessage mail = new SimpleMailMessage();
 
 		mail.setTo(user.getUserEmail());
-		mail.setSubject("Analyst Login Credentials");
+		mail.setSubject(ANALYST_SUBJECT);
 		mail.setText("Your Login Credentials: " + "  EmailAddress:" + user.getUserEmail() + "  your password :"
 				+ user.getPassword());
 
@@ -79,9 +82,8 @@ public class MailService {
 		 */
 		System.out.println("inside mail Service");
 		SimpleMailMessage mail = new SimpleMailMessage();
-
 		mail.setTo(userEmail);
-		mail.setSubject("Analyst Login Credentials");
+		mail.setSubject("APPPLICATION_UPDATE_SUBJECT");
 		switch (applicationStatus) {
 		case "Approved":
 			mail.setText(WELCOME + "\n" + APPROVED + "\n" + ADDITIONALDATA + "\n" + ENDDATA);
