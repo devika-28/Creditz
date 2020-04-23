@@ -18,6 +18,9 @@ import com.impetus.repository.OrganizationRepository;
 
 @Service
 public class OrganizationApplicationServiceImplementation implements OrganizationApplicationService {
+ 
+                     static final String APPLICATIONSTATUS="Approved";
+                     static final String EMAILSTATUS = "False";
 
 	@Autowired(required = true)
 	OrganizationApplicationRepository organizationApplication;
@@ -205,8 +208,8 @@ public class OrganizationApplicationServiceImplementation implements Organizatio
 	 * @return list of Organization Applicants
 	 */
 	public List<OrganizationApplicant> findApplicants() {
-		String emailStatus = "False";
-		List<OrganizationApplicant> result = organizationApplication.findByemailStatus(emailStatus);
+		
+		List<OrganizationApplicant> result = organizationApplication.findByemailStatus(EMAILSTATUS);
 		System.out.println("inside service");
 		return result;
 	}
@@ -217,7 +220,7 @@ public class OrganizationApplicationServiceImplementation implements Organizatio
 	 * @return list of Organization Applicants
 	 */
 	@Override
-	public List<OrganizationApplicant> findTopPersonCreditors() {
+	public List<OrganizationApplicant> findTopPersonCreditors(APPLICATIONSTATUS) {
 		List<OrganizationApplicant> result = organizationApplication.findTopPersonCreditors();
 		return result;
 	}
