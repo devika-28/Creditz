@@ -38,8 +38,8 @@ public interface OrganizationApplicationRepository extends JpaRepository<Organiz
 
 	@Modifying
 	@Transactional
-	@Query(nativeQuery = true, value = "SELECT *FROM organizationapplicant,cibil_report WHERE organizationapplicant.pan_card=cibil_report.pan_card ORDER BY credit_score DESC LIMIT 10")
-	List<OrganizationApplicant> findTopPersonCreditors();
+	@Query(nativeQuery = true, value = "SELECT *FROM organizationapplicant,cibil_report WHERE organizationapplicant.pan_card=cibil_report.pan_card  AND application_status= :applicationStatus GROUP BY user_id  ORDER BY credit_score DESC LIMIT 10")
+	List<OrganizationApplicant> findTopPersonCreditors(String applicationStatus);
 
 	@Query(nativeQuery = true, value = "Select * from organizationapplicant where user_id=:userId")
 	List<OrganizationApplicant> findByUserId(long userId);

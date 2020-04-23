@@ -19,6 +19,8 @@ import com.impetus.repository.PersonRepository;
 @Service
 public class PersonApplicationServiceImplementation implements PersonApplicationService {
 
+                    static final String APPLICATIONSTATUS="Approved";
+                    static final String EMAILSTATUS = "False";
 	@Autowired
 	CibilReportRepository cibilReport;
 
@@ -160,8 +162,8 @@ public class PersonApplicationServiceImplementation implements PersonApplication
 	 * @return list of Person Applicants
 	 */
 	public List<PersonApplicant> findApplicants() {
-		String emailStatus = "False";
-		List<PersonApplicant> result = personApplication.findByemailStatus(emailStatus);
+		
+		List<PersonApplicant> result = personApplication.findByemailStatus(EMAILSTATUS);
 		System.out.println("inside service");
 		return result;
 
@@ -172,7 +174,7 @@ public class PersonApplicationServiceImplementation implements PersonApplication
 	 * 
 	 * @return list of Person Applicants
 	 */
-	public List<PersonApplicant> findTopPersonCreditors() {
+	public List<PersonApplicant> findTopPersonCreditors(APPLICATIONSTATUS) {
 		List<PersonApplicant> result = personApplication.findTopPersonCreditors();
 		return result;
 	}
