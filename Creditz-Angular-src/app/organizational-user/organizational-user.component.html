@@ -132,18 +132,18 @@
       </div>
         
         <div class="wrap-input100">
-          <select   #organizationType="ngModel" 
+          <input type="text"  #organizationType="ngModel" placeholder="Type of Organization eg.pvt. ltd."
            class="input100" name="organizationType"
-           [(ngModel)]="applicationModel.organizationType" required style="width: 150%;">
+           [(ngModel)]="applicationModel.organizationType" required >
             <!-- <option value="" ></option>Type of Organization</option> -->
-            <option value=""  [selected] > Type of organization</option>
+            <!-- <option value=""  [selected] > Type of organization</option>
             <option *ngFor="let city of City" [ngValue]="city">{{city}}</option>
-         </select>
+         </select> -->
           <!-- <input type="text" #organizationType="ngModel" placeholder="Type of Organization" class="input100" name="organizationType" [(ngModel)]="applicationModel.organizationType" required>           -->
           <div *ngIf="organizationType.invalid && (organizationType.dirty || organizationType.touched)"
           class="text-danger">
           <small *ngIf="organizationType.errors.required">
-           Select the type of Organization.
+           Enter the type of Organization e.g.not registered company,limited company etc.
           </small>     
           
           <span class="focus-input100"></span>
