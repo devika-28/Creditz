@@ -19,19 +19,8 @@ input[type=text], input[type=password] {
   height: 250px
 }
 
-/* 
-.button {
-  display: inline-block;
-  height: 200px;
-  padding: 2px;
-  margin: 2px;
-  vertical-align: top;
-  width: 400px;
-} */
-
 .birdButton {
    background-image: url(src\assets\birdButton3.png);
-   /*background-size: 100px 130px;*/
    background-repeat: no-repeat;
    position: fixed;
    float: right;
@@ -50,8 +39,6 @@ input[type=text], input[type=password] {
   width: 65%;  
   bottom: 2%;
   position: fixed;
-  /* border-bottom-right-radius: 45%;
-  border-top-right-radius: 45%; */
   }
 
 .click{
