@@ -52,10 +52,11 @@ public class ScheduledTasks {
 			String applicationStatus = applicants.getApplicationStatus();
 			try {
 				notificationService.sendEmailToApplicants(email, estatus, applicationStatus);
+				personRepository.updateEmailStatus(applicants.getApplicationId(), status);
 			} catch (MailException mailException) {
 				LOG.error("exception ocuured", mailException);
 			}
-			personRepository.updateEmailStatus(applicants.getApplicationId(), status);
+			
 		}
 	}
 
@@ -71,10 +72,11 @@ public class ScheduledTasks {
 			String applicationStatus = applicants.getApplicationStatus();
 			try {
 				notificationService.sendEmailToApplicants(email, estatus, applicationStatus);
+				Repository.updateEmailStatus(applicants.getApplicationId(), status);
 			} catch (MailException mailException) {
 				LOG.error("exception ocuured", mailException);
 			}
-			Repository.updateEmailStatus(applicants.getApplicationId(), status);
+			
 		}
 	}
 }
