@@ -43,4 +43,5 @@ public interface PersonApplicationRepository extends JpaRepository<PersonApplica
 	@Modifying
 	@Transactional
     @Query(nativeQuery = true, value ="SELECT*FROM personapplicant,cibil_report WHERE personapplicant.pan_card=cibil_report.pan_card AND application_status= :applicationStatus GROUP BY user_id  ORDER BY credit_score DESC LIMIT 10")
-	List<PersonApplicant>findTopPersonCreditors(String applicationStatus);
+	List<PersonApplicant> findTopPersonCreditors(String applicationStatus);
+}

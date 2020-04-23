@@ -174,8 +174,8 @@ public class PersonApplicationServiceImplementation implements PersonApplication
 	 * 
 	 * @return list of Person Applicants
 	 */
-	public List<PersonApplicant> findTopPersonCreditors(APPLICATIONSTATUS) {
-		List<PersonApplicant> result = personApplication.findTopPersonCreditors();
+	public List<PersonApplicant> findTopPersonCreditors() {
+		List<PersonApplicant> result = personApplication.findTopPersonCreditors(APPLICATIONSTATUS);
 		return result;
 	}
 

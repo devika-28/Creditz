@@ -220,8 +220,8 @@ public class OrganizationApplicationServiceImplementation implements Organizatio
 	 * @return list of Organization Applicants
 	 */
 	@Override
-	public List<OrganizationApplicant> findTopPersonCreditors(APPLICATIONSTATUS) {
-		List<OrganizationApplicant> result = organizationApplication.findTopPersonCreditors();
+	public List<OrganizationApplicant> findTopPersonCreditors() {
+		List<OrganizationApplicant> result = organizationApplication.findTopPersonCreditors(APPLICATIONSTATUS);
 		return result;
 	}
 }
