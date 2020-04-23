@@ -12,6 +12,7 @@ public interface User_DAO {
 	 *
 	 * @param user the user
 	 * @return true, if successful
+	 * to save person detail
 	 */
 	public boolean savePerson(Person user);
 
@@ -28,6 +29,7 @@ public interface User_DAO {
 	 *
 	 * @param user the user
 	 * @return true, if successful
+	 * to save organization detail
 	 */
 	public boolean saveOrganization(Organization user);
 

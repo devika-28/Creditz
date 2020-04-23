@@ -19,7 +19,11 @@ public class UserServiceImplementation implements UserService {
 	private User_DAO userdao;
 	@Autowired
 	private MailService notificationService;
-
+/**
+ * generate the six digit opt and return in string form
+ * 
+ * @return otp, in string form
+ */
 	public String GenerateOTP() {
 		String numbers = "0123456789";
 		String o = "";
@@ -33,6 +37,12 @@ public class UserServiceImplementation implements UserService {
 		return o;
 	}
 
+	/**
+	 * send otp
+	 * 
+	 * @param userEmail the userEmail
+	 * @return otp, in string form
+	 */
 	public String sendOTP(String userEmail) {
 
 		String otp = this.GenerateOTP();

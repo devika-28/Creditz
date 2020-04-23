@@ -21,16 +21,31 @@ public class OrganizationApplicationServiceImplementation implements Organizatio
  
                      static final String APPLICATIONSTATUS="Approved";
                      static final String EMAILSTATUS = "False";
-
+    /**
+     * the organization application
+     */
 	@Autowired(required = true)
 	OrganizationApplicationRepository organizationApplication;
 
+	/**
+	 * the cibil report
+	 */
 	@Autowired
 	CibilReportRepository cibilReport;
 
+	/**
+	 * the organzation
+	 */
 	@Autowired
 	OrganizationRepository organization;
 
+	/**
+	 * 
+	 *  @param application 
+	 * 
+	 * @return Application id string and value of application id 
+	 * 
+	 */
 	public HashMap<String, Long> organizationRiskMitigate(OrganizationApplicant application) {
 		HashMap<String, Long> json = new HashMap<>();
 
@@ -152,6 +167,10 @@ public class OrganizationApplicationServiceImplementation implements Organizatio
 //	public String validation(int limit, int loanAmount, float creditUtilization, float creditLimit, int monthlyIncome,
 //			float monthlyLiablities, float currentBalance) {
 //		if (loanAmount > limit) {
+	
+	
+	
+	
 //			return "Rejected Amount Declined";
 //		}
 //

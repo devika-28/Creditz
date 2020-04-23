@@ -21,11 +21,19 @@ public class OrganizationApplicationController {
 	OrganizationApplicationService organizationservice;
 	@Autowired
 	OrganizationApplicationService service;
+	
+	/**
+	 *  Organization applicant application submit.
+	 *
+	 * @param application the application
+	 * 
+	 * @return the Hashmap<String,Long> containing status and user id
+	 * To save the application by organization applicant
+	 */
 
 	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@PostMapping("/organization-user/user-application")
-	public HashMap<String, Long>organizationApplicantApplicationSubmit(
-			@RequestBody OrganizationApplicant application) {
+	public HashMap<String, Long>organizationApplicantApplicationSubmit(@RequestBody OrganizationApplicant application) {
 		return service.organizationRiskMitigate(application);
 
 	}

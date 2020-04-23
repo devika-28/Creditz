@@ -16,6 +16,13 @@ import com.impetus.model.OrganizationApplicant;
  */
 @Repository
 public interface OrganizationApplicationRepository extends JpaRepository<OrganizationApplicant, Long> {
+	
+	/**
+	 * setting the details of organization applicant to insert into the table 
+	 * @param applicationStatus application status
+	 * 
+	 * @return list of organization applicants
+	 */
 	@Modifying
 	@Transactional
 	@Query(value = "insert into organizationapplicant ( bankruptcy,age,criminal_record,employee_count,licenseno,loan_amount,loan_tenure,organization_type,pan_card,revenue, application_status,organization_id,user_id,email_status)"
@@ -29,6 +36,10 @@ public interface OrganizationApplicationRepository extends JpaRepository<Organiz
 			@Param("applicationStatus") String applicationStatus, @Param("organizationId") long organizationId,
 			@Param("userId") long userId, @Param("emailStatus") String emailStatus);
 
+	/**
+	 * getting last inserted id in the organization applicant table
+	 * @return the Long value containing application id
+	 */
 	@Query(nativeQuery = true, value = "SELECT LAST_INSERT_ID()")
 	Long getApplicationId();
 
@@ -65,9 +76,21 @@ public interface OrganizationApplicationRepository extends JpaRepository<Organiz
 	@Query(nativeQuery = true, value = "SELECT *FROM organizationapplicant,cibil_report WHERE organizationapplicant.pan_card=cibil_report.pan_card  AND application_status= :applicationStatus GROUP BY user_id  ORDER BY credit_score DESC LIMIT 10")
 	List<OrganizationApplicant> findTopPersonCreditors(String applicationStatus);
 
+	
+	
+	/**
+	 * 
+	 * @param userId
+	 * @return list of applicant with same userid given in the parameter
+	 */
 	@Query(nativeQuery = true, value = "Select * from organizationapplicant where user_id=:userId")
 	List<OrganizationApplicant> findByUserId(long userId);
 
+	/**
+	 * 
+	 * @param userId
+	 * @return applicant id by user id 
+	 */
 	Long getApplicationIdByUserId(@Param("userId") Long userId);
 
 }

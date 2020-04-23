@@ -24,10 +24,28 @@ public class UserDAOImplementation implements User_DAO {
 
 	private static final Logger LOG = LoggerFactory.getLogger(UserDAOImplementation.class);
 
+	
+	/**
+	 * Find User By UserMail
+	 *
+	 * @param userMail the userMail
+	 * 
+	 * @return the user
+	 * 
+	 */
 	public User findUserByUserMail(String userMail) {
 		return entityManager.find(User.class, userMail);
 
 	}
+	
+	/**
+	 * Save Person.
+	 *
+	 * @param user the user of Person type
+	 * 
+	 * @return the boolean if saved successfully returns true
+	 * To save the detail of Person
+	 */
 
 	public boolean savePerson(Person user) {
 		boolean status = false;
@@ -44,10 +62,18 @@ public class UserDAOImplementation implements User_DAO {
 		return status;
 	}
 
-	/*
+	/**
 	 * @see
 	 * com.impetus.Dao.User_DAO#saveOrganization(com.impetus.Model.Organization)
+	 * 
+	 * Save organization.
+	 *
+	 * @param user the user
+	 * 
+	 * @return the boolean on successfully saving detail returns true
+	 * To save the detail of organization
 	 */
+	 
 	public boolean saveOrganization(Organization user) {
 		boolean status = false;
 		entityManager = entityManager.getEntityManagerFactory().createEntityManager();

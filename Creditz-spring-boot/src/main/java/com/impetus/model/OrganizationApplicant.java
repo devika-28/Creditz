@@ -68,6 +68,21 @@ public class OrganizationApplicant {
 	@Column(name = "email_status", nullable = false)
 	private String emailStatus;
 
+	
+	/**
+	 * the organization foreign key mapping 
+	 */
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "organization_id")
+	private Organization organizationId;
+
+	/**
+	 * the user foreign key mapping 
+	 */
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "user_id")
+	private User userId;
+
 	public String getEmailStatus() {
 		return emailStatus;
 	}
@@ -75,17 +90,6 @@ public class OrganizationApplicant {
 	public void setEmailStatus(String emailStatus) {
 		this.emailStatus = emailStatus;
 	}
-
-	/**
-	 * 
-	 */
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "organization_id")
-	private Organization organizationId;
-
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "user_id")
-	private User userId;
 
 	public int getCriminalRecord() {
 		return criminalRecord;

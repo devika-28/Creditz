@@ -12,13 +12,15 @@ import com.impetus.model.User;
 public class MailService {
 
 	static final String APPPLICATION_UPDATE_SUBJECT = "Loan application Status";
-	static final String ANALYST_SUBJECT = "Financial Analyst Login Credentials";
+	static final String ANALYST_SUBJECT = "Hello,\n Thank you for register at our website\n please verify your otp ,Your otp numberis below \n";
 	/*
 	 * The Spring Framework provides an easy abstraction for sending email by using
 	 * the JavaMailSender interface, and Spring Boot provides auto-configuration for
 	 * it as well as a starter module.
 	 */
 	private JavaMailSender javaMailSender;
+	static final String APPPLICATION_SUBJECT = "Email OTP Verification";
+	static final String APPPLICATION = "Loan application Status";
 
 	/**
 	 * 
@@ -132,24 +134,23 @@ public class MailService {
 		javaMailSender.send(mail);
 	}
 
+	/**
+	 * Send otp to user on its email Address
+	 *
+	 * @param userEmail
+	 * 
+	 * @param userOtp
+	 * 
+	 */
 	public void sendEmailToUser(String userEmail, String otp) throws MailException {
-
-		System.out.println("inside mail Service for otp");
 		SimpleMailMessage mail = new SimpleMailMessage();
-		System.out.println(otp);
 		mail.setTo(userEmail);
-		mail.setSubject("Email OTP Verification");
-		mail.setText(
-				"Hello,\n Thank you for register at our website\n please verify your otp ,Your otp numberis below \n"
-						+ otp);
+		mail.setSubject(APPPLICATION_SUBJECT);
+		mail.setText(APPPLICATION + otp);
 
 		/*
 		 * This send() contains an Object of SimpleMailMessage as an Parameter
 		 */
-		System.out.println("sending mail");
 		javaMailSender.send(mail);
-		System.out.println("mail sent with otp");
-
 	}
-
 }

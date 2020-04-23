@@ -6,9 +6,18 @@ import com.impetus.model.User;
 
 /** The Interface UserService. */
 public interface UserService {
-
+    /**
+     * Generate otp ,no parameters
+     * @return otp in string form
+     */
 	public String GenerateOTP();
 
+	/**
+	 * send otp
+	 * 
+	 * @param userEmail
+	 * @return otp in string form
+	 */
 	public String sendOTP(String userEmail);
 
 	/**

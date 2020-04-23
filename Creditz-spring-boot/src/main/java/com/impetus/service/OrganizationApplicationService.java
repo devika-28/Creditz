@@ -34,8 +34,10 @@ public interface OrganizationApplicationService {
 	public List<OrganizationApplicant> findTopPersonCreditors();
 
 	/**
-	 * 
-	 *
+	 * Organization risk Mitigate
+	 * @param application
+	 * @return HashMap<String, Long> containing string Application id and its value in long
+	 * decides whether to approve or reject the application
 	 */
 	public HashMap<String, Long> organizationRiskMitigate(OrganizationApplicant application);
 
