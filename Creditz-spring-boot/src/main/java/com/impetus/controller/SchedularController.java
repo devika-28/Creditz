@@ -18,7 +18,9 @@ import com.impetus.repository.PersonApplicationRepository;
 import com.impetus.service.MailService;
 import com.impetus.service.OrganizationApplicationService;
 import com.impetus.service.PersonApplicationService;
-
+/**
+	 * Schedular controller
+	 */
 @RestController
 public class SchedularController {
 

@@ -17,7 +17,9 @@ import com.impetus.repository.PersonApplicationRepository;
 import com.impetus.service.MailService;
 import com.impetus.service.OrganizationApplicationService;
 import com.impetus.service.PersonApplicationService;
-
+/**
+ * Deal with Schedulling of sending Application Status to applicants
+ */
 @Component
 public class ScheduledTasks {
 
@@ -39,7 +41,9 @@ public class ScheduledTasks {
 	OrganizationApplicationRepository Repository;
 
 	static final String status = "True";
-
+/**
+	 * send status of application to person applicants execute in every 4 hour
+	 */
 	@Scheduled(cron = "0 0 */4 * * *")
 	public void scheduleTaskWithCronExpression() {
 		ArrayList<PersonApplicant> personApplicants = new ArrayList<PersonApplicant>();
@@ -61,6 +65,9 @@ public class ScheduledTasks {
 		}
 	}
 
+/**
+	 * send status of application to organization applicants execute in every 4 hour
+	 */
 	@Scheduled(cron = "0 0 */4 * * *")
 	public void scheduleTaskWithExpression() {
 		ArrayList<OrganizationApplicant> organizationApplicants = new ArrayList<OrganizationApplicant>();
