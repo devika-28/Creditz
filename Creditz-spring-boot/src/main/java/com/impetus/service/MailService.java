@@ -11,7 +11,7 @@ import com.impetus.model.User;
 @Service
 public class MailService {
 
-	static final String APPPLICATION_UPDATE_SUBJECT = "Loan application Status";
+	static final String APPLICATION_UPDATE_SUBJECT = "Loan application Status";
 	static final String ANALYST_SUBJECT = "Financial Analyst login Credentials";
 	/*
 	 * The Spring Framework provides an easy abstraction for sending email by using
@@ -84,7 +84,7 @@ public class MailService {
 		 */
 		SimpleMailMessage mail = new SimpleMailMessage();
 		mail.setTo(userEmail);
-		mail.setSubject("APPPLICATION_UPDATE_SUBJECT");
+		mail.setSubject(APPLICATION_UPDATE_SUBJECT);
 		switch (applicationStatus) {
 		case "Approved":
 			mail.setText(WELCOME + "\n" + APPROVED + "\n" + ADDITIONALDATA + "\n" + ENDDATA);
