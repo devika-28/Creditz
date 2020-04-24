@@ -42,7 +42,11 @@ logout(){
 }
 
 openProfileDialog() {
-  const dialogRef = this.dialog.open(ApplicantProfileComponent);
+
+  const dialogRef = this.dialog.open(ApplicantProfileComponent,{
+    height:"70%",
+    width:"45%"
+  });
 }
 
 openDialog() {

@@ -22,26 +22,17 @@
                 </div>
                 <div class="col-md-6">
                     <div class="profile-head">
-                                <h1>
+                                <h1><br>
                                    {{person.personName}}
                                 </h1>
-                                <!-- <h2>
-                                    Web Developer and Designer
-                                </h2> -->
-                                <!-- <p class="proile-rating">CreditScore :<span>670</span></p> -->
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <!-- <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
                             </li>
-                            <!-- <li class="nav-item">
-                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Last Application</a>
-                            </li> -->
-                        </ul>
+                           
+                        </ul> -->
                     </div>
                 </div>
-                <!-- <div class="col-md-2">
-                    <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
-                </div> -->
             </div>
             <div class="row">
                 <div class="col-md-4">
@@ -49,12 +40,13 @@
                        <p>Additional Details</p> 
                         <a href="user-history">Applications</a><br/>
                         <a href="reset-password">Change Password</a><br/>
-                        <a href="forgot-password">Forget Password</a><br/>
+                        <a href="forgot-password">Forgot Password</a><br/>
                     </div>
                 </div>
                 <div class="col-md-8">
-                    <div class="tab-content profile-tab" id="myTabContent">
-                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                     <div class="tab-content profile-tab">
+                        <h4 class="nav-item"> Personal Information</h4>
+                        <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="home-tab">
                                     
     
                                         <div class="row">
@@ -139,17 +131,17 @@
                     </div>
                     <div class="col-md-6">
                         <div class="profile-head">
-                                     <h1>
+                                     <h1><br>
                                        {{organization.organizationName}}
                                     </h1>
                    
-                   
+<!--                    
                                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="" role="tab" aria-controls="home" aria-selected="true">About</a>
                                 </li>
                                 
-                            </ul>
+                            </ul> -->
                         </div>
                     </div>
                   
@@ -160,17 +152,18 @@
                            <p>Additional Details</p> 
                             <a href="user-history">Applications</a><br/>
                             <a href="reset-password">Change Password</a><br/>
-                            <a href="forgot-password">Forget Password</a><br/>
+                            <a href="forgot-password">Forgot Password</a><br/>
                         </div>
                     </div>
                     <div class="col-md-8">
-                        <div class="tab-content profile-tab" id="myTabContent">
-                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="tab-content profile-tab">
+                            <h4 class="nav-item"> Organization Information</h4>
+                            <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="home-tab">
                                         
         
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                    <label>Organization Id</label>
+                                                    <label>Org Id</label>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <p>{{organization.organizationId}}</p>
@@ -178,7 +171,7 @@
                                             </div>
                                             <div class="row">
                                             <div class="col-md-6">
-                                                <label>User Identifcation</label>
+                                                <label>User Id</label>
                                             </div>
                                             <div class="col-md-6">
                                                 <p>{{organization.user.userId}}</p>
@@ -187,7 +180,7 @@
                                         
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label> Organization Name</label>
+                                                <label> Org Name</label>
                                             </div>
                                             <div class="col-md-6">
                                                 <p>{{organization.organizationName}}</p>
@@ -203,7 +196,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Email Address</label>
+                                                <label>Email</label>
                                             </div>
                                             <div class="col-md-6">
                                                 <p>{{organization.user.userEmail}}</p>
@@ -211,7 +204,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Phone Number</label>
+                                                <label>Contact</label>
                                             </div>
                                             <div class="col-md-6">
                                                 <p>{{organization.contact}}</p>

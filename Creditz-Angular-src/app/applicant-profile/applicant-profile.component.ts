@@ -21,20 +21,21 @@ export class ApplicantProfileComponent implements OnInit {
     private organizationService:OrganizationService
 ){ }
   ngOnInit(){
-        // console.log(this.storeRole);
         if(this.storeRole=="Person")
          {
          this.personService.findPersonByUserId(this.store).
          subscribe(stream=>
          {
          this.person=stream as any;
-        //  console.log(this.person);
         });
         }
-     if(this.storeRole=="Organization")
+     else {
+      
+      console.log("this.store");
       this.organizationService.findOrganizationByUserId(this.store).
       subscribe(stream=>
    {
+      
       this.organization=stream as any;
       console.log(this.organization);
 
@@ -43,7 +44,4 @@ export class ApplicantProfileComponent implements OnInit {
   }
     }
 
-    
-     
-   
-  
+}

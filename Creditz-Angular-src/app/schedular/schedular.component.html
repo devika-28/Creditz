@@ -12,16 +12,18 @@
                            <h4>Admin</h4>
                         </div>
                </div>
-                <a mat-list-item [routerLink]="'/organization-creditor-table-list'">
+
+               <a mat-list-item [routerLink]="'/admin'">
+                <mat-icon>question_answer</mat-icon>
+                <span>Person Applications</span>
+               </a>
+               <br>
+                <a mat-list-item [routerLink]="'/organization-creditor-list'">
                     <mat-icon>question_answer</mat-icon>
                     <span>Organization Applications</span>
                 </a>
                 <br>
-                <a mat-list-item [routerLink]="'/adminsidenav'">
-                    <mat-icon>question_answer</mat-icon>
-                    <span>Person Applications</span>
-                </a>
-                <br>
+               
                 <a mat-list-item [routerLink]="'/analyst-registration'">
                     <mat-icon>person_add</mat-icon>
                     <span>RegisterAnalyst</span>
@@ -50,15 +52,16 @@
                       Schedular
                     </mat-panel-title>
                     <mat-panel-description>
-                      Send Application Status
+                      Trigger Schedular
                     </mat-panel-description>
                   </mat-expansion-panel-header>
                    <mat-action-row>
-                  <button mat-button mat-raised-button color="primary"  (click)="personApplicantClick()">Individual Applications</button>
-                   <button mat-button mat-raised-button color="primary"  (click)="organizationApplicantClick()">Organization Applications</button>
+                  <button mat-button mat-raised-button color="primary"  (click)="personApplicantClick()">Individual Applications Status</button>
+                   <button mat-button mat-raised-button color="primary"  (click)="organizationApplicantClick()">Organization Applications Status</button>
                 </mat-action-row>
-                <h4>On click on Person Applicantions button you can send application Status to person applicants.</h4>
-                <h4>On click on Organization Applicantions button you can send Application status to Organization applicants</h4>
+                <h1>Hey Admin,</h1>
+                <h4>On click on Individual Applications Status  you can trigger the schedular that sends application Status to person applicants.</h4>
+                <h4>On click on Organization Applications Status you can trigger the schedular that sends Application status to Organization applicants.</h4>
                 
               </mat-expansion-panel>
                 
