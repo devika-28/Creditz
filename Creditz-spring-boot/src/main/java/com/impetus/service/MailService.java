@@ -66,7 +66,7 @@ public class MailService {
 		mail.setTo(user.getUserEmail());
 		mail.setSubject(ANALYST_SUBJECT);
 		mail.setText("Your Login Credentials: " + "  EmailAddress:" + user.getUserEmail() + "  your password :"
-				+ user.getPassword());
+				+ user.getPassword()+"\n"+ENDDATA );
 
 		/*
 		 * This send() contains an Object of SimpleMailMessage as an Parameter
@@ -125,7 +125,7 @@ public class MailService {
 
 		mail.setTo(userEmail);
 		mail.setSubject(OTPSUBJECT);
-		mail.setText(OTPCONTENT + "\n" + otp);
+		mail.setText(OTPCONTENT + "\n" + otp +"\n"+ENDDATA);
 
 		/*
 		 * This send() contains an Object of SimpleMailMessage as an Parameter
