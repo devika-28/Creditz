@@ -41,7 +41,6 @@ export class ResetPasswordComponent implements OnInit {
     console.log(this.userModel2.password);
     this.userService.findUserByEmailAndPassword(this.userModel1.userEmail,this.userModel2.password).subscribe(  
     data => {
-      console.log(data);
       if(data===null)
       {
         window.alert("Your Email or password is correct please enter a valid Email and password");

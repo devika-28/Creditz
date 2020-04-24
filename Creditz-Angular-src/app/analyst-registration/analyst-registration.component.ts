@@ -37,7 +37,7 @@ export class AnalystRegistrationComponent implements OnInit {
     this.analystService.registerAnalyst(this.userModel1).subscribe(  
     data => {console.log('success'!,data)
     this.mailService.sendMail(this.userModel1.userEmail,this.userModel1.password).subscribe
-    (data=>console.log('success',data))
+    (data=>console.log('success'))
     this.openDialog();
     this.router.navigate(['adminsidenav'], {queryParams: { registered: true }});
     },
@@ -54,12 +54,10 @@ window.open(url,"_self");
 openDialog(): void {
   const dialogRef = this.dialog.open(AnalystDialogBoxComponent, {
     width: '400px',
-    // data: {name: this.name, animal: this.animal}
   });
 
   dialogRef.afterClosed().subscribe(result => {
     console.log('The dialog was closed');
-    // this.animal = result;
   });
 }
 
@@ -68,9 +66,7 @@ openDialog(): void {
   {
     this.analystService.checkUniqueEmail(this.userModel1.userEmail).subscribe(res=>{
       this.UserEmailCheck=res;
-       console.log("done");
         if(this.UserEmailCheck!==null){
-          console.log("done");
           this.emailAlreadyExist="Email Already Exist";
         }
           else

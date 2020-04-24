@@ -11,27 +11,22 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
    deleteAnalyst(userEmail:any):Observable<any>{
-      console.log(userEmail);
       let params = new HttpParams()
      .set('userEmail',userEmail);
-      console.log(params);
       return this.http.delete("http://localhost:9999/deleteAnalyst",{params});
     }
 
     updateUser(userEmail:any,password:any):Observable<any>{
       const body={userEmail:userEmail,password:password}
-      console.log(userEmail);
-      console.log(password);
-      // console.log(params);
       return this.http.post("http://localhost:9999/updateUserPassword",body);
     }
 
     findUserByEmailAndPassword(userEmail:any,password:any):Observable<any>{
-      console.log(userEmail);
+      
       let params = new HttpParams()
      .set('userEmail',userEmail)
      .append('password',password);
-      console.log(params);
+     
       return this.http.get("http://localhost:9999/findUserByEmailAndPassword",{params});
     
     }

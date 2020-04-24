@@ -17,7 +17,6 @@ export class MailService {
         const params = new HttpParams()
         .set('userEmail',userEmail)
         .append('password',password);
-         console.log(params);
         return this.http.get("http://localhost:9999/send-mail",{params});
         }
    

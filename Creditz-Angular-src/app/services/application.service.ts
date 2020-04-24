@@ -13,7 +13,7 @@ export class ApplicationService {
  }
 
    findAllTopIndividualCreditors(): Observable<any> {
-        console.log("hello");
+
         return this.http.get("http://localhost:9999/getTopPersonApplicants");
             
 }

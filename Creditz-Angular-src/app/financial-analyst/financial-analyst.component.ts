@@ -33,12 +33,12 @@ export class FinancialAnalystComponent {
    this.applicationService.findAllTopIndividualCreditors().subscribe(stream=>
     {
        this.dataSource.data=stream as any;
-      // this.dataSource.paginator=this.paginator;
+     
     });  
     this.applicationService.findAllTopOrganizationCreditors().subscribe(stream=>
       {
          this.dataSource1.data=stream as any;
-        // this.dataSource.paginator=this.paginator;
+      
       });   
   
 

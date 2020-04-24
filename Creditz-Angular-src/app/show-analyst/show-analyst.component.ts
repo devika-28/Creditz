@@ -39,18 +39,6 @@ export class ShowAnalystComponent implements OnInit {
       });
  }
 
-   ngAfterViewChecked()
- {
-      // this.pageSize=this.pageEvent.pageSize;
-      // this.pageNo=this.pageEvent.pageIndex;
-      // console.log(this.pageIndex+"check");
-      // this.analystservice.findAllAnalyst(this.pageIndex,this.pageSize).subscribe(stream=>
-      //  {
-      //    this.dataSource.data=stream as any;
-      //       console.log(this.pageIndex);
-      //  });
-   }
-
 
     applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
@@ -63,7 +51,6 @@ export class ShowAnalystComponent implements OnInit {
   }
   deleteAnalyst(userEmail:any)
   {
-       console.log(userEmail);
        this.userService.deleteAnalyst(userEmail).subscribe(data=>
         {console.log("success",data)
         this.analystservice.findAllAnalyst(this.pageNo,this.pageSize).subscribe(stream=>
