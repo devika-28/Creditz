@@ -12,7 +12,7 @@ import com.impetus.model.User;
 public class MailService {
 
 	static final String APPPLICATION_UPDATE_SUBJECT = "Loan application Status";
-	static final String ANALYST_SUBJECT = "Hello,\n Thank you for register at our website\n please verify your otp ,Your otp numberis below \n";
+	static final String ANALYST_SUBJECT = "Financial Analyst login Credentials";
 	/*
 	 * The Spring Framework provides an easy abstraction for sending email by using
 	 * the JavaMailSender interface, and Spring Boot provides auto-configuration for
@@ -82,7 +82,6 @@ public class MailService {
 		 * function. SimpleMailMessage Object is required because send() function uses
 		 * object of SimpleMailMessage as a Parameter
 		 */
-		System.out.println("inside mail Service");
 		SimpleMailMessage mail = new SimpleMailMessage();
 		mail.setTo(userEmail);
 		mail.setSubject("APPPLICATION_UPDATE_SUBJECT");
@@ -123,7 +122,7 @@ public class MailService {
 	 */
 	public void sendOtpToUser(String userEmail, String otp) throws MailException {
 		SimpleMailMessage mail = new SimpleMailMessage();
-		System.out.println(userEmail.toString());
+
 		mail.setTo(userEmail);
 		mail.setSubject(OTPSUBJECT);
 		mail.setText(OTPCONTENT + "\n" + otp);
