@@ -1,26 +1,51 @@
 import { Component, OnInit } from '@angular/core';
 import { IndividualApplication } from '../model/individual-application'
 import { IndividualApplicationService } from '../services/individual-application.service'
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatStepper } from '@angular/material/stepper';
 
 @Component({
   selector: 'app-individual-user-application',
   templateUrl: './individual-user-application.component.html',
-  styleUrls: ['../individual-user/individual-user.component.css']
+  styleUrls: ['../forgot-password/forgot-password.component.css']
 })
 export class IndividualUserApplicationComponent implements OnInit {
 
-  applicationModel = new IndividualApplication("", 0, 0, "", "", 0, 0, 0);
   store = window.sessionStorage.getItem('userId');
   storeRole = window.sessionStorage.getItem('role');
 
-  constructor(private applicationService: IndividualApplicationService) { }
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+  isEditable = false;
+  isThisStepDone = false;
+  constructor(private applicationService: IndividualApplicationService,
+    private _formBuilder: FormBuilder) { }
 
-  ngOnInit(): void {
-  }
+    ngOnInit() {
+      this.firstFormGroup = this._formBuilder.group({
+        pancard: ['', Validators.required],
+        loanAmount: ['', Validators.required],
+        age: ['', Validators.required],
+        occupation: ['', Validators.required],
+        loanTenure: ['', Validators.required]
+      });
+      this.secondFormGroup = this._formBuilder.group({
+        gender: ['', Validators.required],
+        bankruptcy: ['', Validators.required],
+        criminalRecord:['', Validators.required]
+      });
+    }
 
   apply(){
     window.alert("We will use the information submitted by you at the registration as your contact details");
-    this.applicationService.applyService(this.applicationModel.age,this.applicationModel.bankruptcy,this.applicationModel.criminalRecord,this.applicationModel.gender,this.applicationModel.loanAmount,this.applicationModel.loanTenure,this.applicationModel.occupation,this.applicationModel.pancard,this.applicationModel);
+    this.applicationService.applyService(this.firstFormGroup.controls['age'].value,
+    this.secondFormGroup.controls['bankruptcy'].value,
+    this.secondFormGroup.controls['criminalRecord'].value,
+    this.secondFormGroup.controls['gender'].value,
+    this.firstFormGroup.controls['loanAmount'].value,
+    this.firstFormGroup.controls['loanTenure'].value,
+    this.firstFormGroup.controls['occupation'].value,
+    this.firstFormGroup.controls['pancard'].value);
   }
 
 }
