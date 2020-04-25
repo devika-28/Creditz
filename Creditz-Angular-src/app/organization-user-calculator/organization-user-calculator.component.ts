@@ -22,7 +22,7 @@ export class OrganizationUserCalculatorComponent implements OnInit {
       window.alert("sorry !!!you are not organization user ..");
     }
     else{
-      this.goToUrl('Orgnizational-user');
+      this.goToUrl('organization');
     }
   }
 

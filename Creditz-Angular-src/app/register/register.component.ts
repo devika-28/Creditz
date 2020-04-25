@@ -11,6 +11,7 @@ import { stringToKeyValue } from '@angular/flex-layout/extended/typings/style/st
 import { ThrowStmt } from '@angular/compiler';
 import { AnalystService } from '../services/analyst.service';
 import { variable } from '@angular/compiler/src/output/output_ast';
+import {MatDialog} from '@angular/material/dialog';
 //const errorLog = require('../utils/log.js').errorlog;
 //const successlog = require('../utils/log.js').successlog;
 
@@ -38,7 +39,10 @@ export class RegisterComponent implements OnInit {
   loading: false;
   UserEmailCheck: any;
   otpno: any;
+  store = window.sessionStorage.getItem('userId');
+  storeRole = window.sessionStorage.getItem('role');
   constructor(
+    public dialog: MatDialog,
     private analystService:AnalystService,
     private formBuilder: FormBuilder,
     private router: Router,
@@ -79,15 +83,27 @@ export class RegisterComponent implements OnInit {
   sendVerificationEmail(email){
    // console.log('verify email'); 
     //console.log(email); 
+    window.alert("verifying Email Id \n please wait");
     this.emailid=email;
-    this._registerService.sendotp(email).subscribe(res=>{
-    this.otpno=res;
-   // console.log(res);
+    this._registerService.sendotp(email).subscribe(data=>{
+    this.otpno=data;
+    console.log(data);
    // console.log("done");
+
     if(this.otpno!=null){
     window.alert("otp sent to your entered email\n Please check your email");
     this.enterotp=true;
+
+    // const dialogRef = this.dialog.open(RegisterComponent,{
+    //   height:"70%",
+    //   width:"45%"
+    // });
     }
+    },
+    error => {
+      this.error = error;
+      window.alert("error in sending otp \n Please check your entered  email \n enter correct email id");
+      
     });
   }
 

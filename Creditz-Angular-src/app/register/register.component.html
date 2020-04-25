@@ -1,15 +1,6 @@
-<!-- <div class="content" role="main">
-   <svg id="clouds" alt="Gray Clouds Background" xmlns="http://www.w3.org/2000/svg" width="2611.084" height="485.677"
-      viewBox="0 0 2611.084 485.677">
-     <path id="Path_39" data-name="Path 39"
-          d="M2379.709,863.793c10-93-77-171-168-149-52-114-225-105-264,15-75,3-140,59-152,133-30,2.83-66.725,9.829-93.5,26.25-26.771-16.421-63.5-23.42-93.5-26.25-12-74-77-130-152-133-39-120-212-129-264-15-54.084-13.075-106.753,9.173-138.488,48.9-31.734-39.726-84.4-61.974-138.487-48.9-52-114-225-105-264,15a162.027,162.027,0,0,0-103.147,43.044c-30.633-45.365-87.1-72.091-145.206-58.044-52-114-225-105-264,15-75,3-140,59-152,133-53,5-127,23-130,83-2,42,35,72,70,86,49,20,106,18,157,5a165.625,165.625,0,0,0,120,0c47,94,178,113,251,33,61.112,8.015,113.854-5.72,150.492-29.764a165.62,165.62,0,0,0,110.861-3.236c47,94,178,113,251,33,31.385,4.116,60.563,2.495,86.487-3.311,25.924,5.806,55.1,7.427,86.488,3.311,73,80,204,61,251-33a165.625,165.625,0,0,0,120,0c51,13,108,15,157-5a147.188,147.188,0,0,0,33.5-18.694,147.217,147.217,0,0,0,33.5,18.694c49,20,106,18,157,5a165.625,165.625,0,0,0,120,0c47,94,178,113,251,33C2446.709,1093.793,2554.709,922.793,2379.709,863.793Z"
-          transform="translate(142.69 -634.312)" fill="#DCDCDC" /> 
-  </svg>  
-
-</div> -->
-
+<!-- 
 <div class="c1" style="margin-left: 5%;" >
-  <!-- </div> -->
+
   
   
   <div class="contain"  style=" margin-top: 4.1%; margin-left: 1.15%; background-color: darkblue;height: 124%; width: 44%; position: absolute;" >
@@ -20,7 +11,7 @@
   
   
   
-  <!-- <div style="display: block; width: 55%; min-width: 400px; margin-left:20%; align-content: center;"> -->
+  
   
   
   
@@ -38,7 +29,7 @@
   <br>
     <div class="form-group" >
               <label for="pname"><b>Name</b></label>
-             <input type="text" [class.is-invalid]="name.invalid && name.touched" class="form-control" 
+             <input type="text" [class.is-invalid]="name.invalid && name.touched" class="input100" 
              #name="ngModel" placeholder="Enter full name" name="pname"  [(ngModel)]="personModel.personName" required>
              <div *ngIf="name.invalid && (name.dirty || name.touched)"
              class="text-danger">      
@@ -51,7 +42,7 @@
              <label for="pemail"><b>Email</b></label>
              <input type="text" #email="ngModel" 
              pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-              [class.is-invalid]="email.invalid && email.touched" class="form-control" 
+              [class.is-invalid]="email.invalid && email.touched" class="input100" 
               placeholder="Enter email" name="pemail"  (change)="emailCheckUnique1()"  [(ngModel)]="userModel1.userEmail" required>
              <div *ngIf="email.invalid && (email.dirty || email.touched)"
              class="text-danger">
@@ -73,7 +64,7 @@
                <label for="psw"><b>Password</b></label>
                <input type="password" #password="ngModel"
                 pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}" 
-               [class.is-invalid]="password.invalid && password.touched" class="form-control" placeholder="Enter Password" 
+               [class.is-invalid]="password.invalid && password.touched" class="input100" placeholder="Enter Password" 
                name="psw" [(ngModel)]="userModel1.password" required>
                <div *ngIf="password.invalid && (password.dirty || password.touched)"
                class="text-danger">
@@ -90,7 +81,7 @@
   
                <label for="cpsw"><b>Confirm Password</b></label>
                <input type="password" #confirmpassword="ngModel" appConfirmEqualValidator="psw" 
-                [class.is-invalid]="confirmpassword.invalid && confirmpassword.touched" class="form-control" 
+                [class.is-invalid]="confirmpassword.invalid && confirmpassword.touched" class="input100" 
                 placeholder="Enter Password again" name="cpsw" ngModel required>
                <div *ngIf="confirmpassword.invalid"
                class="text-danger">
@@ -103,7 +94,7 @@
               </div> 
   <div class="form-group">                        
                 <label for="address"><b>Address</b></label>
-              <input type="address" #add="ngModel" [class.is-invalid]="add.invalid && add.touched" class="form-control" placeholder="Enter address" name="address" [(ngModel)]="personModel.address" required>
+              <input type="address" #add="ngModel" [class.is-invalid]="add.invalid && add.touched" class="input100" placeholder="Enter address" name="address" [(ngModel)]="personModel.address" required>
               <div *ngIf="add.invalid && (add.dirty || add.touched)"
              class="text-danger">      
            <small *ngIf="add.errors.required">
@@ -113,7 +104,7 @@
   </div>
   <div class="form-group">
               <label for="contact"><b>Contact No.</b></label>
-              <input type="text" #contact="ngModel" pattern="^\d{10}" [class.is-invalid]="contact.invalid && contact.touched" class="form-control" placeholder="Enter contact no." name="contact" [(ngModel)]="personModel.contact" required>
+              <input type="text" #contact="ngModel" pattern="^\d{10}" [class.is-invalid]="contact.invalid && contact.touched" class="input100" placeholder="Enter contact no." name="contact" [(ngModel)]="personModel.contact" required>
               <div *ngIf="contact.invalid && (contact.dirty || contact.touched )"
                class="text-danger">
            
@@ -134,12 +125,12 @@
    </div>
 
     
-<!-- for getting otp from user -->
+
   <div *ngIf="enterotp">
    <div class="form-group">
     <label for="potp"><b>Enter OTP</b></label>
     <input type="text" #potp
-     class="form-control" placeholder="Enter otp sent to your entered email" name="potp"
+     class="input100" placeholder="Enter otp sent to your entered email" name="potp"
        required>           
     </div>
        <button type="button" [disabled]="!personForm.form.valid && emailAlreadyExist==''" (click)="checkotp(potp.value)" style="font-size: medium;">
@@ -167,7 +158,7 @@
       <br>
      <div class="form-group">
              <label for="uname"><b>Organization/Company Name</b></label>
-             <input type="text" #cname="ngModel" [class.is-invalid]="cname.invalid && cname.touched" class="form-control" placeholder="Enter company name" name="cname"  [(ngModel)]="organizationModel.organizationName" required>
+             <input type="text" #cname="ngModel" [class.is-invalid]="cname.invalid && cname.touched" class="input100" placeholder="Enter company name" name="cname"  [(ngModel)]="organizationModel.organizationName" required>
              <div *ngIf="cname.invalid && (cname.dirty || cname.touched)"
              class="text-danger">      
            <small *ngIf="cname.errors.required">
@@ -178,7 +169,7 @@
   <div class="form-group">
               <label for="dname"><b>Director Name</b></label>
              <input type="text" #dirname="ngModel" [class.is-invalid]="dirname.invalid && dirname.touched" 
-             class="form-control" placeholder="Enter director name" name="dname" [(ngModel)]="organizationModel.directorName" required>
+             class="input100" placeholder="Enter director name" name="dname" [(ngModel)]="organizationModel.directorName" required>
              <div *ngIf="dirname.invalid && (dirname.dirty || dirname.touched)"
              class="text-danger">      
            <small *ngIf="dirname.errors.required">
@@ -190,7 +181,7 @@
   
               <label for="email"><b>Organization/Company Email</b></label>
                <input type="email" #mail="ngModel" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
-               [class.is-invalid]="mail.invalid && mail.touched" class="form-control" 
+               [class.is-invalid]="mail.invalid && mail.touched" class="input100" 
                placeholder="Enter email" name="email" (change)="emailCheckUnique2()" [(ngModel)]="userModel2.userEmail" required>
                <div *ngIf="mail.invalid && (mail.dirty || mail.touched)"
                class="text-danger">
@@ -212,7 +203,7 @@
   
               <label for="psw"><b>Password</b></label>  
                <input type="password"  pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}"  
-               #cpassword="ngModel" [class.is-invalid]="cpassword.invalid && cpassword.touched" class="form-control"
+               #cpassword="ngModel" [class.is-invalid]="cpassword.invalid && cpassword.touched" class="input100"
                 placeholder="Enter Password" name="cpsw" [(ngModel)]="userModel2.password" required>
                <div *ngIf="cpassword.invalid && (cpassword.dirty || cpassword.touched)"
                class="text-danger">
@@ -229,7 +220,7 @@
   <div class="form-group">
              <label for="cpsw"><b>Confirm Password</b></label>
                <input type="password" #ccpassword="ngModel" appConfirmEqualValidator="cpsw"
-                [class.is-invalid]="ccpassword.invalid && ccpassword.touched" class="form-control"
+                [class.is-invalid]="ccpassword.invalid && ccpassword.touched" class="input100"
                  placeholder="Enter Password again" name="ccpsw" ngModel required>
                <div *ngIf="ccpassword.invalid"
                class="text-danger">
@@ -248,7 +239,7 @@
   <div class="form-group">
               
                 <label for="address"><b>Address</b></label>
-              <input type="address" #cadd="ngModel" [class.is-invalid]="cadd.invalid && cadd.touched" class="form-control" placeholder="Enter address" name="address" [(ngModel)]="organizationModel.address" required>
+              <input type="address" #cadd="ngModel" [class.is-invalid]="cadd.invalid && cadd.touched" class="input100" placeholder="Enter address" name="address" [(ngModel)]="organizationModel.address" required>
               <div *ngIf="cadd.invalid && (cadd.dirty || cadd.touched)"
              class="text-danger">      
            <small *ngIf="cadd.errors.required">
@@ -261,7 +252,7 @@
   <div class="form-group">
               <label for="contact"><b>Contact No.</b></label>
               <input type="text" #ccontact="ngModel" pattern="^\d{10}" [class.is-invalid]="ccontact.invalid && ccontact.touched"
-               class="form-control" placeholder="Enter contact no." name="contact" [(ngModel)]="organizationModel.contact" required>
+               class="input100" placeholder="Enter contact no." name="contact" [(ngModel)]="organizationModel.contact" required>
               <div *ngIf="ccontact.invalid && (ccontact.dirty || ccontact.touched)"
                class="text-danger">
            
@@ -280,14 +271,11 @@
                 </small>
                </div> 
 
-
-
-           <!-- for getting otp from user -->
                <div *ngIf="enterotp">
                 <div class="form-group">
                  <label for="cotp"><b>Enter OTP</b></label>
                  <input type="text" #cotp
-                  class="form-control" placeholder="Enter otp sent to your entered email" name="cotp"
+                  class="input100" placeholder="Enter otp sent to your entered email" name="cotp"
                     required>           
                  </div>
                     <button type="button" [disabled]="!organizationForm.form.valid && emailAlreadyExist==''" (click)="checkotp(cotp.value)" style="font-size: medium;">
@@ -302,4 +290,377 @@
       </form> </mat-tab>
   </mat-tab-group>
   </div>
-  </div>
+  </div> -->
+
+
+
+
+  <div class="limiter" style=" width:80%; margin-left:10%;"   *ngIf="this.storeRole==null and this.store==null" align="center">
+    <div class="container-login100">
+          <div class="wrap-login100">
+
+
+
+            <div style=" float: right; margin:0%">
+              <!-- <form class="login100-form validate-form" style="border:none;" novalidate> -->
+                    <!-- <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
+                    <div class="alert alert-success" *ngIf='loginSuccess'>{{successMessage}}</div> -->
+                      <div style=" margin-left:1%; align:center" >
+                            <img class="login100-pic img" aTilt src="assets/img/registerf.jpg" alt="IMG" >
+                      </div>
+                      <br>
+                      <br>
+          
+              <!-- <mat-form-field appearance="none">
+              <div class="wrap-input100 validate-input">
+
+              
+              <input matInput 
+              matTooltip="Enter your Email"	matTooltipPosition="below"
+               placeholder="Enter Email" type="email"  class="input100" id="username" name="username" #userEmail="ngModel" [(ngModel)]="username" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [class.is-invalid]="userEmail.invalid && userEmail.touched" required>
+                        <span class="focus-input100"></span>
+              </div>
+              </mat-form-field>
+
+
+              
+              <mat-form-field appearance="none">
+              <div class="wrap-input100 validate-input" data-validate = "password is required">
+              <input matInput 
+              matTooltip="Enter your Password"	matTooltipPosition="below"
+              placeholder="Enter Password" type="password" class="input100" id="password" [(ngModel)]="password" name="password" required>
+                        <span class="focus-input100"></span>
+              </div>
+              </mat-form-field>
+
+              <div class="container-login100-form-btn" >
+                <button type="submit" (click)=handleLogin() class="login100-form-btn" id="submit">Login</button>
+              </div>
+
+              <div style="bottom:0px">
+                      <div class="text-center p-t-12">
+                        <span class="txt1">
+                          Forgot
+                        </span>
+                        <a class="txt2" href="forgot-password">
+                          Username / Password?
+                        </a>
+                        
+                      </div>
+
+                      <div class="text-center p-t-136">
+
+                      </div>
+                                    <br>	
+                      <div class="text-center p-t-136">
+                        <a class="txt2" href="register" style="padding-right: 15%; margin-left:0px">
+                          Create your Account       
+                          <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                        </a>
+
+                        <a class="txt2" href="reset-password">
+                                Change Password
+                          <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                        </a>
+                        
+                      </div>
+                </div>
+            </form> -->
+
+
+            <div  class="matt" style="border-color: whitesmoke;border-top-left-radius: 5%; border-bottom-left-radius: 5%; border-bottom-right-radius: 5%;  border-top-right-radius: 5%; border-style: solid; background-color:whitesmoke; ">
+              <mat-tab-group >
+        <mat-tab label=" Registration  for  Person/Individual">
+         <form #personForm="ngForm"  (ngSubmit)="onSubmit1()" novalidate>
+      <br>
+        <!-- <div class="form-group" > -->
+                  <label for="pname"><b>Name</b></label>
+                 <input type="text" [class.is-invalid]="name.invalid && name.touched" class="input100" 
+                 #name="ngModel" placeholder="Enter full name" name="pname"  [(ngModel)]="personModel.personName" required>
+                 <span class="focus-input100"></span>
+                 <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                 class="text-danger">      
+               <small *ngIf="name.errors.required">
+                 Name is required.
+               </small>
+              </div>   
+          <!-- </div> -->
+      <!-- <div class="form-group"> -->
+                 <label for="pemail"><b>Email</b></label>
+                 <input type="text" #email="ngModel" 
+                 pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                  [class.is-invalid]="email.invalid && email.touched" class="input100" 
+                  placeholder="Enter email" name="pemail"  (change)="emailCheckUnique1()"  [(ngModel)]="userModel1.userEmail" required>
+                 <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                 class="text-danger">
+             
+               <small *ngIf="email.errors.required">
+                 Email is required.
+               </small>
+               <small *ngIf="email.errors.pattern">
+                Enter in email format.
+               </small>   
+             </div>
+             <div *ngIf="emailAlreadyExist!=''" class="text-danger">
+              <small>{{emailAlreadyExist}}</small> 
+          
+          </div>
+      <!-- </div>
+      <div class="form-group"> -->
+      
+                   <label for="psw"><b>Password</b></label>
+                   <input type="password" #password="ngModel"
+                    pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}" 
+                   [class.is-invalid]="password.invalid && password.touched" class="input100" placeholder="Enter Password" 
+                   name="psw" [(ngModel)]="userModel1.password" required>
+                   <div *ngIf="password.invalid && (password.dirty || password.touched)"
+                   class="text-danger">
+               
+                 <small *ngIf="password.errors.required">
+                   Password is required.
+                 </small>
+                 <small *ngIf="password.errors.pattern">
+                  At least 8 characters in length,Lowercase letters,Uppercase letters,Numbers,Special characters.
+                 </small>      
+               </div>
+                  <!-- </div>
+      <div class="form-group">                         -->
+      
+                   <label for="cpsw"><b>Confirm Password</b></label>
+                   <input type="password" #confirmpassword="ngModel" appConfirmEqualValidator="psw" 
+                    [class.is-invalid]="confirmpassword.invalid && confirmpassword.touched" class="input100" 
+                    placeholder="Enter Password again" name="cpsw" ngModel required>
+                   <div *ngIf="confirmpassword.invalid"
+                   class="text-danger">
+                 <small *ngIf="(confirmpassword.errors.required &&  confirmpassword.touched) || (confirmpassword.errors.required && confirmpassword.dirty )">
+                   Password is required to enter again.
+                 </small>
+                 <small *ngIf=" confirmpassword.errors?.notEqual && !confirmpassword.errors.required  && (confirmpassword.touched ||confirmpassword.dirty)">password and confirmpassword does not match.
+                 </small>      
+               </div>
+                                        
+                    <label for="address"><b>Address</b></label>
+                  <input type="address" #add="ngModel" [class.is-invalid]="add.invalid && add.touched" class="input100" placeholder="Enter address" name="address" [(ngModel)]="personModel.address" required>
+                  <div *ngIf="add.invalid && (add.dirty || add.touched)"
+                 class="text-danger">      
+               <small *ngIf="add.errors.required">
+                 Address is required.
+               </small>
+              </div>   
+     
+                  <label for="contact"><b>Contact No.</b></label>
+                  <input type="text" #contact="ngModel" pattern="^\d{10}" [class.is-invalid]="contact.invalid && contact.touched" class="input100" placeholder="Enter contact no." name="contact" [(ngModel)]="personModel.contact" required>
+                  <div *ngIf="contact.invalid && (contact.dirty || contact.touched )"
+                   class="text-danger">
+               
+                 <small *ngIf="contact.errors.required">
+                   contact number is required.
+                 </small>
+                 <small *ngIf="contact.errors.pattern">Number should be in 10 digit.
+                 </small>      
+               </div>
+      <!-- </div> -->
+      
+      <div *ngIf="!hasEmailverified && email.valid">
+        <div class="container-login100-form-btn" >
+        <small>
+          verify your account to register. </small>
+         <button type="button" class="login100-form-btn" 
+         [disabled]="!personForm.form.valid && emailAlreadyExist==''" 
+         (click)="sendVerificationEmail(email.value)" 
+         style="font-size: medium;">
+           Send otp to verify email</button>
+        </div>
+       </div>
+    
+        
+    
+      <div *ngIf="enterotp">
+       <div class="form-group">
+        <label for="potp"><b>Enter OTP</b></label>
+        <input type="text" #potp
+         class="input100" placeholder="Enter otp sent to your entered email" name="potp"
+           required>           
+        </div>
+           <button type="button" 
+           class="login100-form-btn"  
+           (click)="checkotp(potp.value)" style="font-size: medium;">
+             Enter</button>
+          
+         </div> 
+    
+    
+    
+    
+       <br>  
+       <div *ngIf=hasEmailverified>
+      <div class="form-group">
+      <button  class="btn btn-success" class="login100-form-btn" [disabled]="!personForm.form.valid" type="submit" style="font-size: medium;">Register</button>          
+    </div> </div>
+               
+          </form> </mat-tab>
+      
+      
+      
+        <mat-tab label=" Registration for Organization/Company">
+      
+        <form #organizationForm="ngForm"   novalidate> 
+      
+          <br>
+         <!-- <div class="form-group"> -->
+                 <label for="uname"><b>Organization/Company Name</b></label>
+                 <input type="text" #cname="ngModel" [class.is-invalid]="cname.invalid && cname.touched" class="input100" placeholder="Enter company name" name="cname"  [(ngModel)]="organizationModel.organizationName" required>
+                 <div *ngIf="cname.invalid && (cname.dirty || cname.touched)"
+                 class="text-danger">      
+               <small *ngIf="cname.errors.required">
+                 Organization/Company Name is required.
+               </small>
+              </div>   
+      <!-- </div>
+      <div class="form-group"> -->
+                  <label for="dname"><b>Director Name</b></label>
+                 <input type="text" #dirname="ngModel" [class.is-invalid]="dirname.invalid && dirname.touched" 
+                 class="input100" placeholder="Enter director name" name="dname" [(ngModel)]="organizationModel.directorName" required>
+                 <div *ngIf="dirname.invalid && (dirname.dirty || dirname.touched)"
+                 class="text-danger">      
+               <small *ngIf="dirname.errors.required">
+                 Director name is required.
+               </small>
+              </div>   
+      <!-- </div>
+      <div class="form-group">             -->
+      
+                  <label for="email"><b>Organization/Company Email</b></label>
+                   <input type="email" #mail="ngModel" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
+                   [class.is-invalid]="mail.invalid && mail.touched" class="input100" 
+                   placeholder="Enter email" name="email" (change)="emailCheckUnique2()" [(ngModel)]="userModel2.userEmail" required>
+                   <div *ngIf="mail.invalid && (mail.dirty || mail.touched)"
+                   class="text-danger">
+               
+                 <small *ngIf="mail.errors.required">
+                   Email is required.
+                 </small>
+                 <small *ngIf="mail.errors.pattern">
+                  Enter in email format.
+                 </small>    
+               </div>
+               <div *ngIf="emailAlreadyExist!='' && mail.valid" class="text-danger">
+                <small>{{emailAlreadyExist}} </small>
+            </div>
+              
+              
+        <!-- </div>
+        <div class="form-group">     -->
+      
+                  <label for="psw"><b>Password</b></label>  
+                   <input type="password"  pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}"  
+                   #cpassword="ngModel" [class.is-invalid]="cpassword.invalid && cpassword.touched" class="input100"
+                    placeholder="Enter Password" name="cpsw" [(ngModel)]="userModel2.password" required>
+                   <div *ngIf="cpassword.invalid && (cpassword.dirty || cpassword.touched)"
+                   class="text-danger">
+               
+                 <small *ngIf="cpassword.errors.required">
+                   Password is required.
+                 </small>
+                 <small *ngIf="cpassword.errors.pattern">
+                  At least 8 characters in length,Lowercase letters,Uppercase letters,Numbers,Special characters.
+                 </small>      
+               </div> 
+               <!-- </div>
+      
+      <div class="form-group"> -->
+                 <label for="cpsw"><b>Confirm Password</b></label>
+                   <input type="password" #ccpassword="ngModel" appConfirmEqualValidator="cpsw"
+                    [class.is-invalid]="ccpassword.invalid && ccpassword.touched" class="input100"
+                     placeholder="Enter Password again" name="ccpsw" ngModel required>
+                   <div *ngIf="ccpassword.invalid"
+                   class="text-danger">
+                   <small *ngIf="(ccpassword.errors.required &&  ccpassword.touched) || (ccpassword.errors.required && ccpassword.dirty )">
+                    Password is required to enter again.
+                  </small>
+                  <small *ngIf=" ccpassword.errors?.notEqual && !ccpassword.errors.required  && (ccpassword.touched ||ccpassword.dirty)">password and confirmpassword does not match.
+                  </small>     
+               </div>
+                  <!-- </div>
+      
+               
+      
+      
+      
+      <div class="form-group"> -->
+                  
+                    <label for="address"><b>Address</b></label>
+                  <input type="address" #cadd="ngModel" [class.is-invalid]="cadd.invalid && cadd.touched" class="input100" placeholder="Enter address" name="address" [(ngModel)]="organizationModel.address" required>
+                  <div *ngIf="cadd.invalid && (cadd.dirty || cadd.touched)"
+                 class="text-danger">      
+               <small *ngIf="cadd.errors.required">
+                Address is required.
+      
+      
+                </small>
+              </div>   
+      <!-- </div>
+      <div class="form-group"> -->
+                  <label for="contact"><b>Contact No.</b></label>
+                  <input type="text" 
+                  #ccontact="ngModel" 
+                  pattern="^\d{10}" 
+                  [class.is-invalid]="ccontact.invalid && ccontact.touched"
+                   class="input100" 
+                   placeholder="Enter contact no." name="contact" 
+                   [(ngModel)]="organizationModel.contact" required>
+                  <div *ngIf="ccontact.invalid && (ccontact.dirty || ccontact.touched)"
+                   class="text-danger">
+               
+                 <small *ngIf="ccontact.errors.required">
+                   contact number is required.
+                 </small>
+                 <small *ngIf="ccontact.errors.pattern">Number should be in 10 digit.
+                 </small>      
+               </div>  
+
+                   <div *ngIf="!hasEmailverified && mail.valid">
+                    <div class="container-login100-form-btn" >
+                    <small>
+                      verify your account to register. 
+                     <button type="button" class="login100-form-btn"  class="input100"
+                     [disabled]="!organizationForm.form.valid && emailAlreadyExist==''" 
+                     (click)="sendVerificationEmail(mail.value)" style="font-size: medium;">
+                       Send otp to verify email</button>
+                    </small>
+                    </div>
+                   </div>
+    
+                   <div *ngIf="enterotp">
+                    <div class="form-group">
+                     <label for="cotp"><b>Enter OTP</b></label>
+                     <input type="text" #cotp
+                      class="input100" placeholder="Enter otp sent to your entered email" name="cotp"
+                        required>           
+                     
+                        <button type="button" class="login100-form-btn" [disabled]="!organizationForm.form.valid && emailAlreadyExist==''" (click)="checkotp(cotp.value)" style="font-size: medium;">
+                          Enter</button>      
+                      </div> 
+                    </div>
+                   <br>  
+                   <div *ngIf=hasEmailverified>
+                  <div class="form-group">
+                  <button  class="btn btn-success" class="login100-form-btn" (click)="onSubmit2()" [disabled]="!organizationForm.form.valid && emailAlreadyExist==''" type="submit" style="font-size: medium;">Register</button>          
+           </div> </div>
+          </form> </mat-tab>
+      </mat-tab-group>
+     
+
+      </div>
+      </div>
+</div>
+</div>
+
+<!-- <div *ngIf="this.store!=null">
+<app-error>  </app-error>
+</div> -->
+
+
+
+
+
