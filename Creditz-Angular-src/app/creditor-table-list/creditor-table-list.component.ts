@@ -4,7 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSortModule, MatSort, Sort } from '@angular/material/sort';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { OrganizationApplicationService } from '../services/organization-application.service';
-import { PersonApplicant } from '../model/personApplicant';
+import { PersonApplicant } from '../model/personapplicant';
 @Component({
   selector: 'app-creditor-table-list',
   templateUrl: './creditor-table-list.component.html',

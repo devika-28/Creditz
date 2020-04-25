@@ -4,7 +4,7 @@
  import {OrganizationService} from "../services/organization.service";
 import { OrganizationApplicant } from '../model/organizationapplicant';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { PersonApplicant } from '../model/personApplicant';
+import { PersonApplicant } from '../model/personapplicant';
 import { ApplicationService } from '../services/application.service';
 import { MatTableDataSource } from '@angular/material/table';
 @Component({
