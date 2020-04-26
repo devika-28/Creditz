@@ -74,6 +74,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { ApplicantProfileComponent } from './applicant-profile/applicant-profile.component';
+import {MatSelectModule} from '@angular/material/select';
 
 export const route: Routes = [
   { path: " creditor-table-list",component:CreditorTableListComponent},
@@ -90,7 +91,7 @@ export const route: Routes = [
   { path: 'ourPolicies', component: OurPoliciesComponent },
   { path: 'faq', component: FAQComponent },
   { path: 'aboutUs', component: AboutUsComponent },
-  { path: 'organization-policy', component: OrganizationUserCalculatorComponent },
+  { path: 'organization-user-calculator', component: OrganizationUserCalculatorComponent },
   { path: 'successful' , component: ApplicationSubmittionComponent },
   {path:"show-analyst",component:ShowAnalystComponent},
   {path:"schedular",component:SchedularComponent},
@@ -110,18 +111,6 @@ export const route: Routes = [
 
 ];
 
-
-const firebaseConfig = {
-  apiKey: "AIzaSyBG0e2yCyr_rvPEVmLmJnXxa6szCYlk_kY",
-  authDomain: "creditz-62be2.firebaseapp.com",
-  databaseURL: "https://creditz-62be2.firebaseio.com",
-  projectId: "creditz-62be2",
-  storageBucket: "creditz-62be2.appspot.com",
-  messagingSenderId: "616539689577",
-  appId: "1:616539689577:web:1de336dd3a951d59dec8f8",
-  measurementId: "G-L6MLJ255PG"
-};
-firebase.initializeApp(firebaseConfig);
 
 @NgModule({
   declarations: [
@@ -193,6 +182,7 @@ firebase.initializeApp(firebaseConfig);
     MatTooltipModule,
     ShowHidePasswordModule ,
     MatStepperModule,
+    MatSelectModule
 //<button type="submit" (click)="addUser()" mat-dialog-close [disabled]="formisvalid" mat-button>Submit</button>
     // MatPaginatorModule,
   ],

@@ -54,7 +54,7 @@ goToUrl(url: string){
                           break; 
                         } 
                         case 'Organization': { 
-                          this.goToUrl('organization-policy');
+                          this.goToUrl('organization-user-calculator');
                            break; 
                         } 
                         case 'Admin': { 

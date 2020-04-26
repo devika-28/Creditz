@@ -1,211 +1,218 @@
-<div *ngIf="this.storeRole=='Organization' and this.store!=null">
-  <div class="limiter">
-    <div class="container" >
-      <img src="assets/img/short-term-business-loans.jpg" 
-      alt="IMG" 
-      class="img1">
-    </div>
-    <div style="color: black; background-color: darkgray; height: 40%;">
-      <br>
-      <br>
-        <div  style="font-size: 200%;padding-left: 50%; font-family: fantasy; color: black;">
-        Why CREDITZ ??
-        </div>
-        <br>
-        <br>
-          <div style="padding-left: 10%;font-style: oblique; font-size: medium;">
-          Creditz hopes to become your partner
-            <br>
-            in laying a strong foundation for your businesses and 
-            <br>
-            helping it grow to its full potential. 
-          </div>
-    </div>
-  </div>        
-  <div class="wrap-login100">
-    <form #application="ngForm"  method="POST" class="login100-form" style="border:none;" >
-      <div class="wrap-input100"> 
-        <H1>Your Credit Details</H1>
-            <span class="focus-input100"></span>
+<div class="container">
+  <img src="assets/farm.jpg" alt="IMG" style="width:100%; margin-top:-2%">
+
+<mat-horizontal-stepper linear #stepper class="centered"> 
+  <mat-step [stepControl]="firstFormGroup" >
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Your Credit Details</ng-template>
+      <mat-form-field>
+
+    <mat-label>Pan Card</mat-label>
+        <input matInput placeholder="Pancard" formControlName="pancard" pattern="(^([a-zA-Z]{5})([0-9]{4})([a-zA-Z]{1})$)" required>
+      </mat-form-field><br>
+
+      <mat-form-field>
+        <mat-label>Loan Amount</mat-label>
+        <input matInput type="number" placeholder="Loan Amount" formControlName="loanAmount" required>
+      </mat-form-field><br>
+
+      <mat-form-field>
+        <mat-label>Tenure</mat-label>
+        <input matInput type="number" placeholder="Repayment Duration" formControlName="loanTenure" required>
+      </mat-form-field><br>
+
+      <mat-form-field>
+        <mat-label>Age of Bussiness</mat-label>
+        <input matInput type="number" placeholder="Your business age" formControlName="businessAge" required>
+      </mat-form-field><br>
+
+      <mat-form-field>
+        <mat-label>Number of Employees</mat-label>
+        <input matInput type="number" placeholder="Your total employees" formControlName="employeeCount" required>
+      </mat-form-field><br>
+
+      <mat-form-field>
+        <mat-label>Company License Number</mat-label>
+        <input matInput  placeholder="Company's license number" formControlName="licenseNumber" required>
+      </mat-form-field><br>
+
+      <mat-form-field>
+        <mat-label>Revenue</mat-label>
+        <input matInput placeholder="Revenue" formControlName="revenue" required>
+      </mat-form-field><br>
+
+      <mat-form-field>
+        <mat-label> Type of organization</mat-label>
+        <mat-select [(value)]="selected" formControlName="organizationType" required>
+          <mat-option>None</mat-option>
+          <mat-option value="Limited Company">Limited Company</mat-option>
+          <mat-option value="Pvt. Ltd.">Pvt. Ltd.</mat-option>
+          <mat-option value="Partnership">Partnership</mat-option>
+          <mat-option value="Not Registered">Not Registered</mat-option>
+          <mat-option value="LLP">LLP</mat-option>
+         
+        </mat-select>
+        <!-- <mat-error *ngIf="selected.hasError('required')"></mat-error> -->
+      </mat-form-field>
+      
+
+      <div>
+        <button mat-raised-button matStepperNext>Next</button>
       </div>
-      <br>
-        <div class="wrap-input100">
-          <input type="text" 
-          #pancard="ngModel" 
-          placeholder="Pan Card - AAAA1234A" 
-          class="input100" 
-          name="pancard" 
-          pattern="(^([a-zA-Z]{5})([0-9]{4})([a-zA-Z]{1})$)"
-          [(ngModel)]="applicationModel.pancard" 
-          required>
-            <div *ngIf="pancard.invalid && (pancard.dirty || pancard.touched)"
-            class="text-danger">      
-              <small *ngIf="pancard.errors.required">
-              PAN no. is required.
-              </small>
-              <small *ngIf="pancard.errors.pattern">
-              fill correct pan no.
-              </small>
-              <span class="focus-input100"></span>
-            </div> 
-        </div>
-        <div class="wrap-input100">
-          <input type="number" 
-          #loanAmount="ngModel" 
-          placeholder="Loan Amount Required" 
-          class="input100" 
-          name="loanAmount" 
-          [(ngModel)]="applicationModel.loanAmount" 
-          required>
-          <div *ngIf="loanAmount.invalid && (loanAmount.dirty || loanAmount.touched)"
-          class="text-danger">      
-            <small *ngIf="loanAmount.errors.required">
-            Loan amount is required.
-            </small> 
-            <span class="focus-input100"></span>
-          </div>
-        </div>
-        <div class="wrap-input100">
-          <input type="number" 
-          #businessAge="ngModel" 
-          placeholder="How old is your business(in months)?"
-          class="input100" 
-          name="businessAge" 
-          [(ngModel)]="applicationModel.businessAge" 
-          required>
-          <div *ngIf="businessAge.invalid && (businessAge.dirty || businessAge.touched)"
-          class="text-danger">      
-            <small *ngIf="businessAge.errors.required">
-            Enter the age of your business.
-            </small>
-              <span class="focus-input100"></span>
-          </div>
-        </div>   
-        <div class="wrap-input100">
-          <input type="number" 
-          #revenue="ngModel" 
-          placeholder="Revenue" 
-          class="input100" 
-          name="revenue" 
-          [(ngModel)]="applicationModel.revenue" 
-          required>
-            <div *ngIf="revenue.invalid && (revenue.dirty || revenue.touched)"
-            class="text-danger">      
-              <small *ngIf="revenue.errors.required">
-              Enter the total revenue.
-              </small>
-              <span class="focus-input100"></span>
-            </div>
-        </div>
-        <div class="wrap-input100">
-          <input type="number" 
-          #employeeCount="ngModel" 
-          placeholder="Total number of employee" 
-          class="input100"
-          name="employeeCount" 
-          [(ngModel)]="applicationModel.employeeCount" 
-          required>
-            <div *ngIf="employeeCount.invalid && (employeeCount.dirty || employeeCount.touched)"
-            class="text-danger">
-              <small *ngIf="employeeCount.errors.required">
-              Enter the number of employees.
-              </small>  
-              <span class="focus-input100"></span>
-            </div>
-        </div>
-        <div class="wrap-input100">
-          <input type="text" 
-          #licenseno="ngModel" 
-          placeholder="License Number" 
-          class="input100" 
-          name="licenseno" 
-          [(ngModel)]="applicationModel.licenseNumber" 
-          required>
-            <div *ngIf="licenseno.invalid && (licenseno.dirty || licenseno.touched)"
-            class="text-danger">
-              <small *ngIf="licenseno.errors.required">
-              Enter the licenseNumber.
-              </small>    
-              <span class="focus-input100"></span>
-            </div>
-        </div> 
-        <div class="wrap-input100">
-          <input type="text"  
-          #organizationType="ngModel" 
-          placeholder="Type of Organization eg.pvt. ltd."
-          class="input100" 
-          name="organizationType"
-          [(ngModel)]="applicationModel.organizationType" 
-          required >
-            <div *ngIf="organizationType.invalid && (organizationType.dirty || organizationType.touched)"
-            class="text-danger">
-              <small *ngIf="organizationType.errors.required">
-              Enter the type of Organization e.g.not registered company,limited company etc.
-              </small>             
-              <span class="focus-input100"></span>
-            </div>
-        </div>       
-        <div class="wrap-input100">
-          <input type="number" 
-          #loanTenure="ngModel" 
-          placeholder="Duration of Repayment- in Months"
-          class="input100" 
-          name="loanTenure" 
-          [(ngModel)]="applicationModel.loanTenure" 
-          required>
-            <div *ngIf="loanTenure.invalid && (loanTenure.dirty || loanTenure.touched)"
-            class="text-danger">
-              <small *ngIf="loanTenure.errors.required">
-              Duration of Repayment is required.
-              </small>                     
-              <span class="focus-input100"></span>
-            </div>
-        </div>
-        <div class="wrap-input100">   
-          <label style="margin:20px">  Do you have any past criminal records: 
-          </label>
-          <br>
-          <input type="radio" 
-          class="toggle" 
-          name="criminalRecord" 
-          [(ngModel)]="applicationModel.criminalRecord" 
-          value=0 
-          style="margin:15px">  No  <!--<br> -->
-          <input type="radio" 
-          class="toggle" 
-          name="criminalRecord" 
-          [(ngModel)]="applicationModel.criminalRecord" 
-          value=1 
-          style="margin:15px">  Yes 
-          <br>
-          <span class="focus-input100"></span>
-        </div>
-        <div class="wrap-input100">   
-          <label style="margin:20px">  Are you Bankrupt: </label><br>
-          <input type="radio" 
-          class="toggle" 
-          name="bankruptcy"
-          [(ngModel)]="applicationModel.bankruptcy" 
-          value=0 style="margin:15px">  No    
-          <input type="radio" 
-          class="toggle" 
-          name="bankruptcy" 
-          [(ngModel)]="applicationModel.bankruptcy" 
-          value=1 
-          style="margin:15px">  Yes 
-          <br>
-            <span class="focus-input100">           
-            </span>
-        </div>
-        <div class="container-login100-form-btn" >
-          <button class="login100-form-btn"  
-          [disabled]="!application.form.valid" 
-          (click)="apply()">Apply
-          </button>  
-        </div> 
-    </form> 
-  </div>    
-</div> 
-<div *ngIf="this.store==null">
-    <app-login></app-login>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Answer the Questionnaire</ng-template>
+
+
+                      <div class="wrap-input100">   
+                          <label style="margin:20px">  Do you have any past criminal records: </label><br>
+                              <input type="radio" class="toggle" name="criminalRecord" formControlName="criminalRecord" value=0 style="margin:15px">  No  
+                              <input type="radio" class="toggle" name="criminalRecord" formControlName="criminalRecord" value=1 style="margin:15px">  Yes <br>
+                              <span class="focus-input100"></span>
+                      </div>
+
+                      <div class="wrap-input100">   
+                          <label style="margin:20px">  Are you Bankrupt: </label><br>
+                              <input type="radio" class="toggle" name="bankruptcy" formControlName="bankruptcy" value=0 style="margin:15px" required>  No  
+                              <input type="radio" class="toggle" name="bankruptcy" formControlName="bankruptcy" value=1 style="margin:15px" required>  Yes <br>
+                              <span class="focus-input100"></span>
+                      </div>
+
+      <div>
+        <button mat-raised-button matStepperPrevious>Back</button>
+        <button mat-raised-button matStepperNext [disabled]="!secondFormGroup.valid">submit</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <div><br>
+      <h2>You are all set and ready to rock!</h2><br>
+      <h3>We will take the information submitted by you at during the registration <br> as your personal information</h3>
+      <h3>Our representative will mail you shortly regarding your application status.</h3>
+      <h3>Once your application is approved, you will get a mail listing all the essential <br> 
+      documents required, please visit your nearest branch with those documents,<br>
+      along with original copy of your pancard and photo Id</h3>
+<br><br>
+      <button mat-raised-button (click)="apply()">Confirm</button>
+      <h6>By clicking this button you accept our terms and conditions*</h6>
+      <h6>and ensure that all the details entered by you is correct, and take the liablities further actions if otherwise.</h6>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
+
 </div>
+
+
+
+
+<!--
+
+
+
+<div *ngIf="this.storeRole=='Person' and this.store!=null" style="margin-left:22%">
+  <div class="limiter">
+<mat-dialog-content>
+          <H1 mat-dialog-title class=".login100-form-title " aTilt>   Your Credit Details</H1><br>
+
+      <div class="wrap-login100">
+
+
+
+              <form #application="ngForm" (ngSubmit)="apply()" method="POST" class="login100-form validate-form" style="border:none;" >
+                  
+                      <div class="wrap-input100">
+                        <input 
+                        matTooltip="Enter your PAN"	matTooltipPosition="after"
+                        type="text" placeholder="Pan Card - AAAAA1234A" class="input100" name="pancard" [(ngModel)]="applicationModel.pancard" required>
+                        <span class="focus-input100"></span>
+                      </div>
+
+                          <div class="wrap-input100">
+                        <input 
+                        matTooltip="Enter your Loan Amount"	matTooltipPosition="after"
+                        type="number" placeholder="Loan Amount Required" class="input100" name="loanAmount" [(ngModel)]="applicationModel.loanAmount" required>
+                              <span class="focus-input100"></span>
+                      </div>
+
+                          <div class="wrap-input100">
+                        <input 
+                        matTooltip="Enter your Age"	matTooltipPosition="after"
+                        type="number" placeholder="Your Age" class="input100" name="age" [(ngModel)]="applicationModel.age" required>
+                              <span class="focus-input100"></span>
+                      </div>
+              
+                      <div class="wrap-input100">
+                        <input 
+                        matTooltip="Enter your Occupation"	matTooltipPosition="after"
+                        type="text" placeholder="Your Occupation" class="input100" name="occupation" [(ngModel)]="applicationModel.occupation" required>
+                              <span class="focus-input100"></span>
+                      </div>
+
+                      <div class="wrap-input100">
+                        <input 
+                        matTooltip="Enter your Repayment Duration"	matTooltipPosition="after"
+                        type="number" placeholder="Duration of Repayment- in Months" class="input100" name="loanTenure" [(ngModel)]="applicationModel.loanTenure" required>
+                              <span class="focus-input100"></span>
+                      </div>
+
+                      <div class="wrap-input100">   
+                          <label style="margin:20px">  Enter your Gender: </label><br>
+                              <input type="radio" class="toggle" name="gender" [(ngModel)]="applicationModel.gender" value="Male" style="margin:15px">  Male  <br>
+                              <input type="radio" class="toggle" name="gender" [(ngModel)]="applicationModel.gender" value="Female" style="margin:15px">  Female <br>
+                              <input type="radio" class="toggle" name="gender" [(ngModel)]="applicationModel.gender" value="Other" style="margin:15px">  Other
+                              <span class="focus-input100"></span>
+                      </div>
+
+                      <div class="wrap-input100">   
+                          <label style="margin:20px">  Do you have any past criminal records: </label><br>
+                              <input type="radio" class="toggle" name="criminalRecord" [(ngModel)]="applicationModel.criminalRecord" value=0 style="margin:15px">  No  <br>
+                              <input type="radio" class="toggle" name="criminalRecord" [(ngModel)]="applicationModel.criminalRecord" value=1 style="margin:15px">  Yes <br>
+                              <span class="focus-input100"></span>
+                      </div>
+
+                      <div class="wrap-input100">   
+                          <label style="margin:20px">  Are you Bankrupt: </label><br>
+                              <input type="radio" class="toggle" name="bankruptcy" [(ngModel)]="applicationModel.criminalRecord" value=0 style="margin:15px">  No  <br>
+                              <input type="radio" class="toggle" name="bankruptcy" [(ngModel)]="applicationModel.bankruptcy" value=1 style="margin:15px">  Yes <br>
+                              <span class="focus-input100"></span>
+                      </div>
+
+                  <br>
+                      <div class="container-login100-form-btn" >
+                        <button type="submit" class="login100-form-btn"  [disabled]="application.form.invalid">Apply</button>
+                      </div>
+
+          </form>
+
+  </div>
+  </mat-dialog-content>
+ 
+  </div>
+
+
+</div>
+
+<div *ngIf="this.store==null">
+  <mat-dialog-content>
+<app-login></app-login>
+  </mat-dialog-content>
+</div>
+
+<div *ngIf="this.store!=null && this.storeRole=='Organization'">
+
+  <span style="font-style: normal;font-size: x-large; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">sorry !!!!!! Need to log out. you are not organizational user.... </span>
+   </div>
+
+
+-->
+
+
+
+<div *ngIf="this.store==null">
+<app-login></app-login>
+</div>
+
+
