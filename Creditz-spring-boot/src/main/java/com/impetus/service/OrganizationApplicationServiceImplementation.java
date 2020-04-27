@@ -3,6 +3,7 @@ package com.impetus.service;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,229 +19,138 @@ import com.impetus.repository.OrganizationRepository;
 
 @Service
 public class OrganizationApplicationServiceImplementation implements OrganizationApplicationService {
- 
-                     static final String APPLICATIONSTATUS="Approved";
-                     static final String EMAILSTATUS = "False";
-    /**
-     * the organization application
-     */
-	@Autowired(required = true)
-	OrganizationApplicationRepository organizationApplication;
 
-	/**
-	 * the cibil report
-	 */
-	@Autowired
-	CibilReportRepository cibilReport;
+    static final String APPROVED = "Approved";
+    static final String EMAILSTATUS = "False";
+    /** the organization application */
+    @Autowired(required = true)
+    private OrganizationApplicationRepository organizationApplication;
 
-	/**
-	 * the organzation
-	 */
-	@Autowired
-	OrganizationRepository organization;
+    /** the CIBIL report */
+    @Autowired
+    private CibilReportRepository cibilReport;
 
-	/**
-	 * 
-	 *  @param application 
-	 * 
-	 * @return Application id string and value of application id 
-	 * 
-	 */
-	public HashMap<String, Long> organizationRiskMitigate(OrganizationApplicant application) {
-		HashMap<String, Long> json = new HashMap<>();
+    /** the organization */
+    @Autowired
+    private OrganizationRepository organization;
 
-		System.out.println(application.getBankruptcy());
-		System.out.println(application.getCriminalRecord());
-		try {
-			CibilReport reportOfCurrentUser = cibilReport.findByPanCard(application.getPancard());
-			System.out.println("before cibil ");
-			application.setApplicationStatus(this.ApproveOrDisapprove(application.getBankruptcy(),
-					application.getCriminalRecord(), reportOfCurrentUser.getCategory(),
-					reportOfCurrentUser.getCreditScore(), application.getLoanAmount(),
-					reportOfCurrentUser.getCreditUtilization(), reportOfCurrentUser.getCreditLimit(),
-					reportOfCurrentUser.getMonthlyIncome(), reportOfCurrentUser.getLiabilities(),
-					reportOfCurrentUser.getCurrentBalance(), application.getLoanTenure(),
-					reportOfCurrentUser.getAssetCost(), reportOfCurrentUser.getLiabilities()));
-			System.out.println("after cibil");
+    /** @param application
+     * @return Application id string and value of application id */
+    public Map<String, Long> organizationRiskMitigate(OrganizationApplicant application) {
+        HashMap<String, Long> json;
 
-		} catch (Exception e) {
+        try {
+            CibilReport reportOfCurrentUser = cibilReport.findByPanCard(application.getPancard());
+            application.setApplicationStatus(this.approveOrDisapprove(application.getBankruptcy(), application.getCriminalRecord(),
+                    reportOfCurrentUser.getCategory(), reportOfCurrentUser.getCreditScore(), application.getLoanAmount(),
+                    reportOfCurrentUser.getCreditUtilization(), reportOfCurrentUser.getMonthlyIncome(),
+                    application.getLoanTenure(),
+                    reportOfCurrentUser.getAssetCost(), reportOfCurrentUser.getLiabilities()));
 
-			application.setApplicationStatus("record not found");
+        } catch (Exception e) {
 
-		}
+            application.setApplicationStatus("record not found");
 
-		System.out.println("userId: " + (application.getUserId()).getUserId());
+        }
 
-		// application.setApplicationStatus(this.ApproveOrDisapprove());
-		Long userId = (application.getUserId()).getUserId();
-		System.out.println("after userid");
-		// Long orap=organizationApplication.getApplicationIdByUserId(userId);
-		System.out.println("before orap");
-//		if(orap==null) {
-//		
-		// Long personId = person.getPersonIdByUserId(userId);
-		Long organizatinId = organization.getOrganizationIdByUserId(userId);
-		System.out.println(organizatinId);
-		System.out.println("inside null check");
+        Long userId = (application.getUserId()).getUserId();
+        Long organizatinId = organization.getOrganizationIdByUserId(userId);
 
-		application.setEmailStatus("False");
-		System.out.println(application.getBankruptcy());
-		System.out.println(application.getBusinessAge());
-		System.out.println(application.getCriminalRecord());
-		System.out.println(application.getEmployeeCount());
-		System.out.println(application.getLicenseNumber());
-		System.out.println(application.getLoanAmount());
-		System.out.println(application.getLoanTenure());
-		System.out.println(application.getOrganizationType());
-		System.out.println(application.getPancard());
-		System.out.println(application.getApplicationStatus());
-		System.out.println(organizatinId);
-		System.out.println(application.getEmailStatus());
+        application.setEmailStatus(EMAILSTATUS);
+        organizationApplication.insertApplication(application.getBankruptcy(), application.getBusinessAge(), application.getCriminalRecord(),
+                application.getEmployeeCount(), application.getLicenseNumber(), application.getLoanAmount(), application.getLoanTenure(),
+                application.getOrganizationType(), application.getPancard(), application.getRevenue(), application.getApplicationStatus(),
+                organizatinId, userId, application.getEmailStatus());
 
-		organizationApplication.insertApplication(application.getBankruptcy(), application.getBusinessAge(),
-				application.getCriminalRecord(), application.getEmployeeCount(), application.getLicenseNumber(),
-				application.getLoanAmount(), application.getLoanTenure(), application.getOrganizationType(),
-				application.getPancard(), application.getRevenue(), application.getApplicationStatus(), organizatinId,
-				userId, application.getEmailStatus());
+        json = new HashMap<>();
+        json.put("Application_Id", organizationApplication.getApplicationId());
+        return json;
 
-		System.out.println("Organization Application ID:" + organizationApplication.getApplicationId());
-		json = new HashMap<String, Long>();
-		json.put("Application_Id", organizationApplication.getApplicationId());
-		return json;
+    }
 
-	}
+    public OrganizationApplicant findByUserId(long userId) {
+        return findByUserId(userId);
 
-	public OrganizationApplicant findByUserId(long userId) {
-		return findByUserId(userId);
+    }
 
-	}
+    public String approveOrDisapprove(int bankrupt, int criminal, String assetCategory, int cibilScore, int loanAmount, float creditUtilization,
+            int monthlyIncome, int loanTenure, float assetCost, float liabilites) {
+        if (bankrupt == 1 || criminal == 1) {
+            return "Rejected";
+        }
 
-	public String ApproveOrDisapprove(int bankrupt, int criminal, String assetCategory, int cibilScore, int loanAmount,
-			float creditUtilization, float creditLimit, int monthlyIncome, float monthlyLiablities,
-			float currentBalance, int loanTenure, float assetCost, float liabilites) {
-		if (bankrupt == 1 || criminal == 1) {
-			return "Rejected";
-		}
+        else if (!(assetCategory.equals("STD") || !(assetCategory.equals("NPA")))) {
+            return "Rejected Bad History";
+        }
 
-		else if (assetCategory != "STD" || assetCategory != "NPA") {
-			return "Rejected Bad History"; // of repayment
-		}
+        else if (cibilScore < 500 && cibilScore >= 300) {
+            return "Rejected Low Credits";
+        }
 
-		else if (cibilScore < 500 && cibilScore >= 300) {
-			return "Rejected Low Credits";
-		}
+        else if (cibilScore <= 900 && cibilScore >= 700) {
+            return APPROVED;
+        }
 
-		else if (cibilScore <= 900 && cibilScore >= 700) {
-			return "Approve";
-		}
+        else if (creditUtilization >= 60) {
+            return "Rejected Bad History";
+        }
 
-		else if (creditUtilization >= 60) {
-			return "Rejected Bad History";
-		}
+        else if (cibilScore < 700 && cibilScore >= 500) {
+            float calculatedIncome = (float) (monthlyIncome * 0.5);
+            float interest = (float) ((loanAmount * 13.5 * loanTenure) / 1200);
+            float emi = ((loanAmount + interest) / loanTenure);
+            float assetvalue = assetCost - liabilites;
+            float loanamt = (float) (loanAmount + (assetvalue * 0.2));
 
-		else if (cibilScore < 700 && cibilScore >= 500) {
-//			int limit = 500000;
-//			return validation(limit, loanAmount, creditUtilization, creditLimit, monthlyIncome, monthlyLiablities,
-//					currentBalance);
-			float calculatedIncome = (float) (monthlyIncome * 0.5);
-			float interest = (float) ((loanAmount * 13.5 * loanTenure) / 1200);
-			float EMI = ((loanAmount + interest) / loanTenure);
-			float assetvalue = assetCost - liabilites;
-			float loanamt = (float) (loanAmount + (assetvalue * 0.2));
+            if (calculatedIncome > emi) {
+                return APPROVED;
+            } else if (assetvalue > loanamt)
+                return APPROVED;
+        }
 
-			if (calculatedIncome > EMI) {
-				return "Approved";
-			} else if (assetvalue > loanamt) {
-				return "Approved";
-			}
-		}
+        return "Pending Internal Error";
+    }
 
-//		else if (cibilScore < 800 && cibilScore >= 700) {
-//			int limit = 1000000;
-//			return validation(limit, loanAmount, creditUtilization, creditLimit, monthlyIncome, monthlyLiablities,
-//					currentBalance);
-//		}
+    /** find out all application associated with particular userId.
+     *
+     * @param userId
+     * @return list of Organization Applicants */
+    @Override
+    public List<OrganizationApplicant> getHistory(OrganizationApplicant userId) {
 
-		return "Pending Internal Error";
-	}
+        return (List<OrganizationApplicant>) organizationApplication.findByUserId((userId.getUserId()).getUserId());
+    }
 
-//	public String validation(int limit, int loanAmount, float creditUtilization, float creditLimit, int monthlyIncome,
-//			float monthlyLiablities, float currentBalance) {
-//		if (loanAmount > limit) {
-	
-	
-	
-	
-//			return "Rejected Amount Declined";
-//		}
-//
-//		else if (creditUtilization >= .4 * creditLimit) {
-//			return "Rejected Bad History";
-//		}
+    /** get organization applications in particular page with no of records.
+     *
+     * @param pageNo
+     * @param pageSize
+     * @return list of Organization Applicants */
+    public List<OrganizationApplicant> getAllOrganizationApplicant(Integer pageNo, Integer pageSize) {
 
-	/**
-	 * find out all application associated with particular userId
-	 *
-	 * @param userId
-	 * 
-	 * @return list of Organization Applicants
-	 */
-	@Override
-	public List<OrganizationApplicant> getHistory(OrganizationApplicant userId) {
+        Pageable paging = PageRequest.of(pageNo, pageSize);
 
-		List<OrganizationApplicant> application = (List<OrganizationApplicant>) organizationApplication
-				.findByUserId((userId.getUserId()).getUserId());
+        Page<OrganizationApplicant> pagedResult = organizationApplication.findAll(paging);
 
-//		personApplication.findByUserId(userId.getUserId());
+        if (pagedResult.hasContent()) {
+            return pagedResult.getContent();
+        } else {
+            return new ArrayList<>();
+        }
+    }
 
-		System.out.println(application.get(0));
+    /** @return list of Organization Applicants */
+    public List<OrganizationApplicant> findApplicants() {
 
-		return application;
-	}
+        return organizationApplication.findByemailStatus(EMAILSTATUS);
 
-	/**
-	 * get organization applications in particular page with no of records
-	 *
-	 * @param Integer
-	 * 
-	 * @param Integer
-	 * 
-	 * @return list of Organization Applicants
-	 */
-	public List<OrganizationApplicant> getAllOrganizationApplicant(Integer pageNo, Integer pageSize) {
-		System.out.println("inside service impl");
+    }
 
-		Pageable paging = PageRequest.of(pageNo, pageSize);
-		System.out.println(paging);
-
-		Page<OrganizationApplicant> pagedResult = organizationApplication.findAll(paging);
-		System.out.println(pagedResult);
-
-		if (pagedResult.hasContent()) {
-			return pagedResult.getContent();
-		} else {
-			return new ArrayList<OrganizationApplicant>();
-		}
-	}
-
-	/**
-	 * @return list of Organization Applicants
-	 */
-	public List<OrganizationApplicant> findApplicants() {
-		
-		List<OrganizationApplicant> result = organizationApplication.findByemailStatus(EMAILSTATUS);
-		System.out.println("inside service");
-		return result;
-	}
-
-	/**
-	 * find out top creditors
-	 * 
-	 * @return list of Organization Applicants
-	 */
-	@Override
-	public List<OrganizationApplicant> findTopPersonCreditors() {
-		List<OrganizationApplicant> result = organizationApplication.findTopPersonCreditors(APPLICATIONSTATUS);
-		return result;
-	}
+    /** find out top creditors.
+     * 
+     * @return list of Organization Applicants */
+    @Override
+    public List<OrganizationApplicant> findTopPersonCreditors() {
+        return organizationApplication.findTopPersonCreditors(APPROVED);
+    }
 }

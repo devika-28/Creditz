@@ -7,16 +7,14 @@ import com.impetus.repository.CibilReportRepository;
 
 public class CibilReportService {
 
-	@Autowired
-	CibilReportRepository cibilRepo;
+    @Autowired
+    private CibilReportRepository cibilRepo;
 
-	/**
-	 * return CIBIL report
-	 * 
-	 * @return CIBIL report
-	 */
-	CibilReport getCibilReport(CibilReport cibilReport) {
-		return cibilRepo.findByPanCard(cibilReport.getPanCard());
-	}
+    /** return CIBIL report.
+     * @param cibilReport
+     * @return CIBIL report */
+    CibilReport getCibilReport(CibilReport cibilReport) {
+        return cibilRepo.findByPanCard(cibilReport.getPanCard());
+    }
 
 }

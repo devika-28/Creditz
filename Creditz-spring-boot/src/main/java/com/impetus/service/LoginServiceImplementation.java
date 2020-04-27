@@ -10,31 +10,30 @@ import com.impetus.repository.LoginRepository;
 @Service("userService")
 public class LoginServiceImplementation implements LoginService {
 
-	@Autowired
-	private LoginRepository loginRepo;
+    @Autowired
+    private LoginRepository loginRepo;
 
-	/**
-	 * after authentication it will return user id and role to front end.
-	 * 
-	 * @param userEmail user email
-	 * @return hash map of userid and role
-	 */
-	@Override
-	public HashMap<String, String> PostLoginDetails(String userEmail) {
+    /** after authentication it will return user id and role to front end.
+     * 
+     * @param userEmail
+     *            user email
+     * @return hash map of user id and role */
+    @Override
+    public HashMap<String, String> postLoginDetails(String userEmail) {
 
-		HashMap<String, String> credentials = new HashMap<String, String>();
+        HashMap<String, String> credentials = new HashMap<>();
 
-		try {
-			User currentUser = loginRepo.findByUserEmail(userEmail);
+        try {
+            User currentUser = loginRepo.findByUserEmail(userEmail);
 
-			credentials.put("userId", String.valueOf(currentUser.getUserId()));
-			credentials.put("role", String.valueOf(currentUser.getRole()));
+            credentials.put("userId", String.valueOf(currentUser.getUserId()));
+            credentials.put("role", String.valueOf(currentUser.getRole()));
 
-		} catch (NullPointerException e) {
-			credentials.put("userId", null);
-			credentials.put("role", null);
-		}
-		return credentials;
-	}
+        } catch (NullPointerException e) {
+            credentials.put("userId", null);
+            credentials.put("role", null);
+        }
+        return credentials;
+    }
 
 }

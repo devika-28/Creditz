@@ -9,19 +9,16 @@ import com.impetus.repository.PersonRepository;
 @Service
 public class PersonServiceImplementation implements PersonService {
 
-	@Autowired
-	PersonRepository person;
+    @Autowired
+    private PersonRepository person;
 
-	/**
-	 * Find User on the basis of userId
-	 *
-	 * @param userId
-	 * 
-	 * @return Person
-	 */
-	public Person findPersonByUserId(Long userId) {
-		return person.findPersonByUserId(userId);
+    /** Find User on the basis of userId.
+     *
+     * @param userId
+     * @return Person */
+    public Person findPersonByUserId(Long userId) {
+        return person.findPersonByUserId(userId);
 
-	}
+    }
 
 }

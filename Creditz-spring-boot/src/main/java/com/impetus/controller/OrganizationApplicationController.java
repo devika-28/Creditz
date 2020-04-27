@@ -1,7 +1,7 @@
 package com.impetus.controller;
 
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,67 +17,55 @@ import com.impetus.service.OrganizationApplicationService;
 @RestController
 public class OrganizationApplicationController {
 
-	@Autowired(required = true)
-	OrganizationApplicationService organizationservice;
-	@Autowired
-	OrganizationApplicationService service;
-	
-	/**
-	 *  Organization applicant application submit.
-	 *
-	 * @param application the application
-	 * 
-	 * @return the Hashmap<String,Long> containing status and user id
-	 * To save the application by organization applicant
-	 */
+    @Autowired(required = true)
+    private OrganizationApplicationService organizationservice;
+    @Autowired
+    private OrganizationApplicationService service;
 
-	@CrossOrigin(origins = "*", allowedHeaders = "*")
-	@PostMapping("/organization-user/user-application")
-	public HashMap<String, Long>organizationApplicantApplicationSubmit(@RequestBody OrganizationApplicant application) {
-		return service.organizationRiskMitigate(application);
+    /** Organization applicant application submit.
+     *
+     * @param application
+     *            the application
+     * @return status and user id To save the application by organization applicant. */
 
-	}
-	/**
-	 * find out all application associated with particular userId
-	 *
-	 * @param userId
-	 * 
-	 * @return list of Organization Applicants
-	 */
-	@CrossOrigin(origins = "*", allowedHeaders = "*")
-	@PostMapping("/organization-user/user-history")
-	public List<OrganizationApplicant> organizationHistory(@RequestBody OrganizationApplicant userId) {
-		return service.getHistory(userId);
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @PostMapping("/organization-user/user-application")
+    public Map<String, Long> organizationApplicantApplicationSubmit(@RequestBody OrganizationApplicant application) {
+        return service.organizationRiskMitigate(application);
 
-	}
+    }
 
-	/**
-	 * get organization applications in particular page with no of records
-	 *
-	 * @param Integer
-	 * 
-	 * @param Integer
-	 * 
-	 * @return list of Organization Applicants
-	 */
-	@CrossOrigin(origins = "*", allowedHeaders = "*")
-	@GetMapping("/getOrganizationApplicants")
-	public List<OrganizationApplicant> getAllOrganizationApplicant(@RequestParam(defaultValue = "0") int pageNo,
-			@RequestParam(defaultValue = "1") int pageSize) {
-		System.out.println(pageNo);
-		return organizationservice.getAllOrganizationApplicant(pageNo, pageSize);
-	}
+    /** find out all application associated with particular userId.
+     *
+     * @param userId
+     * @return list of Organization Applicants */
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @PostMapping("/organization-user/user-history")
+    public List<OrganizationApplicant> organizationHistory(@RequestBody OrganizationApplicant userId) {
+        return service.getHistory(userId);
 
-	/**
-	 * find out top creditors
-	 * 
-	 * @return list of Organization Applicants
-	 */
-	@CrossOrigin(origins = "*", allowedHeaders = "*")
-	@GetMapping("/getTopOrganizationApplicants")
-	public List<OrganizationApplicant> findTopPersonCreditors() {
-		return organizationservice.findTopPersonCreditors();
+    }
 
-	}
+    /** get organization applications in particular page with no of records.
+     *
+     * @param pageNo
+     * @param pageSize
+     * @return list of Organization Applicants */
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @GetMapping("/getOrganizationApplicants")
+    public List<OrganizationApplicant> getAllOrganizationApplicant(@RequestParam(defaultValue = "0") int pageNo,
+            @RequestParam(defaultValue = "1") int pageSize) {
+        return organizationservice.getAllOrganizationApplicant(pageNo, pageSize);
+    }
+
+    /** find out top creditors.
+     * 
+     * @return list of Organization Applicants */
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @GetMapping("/getTopOrganizationApplicants")
+    public List<OrganizationApplicant> findTopPersonCreditors() {
+        return organizationservice.findTopPersonCreditors();
+
+    }
 
 }

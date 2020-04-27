@@ -12,20 +12,17 @@ import com.impetus.service.OrganizationService;
 @RestController
 public class OrganizationController {
 
-	@Autowired
-	OrganizationService organizationService;
+    @Autowired
+    private OrganizationService organizationService;
 
-	/**
-	 * Find Organization details on the basis of userId
-	 *
-	 * @param userId
-	 * 
-	 * @return Organization
-	 */
-	@CrossOrigin(origins = "*", allowedHeaders = "*")
-	@GetMapping("/findOrganizationByUserId")
-	Organization findOrganizationByUserId(@RequestParam Long userId) {
-		return organizationService.findOrganizationByUserId(userId);
-	}
+    /** Find Organization details on the basis of userId.
+     *
+     * @param userId
+     * @return Organization */
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @GetMapping("/findOrganizationByUserId")
+    public Organization findOrganizationByUserId(@RequestParam Long userId) {
+        return organizationService.findOrganizationByUserId(userId);
+    }
 
 }

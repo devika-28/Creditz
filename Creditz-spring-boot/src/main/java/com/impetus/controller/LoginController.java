@@ -8,8 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.impetus.service.LoginService;
@@ -17,27 +16,23 @@ import com.impetus.service.LoginService;
 @RestController
 public class LoginController {
 
-	@Autowired
-	LoginService userService; // Service which will do all data retrieval/manipulation work
+    @Autowired
+    private LoginService userService;
 
-	/**
-	 * login function
-	 * 
-	 * @return Hash map containing role and user id of current user
-	 */
-	@SuppressWarnings("unchecked")
-	@CrossOrigin(origins = "*", allowedHeaders = "*")
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public ResponseEntity<HashMap<String, String>> login() {
+    /** login function.
+     * 
+     * @return Hash map containing role and user id of current user */
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @GetMapping(value = "/login")
+    public ResponseEntity<HashMap<String, String>> login() {
 
-		SecurityContext context = SecurityContextHolder.getContext();
-		HashMap<String, String> users = (java.util.HashMap<String, String>) userService
-				.PostLoginDetails(context.getAuthentication().getName());
-		if (users.isEmpty()) {
-			return new ResponseEntity<HashMap<String, String>>(HttpStatus.NO_CONTENT);// You many decide to return
-																						// HttpStatus.NOT_FOUND
-		}
-		return new ResponseEntity<HashMap<String, String>>(users, HttpStatus.OK);
-	}
+        SecurityContext context = SecurityContextHolder.getContext();
+        HashMap<String, String> users = (java.util.HashMap<String, String>) userService.postLoginDetails(context.getAuthentication().getName());
+        if (users.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);// You many decide to return
+                                                               // HttpStatus.NOT_FOUND
+        }
+        return new ResponseEntity<>(users, HttpStatus.OK);
+    }
 
 }

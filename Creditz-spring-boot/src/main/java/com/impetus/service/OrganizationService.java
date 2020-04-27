@@ -6,12 +6,9 @@ import com.impetus.model.Organization;
 
 @Service
 public interface OrganizationService {
-	/**
-	 * Find Organization details on the basis of userId
-	 *
-	 * @param userId
-	 * 
-	 * @return Organization
-	 */
-	public Organization findOrganizationByUserId(Long userId);
+    /** Find Organization details on the basis of userId.
+     *
+     * @param userId
+     * @return Organization */
+    Organization findOrganizationByUserId(Long userId);
 }

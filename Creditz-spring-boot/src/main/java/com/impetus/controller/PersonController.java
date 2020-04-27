@@ -12,19 +12,16 @@ import com.impetus.service.PersonService;
 @RestController
 public class PersonController {
 
-	@Autowired
-	PersonService personService;
+    @Autowired
+    private PersonService personService;
 
-	/**
-	 * Find User on the basis of userId
-	 *
-	 * @param userId
-	 * 
-	 * @return Person
-	 */
-	@CrossOrigin(origins = "*", allowedHeaders = "*")
-	@GetMapping("/findPersonByUserId")
-	Person findPersonByUserId(@RequestParam Long userId) {
-		return personService.findPersonByUserId(userId);
-	}
+    /** Find User on the basis of userId.
+     *
+     * @param userId
+     * @return Person */
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @GetMapping("/findPersonByUserId")
+    public Person findPersonByUserId(@RequestParam Long userId) {
+        return personService.findPersonByUserId(userId);
+    }
 }

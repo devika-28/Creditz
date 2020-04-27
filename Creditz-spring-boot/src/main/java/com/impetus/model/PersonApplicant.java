@@ -14,161 +14,163 @@ import javax.validation.constraints.Size;
 @Entity(name = "personapplicant")
 @Table(name = "personapplicant")
 public class PersonApplicant {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long applicationId;
+    static final int TEN = 10;
 
-	/** The panCard */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long applicationId;
 
-	@Size(max = 10)
-	@Column(name = "pan_card", nullable = false)
-	private String pancard;
+    /** The panCard */
 
-	/** amount of loan */
-	@Column(name = "loan_amount", nullable = false)
-	private int loanAmount;
+    @Size(max = TEN)
+    @Column(name = "pan_card", nullable = false)
+    private String pancard;
 
-	/** age of applicant */
-	@Column(name = "age", nullable = false)
-	private int age;
+    /** amount of loan */
+    @Column(name = "loan_amount", nullable = false)
+    private int loanAmount;
 
-	/** gender of applicant */
-	@Column(name = "gender", nullable = false)
-	private String gender;
+    /** age of applicant */
+    @Column(name = "age", nullable = false)
+    private int age;
 
-	/** occupation of applicant */
-	@Column(name = "occupation", nullable = false)
-	private String occupation;
+    /** gender of applicant */
+    @Column(name = "gender", nullable = false)
+    private String gender;
 
-	/** status of application */
-	@Column(name = "application_status", nullable = false)
-	private String applicationStatus;
+    /** occupation of applicant */
+    @Column(name = "occupation", nullable = false)
+    private String occupation;
 
-	/** criminal record against applicant */
-	@Column(name = "criminal_record", nullable = false)
-	private int criminalRecord;
+    /** status of application */
+    @Column(name = "application_status", nullable = false)
+    private String applicationStatus;
 
-	/** is applicant is bankCorrupt */
-	@Column(name = "bankruptcy", nullable = false)
-	private int bankruptcy;
+    /** criminal record against applicant */
+    @Column(name = "criminal_record", nullable = false)
+    private int criminalRecord;
 
-	/** loan tenure */
-	@Column(name = "loan_tenure", nullable = false)
-	private int loanTenure;
+    /** is applicant is bankCorrupt */
+    @Column(name = "bankruptcy", nullable = false)
+    private int bankruptcy;
 
-	@Column(name = "email_status", nullable = false)
-	private String emailStatus;
+    /** loan tenure */
+    @Column(name = "loan_tenure", nullable = false)
+    private int loanTenure;
 
-	public String getEmailStatus() {
-		return emailStatus;
-	}
+    @Column(name = "email_status", nullable = false)
+    private String emailStatus;
 
-	public void setEmailStatus(String emailStatus) {
-		this.emailStatus = emailStatus;
-	}
+    public String getEmailStatus() {
+        return emailStatus;
+    }
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "person_id")
-	private Person personId;
+    public void setEmailStatus(String emailStatus) {
+        this.emailStatus = emailStatus;
+    }
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "user_id")
-	private User userId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "person_id")
+    private Person personId;
 
-	public long getApplicationId() {
-		return applicationId;
-	}
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User userId;
 
-	public void setApplicationId(long applicationId) {
-		this.applicationId = applicationId;
-	}
+    public long getApplicationId() {
+        return applicationId;
+    }
 
-	public String getPancard() {
-		return pancard;
-	}
+    public void setApplicationId(long applicationId) {
+        this.applicationId = applicationId;
+    }
 
-	public void setPancard(String pancard) {
-		this.pancard = pancard;
-	}
+    public String getPancard() {
+        return pancard;
+    }
 
-	public int getLoanAmount() {
-		return loanAmount;
-	}
+    public void setPancard(String pancard) {
+        this.pancard = pancard;
+    }
 
-	public void setLoanAmount(int loanAmount) {
-		this.loanAmount = loanAmount;
-	}
+    public int getLoanAmount() {
+        return loanAmount;
+    }
 
-	public int getAge() {
-		return age;
-	}
+    public void setLoanAmount(int loanAmount) {
+        this.loanAmount = loanAmount;
+    }
 
-	public void setAge(int age) {
-		this.age = age;
-	}
+    public int getAge() {
+        return age;
+    }
 
-	public String getGender() {
-		return gender;
-	}
+    public void setAge(int age) {
+        this.age = age;
+    }
 
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
+    public String getGender() {
+        return gender;
+    }
 
-	public String getOccupation() {
-		return occupation;
-	}
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
-	public void setOccupation(String occupation) {
-		this.occupation = occupation;
-	}
+    public String getOccupation() {
+        return occupation;
+    }
 
-	public String getApplicationStatus() {
-		return applicationStatus;
-	}
+    public void setOccupation(String occupation) {
+        this.occupation = occupation;
+    }
 
-	public void setApplicationStatus(String applicationStatus) {
-		this.applicationStatus = applicationStatus;
-	}
+    public String getApplicationStatus() {
+        return applicationStatus;
+    }
 
-	public int getCriminalRecord() {
-		return criminalRecord;
-	}
+    public void setApplicationStatus(String applicationStatus) {
+        this.applicationStatus = applicationStatus;
+    }
 
-	public void setCriminalRecord(int criminalRecord) {
-		this.criminalRecord = criminalRecord;
-	}
+    public int getCriminalRecord() {
+        return criminalRecord;
+    }
 
-	public int getBankruptcy() {
-		return bankruptcy;
-	}
+    public void setCriminalRecord(int criminalRecord) {
+        this.criminalRecord = criminalRecord;
+    }
 
-	public void setBankruptcy(int bankruptcy) {
-		this.bankruptcy = bankruptcy;
-	}
+    public int getBankruptcy() {
+        return bankruptcy;
+    }
 
-	public int getLoanTenure() {
-		return loanTenure;
-	}
+    public void setBankruptcy(int bankruptcy) {
+        this.bankruptcy = bankruptcy;
+    }
 
-	public void setLoanTenure(int loanTenure) {
-		this.loanTenure = loanTenure;
-	}
+    public int getLoanTenure() {
+        return loanTenure;
+    }
 
-	public Person getPersonId() {
-		return personId;
-	}
+    public void setLoanTenure(int loanTenure) {
+        this.loanTenure = loanTenure;
+    }
 
-	public void setPersonId(Person personId) {
-		this.personId = personId;
-	}
+    public Person getPersonId() {
+        return personId;
+    }
 
-	public User getUserId() {
-		return userId;
-	}
+    public void setPersonId(Person personId) {
+        this.personId = personId;
+    }
 
-	public void setUserId(User userId) {
-		this.userId = userId;
-	}
+    public User getUserId() {
+        return userId;
+    }
+
+    public void setUserId(User userId) {
+        this.userId = userId;
+    }
 
 }

@@ -1,46 +1,45 @@
 package com.impetus.service;
 
+import java.security.NoSuchAlgorithmException;
+
 import com.impetus.model.Organization;
 import com.impetus.model.Person;
 import com.impetus.model.User;
 
 /** The Interface UserService. */
 public interface UserService {
-    /**
-     * Generate otp ,no parameters
-     * @return otp in string form
+    /** Generate OTP ,no parameters.
+     * 
+     * @return OTP in string form
+     * @throws NoSuchAlgorithmException
      */
-	public String GenerateOTP();
+    String generateOTP() throws NoSuchAlgorithmException;
 
-	/**
-	 * send otp
-	 * 
-	 * @param userEmail
-	 * @return otp in string form
-	 */
-	public String sendOTP(String userEmail);
+    /** send OTP.
+     * 
+     * @param userEmail
+     * @return OTP in string form
+     * @throws NoSuchAlgorithmException
+     */
+    String sendOTP(String userEmail) throws NoSuchAlgorithmException;
 
-	/**
-	 * Save person.
-	 *
-	 * @param user the user
-	 * @return true, if successful
-	 */
-	public boolean savePerson(Person user);
+    /** Save person.
+     *
+     * @param user
+     *            the user
+     * @return true, if successful */
+    boolean savePerson(Person user);
 
-	/**
-	 * @param user the user
-	 * 
-	 * @return true, if successful
-	 */
-	public boolean saveOrganization(Organization user);
+    /** @param user
+     *            the user
+     * @return true, if successful */
+    boolean saveOrganization(Organization user);
 
-	/**
-	 * Save Analyst
-	 *
-	 * @param user the user
-	 * @return true, if successful
-	 */
-	public boolean saveAnalyst(User user);
+    /** Save Analyst.
+     *
+     * @param user
+     *            the user
+     * @return true, if successful */
+    boolean saveAnalyst(User user);
 
 }

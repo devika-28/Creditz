@@ -17,75 +17,71 @@ import com.impetus.repository.PersonApplicationRepository;
 import com.impetus.service.MailService;
 import com.impetus.service.OrganizationApplicationService;
 import com.impetus.service.PersonApplicationService;
-/**
- * Deal with Schedulling of sending Application Status to applicants
- */
+
+/** Deal with Scheduling of sending Application Status to applicants. */
 @Component
 public class ScheduledTasks {
 
-	private static final Logger LOG = LoggerFactory.getLogger(ScheduledTasks.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ScheduledTasks.class);
 
-	@Autowired
-	PersonApplicationRepository personRepository;
+    @Autowired
+    private PersonApplicationRepository personRepository;
 
-	@Autowired
-	PersonApplicationService service;
+    @Autowired
+    private PersonApplicationService service;
 
-	@Autowired
-	OrganizationApplicationService service1;
+    @Autowired
+    private OrganizationApplicationService service1;
 
-	@Autowired
-	private MailService notificationService;
+    @Autowired
+    private MailService notificationService;
 
-	@Autowired
-	OrganizationApplicationRepository Repository;
+    @Autowired
+    private OrganizationApplicationRepository repository;
 
-	static final String status = "True";
-/**
-	 * send status of application to person applicants execute in every 4 hour
-	 */
-	@Scheduled(cron = "0 0 */4 * * *")
-	public void scheduleTaskWithCronExpression() {
-		ArrayList<PersonApplicant> personApplicants = new ArrayList<PersonApplicant>();
-		personApplicants = (ArrayList<PersonApplicant>) service.findApplicants();
-		Iterator<PersonApplicant> personapplicantIterator = personApplicants.iterator();
-		while (personapplicantIterator.hasNext()) {
-			PersonApplicant applicants = personapplicantIterator.next();
-			String email = applicants.getUserId().getUserEmail();
-			String estatus = applicants.getEmailStatus();
-			String applicationStatus = applicants.getApplicationStatus();
-			try {
-				notificationService.sendEmailToApplicants(email, estatus, applicationStatus);
-				LOG.info("Application status has send to" +email);
-				personRepository.updateEmailStatus(applicants.getApplicationId(), status);
-			} catch (MailException mailException) {
-				LOG.error("exception ocuured", mailException);
-			}
+    static final String STATUS = "True";
 
-		}
-	}
+    /** send status of application to person applicants execute in every 4 hour. */
+    @Scheduled(cron = "0 0 */4 * * *")
+    public void scheduleTaskWithCronExpression() {
+        ArrayList<PersonApplicant> personApplicants;
+        personApplicants = (ArrayList<PersonApplicant>) service.findApplicants();
+        Iterator<PersonApplicant> personapplicantIterator = personApplicants.iterator();
+        while (personapplicantIterator.hasNext()) {
+            PersonApplicant applicants = personapplicantIterator.next();
+            String email = applicants.getUserId().getUserEmail();
+            String estatus = applicants.getEmailStatus();
+            String applicationStatus = applicants.getApplicationStatus();
+            try {
+                notificationService.sendEmailToApplicants(email, estatus, applicationStatus);
+                LOG.info("Application status has send to {}", email);
+                personRepository.updateEmailStatus(applicants.getApplicationId(), STATUS);
+            } catch (MailException mailException) {
+                LOG.error("exception ocuured ", mailException);
+            }
 
-/**
-	 * send status of application to organization applicants execute in every 4 hour
-	 */
-	@Scheduled(cron = "0 0 */4 * * *")
-	public void scheduleTaskWithExpression() {
-		ArrayList<OrganizationApplicant> organizationApplicants = new ArrayList<OrganizationApplicant>();
-		organizationApplicants = (ArrayList<OrganizationApplicant>) service1.findApplicants();
-		Iterator<OrganizationApplicant> organizationapplicantIterator = organizationApplicants.iterator();
-		while (organizationapplicantIterator.hasNext()) {
-			OrganizationApplicant applicants = organizationapplicantIterator.next();
-			String email = applicants.getUserId().getUserEmail();
-			String estatus = applicants.getEmailStatus();
-			String applicationStatus = applicants.getApplicationStatus();
-			try {
-				notificationService.sendEmailToApplicants(email, estatus, applicationStatus);
-				LOG.info("Application status has send to" +email);
-				Repository.updateEmailStatus(applicants.getApplicationId(), status);
-			} catch (MailException mailException) {
-				LOG.error("exception ocuured", mailException);
-			}
+        }
+    }
 
-		}
-	}
+    /** send status of application to organization applicants execute in every 4 hour. */
+    @Scheduled(cron = "0 0 */4 * * *")
+    public void scheduleTaskWithExpression() {
+        ArrayList<OrganizationApplicant> organizationApplicants;
+        organizationApplicants = (ArrayList<OrganizationApplicant>) service1.findApplicants();
+        Iterator<OrganizationApplicant> organizationapplicantIterator = organizationApplicants.iterator();
+        while (organizationapplicantIterator.hasNext()) {
+            OrganizationApplicant applicants = organizationapplicantIterator.next();
+            String email = applicants.getUserId().getUserEmail();
+            String estatus = applicants.getEmailStatus();
+            String applicationStatus = applicants.getApplicationStatus();
+            try {
+                notificationService.sendEmailToApplicants(email, estatus, applicationStatus);
+                LOG.info("Application status has send to {}", email);
+                repository.updateEmailStatus(applicants.getApplicationId(), STATUS);
+            } catch (MailException mailException) {
+                LOG.error("exception ocuured", mailException);
+            }
+
+        }
+    }
 }

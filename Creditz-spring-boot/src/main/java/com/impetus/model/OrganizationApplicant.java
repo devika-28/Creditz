@@ -14,193 +14,188 @@ import javax.validation.constraints.Size;
 @Entity(name = "organizationapplicant")
 @Table(name = "organizationapplicant")
 public class OrganizationApplicant {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long applicationId;
+    static final int TEN = 10;
 
-	/** The panCard */
-	@Size(max = 10)
-	@Column(name = "pan_card", nullable = false)
-	private String pancard;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long applicationId;
 
-	/** Loan Amount */
-	@Column(name = "loan_amount", nullable = false)
-	private int loanAmount;
+    /** The panCard */
+    @Size(max = TEN)
+    @Column(name = "pan_card", nullable = false)
+    private String pancard;
 
-	/** Revenue of Organization */
-	@Column(name = "revenue", nullable = false)
-	private long revenue;
+    /** Loan Amount */
+    @Column(name = "loan_amount", nullable = false)
+    private int loanAmount;
 
-	/** No of Employees in Organization */
-	@Column(name = "employee_count", nullable = false)
-	private int employeeCount;
+    /** Revenue of Organization */
+    @Column(name = "revenue", nullable = false)
+    private long revenue;
 
-	/** the no years business is running */
-	@Column(name = "age", nullable = false)
-	private int businessAge;
+    /** No of Employees in Organization */
+    @Column(name = "employee_count", nullable = false)
+    private int employeeCount;
 
-	/** license no of organization */
-	@Column(name = "licenseno", nullable = false)
-	private String licenseNumber;
+    /** the no years business is running */
+    @Column(name = "age", nullable = false)
+    private int businessAge;
 
-	/** field of organization */
-	@Column(name = "organization_type", nullable = false)
-	private String organizationType;
+    /** license no of organization */
+    @Column(name = "licenseno", nullable = false)
+    private String licenseNumber;
 
-	/** application status approved or pending or approved */
-	@Column(name = "application_status", nullable = false)
-	private String applicationStatus;
+    /** field of organization */
+    @Column(name = "organization_type", nullable = false)
+    private String organizationType;
 
-	/** Criminal record against applicant */
-	@Column(name = "criminal_record", nullable = false)
-	private int criminalRecord;
+    /** application status approved or pending or approved */
+    @Column(name = "application_status", nullable = false)
+    private String applicationStatus;
 
-	/** is applicant is bankCorrupt */
-	@Column(name = "bankruptcy", nullable = false)
-	private int bankruptcy;
+    /** Criminal record against applicant */
+    @Column(name = "criminal_record", nullable = false)
+    private int criminalRecord;
 
-	/**
-	 * loan tenure
-	 */
-	@Column(name = "loan_tenure", nullable = false)
-	private int loanTenure;
+    /** is applicant is bankCorrupt */
+    @Column(name = "bankruptcy", nullable = false)
+    private int bankruptcy;
 
-	@Column(name = "email_status", nullable = false)
-	private String emailStatus;
+    /** loan tenure */
+    @Column(name = "loan_tenure", nullable = false)
+    private int loanTenure;
 
-	
-	/**
-	 * the organization foreign key mapping 
-	 */
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "organization_id")
-	private Organization organizationId;
+    @Column(name = "email_status", nullable = false)
+    private String emailStatus;
 
-	/**
-	 * the user foreign key mapping 
-	 */
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "user_id")
-	private User userId;
+    /** the organization foreign key mapping */
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "organization_id")
+    private Organization organizationId;
 
-	public String getEmailStatus() {
-		return emailStatus;
-	}
+    /** the user foreign key mapping */
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User userId;
 
-	public void setEmailStatus(String emailStatus) {
-		this.emailStatus = emailStatus;
-	}
+    public String getEmailStatus() {
+        return emailStatus;
+    }
 
-	public int getCriminalRecord() {
-		return criminalRecord;
-	}
+    public void setEmailStatus(String emailStatus) {
+        this.emailStatus = emailStatus;
+    }
 
-	public void setCriminalRecord(int criminalRecord) {
-		this.criminalRecord = criminalRecord;
-	}
+    public int getCriminalRecord() {
+        return criminalRecord;
+    }
 
-	public int getBankruptcy() {
-		return bankruptcy;
-	}
+    public void setCriminalRecord(int criminalRecord) {
+        this.criminalRecord = criminalRecord;
+    }
 
-	public void setBankruptcy(int bankruptcy) {
-		this.bankruptcy = bankruptcy;
-	}
+    public int getBankruptcy() {
+        return bankruptcy;
+    }
 
-	public long getApplicationId() {
-		return applicationId;
-	}
+    public void setBankruptcy(int bankruptcy) {
+        this.bankruptcy = bankruptcy;
+    }
 
-	public void setApplicationId(long applicationId) {
-		this.applicationId = applicationId;
-	}
+    public long getApplicationId() {
+        return applicationId;
+    }
 
-	public String getPancard() {
-		return pancard;
-	}
+    public void setApplicationId(long applicationId) {
+        this.applicationId = applicationId;
+    }
 
-	public void setPancard(String pancard) {
-		this.pancard = pancard;
-	}
+    public String getPancard() {
+        return pancard;
+    }
 
-	public int getLoanAmount() {
-		return loanAmount;
-	}
+    public void setPancard(String pancard) {
+        this.pancard = pancard;
+    }
 
-	public void setLoanAmount(int loanAmount) {
-		this.loanAmount = loanAmount;
-	}
+    public int getLoanAmount() {
+        return loanAmount;
+    }
 
-	public long getRevenue() {
-		return revenue;
-	}
+    public void setLoanAmount(int loanAmount) {
+        this.loanAmount = loanAmount;
+    }
 
-	public void setRevenue(long revenue) {
-		this.revenue = revenue;
-	}
+    public long getRevenue() {
+        return revenue;
+    }
 
-	public int getEmployeeCount() {
-		return employeeCount;
-	}
+    public void setRevenue(long revenue) {
+        this.revenue = revenue;
+    }
 
-	public void setEmployeeCount(int employeeCount) {
-		this.employeeCount = employeeCount;
-	}
+    public int getEmployeeCount() {
+        return employeeCount;
+    }
 
-	public int getBusinessAge() {
-		return businessAge;
-	}
+    public void setEmployeeCount(int employeeCount) {
+        this.employeeCount = employeeCount;
+    }
 
-	public void setBusinessAge(int businessAge) {
-		this.businessAge = businessAge;
-	}
+    public int getBusinessAge() {
+        return businessAge;
+    }
 
-	public String getLicenseNumber() {
-		return licenseNumber;
-	}
+    public void setBusinessAge(int businessAge) {
+        this.businessAge = businessAge;
+    }
 
-	public void setLicenseNumber(String licenseNumber) {
-		this.licenseNumber = licenseNumber;
-	}
+    public String getLicenseNumber() {
+        return licenseNumber;
+    }
 
-	public String getOrganizationType() {
-		return organizationType;
-	}
+    public void setLicenseNumber(String licenseNumber) {
+        this.licenseNumber = licenseNumber;
+    }
 
-	public void setOrganizationType(String organizationType) {
-		this.organizationType = organizationType;
-	}
+    public String getOrganizationType() {
+        return organizationType;
+    }
 
-	public String getApplicationStatus() {
-		return applicationStatus;
-	}
+    public void setOrganizationType(String organizationType) {
+        this.organizationType = organizationType;
+    }
 
-	public void setApplicationStatus(String applicationStatus) {
-		this.applicationStatus = applicationStatus;
-	}
+    public String getApplicationStatus() {
+        return applicationStatus;
+    }
 
-	public int getLoanTenure() {
-		return loanTenure;
-	}
+    public void setApplicationStatus(String applicationStatus) {
+        this.applicationStatus = applicationStatus;
+    }
 
-	public void setLoanTenure(int loanTenure) {
-		this.loanTenure = loanTenure;
-	}
+    public int getLoanTenure() {
+        return loanTenure;
+    }
 
-	public Organization getOrganizationId() {
-		return organizationId;
-	}
+    public void setLoanTenure(int loanTenure) {
+        this.loanTenure = loanTenure;
+    }
 
-	public void setOrganizationId(Organization organizationId) {
-		this.organizationId = organizationId;
-	}
+    public Organization getOrganizationId() {
+        return organizationId;
+    }
 
-	public User getUserId() {
-		return userId;
-	}
+    public void setOrganizationId(Organization organizationId) {
+        this.organizationId = organizationId;
+    }
 
-	public void setUserId(User userId) {
-		this.userId = userId;
-	}
+    public User getUserId() {
+        return userId;
+    }
+
+    public void setUserId(User userId) {
+        this.userId = userId;
+    }
 
 }

@@ -9,18 +9,15 @@ import com.impetus.repository.OrganizationRepository;
 @Service
 public class OrganizationServiceImplementation implements OrganizationService {
 
-	@Autowired
-	OrganizationRepository organization;
+    @Autowired
+    private OrganizationRepository organization;
 
-	/**
-	 * Find Organization details on the basis of userId
-	 *
-	 * @param userId
-	 * 
-	 * @return Organization
-	 */
-	@Override
-	public Organization findOrganizationByUserId(Long userId) {
-		return organization.findOrganizationByUserId(userId);
-	}
+    /** Find Organization details on the basis of userId.
+     *
+     * @param userId
+     * @return Organization */
+    @Override
+    public Organization findOrganizationByUserId(Long userId) {
+        return organization.findOrganizationByUserId(userId);
+    }
 }

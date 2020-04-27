@@ -15,138 +15,120 @@ import javax.persistence.Table;
 @Table(name = "organization")
 public class Organization {
 
-	/** The organization id. */
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long organizationId;
+    /** The organization id. */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long organizationId;
 
-	/** The organization name. */
-	@Column(name = "org_name", nullable = false)
-	private String organizationName;
+    /** The organization name. */
+    @Column(name = "org_name", nullable = false)
+    private String organizationName;
 
-	/** The contact. */
-	@Column(name = "contact", nullable = false)
-	private String contact;
+    /** The contact. */
+    @Column(name = "contact", nullable = false)
+    private String contact;
 
-	/** The address. */
-	@Column(name = "address", nullable = false)
-	private String address;
+    /** The address. */
+    @Column(name = "address", nullable = false)
+    private String address;
 
-	/** The director name. */
-	@Column(name = "directorName")
-	private String directorName;
+    /** The director name. */
+    @Column(name = "directorName")
+    private String directorName;
 
-	/** The user. */
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "userId")
-	private User user;
+    /** The user. */
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "userId")
+    private User user;
 
-	/**
-	 * Gets the organization id.
-	 *
-	 * @return the organization id
-	 */
-	public long getOrganizationId() {
-		return organizationId;
-	}
+    /** Gets the organization id.
+     *
+     * @return the organization id */
+    public long getOrganizationId() {
+        return organizationId;
+    }
 
-	/**
-	 * Sets the organization id.
-	 *
-	 * @param organizationId the new organization id
-	 */
-	public void setOrganizationId(long organizationId) {
-		this.organizationId = organizationId;
-	}
+    /** Sets the organization id.
+     *
+     * @param organizationId
+     *            the new organization id */
+    public void setOrganizationId(long organizationId) {
+        this.organizationId = organizationId;
+    }
 
-	/**
-	 * Gets the organization name.
-	 *
-	 * @return the organization name
-	 */
-	public String getOrganizationName() {
-		return organizationName;
-	}
+    /** Gets the organization name.
+     *
+     * @return the organization name */
+    public String getOrganizationName() {
+        return organizationName;
+    }
 
-	/**
-	 * Sets the organization name.
-	 *
-	 * @param organizationName the new organization name
-	 */
-	public void setOrganizationName(String organizationName) {
-		this.organizationName = organizationName;
-	}
+    /** Sets the organization name.
+     *
+     * @param organizationName
+     *            the new organization name */
+    public void setOrganizationName(String organizationName) {
+        this.organizationName = organizationName;
+    }
 
-	/**
-	 * Gets the contact.
-	 *
-	 * @return the contact
-	 */
-	public String getContact() {
-		return contact;
-	}
+    /** Gets the contact.
+     *
+     * @return the contact */
+    public String getContact() {
+        return contact;
+    }
 
-	/**
-	 * Sets the contact.
-	 *
-	 * @param contact the new contact
-	 */
-	public void setContact(String contact) {
-		this.contact = contact;
-	}
+    /** Sets the contact.
+     *
+     * @param contact
+     *            the new contact */
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
 
-	/**
-	 * Gets the address.
-	 *
-	 * @return the address
-	 */
-	public String getAddress() {
-		return address;
-	}
+    /** Gets the address.
+     *
+     * @return the address */
+    public String getAddress() {
+        return address;
+    }
 
-	/**
-	 * Sets the address.
-	 *
-	 * @param address the new address
-	 */
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    /** Sets the address.
+     *
+     * @param address
+     *            the new address */
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-	/**
-	 * Gets the director name.
-	 *
-	 * @return the director name
-	 */
-	public String getDirectorName() {
-		return directorName;
-	}
+    /** Gets the director name.
+     *
+     * @return the director name */
+    public String getDirectorName() {
+        return directorName;
+    }
 
-	/**
-	 * Sets the director name.
-	 *
-	 * @param directorName the new director name
-	 */
-	public void setDirectorName(String directorName) {
-		this.directorName = directorName;
-	}
+    /** Sets the director name.
+     *
+     * @param directorName
+     *            the new director name */
+    public void setDirectorName(String directorName) {
+        this.directorName = directorName;
+    }
 
-	/**
-	 * Gets the user.
-	 *
-	 * @return the user
-	 */
-	public User getUser() {
-		return user;
-	}
+    /** Gets the user.
+     *
+     * @return the user */
+    public User getUser() {
+        return user;
+    }
 
-	/**
-	 * Sets the user.
-	 *
-	 * @param user the new user
-	 */
-	public void setUser(User user) {
-		this.user = user;
-	}
+    /** Sets the user.
+     *
+     * @param user
+     *            the new user */
+    public void setUser(User user) {
+        this.user = user;
+    }
 
 }

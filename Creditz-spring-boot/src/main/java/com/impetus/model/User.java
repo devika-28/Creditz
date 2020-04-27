@@ -17,73 +17,61 @@ import org.springframework.stereotype.Component;
 @Component
 public class User {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long userId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long userId;
 
-	@Column(name = "user_email", nullable = false)
-	private String userEmail;
+    @Column(name = "user_email", nullable = false)
+    private String userEmail;
 
-	@Column(name = "role", nullable = false)
-	private String role;
+    @Column(name = "role", nullable = false)
+    private String role;
 
-	@Column(name = "password", nullable = false)
-	private String password;
+    @Column(name = "password", nullable = false)
+    private String password;
 
-	/**
-	 * @return the userId
-	 */
-	public long getUserId() {
-		return userId;
-	}
+    /** @return the userId */
+    public long getUserId() {
+        return userId;
+    }
 
-	/**
-	 * @param userId the userId to set
-	 */
-	public void setUserId(long userId) {
-		this.userId = userId;
-	}
+    /** @param userId
+     *            the userId to set */
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
 
-	/**
-	 * @return the userEmail
-	 */
-	public String getUserEmail() {
-		return userEmail;
-	}
+    /** @return the userEmail */
+    public String getUserEmail() {
+        return userEmail;
+    }
 
-	/**
-	 * @param userEmail the userEmail to set
-	 */
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
-	}
+    /** @param userEmail
+     *            the userEmail to set */
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
 
-	/**
-	 * @return the role
-	 */
-	public String getRole() {
-		return role;
-	}
+    /** @return the role */
+    public String getRole() {
+        return role;
+    }
 
-	/**
-	 * @param role the role to set
-	 */
-	public void setRole(String role) {
-		this.role = role;
-	}
+    /** @param role
+     *            the role to set */
+    public void setRole(String role) {
+        this.role = role;
+    }
 
-	/**
-	 * @return the password
-	 */
-	public String getPassword() {
-		return password;
-	}
+    /** @return the password */
+    public String getPassword() {
+        return password;
+    }
 
-	/**
-	 * @param password the password to set
-	 */
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    /** @param password
+     *            the password to set */
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
 }

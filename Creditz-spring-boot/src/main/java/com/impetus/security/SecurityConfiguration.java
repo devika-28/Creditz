@@ -20,73 +20,61 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-	@Autowired
-	DataSource dataSource;
+    private static String realm = "RMS_REALM";
 
-	private static String REALM = "RMS_REALM";
+    /** User details service it fetch user email from database, validate the input password with the salted password, stored in database and return.
+     * the the JDBCDaoImpl
+     * @param dataSource Data source, JDBC
+     * @return JDBC DAO implementation */
+    @Bean(name = "userDetailsService")
+    public UserDetailsService userDetailsService(DataSource dataSource) {
+        JdbcDaoImpl jdbcImpl = new JdbcDaoImpl();
+        jdbcImpl.setDataSource(dataSource);
+        jdbcImpl.setUsersByUsernameQuery("select user_email,password, 1 from user where user_email=?");
+        jdbcImpl.setAuthoritiesByUsernameQuery("select user_email,role from user where user_email=?");
+        return jdbcImpl;
+    }
 
-	/**
-	 * User details service it fetch user email from database, validate the input
-	 * password with the salted password, stored in database and return the the
-	 * JDBCDaoImpl
-	 * 
-	 * @return JDBC DAO implementation
-	 */
-	@Bean(name = "userDetailsService")
-	public UserDetailsService userDetailsService() {
-		JdbcDaoImpl jdbcImpl = new JdbcDaoImpl();
-		jdbcImpl.setDataSource(dataSource);
-		jdbcImpl.setUsersByUsernameQuery("select user_email,password, 1 from user where user_email=?");
-		jdbcImpl.setAuthoritiesByUsernameQuery("select user_email,role from user where user_email=?");
-		return jdbcImpl;
-	}
+    /** using password encoder it decode the password from the database.
+     * 
+     * @param auth
+     *            Authentication Manager Builder */
+    @Autowired
+    public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService()).passwordEncoder(passwordencoder());
+    }
 
-	/**
-	 * using password encoder it decode the password from the database.
-	 * 
-	 * @param auth Authentication Manager Builder
-	 */
-	@Autowired
-	public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetailsService()).passwordEncoder(passwordencoder());
-	}
+    /** using the authentication, it authenticate the url with respect to roles.
+     * 
+     * @param http
+     *            HTTP Security */
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
 
-	/**
-	 * using the authentication, it authenticate the url with respect to roles.
-	 * 
-	 * @param http HTTP Security
-	 */
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable().authorizeRequests().antMatchers("/**").permitAll().and().httpBasic().realmName(realm)
+                .authenticationEntryPoint(getBasicAuthEntryPoint());
+    }
 
-		http.csrf().disable().authorizeRequests().antMatchers("/**").permitAll().and().httpBasic().realmName(REALM)
-				.authenticationEntryPoint(getBasicAuthEntryPoint());
-	}
+    /** Custom authentication entry point.
+     * 
+     * @return new authentication entry point */
+    @Bean
+    public CustomBasicAuthenticationEntryPoint getBasicAuthEntryPoint() {
+        return new CustomBasicAuthenticationEntryPoint();
+    }
 
-	/**
-	 * Custom authentication entry point.
-	 * 
-	 * @return new auth entry point
-	 */
-	@Bean
-	public CustomBasicAuthenticationEntryPoint getBasicAuthEntryPoint() {
-		return new CustomBasicAuthenticationEntryPoint();
-	}
+    /** Configure web security. */
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");
+    }
 
-	/** Configure web security. */
-	@Override
-	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");
-	}
-
-	/**
-	 * password encoder.
-	 * 
-	 * @return bCruptPasswordEncoder
-	 */
-	@Bean(name = "passwordEncoder")
-	public PasswordEncoder passwordencoder() {
-		return new BCryptPasswordEncoder();
-	}
+    /** password encoder.
+     * 
+     * @return bCruptPasswordEncoder */
+    @Bean(name = "passwordEncoder")
+    public PasswordEncoder passwordencoder() {
+        return new BCryptPasswordEncoder();
+    }
 
 }

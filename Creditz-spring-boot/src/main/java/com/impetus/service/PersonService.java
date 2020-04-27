@@ -6,13 +6,10 @@ import com.impetus.model.Person;
 
 @Service
 public interface PersonService {
-	/**
-	 * Find User on the basis of userId
-	 *
-	 * @param Long
-	 * 
-	 * @return Person
-	 */
-	public Person findPersonByUserId(Long userId);
+    /** Find User on the basis of userId.
+     *
+     * @param userId
+     * @return Person */
+    Person findPersonByUserId(Long userId);
 
 }
