@@ -52,12 +52,17 @@ public class PersonApplicationServiceImplementation implements PersonApplication
         Long userId = (application.getUserId()).getUserId();
 
         Long personId = person.getPersonIdByUserId(userId);
+        
+        application.setDate(UserServiceImplementation.getCurrentDate());
+        application.setTime(UserServiceImplementation.getCurrentTime());
+        System.out.println(UserServiceImplementation.getCurrentDate());
+        System.out.println(UserServiceImplementation.getCurrentTime());
 
         application.setEmailStatus(FALSE);
 
         personApplication.insertApplication(application.getPancard(), application.getLoanAmount(), application.getAge(), application.getGender(),
                 application.getOccupation(), application.getApplicationStatus(), application.getCriminalRecord(), application.getBankruptcy(),
-                application.getLoanTenure(), personId, userId, application.getEmailStatus());
+                application.getLoanTenure(), personId, userId, application.getEmailStatus(),application.getDate(),application.getTime());
 
         HashMap<String, Long> json = new HashMap<>();
         json.put("Application_Id", personApplication.getApplicationId());

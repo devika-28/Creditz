@@ -55,20 +55,24 @@ public class OrganizationApplicationServiceImplementation implements Organizatio
                     reportOfCurrentUser.getLiabilities()));
 
             } catch (Exception e) {
-
+      
             application.setApplicationStatus("record not found");
 
             }
 
             Long userId = (application.getUserId()).getUserId();
             Long organizatinId = organization.getOrganizationIdByUserId(userId);
+            application.setDate(UserServiceImplementation.getCurrentDate());
+            application.setTime(UserServiceImplementation.getCurrentTime());
+            System.out.println(UserServiceImplementation.getCurrentDate());
+            System.out.println(UserServiceImplementation.getCurrentTime());
 
             application.setEmailStatus(EMAILSTATUS);
             organizationApplication.insertApplication(application.getBankruptcy(), application.getBusinessAge(),
             		 application.getCriminalRecord(),application.getEmployeeCount(), application.getLicenseNumber(),
             		 application.getLoanAmount(), application.getLoanTenure(),application.getOrganizationType(), 
                      application.getPancard(), application.getRevenue(), application.getApplicationStatus(),
-                     organizatinId, userId, application.getEmailStatus());
+                     organizatinId, userId, application.getEmailStatus(),application.getDate(),application.getTime());
 
             json = new HashMap<>();
             json.put("Application_Id", organizationApplication.getApplicationId());
@@ -109,7 +113,8 @@ public class OrganizationApplicationServiceImplementation implements Organizatio
         }
 
         else if (!(assetCategory.equals("STD")) || !(assetCategory.equals("NPA"))||creditUtilization >= 60) {
-            return REJECTEDBADHISTORY;
+          System.out.println("histry");
+        	return REJECTEDBADHISTORY;
         }
 
         else if (cibilScore < 500 && cibilScore >= 300) {

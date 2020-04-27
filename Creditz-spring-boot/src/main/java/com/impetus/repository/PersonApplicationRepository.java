@@ -19,14 +19,14 @@ public interface PersonApplicationRepository extends JpaRepository<PersonApplica
     /** insert person application into database along with the risk status, (after checking the risk). */
     @Modifying
     @Transactional
-    @Query(value = "insert into personapplicant ( pan_card, loan_amount, age, gender, occupation, application_status, criminal_record, bankruptcy, loan_tenure, person_id, user_id, email_Status)"
-            + " values (:pancard , :loanAmount , :age, :gender, :occupation, :applicationStatus, :criminalRecord, :bankruptcy , :loanTenure, :personId , :userId, :emailStatus)",
+    @Query(value = "insert into personapplicant ( pan_card, loan_amount, age, gender, occupation, application_status, criminal_record, bankruptcy, loan_tenure, person_id, user_id, email_Status,application_date,application_time)"
+            + " values (:pancard , :loanAmount , :age, :gender, :occupation, :applicationStatus, :criminalRecord, :bankruptcy , :loanTenure, :personId , :userId, :emailStatus,:date,:time)",
             nativeQuery = true)
 
     void insertApplication(@Param("pancard") String pancard, @Param("loanAmount") int loanAmount, @Param("age") int age,
             @Param("gender") String gender, @Param("occupation") String occupation, @Param("applicationStatus") String applicationStatus,
             @Param("criminalRecord") int criminalRecord, @Param("bankruptcy") int bankruptcy, @Param("loanTenure") int loanTenure,
-            @Param("personId") long personId, @Param("userId") long userId, @Param("emailStatus") String emailStatus);
+            @Param("personId") long personId, @Param("userId") long userId, @Param("emailStatus") String emailStatus, @Param("date") String date, @Param("time") String time);
 
     /** fetch the last application AUTO-GENERATED id.
      * @return application ID */

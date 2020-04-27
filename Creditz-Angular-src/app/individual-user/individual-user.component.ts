@@ -46,29 +46,16 @@ export class IndividualUserComponent implements OnInit {
     
     }
 
-    openDialog() {
-
-
+    checkuser(){
+          
       if(this.store!=null && this.role=='Organization')
-{
-  window.alert("Sorry!!!you are organization user,need to log out to apply");
-}
-    else{  // const scrollStrategy = this.overlay.scrollStrategies.reposition();
-      const dialogRef = this.dialog.open(IndividualUserApplicationComponent, {
-        autoFocus: false,
-        height: '80%',
-        width: '50%',
-      });
-    }
+      {
+        window.alert("Sorry !!! You are not organization user, need to logout.\n Login with organization user to apply .");
+      }
+      else{
+        this.goToUrl('individual-user/individual-user-application');
+      }
     }
 
 
-
-  // calculateEMI: any = function(P: number , T:number){
-  //   this.calculator.subscribe( (res: Response) =>{
-  //     var interest = (P*T*11.5)/1200;
-  //     window.alert((P+interest)/T  );
-  //     return (P+interest)/T;
-  //   }
-  //   )}
 }
