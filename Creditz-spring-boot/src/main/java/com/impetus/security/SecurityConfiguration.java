@@ -20,14 +20,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    private static String realm = "RMS_REALM";
+	@Autowired
+	private DataSource dataSource;
+    
+	private static String realm = "RMS_REALM";
 
     /** User details service it fetch user email from database, validate the input password with the salted password, stored in database and return.
      * the the JDBCDaoImpl
      * @param dataSource Data source, JDBC
      * @return JDBC DAO implementation */
     @Bean(name = "userDetailsService")
-    public UserDetailsService userDetailsService(DataSource dataSource) {
+    public UserDetailsService userDetailsService() {
         JdbcDaoImpl jdbcImpl = new JdbcDaoImpl();
         jdbcImpl.setDataSource(dataSource);
         jdbcImpl.setUsersByUsernameQuery("select user_email,password, 1 from user where user_email=?");
