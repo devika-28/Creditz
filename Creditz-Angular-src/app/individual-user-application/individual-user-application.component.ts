@@ -13,6 +13,10 @@ export class IndividualUserApplicationComponent implements OnInit {
 
   store = window.sessionStorage.getItem('userId');
   storeRole = window.sessionStorage.getItem('role');
+  minAmount=10000;
+  maxAmount=1500000;
+  minTenure=3;
+  maxTenure=100;
 
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -24,10 +28,10 @@ export class IndividualUserApplicationComponent implements OnInit {
     ngOnInit() {
       this.firstFormGroup = this._formBuilder.group({
         pancard: ['', Validators.required],
-        loanAmount: ['', Validators.required],
+        loanAmount: ['', [Validators.required, Validators.min(this.minAmount), Validators.max(this.maxAmount)]],
         age: ['', Validators.required],
         occupation: ['', Validators.required],
-        loanTenure: ['', Validators.required]
+        loanTenure: ['', [Validators.required,  Validators.min(this.minTenure), Validators.max(this.maxTenure)]]
       });
       this.secondFormGroup = this._formBuilder.group({
         gender: ['', Validators.required],

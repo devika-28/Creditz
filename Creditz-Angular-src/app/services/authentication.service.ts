@@ -55,7 +55,7 @@ export class AuthenticationService {
                    break; 
                 } 
                 case 'Admin': { 
-                  this.goToUrl('adminsidenav');
+                  this.goToUrl('admin');
                   break; 
                } 
                case 'Analyst': { 

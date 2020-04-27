@@ -39,6 +39,7 @@ logout(){
   window.sessionStorage.removeItem('role');
   window.alert("You have been logged Out");
   window.location.reload()
+  this.goToUrl('home')
 }
 
 openProfileDialog() {

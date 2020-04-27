@@ -4,8 +4,6 @@
 </div>
 </div>
 
-
-
 <div class="container" *ngIf="this.storeRole=='Person' and this.store!=null">
   <img src="assets/farm.jpg" alt="IMG" style="width:100%; margin-top:-2%">
 
@@ -72,7 +70,7 @@
 
       <div>
         <button mat-raised-button matStepperPrevious>Back</button>
-        <button mat-raised-button matStepperNext [disabled]="!secondFormGroup.valid">submit</button>
+        <button mat-raised-button matStepperNext [disabled]="!secondFormGroup.valid">Submit</button>
       </div>
     </form>
   </mat-step>

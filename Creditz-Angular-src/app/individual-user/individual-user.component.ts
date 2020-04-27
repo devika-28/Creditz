@@ -19,6 +19,15 @@ export class IndividualUserComponent implements OnInit {
     console.log( this.calculateEMI(1000,6))
   }
 
+  public greaterThan(subj: any, num: number) {
+    return subj > num;
+  }
+
+  public lessThan(subj: any, num: number) {
+    return subj < num;
+  }
+  
+
   goToUrl(url: any){
     window.open(url,'_self');
   }

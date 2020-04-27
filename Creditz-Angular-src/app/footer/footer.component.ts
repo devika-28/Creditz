@@ -9,6 +9,10 @@ export class FooterComponent implements OnInit {
 
   constructor() { }
 
+  openDialog(){
+    window.alert("You have successfully subscribed to our mailing List!")
+    window.location.reload()
+  }
   ngOnInit(): void {
   }
 

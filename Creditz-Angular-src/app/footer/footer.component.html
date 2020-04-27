@@ -8,7 +8,8 @@
                                 <p>Don’t miss any updates of our new templates and extensions.!</p>
                                 <form action="#" class="f_subscribe_two mailchimp" method="post" novalidate="true" _lpchecked="1">
                                     <input type="text" name="EMAIL" class="form-control memail" placeholder="Email">
-                                    <button class="btn btn_get btn_get_two" type="submit">Subscribe</button>
+                                    <button class="btn btn_get btn_get_two" (click)="openDialog()" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$">Subscribe</button>
+
                                     <p class="mchimp-errmessage" style="display: none;"></p>
                                     <p class="mchimp-sucmessage" style="display: none;"></p>
                                 </form>
@@ -18,8 +19,8 @@
                             <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
                                 <h3 class="f-title f_600 t_color f_size_18">Download</h3>
                                 <ul class="list-unstyled f_list">
-                                    <li><a download="aboutUs" target="_blank" href="/assets/aboutUs.pdf">Our Broucher</a></li>
-                                    <li><a download="ProjectDetails" target="_blank" href="/assets/projectDetails.pdf">Projects Details</a></li>
+                                    <li><a download="aboutUs" target="_blank" href="/assets/aboutUs.pdf">Our Brochure</a></li>
+                                    <li><a download="ProjectDetails" target="_blank" href="/assets/projectDetails.pdf">Project Details</a></li>
                                     <li><a download="MyTask" target="_blank" href="/assets/myTask.pdf">My tasks</a></li>
                                 </ul>
                             </div>

@@ -1,6 +1,6 @@
 import { Login } from './model/login';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Component } from '@angular/core';
+import { NgModule, Component, OnDestroy } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -142,7 +142,7 @@ export const route: Routes = [
     HistoryComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
-    ApplicantProfileComponent
+    ApplicantProfileComponent,
     
     
     // AuthenticateComponent,
@@ -182,7 +182,7 @@ export const route: Routes = [
     MatTooltipModule,
     ShowHidePasswordModule ,
     MatStepperModule,
-    MatSelectModule
+    MatSelectModule,
 //<button type="submit" (click)="addUser()" mat-dialog-close [disabled]="formisvalid" mat-button>Submit</button>
     // MatPaginatorModule,
   ],
