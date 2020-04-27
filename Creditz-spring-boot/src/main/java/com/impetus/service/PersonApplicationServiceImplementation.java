@@ -124,7 +124,7 @@ public class PersonApplicationServiceImplementation implements PersonApplication
             return "Rejected Amount Declined";
         }
 
-        else if (creditUtilization >= .4 * creditLimit) {
+        else if (creditUtilization <= .4 * creditLimit) {
             return "Rejected Bad History";
         }
 
