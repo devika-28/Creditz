@@ -18,16 +18,26 @@ export class UserService {
 
     updateUser(userEmail:any,password:any):Observable<any>{
       const body={userEmail:userEmail,password:password}
-      return this.http.post("http://localhost:9999/updateUserPassword",body);
+      return this.http.post("http://localhost:9999/updateUserPassword",this.createBasicAuthToken(userEmail, password));
+    }
+
+    // updateUser(username: String, password: String) {
+    //   return this.http.get(`http://localhost:9999/updateUserPassword/`,
+    //   { headers: {
+    //     Authorization: this.createBasicAuthToken(username, password) ,
+    //    } 
+    //           })  
+    // }
+  
+    createBasicAuthToken(username: String, password: String) {
+      console.log('Basic ' + window.btoa(username + ":" + password))
+      return 'Basic ' + window.btoa(username + ":" + password)
     }
 
     findUserByEmailAndPassword(userEmail:any,password:any):Observable<any>{
-      
-      let params = new HttpParams()
-     .set('userEmail',userEmail)
-     .append('password',password);
+
      
-      return this.http.get("http://localhost:9999/findUserByEmailAndPassword",{params});
+      return this.http.post("http://localhost:9999/verifyUser",this.createBasicAuthToken(userEmail, password));
     
     }
 

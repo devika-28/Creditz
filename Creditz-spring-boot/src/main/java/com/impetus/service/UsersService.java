@@ -45,7 +45,7 @@ public interface UsersService {
      * @param users
      *            the user
      * @return true, if successful */
-    boolean updateUserPassword(User users);
+    boolean updateUserPassword(String auth);
 
     /** Find User on the basis of userEmail and password.
      *
