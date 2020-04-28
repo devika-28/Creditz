@@ -9,6 +9,9 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./reset-password.component.css']
 })
 export class ResetPasswordComponent implements OnInit {
+
+  store = window.sessionStorage.getItem('userId');
+  storeRole = window.sessionStorage.getItem('role');
   userModel1=new User(1,'a@gmail.com','empty','default');
   userModel2=new User(1,'a@gmail.com','empty','default');
   UserEmailCheck: any;
