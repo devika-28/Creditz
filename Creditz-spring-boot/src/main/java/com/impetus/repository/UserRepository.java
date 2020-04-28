@@ -1,7 +1,7 @@
 package com.impetus.repository;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -14,29 +14,32 @@ import com.impetus.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    /** find user by role in particular page size and and number of records.
-     * 
-     * @param role
-     * @param pageable
-     * @return page of type user */
-    Page<User> findByRole(String role, Pageable pageable);
+	/**
+	 * find user by role
+	 * 
+	 * @param role
+	 * @return page of type user
+	 */
+	List<User> findByRole(String role);
 
-    /** find user by email.
-     * 
-     * @param userEmail
-     *            user id
-     * @return user */
+	/**
+	 * find user by email.
+	 * 
+	 * @param userEmail user id
+	 * @return user
+	 */
 
-    User findByUserEmail(String userEmail);
+	User findByUserEmail(String userEmail);
 
-    /** find user by email and password combination.
-     * 
-     * @param userEmail
-     * @param password
-     */
-    @Transactional
-    @Modifying
-    @Query("UPDATE user u SET u.password=:password where u.userEmail=:userEmail")
-    void updatePassword(String userEmail, String password);
+	/**
+	 * find user by email and password combination.
+	 * 
+	 * @param userEmail
+	 * @param password
+	 */
+	@Transactional
+	@Modifying
+	@Query("UPDATE user u SET u.password=:password where u.userEmail=:userEmail")
+	void updatePassword(String userEmail, String password);
 
 }

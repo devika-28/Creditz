@@ -1,19 +1,21 @@
-/* mat-sidenav-container 
+
+mat-container
 {
-    height:200%;
-} */
+ height:auto;
+}
 .profile-card{
     text-align: center;
     padding:20px;
 }
+
 a{
     color: black;
     align-content: center;
 }
 /* mat-sidenav-content
 {
- display: box; 
+ display:flex; 
  width: 90%;
  min-width: 400px;
- height:90%
+ height:0%
 } */

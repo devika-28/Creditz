@@ -1,6 +1,6 @@
 package com.impetus.service;
 
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Random;
 
@@ -8,9 +8,6 @@ import org.mindrot.jbcrypt.BCrypt;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.impetus.model.User;
@@ -26,22 +23,13 @@ public class UsersServiceImplementation implements UsersService {
     private MailService notificationService;
 
     /** get Details of all Analyst.
-     *
-     * @param pageNo
-     * @param pageSize
      * @return List of all Analyst */
     @Override
-    public List<User> getAllAnalyst(Integer pageNo, Integer pageSize) {
-        Pageable paging = PageRequest.of(pageNo, pageSize);
+    public List<User>getAllAnalyst() {
         String role = "Analyst";
-        Page<User> pagedResult = user.findByRole(role, paging);
+        return user.findByRole(role);
 
-        if (pagedResult.hasContent()) {
-            return pagedResult.getContent();
-        } else {
-            return new ArrayList<>();
-        }
-    }
+}
 
     /** delete Analyst details corresponding to particular userEmail.
      *

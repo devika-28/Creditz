@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.impetus.model.OrganizationApplicant;
@@ -46,16 +45,12 @@ public class OrganizationApplicationController {
 
     }
 
-    /** get organization applications in particular page with no of records.
-     *
-     * @param pageNo
-     * @param pageSize
+    /** get  all organization applications 
      * @return list of Organization Applicants */
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/getOrganizationApplicants")
-    public List<OrganizationApplicant> getAllOrganizationApplicant(@RequestParam(defaultValue = "0") int pageNo,
-            @RequestParam(defaultValue = "1") int pageSize) {
-        return organizationservice.getAllOrganizationApplicant(pageNo, pageSize);
+    public List<OrganizationApplicant> getAllOrganizationApplicant() {
+        return organizationservice.getAllOrganizationApplicant();
     }
 
     /** find out top creditors.

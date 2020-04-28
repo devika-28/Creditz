@@ -10,11 +10,8 @@ import com.impetus.model.User;
 public interface UsersService {
 
     /** get Details of all Analyst.
-     *
-     * @param pageNo
-     * @param pageSize
      * @return List of all Analyst */
-    List<User> getAllAnalyst(Integer pageNo, Integer pageSize);
+    List<User> getAllAnalyst();
 
     /** delete Analyst details corresponding to particular userEmail.
      *

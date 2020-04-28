@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.impetus.model.PersonApplicant;
@@ -47,14 +46,12 @@ public class PersonApplicationController {
 
     /** find all person applicants.
      *
-     * @param pageSize
-     * @param pageNo
      * @return list of person Applicants */
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/getPersonApplicants")
-    public List<PersonApplicant> getAllPersonApplicant(@RequestParam(defaultValue = "0") int pageNo, @RequestParam(defaultValue = "1") int pageSize) {
-        return service.getAllPersonApplicant(pageNo, pageSize);
+    public List<PersonApplicant> getAllPersonApplicant(){
+        return service.getAllPersonApplicant();
 
     }
 

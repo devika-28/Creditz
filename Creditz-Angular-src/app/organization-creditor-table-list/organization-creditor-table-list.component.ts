@@ -12,17 +12,17 @@ import { OrganizationApplicationService } from '../services/organization-applica
 export class OrganizationCreditorTableListComponent implements OnInit {
   store = window.sessionStorage.getItem('userId');
   storeRole = window.sessionStorage.getItem('role');
-  displayedColumns: string[] = ['applicationId','organizationName','contact','address','loanAmount','loanTenure','applicationStatus'];
+  displayedColumns: string[] = ['applicationId','organizationName','contact','address','loanAmount','loanTenure','applicationStatus','emailStatus'];
   @ViewChild(MatSort) sort:MatSort;
   @ViewChild(MatPaginator) paginator:MatPaginator;
   dataSource=new MatTableDataSource<any[]>();
   searchKey:String;
   length = 1000;
-  pageSizeOptions: number[] = [1,5, 10,20, 25,100,150,200]
+  pageSizeOptions: number[] = [10,20, 25,100,150,200]
   pageEvent: PageEvent;
   pageIndex=0;
   pageNo=0;
-  pageSize=1;
+  pageSize=10;
  
   setPageSizeOptions(setPageSizeOptionsInput: string) {
   if (setPageSizeOptionsInput)
@@ -32,13 +32,25 @@ export class OrganizationCreditorTableListComponent implements OnInit {
   }
   constructor(private organizataionApplication:OrganizationApplicationService) { }
    ngOnInit(){
-      this.organizataionApplication.findAllOrganizationApplication(this.pageNo,this.pageSize).subscribe(stream=>
+      this.organizataionApplication.findAllOrganizationApplication().subscribe(stream=>
        {
           this.dataSource.data=stream as any;
           this.dataSource.paginator=this.paginator;
        });
       
   }
+  // ngAfterViewChecked()
+  // {
+  //      this.pageSize=this.pageEvent.pageSize;
+  //      this.pageNo=this.pageEvent.pageIndex;
+  //      console.log(this.pageIndex+"check");
+  //      this.organizataionApplication.findAllOrganizationApplication(this.pageIndex,this.pageSize).subscribe(stream=>
+  //       {
+  //          this.dataSource.data=stream as any;
+  //          console.log(this.pageIndex);
+  //       });
+  //       // this.dataSource.paginator=this.paginator;
+  // }
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
   }

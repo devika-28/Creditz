@@ -19,8 +19,7 @@ export class CreditorTableListComponent implements OnInit {
   dataSource=new MatTableDataSource<any[]>();
   searchKey:String;
   length = 1000;
-  pageSizeOptions: number[] = [1,5, 10,20, 25,100,150,200]
-  pageEvent: PageEvent;
+  pageSizeOptions: number[] = [10,20,25,100,150,200]
   pageIndex=0;
   pageNo=0;
   pageSize=10;
@@ -35,13 +34,25 @@ export class CreditorTableListComponent implements OnInit {
       this.organizataionApplication.findAllIndividualApplication().subscribe(stream=>
        {
           this.dataSource.data=stream as any;
-          this.dataSource.paginator=this.paginator;
+         this.dataSource.paginator=this.paginator;
        });
       
   }
+//   pageEvents(event:any)
+//   {  
+//     //  this.pageIndex=event.pageIndex;
+//     //  this.pageNo=event.pageSize;
+//      this.organizataionApplication.findAllIndividualApplication(event.pageIndex,event.pageSize).subscribe(stream=>
+//         {
+//            this.dataSource.data=stream as any;
+//            console.log(this.dataSource.data.length);
+//         });
+//         this.dataSource.paginator=this.paginator;
+      
+//  }
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
-  }
+  } 
 
     applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
