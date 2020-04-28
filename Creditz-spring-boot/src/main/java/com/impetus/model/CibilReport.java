@@ -16,43 +16,55 @@ public class CibilReport {
 
     static final int TEN = 10;
 
+    /**the panCard */
     @Id
     @Column(name = "pan_Card", nullable = false)
     @Size(max = TEN)
     private String panCard;
 
+    /**the creditScore*/
     @Column(name = "credit_Score", nullable = false)
     private int creditScore;
 
+    /**the creditUtilization */
     @Column(name = "asset_Cost", nullable = false)
     private float assetCost;
 
+    /**the liabilities */
     @Column(name = "liabilities", nullable = false)
     private float liabilities;
 
+    /**the creditUtilization */
     @Column(name = "bankruptcies", nullable = false)
     private boolean bankruptcies;
 
+    /**the contactNumber */
     @Column(name = "contact_Number", nullable = false)
     private Long contactNumber;
 
+    /**the monthlyIncome */
     @Column(name = "monthly_Income", nullable = false)
     private int monthlyIncome;
 
     // balance yet to pay to the lending institutions
+    /**the currentBalance */
     @Column(name = "current_Balance", nullable = false)
     private float currentBalance;
 
     // STD, NPA, SUB https://www.coverfox.com/cibil/cibil-report/
+    /**the category */
     @Column(name = "category", nullable = false)
     private String category;
 
+    /**the repaymentTenure */
     @Column(name = "repayment_Tenure", nullable = false)
     private float repaymentTenure;
 
+    /**the  creditLimit */
     @Column(name = "credit_Limit", nullable = false)
     private float creditLimit;
 
+    /**the creditUtilization */
     @Column(name = "credit_Utilization", nullable = false)
     private float creditUtilization; // if it is more than 70% of credit limit == then we wont give loan
 

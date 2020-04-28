@@ -15,6 +15,8 @@ import javax.persistence.Table;
 @Table(name = "person")
 public class Person {
 
+	static final int TEN = 10;
+	
     /** The person id. */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,8 +27,8 @@ public class Person {
     private String personName;
 
     /** The contact. */
-    @Column(name = "contact", nullable = false)
-    private String contact;
+    @Column(name = "contact", nullable = false, length=10)
+    private long contact;
 
     /** The address. */
     @Column(name = "address", nullable = false)
@@ -70,7 +72,7 @@ public class Person {
     /** Gets the contact.
      *
      * @return the contact */
-    public String getContact() {
+    public long getContact() {
         return contact;
     }
 
@@ -78,7 +80,7 @@ public class Person {
      *
      * @param contact
      *            the new contact */
-    public void setContact(String contact) {
+    public void setContact(long contact) {
         this.contact = contact;
     }
 

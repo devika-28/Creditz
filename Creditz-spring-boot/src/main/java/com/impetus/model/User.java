@@ -17,16 +17,20 @@ import org.springframework.stereotype.Component;
 @Component
 public class User {
 
+   /** the userId */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long userId;
-
-    @Column(name = "user_email", nullable = false)
+  
+    /** the userEmail */
+    @Column(name = "user_email", nullable = false, unique=true)
     private String userEmail;
 
+    /** the role*/
     @Column(name = "role", nullable = false)
     private String role;
 
+   /** the password*/
     @Column(name = "password", nullable = false)
     private String password;
 
@@ -36,7 +40,7 @@ public class User {
     }
 
     /** @param userId
-     *            the userId to set */
+     *      the userId to set */
     public void setUserId(long userId) {
         this.userId = userId;
     }

@@ -19,9 +19,6 @@ export class OrganizationCreditorTableListComponent implements OnInit {
   searchKey:String;
   length = 1000;
   pageSizeOptions: number[] = [10,20, 25,100,150,200]
-  pageEvent: PageEvent;
-  pageIndex=0;
-  pageNo=0;
   pageSize=10;
  
   setPageSizeOptions(setPageSizeOptionsInput: string) {

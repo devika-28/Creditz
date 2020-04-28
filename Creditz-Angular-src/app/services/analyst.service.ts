@@ -17,8 +17,7 @@ export class AnalystService {
 
 
    findAllAnalyst(): Observable<any>{
-       
-       return this.http.get("http://localhost:9999/getAllAnalyst");
+     return this.http.get("http://localhost:9999/getAllAnalyst");
             
    }
    checkUniqueEmail( userEmail:any): Observable<any>{
