@@ -39,7 +39,7 @@ logout(){
   window.sessionStorage.removeItem('role');
   window.alert("You have been logged Out");
   window.location.reload()
-  this.goToUrl('home')
+  this.goToUrl('creditz/home')
 }
 
 openProfileDialog() {

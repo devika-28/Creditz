@@ -32,7 +32,7 @@ export class IndividualApplicationService {
         .subscribe(
           (res:Response)=>{
             this.applicationId = res['Application_Id'];
-            window.open("home","_self");
+            window.open("creditz/home","_self");
             window.alert("Thanks!\nYour Application is being taken into consideration\nWe will inform you Sooner\n Your Application Id is: "+ this.applicationId);
           }
         )

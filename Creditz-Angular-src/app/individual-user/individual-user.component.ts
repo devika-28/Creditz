@@ -50,10 +50,10 @@ export class IndividualUserComponent implements OnInit {
           
       if(this.store!=null && this.role=='Organization')
       {
-        window.alert("Sorry !!! You are not organization user, need to logout.\n Login with organization user to apply .");
+        window.alert("You are not authorized to see this page, If you are then please login with your organization credentials.");
       }
       else{
-        this.goToUrl('individual-user/individual-user-application');
+        this.goToUrl('creditz/individual/apply');
       }
     }
 

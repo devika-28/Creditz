@@ -29,8 +29,6 @@ import { AngularTiltModule } from 'angular-tilt';
 import {EMI} from '../app/model/emi';
 import { IndividualUserApplicationComponent } from './individual-user-application/individual-user-application.component';
 import { AboutUsComponent } from './about-us/about-us.component';
-import { FAQComponent } from './faq/faq.component';
-import { OurPoliciesComponent } from './our-policies/our-policies.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { ConfirmEqualValidatorDirective } from './shared/confirm-equal-validator.directive';
 
@@ -81,34 +79,31 @@ export const route: Routes = [
   { path: '', component: HomeComponent },
   { path: '#', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomeComponent },
+  { path: 'creditz/home', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'financial-analyst', component: FinancialAnalystComponent },
-  { path: 'individual-user', component: IndividualUserComponent },
-  { path: 'individual-user/individual-user-application', component: IndividualUserApplicationComponent },
-  { path: 'organization', component: OrganizationalUserComponent },
-  { path: 'contactUs', component: ContactUsComponent },
-  { path: 'ourPolicies', component: OurPoliciesComponent },
-  { path: 'faq', component: FAQComponent },
-  { path: 'aboutUs', component: AboutUsComponent },
-  { path: 'organization-user-calculator', component: OrganizationUserCalculatorComponent },
+  { path: 'creditz/individual', component: IndividualUserComponent },
+  { path: 'creditz/individual/apply', component: IndividualUserApplicationComponent },
+  { path: 'creditz/organization/apply', component: OrganizationalUserComponent },
+  { path: 'creditz/contactUs', component: ContactUsComponent },
+  { path: 'creditz/aboutUs', component: AboutUsComponent },
+  { path: 'creditz/organization', component: OrganizationUserCalculatorComponent },
   { path: 'successful' , component: ApplicationSubmittionComponent },
   {path:"show-analyst",component:ShowAnalystComponent},
   {path:"schedular",component:SchedularComponent},
-  { path: 'aboutUs', component: AboutUsComponent },
+  { path: 'creditz/aboutUs', component: AboutUsComponent },
   { path:"creditor-table-list",component:CreditorTableListComponent},
   { path:"organization-creditor-list",component:OrganizationCreditorTableListComponent},
   {path:"admin",component:AdminsidenavComponent},
   {path:"analyst-registration",component:AnalystRegistrationComponent},
   {path:"show-analyst",component:ShowAnalystComponent},
   {path:"schedular",component:SchedularComponent},
-  {path:"user-history",component:HistoryComponent},
+  {path:"creditz/history",component:HistoryComponent},
   {path:"forgot-password",component:ForgotPasswordComponent},
   {path:"reset-password",component:ResetPasswordComponent},
   {path:"applicant-profile",component:ApplicantProfileComponent},
   { path: '**', component:ErrorComponent},
   
-
 ];
 
 
@@ -124,8 +119,6 @@ export const route: Routes = [
     FinancialAnalystComponent,
     IndividualUserApplicationComponent,
     AboutUsComponent,
-    FAQComponent,
-    OurPoliciesComponent,
     ContactUsComponent,
     CreditorTableListComponent,
     ConfirmEqualValidatorDirective,

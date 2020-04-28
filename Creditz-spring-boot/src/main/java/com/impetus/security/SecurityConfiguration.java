@@ -54,7 +54,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http.csrf().disable().authorizeRequests().antMatchers("/**").permitAll().and().httpBasic().realmName(realm)
+        http.csrf().disable().authorizeRequests()
+        .antMatchers("creditz/**").permitAll()
+        .antMatchers("creditz/individual/**").hasRole("Individual")
+        .antMatchers("creditz/organization/**").hasRole("Organization")
+        .antMatchers("admin/**").hasRole("Admin")
+        .antMatchers("financial-analyst/**").hasRole("Analyst")
+        .and().httpBasic().realmName(realm)
                 .authenticationEntryPoint(getBasicAuthEntryPoint());
     }
 

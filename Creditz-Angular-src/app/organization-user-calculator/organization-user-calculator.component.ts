@@ -30,7 +30,7 @@ export class OrganizationUserCalculatorComponent implements OnInit {
       window.alert("Sorry !!! You are not organization user, need to logout.\n Login with organization user to apply .");
     }
     else{
-      this.goToUrl('organization');
+      this.goToUrl('creditz/organization/apply');
     }
   }
 

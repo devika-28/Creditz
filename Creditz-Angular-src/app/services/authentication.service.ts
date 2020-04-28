@@ -47,11 +47,11 @@ export class AuthenticationService {
 
               switch(res['role']) { 
                 case 'Person': { 
-                  this.goToUrl('individual-user');
+                  this.goToUrl('creditz/individual');
                   break; 
                 } 
                 case 'Organization': { 
-                  this.goToUrl('organization-user-calculator');
+                  this.goToUrl('creditz/organization');
                    break; 
                 } 
                 case 'Admin': { 
@@ -63,7 +63,7 @@ export class AuthenticationService {
                 break; 
              } 
                 default: { 
-                  this.goToUrl('home');
+                  this.goToUrl('creditz/home');
                    break; 
                 } 
              } 
