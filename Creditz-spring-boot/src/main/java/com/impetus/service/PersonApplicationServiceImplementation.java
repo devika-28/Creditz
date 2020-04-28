@@ -19,167 +19,178 @@ import com.impetus.repository.PersonRepository;
 @Service
 public class PersonApplicationServiceImplementation implements PersonApplicationService {
 
-    static final String APPROVED = "Approved";
-    static final String FALSE = "False";
-    @Autowired
-    private CibilReportRepository cibilReport;
+	static final String APPROVED = "Approved";
+	static final String FALSE = "False";
+	@Autowired
+	private CibilReportRepository cibilReport;
 
-    @Autowired
-    private PersonApplicationRepository personApplication;
+	@Autowired
+	private PersonApplicationRepository personApplication;
 
-    @Autowired
-    private PersonRepository person;
+	@Autowired
+	private PersonRepository person;
 
-    /** process the submitted application and calculate the risk.
-     * 
-     * @param application
-     *            user application
-     * @return hash map consisting of application ID */
-    @Override
-    public HashMap<String, Long> riskMitigate(PersonApplicant application) {
+	/**
+	 * process the submitted application and calculate the risk.
+	 * 
+	 * @param application user application
+	 * @return hash map consisting of application ID
+	 */
+	@Override
+	public HashMap<String, Long> riskMitigate(PersonApplicant application) {
 
-        try {
-            CibilReport reportOfCurrentUser = cibilReport.findByPanCard(application.getPancard());
+		try {
+			CibilReport reportOfCurrentUser = cibilReport.findByPanCard(application.getPancard());
 
-            application.setApplicationStatus(this.approveOrDisapprove(application.getBankruptcy(), application.getCriminalRecord(),
-                    reportOfCurrentUser.getCategory(), reportOfCurrentUser.getCreditScore(), application.getLoanAmount(),
-                    reportOfCurrentUser.getCreditUtilization(), reportOfCurrentUser.getCreditLimit(), reportOfCurrentUser.getMonthlyIncome(),
-                    reportOfCurrentUser.getLiabilities(), reportOfCurrentUser.getCurrentBalance()));
-        } catch (Exception e) {
-            application.setApplicationStatus("Record Not Found");
-        }
+			application.setApplicationStatus(this.approveOrDisapprove(application, reportOfCurrentUser));
 
-        Long userId = (application.getUserId()).getUserId();
+		} catch (Exception e) {
+			application.setApplicationStatus("Record Not Found");
+		}
 
-        Long personId = person.getPersonIdByUserId(userId);
-        
-        application.setDate(UserServiceImplementation.getCurrentDate());
-        application.setTime(UserServiceImplementation.getCurrentTime());
-        System.out.println(UserServiceImplementation.getCurrentDate());
-        System.out.println(UserServiceImplementation.getCurrentTime());
+		Long userId = (application.getUserId()).getUserId();
 
-        application.setEmailStatus(FALSE);
+		Long personId = person.getPersonIdByUserId(userId);
 
-        personApplication.insertApplication(application.getPancard(), application.getLoanAmount(), application.getAge(), application.getGender(),
-                application.getOccupation(), application.getApplicationStatus(), application.getCriminalRecord(), application.getBankruptcy(),
-                application.getLoanTenure(), personId, userId, application.getEmailStatus(),application.getDate(),application.getTime());
+		application.setEmailStatus(FALSE);
 
-        HashMap<String, Long> json = new HashMap<>();
-        json.put("Application_Id", personApplication.getApplicationId());
-        return json;
-    }
+		personApplication.insertApplication(application.getPancard(), application.getLoanAmount(), application.getAge(),
+				application.getGender(), application.getOccupation(), application.getApplicationStatus(),
+				application.getCriminalRecord(), application.getBankruptcy(), application.getLoanTenure(), personId,
+				userId, application.getEmailStatus(),application.getDate() ,application.getTime());
 
-    /** function to calculate approve or disapprove.
-     * 
-     * @param bankrupt
-     * @param criminal
-     * @param assetCategory
-     * @param cibilScore
-     * @param loanAmount
-     * @param creditUtilization
-     * @param creditLimit
-     * @param monthlyIncome
-     * @param monthlyLiablities
-     * @param currentBalance
-     * @return status */
-    public String approveOrDisapprove(int bankrupt, int criminal, String assetCategory, int cibilScore, int loanAmount, float creditUtilization,
-            float creditLimit, int monthlyIncome, float monthlyLiablities, float currentBalance) {
-        if (bankrupt == 1 || criminal == 1) {
-            return "Rejected";
-        }
+		HashMap<String, Long> json = new HashMap<>();
+		json.put("Application_Id", personApplication.getApplicationId());
+		return json;
+	}
 
-        else if (!(assetCategory.equals("STD") || !(assetCategory.equals("NPA")))) {
-            return "Rejected Bad History";
-        }
+	/**
+	 * function to calculate approve or disapprove.
+	 * 
+	 * @param bankrupt
+	 * @param criminal
+	 * @param assetCategory
+	 * @param cibilScore
+	 * @param loanAmount
+	 * @param creditUtilization
+	 * @param creditLimit
+	 * @param monthlyIncome
+	 * @param monthlyLiablities
+	 * @param currentBalance
+	 * @return status
+	 */
+	public String approveOrDisapprove(PersonApplicant application, CibilReport reportOfCurrentUser) {
 
-        else if (cibilScore < 550 && cibilScore >= 300) {
-            return "Rejected Low Credits";
-        }
+		if (application.getBankruptcy() == 1 || application.getCriminalRecord() == 1) {
+			return "Rejected";
+		}
 
-        else if (cibilScore < 700 && cibilScore >= 550) {
-            int limit = 500000;
-            return validation(limit, loanAmount, creditUtilization, creditLimit, monthlyIncome, monthlyLiablities, currentBalance);
-        }
+		else if (!(reportOfCurrentUser.getCategory().equals("STD")
+				|| !(reportOfCurrentUser.getCategory().equals("NPA")))) {
+			return "Rejected Bad History";
+		}
 
-        else if (cibilScore < 800 && cibilScore >= 700) {
-            int limit = 1000000;
-            return validation(limit, loanAmount, creditUtilization, creditLimit, monthlyIncome, monthlyLiablities, currentBalance);
-        }
+		else if (reportOfCurrentUser.getCreditScore() < 550 && reportOfCurrentUser.getCreditScore() >= 300) {
+			return "Rejected Low Credits";
+		}
 
-        else if (cibilScore <= 900 && cibilScore >= 800) {
-            return "Approve";
-        }
+		else if (reportOfCurrentUser.getCreditScore() < 700 && reportOfCurrentUser.getCreditScore() >= 550) {
+			int limit = 500000;
+			return validation(limit, application.getLoanAmount(), reportOfCurrentUser.getCreditUtilization(),
+					reportOfCurrentUser.getCreditLimit(), reportOfCurrentUser.getMonthlyIncome(),
+					reportOfCurrentUser.getLiabilities(), reportOfCurrentUser.getCurrentBalance());
+		}
 
-        return "Pending Internal Error";
-    }
+		else if (reportOfCurrentUser.getCreditScore() < 800 && reportOfCurrentUser.getCreditScore() >= 700) {
+			int limit = 1000000;
+			return validation(limit, application.getLoanAmount(), reportOfCurrentUser.getCreditUtilization(),
+					reportOfCurrentUser.getCreditLimit(), reportOfCurrentUser.getMonthlyIncome(),
+					reportOfCurrentUser.getLiabilities(), reportOfCurrentUser.getCurrentBalance());
+		}
 
-    /** validation function.
-     * 
-     * @param limit
-     * @param loanAmount
-     * @param creditUtilization
-     * @param creditLimit
-     * @param monthlyIncome
-     * @param monthlyLiablities
-     * @param currentBalance
-     * @return status */
-    public String validation(int limit, int loanAmount, float creditUtilization, float creditLimit, int monthlyIncome, float monthlyLiablities,
-            float currentBalance) {
-        if (loanAmount > limit) {
-            return "Rejected Amount Declined";
-        }
+		else if (reportOfCurrentUser.getCreditScore() <= 900 && reportOfCurrentUser.getCreditScore() >= 800) {
+			return "Approve";
+		}
 
-        else if (creditUtilization <= .4 * creditLimit) {
-            return "Rejected Bad History";
-        }
+		return "Pending Internal Error";
+	}
 
-        else if (.25 * (monthlyIncome + monthlyLiablities) <= loanAmount && currentBalance < loanAmount / 2) {
-            return "Approve";
-        }
+	/**
+	 * validation function.
+	 * 
+	 * @param limit
+	 * @param loanAmount
+	 * @param creditUtilization
+	 * @param creditLimit
+	 * @param monthlyIncome
+	 * @param monthlyLiablities
+	 * @param currentBalance
+	 * @return status
+	 */
+	public String validation(int limit, int loanAmount, float creditUtilization, float creditLimit, int monthlyIncome,
+			float monthlyLiablities, float currentBalance) {
 
-        return "Pending Internal Error";
-    }
+		if (loanAmount > limit) {
+			return "Rejected Amount Declined";
+		}
 
-    /** find person applications corresponding to particular Id.
-     *
-     * @param userId
-     * @return list of Person Applicants */
+		else if (creditUtilization <= .4 * creditLimit) {
+			return "Rejected Bad History";
+		}
 
-    @Override
-    public List<PersonApplicant> getHistory(PersonApplicant userId) {
+		else if (.25 * (monthlyIncome + monthlyLiablities) <= loanAmount && currentBalance < loanAmount / 2) {
+			return "Approve";
+		}
 
-        return (List<PersonApplicant>) personApplication.findByUserId((userId.getUserId()).getUserId());
-    }
+		return "Pending Internal Error";
+	}
 
-    /** find person applications in particular page with no of records.
-     *
-     * @param pageNo
-     * @param pageSize
-     * @return list of Person Applicants */
-    public List<PersonApplicant> getAllPersonApplicant(Integer pageNo, Integer pageSize) {
-        Pageable paging = PageRequest.of(pageNo, pageSize);
+	/**
+	 * find person applications corresponding to particular Id.
+	 *
+	 * @param userId
+	 * @return list of Person Applicants
+	 */
 
-        Page<PersonApplicant> pagedResult = personApplication.findAll(paging);
+	@Override
+	public List<PersonApplicant> getHistory(PersonApplicant userId) {
 
-        if (pagedResult.hasContent()) {
-            return pagedResult.getContent();
-        } else {
-            return new ArrayList<>();
-        }
-    }
+		return (List<PersonApplicant>) personApplication.findByUserId((userId.getUserId()).getUserId());
+	}
 
-    /** @return list of Person Applicants */
-    public List<PersonApplicant> findApplicants() {
+	/**
+	 * find person applications in particular page with no of records.
+	 *
+	 * @param pageNo
+	 * @param pageSize
+	 * @return list of Person Applicants
+	 */
+	public List<PersonApplicant> getAllPersonApplicant(Integer pageNo, Integer pageSize) {
+		Pageable paging = PageRequest.of(pageNo, pageSize);
 
-        return personApplication.findByemailStatus(FALSE);
+		Page<PersonApplicant> pagedResult = personApplication.findAll(paging);
 
-    }
+		if (pagedResult.hasContent()) {
+			return pagedResult.getContent();
+		} else {
+			return new ArrayList<>();
+		}
+	}
 
-    /** find top creditors.
-     * 
-     * @return list of Person Applicants */
-    public List<PersonApplicant> findTopPersonCreditors() {
-        return personApplication.findTopPersonCreditors(APPROVED);
-    }
+	/** @return list of Person Applicants */
+	public List<PersonApplicant> findApplicants() {
+
+		return personApplication.findByemailStatus(FALSE);
+
+	}
+
+	/**
+	 * find top creditors.
+	 * 
+	 * @return list of Person Applicants
+	 */
+	public List<PersonApplicant> findTopPersonCreditors() {
+		return personApplication.findTopPersonCreditors(APPROVED);
+	}
 
 }
