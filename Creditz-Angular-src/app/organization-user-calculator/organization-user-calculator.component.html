@@ -1,6 +1,8 @@
-<div style="max-width:50">
-  <button class="birdButton" (click)="checkusertype()">Apply Here</button>
-</div>  
+<div style="max-width:50" *ngIf="this.role!='Admin'">
+<div  *ngIf="this.role!='Analyst'">
+<button class="birdButton" (click)="checkusertype()">Apply Here</button>
+</div>
+</div>
 <div style="min-width: 40%; margin-right:5%; width: 60%; float: right;" >
   <div id="wrap">
     <div class="container">

@@ -1,5 +1,7 @@
-<div style="max-width:50" *ngIf="this.role!='Admin' or this.role!='financial-analyst' ">
+<div style="max-width:50" *ngIf="this.role!='Admin'">
+<div  *ngIf="this.role!='Analyst'">
 <button class="birdButton" (click)="checkuser()">Apply Here</button>
+</div>
 </div>
 
 <div style="min-width: 40%; margin-right:5%; width: 60%; float: right; align: right" >
