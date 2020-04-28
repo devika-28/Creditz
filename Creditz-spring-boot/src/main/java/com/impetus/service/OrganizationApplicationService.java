@@ -9,13 +9,11 @@ import com.impetus.model.OrganizationApplicant;
 
 @Service
 public interface OrganizationApplicationService {
-    /** get organization applications in particular page with no of records.
-     *
-     * @param pageNo
-     * @param pageSize
+    /** get organization applications 
+    
      * @return list of Organization Applicants */
 
-    List<OrganizationApplicant> getAllOrganizationApplicant(Integer pageNo, Integer pageSize);
+    List<OrganizationApplicant> getAllOrganizationApplicant();
 
     /** @return list of Organization Applicants */
     List<OrganizationApplicant> findApplicants();

@@ -100,6 +100,12 @@
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Application Status </mat-header-cell>
                 <mat-cell *matCellDef="let application"> {{application.applicationStatus}}</mat-cell>
               </ng-container>
+
+
+              <ng-container matColumnDef="emailStatus">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Email Status </mat-header-cell>
+                <mat-cell *matCellDef="let application"> {{application.emailStatus}}</mat-cell>
+              </ng-container>
           
               <ng-container matColumnDef="loading">
                 <mat-footer-cell *matFooterCellDef colspan="6">
@@ -116,7 +122,7 @@
           <mat-paginator [length]="length"
                          [pageSize]="pageSize"
                          [pageSizeOptions]="pageSizeOptions"
-                         (page)="pageEvent=$event">
+                         >
           </mat-paginator>
           
           </div>

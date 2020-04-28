@@ -23,18 +23,12 @@ public class UsersController {
 	@Autowired
 	private UsersService service;
 
-	/**
-	 * get Details of all Analyst.
-	 *
-	 * @param pageNo
-	 * @param pageSize
-	 * @return List of all Analyst
-	 */
-	@CrossOrigin(origins = "*", allowedHeaders = "*")
-	@GetMapping("/getAllAnalyst")
-	public List<User> getAllAnalyst(@RequestParam(defaultValue = "0") int pageNo,
-			@RequestParam(defaultValue = "1") int pageSize) {
-		return service.getAllAnalyst(pageNo, pageSize);
+    /** get Details of all Analyst.
+     * @return List of all Analyst */
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @GetMapping("/getAllAnalyst")
+    public List<User> getAllAnalyst() {
+        return service.getAllAnalyst();
 
 	}
 

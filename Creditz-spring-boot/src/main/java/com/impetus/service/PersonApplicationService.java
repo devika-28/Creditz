@@ -12,13 +12,10 @@ public interface PersonApplicationService {
 
     Map<String, Long> riskMitigate(PersonApplicant application);
 
-    /** find person applications in particular page with no of records.
-     *
-     * @param pageNo
-     * @param pageSize
+    /** find person applications 
      * @return list of Person Applicants */
 
-    List<PersonApplicant> getAllPersonApplicant(Integer pageNo, Integer pageSize);
+    List<PersonApplicant> getAllPersonApplicant();
 
     /** @return list of Person Applicants */
 

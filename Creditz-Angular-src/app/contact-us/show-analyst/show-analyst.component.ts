@@ -20,9 +20,6 @@ export class ShowAnalystComponent implements OnInit {
   searchKey:String;
   length = 100;
   pageSizeOptions: number[] = [5, 10, 25, 100]
-  pageEvent: PageEvent;
-  pageIndex=0;
-  pageNo=0;
   pageSize=5;
   setPageSizeOptions(setPageSizeOptionsInput: string) {
     if (setPageSizeOptionsInput) {
@@ -54,7 +51,7 @@ export class ShowAnalystComponent implements OnInit {
   {
        this.userService.deleteAnalyst(userEmail).subscribe(data=>
         {console.log("success",data)
-        this.analystservice.findAllAnalyst().subscribe(stream=>
+        this.analystservice.findAllAnalyst(this.pageNo,this.pageSize).subscribe(stream=>
           {
            this.dataSource.data=stream as any;
     
