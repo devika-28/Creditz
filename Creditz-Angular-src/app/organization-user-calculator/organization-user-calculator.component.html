@@ -60,7 +60,14 @@
               placeholder="Loan Amount" 
               name="principle" 
               [(ngModel)] = calculatorModel.principle >
+
               <span class="focus-input100"></span>
+             <span [matTooltip] *ngIf="greaterThan(calculatorModel.principle,7000000)" class="text-danger">
+                The maximum amount is Rs. 70Lakhs.
+             </span>
+            <span [matTooltip] *ngIf="lessThan(calculatorModel.principle,200000)" class="text-danger">
+                The minimum acceptable amount is Rs. 2 Lakh.
+             </span>
             </div>
             <div class="wrap-input100" >
               <input type="number" 
@@ -70,6 +77,12 @@
               [(ngModel)] = calculatorModel.tenure><br>
               <span class="focus-input100">
               </span>
+              <span [matTooltip] *ngIf="greaterThan(calculatorModel.tenure,100)" class="text-danger">
+                The maximum acceptable tenure is 100 Months.
+             </span>
+            <span [matTooltip] *ngIf="lessThan(calculatorModel.tenure,6)" class="text-danger">
+                The minimum acceptable tenure is 6 Months.
+             </span>
             </div>
             <label aTilt>
               <br>Your EMI Per Month: {{this.calculateEMI(calculatorModel.principle,calculatorModel.tenure)}}

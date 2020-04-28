@@ -23,7 +23,7 @@ export class OrganizationUserApplicationService {
        "organizationType": organizationType,
        "criminalRecord": criminalRecord,
        "bankruptcy":bankruptcy,
-       "loanTenure":loanAmount,
+       "loanTenure":loanTenure,
        "userId":{
        "userId": window.sessionStorage.getItem('userId')
        }
@@ -35,8 +35,9 @@ export class OrganizationUserApplicationService {
             this.applicationId = res['Application_Id'];
           //console.log(this.applicationId);
             window.open("successful","_self");
-            window.alert("Thanks!\nYour Application is taken into consideration\nWe will inform you soon about your application status");
-          }
-        )
+                window.alert("Thanks!\nYour Application is being taken into consideration\nWe will inform you Sooner\n Your Application Id is: "+ this.applicationId);
+              }
+            )
+           
       }
 }

@@ -47,7 +47,6 @@ public class UsersServiceImplementation implements UsersService {
      *
      * @param userEmail
      */
-    @Override
     public void deleteAnalyst(String userEmail) {
         LOG.info("userEmail : {}", userEmail);
         user.delete(user.findByUserEmail(userEmail));

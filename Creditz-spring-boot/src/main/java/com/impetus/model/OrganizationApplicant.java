@@ -67,6 +67,29 @@ public class OrganizationApplicant {
 
     @Column(name = "email_status", nullable = false)
     private String emailStatus;
+    
+    public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
+	@Column(name = "application_date", nullable = false)
+    private String date;
+    
+    @Column(name = "application_time", nullable = false)
+    private String time;
+    
 
     /** the organization foreign key mapping */
     @OneToOne(fetch = FetchType.EAGER)

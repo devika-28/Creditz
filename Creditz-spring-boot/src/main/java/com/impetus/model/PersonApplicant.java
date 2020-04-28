@@ -60,6 +60,12 @@ public class PersonApplicant {
 
     @Column(name = "email_status", nullable = false)
     private String emailStatus;
+    
+    @Column(name = "application_date", nullable = false)
+    private String date;
+    
+    @Column(name = "application_time", nullable = false)
+    private String time;
 
     public String getEmailStatus() {
         return emailStatus;
@@ -69,7 +75,23 @@ public class PersonApplicant {
         this.emailStatus = emailStatus;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
+	@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "person_id")
     private Person personId;
 

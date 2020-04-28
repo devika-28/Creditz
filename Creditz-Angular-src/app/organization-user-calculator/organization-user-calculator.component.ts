@@ -17,9 +17,17 @@ export class OrganizationUserCalculatorComponent implements OnInit {
     //console.log( this.calculateEMI(1000,6))
   }
 
+  public greaterThan(subj: any, num: number) {
+    return subj > num;
+  }
+
+  public lessThan(subj: any, num: number) {
+    return subj < num;
+  }
+
   checkusertype(){
     if(this.store!=null && this.role=='Person'){
-      window.alert("sorry !!!you are not organization user ..");
+      window.alert("Sorry !!! You are not organization user, need to logout.\n Login with organization user to apply .");
     }
     else{
       this.goToUrl('organization');

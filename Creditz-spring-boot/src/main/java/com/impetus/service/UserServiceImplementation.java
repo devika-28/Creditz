@@ -2,6 +2,10 @@ package com.impetus.service;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Random;
 
 import org.mindrot.jbcrypt.BCrypt;
@@ -21,6 +25,9 @@ public class UserServiceImplementation implements UserService {
     private UserDAO userdao;
     @Autowired
     private MailService notificationService;
+    static final String APPPLICATION_SUBJECT = "Email OTP Verification";
+    static final String APPPLICATION = "Hello,\n Thank you for register at our website\n please verify your otp ,Your otp numberis below \n";
+
 
     /** generate the six digit opt and return in string form.
      * 
@@ -49,7 +56,7 @@ public class UserServiceImplementation implements UserService {
     public String sendOTP(String userEmail) throws NoSuchAlgorithmException {
 
         String otp = this.generateOTP();
-        notificationService.sendEmailToUser(userEmail, otp);
+        notificationService.sendMail(userEmail,APPPLICATION_SUBJECT,APPPLICATION+otp );    
         return otp;
     }
 
@@ -95,6 +102,22 @@ public class UserServiceImplementation implements UserService {
     public boolean saveAnalyst(User user) {
         user.setPassword(hashPassword(user.getPassword()));
         return userdao.saveAnalyst(user);
+    }
+    
+    public static String getCurrentTime() {
+        Calendar cal = Calendar.getInstance();
+        Date date=cal.getTime();
+        DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+        String formattedDate=dateFormat.format(date);
+        System.out.println("Current time of the day using Calendar - 24 hour format: "+ formattedDate);
+        return formattedDate;
+    }
+
+    public static String getCurrentDate() {
+    	SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
+    	Date date = new Date(System.currentTimeMillis());
+    	System.out.println(formatter.format(date));
+    	return formatter.format(date);
     }
 
 }

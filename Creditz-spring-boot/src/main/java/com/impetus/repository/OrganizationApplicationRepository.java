@@ -20,17 +20,17 @@ public interface OrganizationApplicationRepository extends JpaRepository<Organiz
      * @param applicationStatus
      *            application status
      *             */
-    @Modifying
+	@Modifying
     @Transactional
-    @Query(value = "insert into organizationapplicant ( bankruptcy,age,criminal_record,employee_count,licenseno,loan_amount,loan_tenure,organization_type,pan_card,revenue, application_status,organization_id,user_id,email_status)"
-            + " values (:bankruptcy , :age, :criminalRecord, :employeeCount,:licenseNumber, :loanAmount , :loanTenure,:organizationType,:pancard,:revenue, :applicationStatus, :organizationId, :userId , :emailStatus)",
+    @Query(value = "insert into organizationapplicant ( bankruptcy,age,criminal_record,employee_count,licenseno,loan_amount,loan_tenure,organization_type,pan_card,revenue, application_status,organization_id,user_id,email_status,application_date,application_time)"
+            + " values (:bankruptcy , :age, :criminalRecord, :employeeCount,:licenseNumber, :loanAmount , :loanTenure,:organizationType,:pancard,:revenue, :applicationStatus, :organizationId, :userId , :emailStatus ,:date,:time)",
             nativeQuery = true)
 
     void insertApplication(@Param("bankruptcy") int bankruptcy, @Param("age") int age, @Param("criminalRecord") int criminalRecord,
             @Param("employeeCount") int employeeCount, @Param("licenseNumber") String licenseNumber, @Param("loanAmount") int loanAmount,
             @Param("loanTenure") int loanTenure, @Param("organizationType") String organizationType, @Param("pancard") String pancard,
             @Param("revenue") long revenue, @Param("applicationStatus") String applicationStatus, @Param("organizationId") long organizationId,
-            @Param("userId") long userId, @Param("emailStatus") String emailStatus);
+            @Param("userId") long userId, @Param("emailStatus") String emailStatus, @Param("date") String date, @Param("time") String time);
 
     /** getting last inserted id in the organization applicant table.
      * 
