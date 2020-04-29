@@ -19,7 +19,7 @@ export class CreditorTableListComponent implements OnInit {
   dataSource=new MatTableDataSource<any[]>();
   searchKey:String;
   length = 1000;
-  pageSizeOptions: number[] = [1,5, 10,20, 25,100,150,200]
+  pageSizeOptions: number[] = [10,20, 25,100,150,200]
   pageEvent: PageEvent;
   pageIndex=0;
   pageNo=0;
