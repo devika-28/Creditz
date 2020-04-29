@@ -4,45 +4,45 @@
 <mat-horizontal-stepper linear #stepper class="centered" style="margin-left: 54%; margin-top:-39.5%"> 
   <mat-step [stepControl]="firstFormGroup" >
     <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel style="font-size: large;color: black;">Your Credit Details</ng-template>
+      <ng-template matStepLabel style="color: black;">Your Credit Details</ng-template>
       <mat-form-field>
 
-    <mat-label style="font-size: large;color: black;">Pan Card</mat-label>
-        <input matInput placeholder="Pancard" formControlName="pancard" pattern="(^([a-zA-Z]{5})([0-9]{4})([a-zA-Z]{1})$)" required>
+    <mat-label style="color: black;">Pan Card</mat-label>
+        <input matInput placeholder="Pancard" formControlName="pancard" pattern="(^([a-zA-Z]{5})([0-9]{4})([a-zA-Z]{1})$)" matTooltip="Pattern: AAAAA1111A" matTooltipPosition="after"required>
       </mat-form-field><br>
 
       <mat-form-field>
-        <mat-label style="font-size: large;color: black;">Loan Amount</mat-label>
-        <input matInput type="number" placeholder="Loan Amount" formControlName="loanAmount" required>
+        <mat-label style=" color: black;">Loan Amount</mat-label>
+        <input matInput type="number" placeholder="Loan Amount" formControlName="loanAmount" matTooltip="Range: 2,00,000 INR - 70,00,000 INR" matTooltipPosition="after" required>
       </mat-form-field><br>
 
       <mat-form-field>
-        <mat-label style="font-size: large;color: black;">Tenure</mat-label>
-        <input matInput type="number" placeholder="Repayment Duration" formControlName="loanTenure" required>
+        <mat-label style="color: black;">Tenure</mat-label>
+        <input matInput type="number" placeholder="Repayment Duration in month" formControlName="loanTenure" matTooltip="Range: 6 month - 100 month" matTooltipPosition="after" required>
       </mat-form-field><br>
 
       <mat-form-field>
-        <mat-label style="font-size: large;color: black;">Age of Bussiness</mat-label>
-        <input matInput type="number" placeholder="Your business age" formControlName="businessAge" required>
+        <mat-label style="color: black;">Age of Bussiness</mat-label>
+        <input matInput type="number" placeholder="Your business age" formControlName="businessAge" matTooltip="Buisness Age" matTooltipPosition="after" required>
       </mat-form-field><br>
 
       <mat-form-field>
-        <mat-label style="font-size: large;color: black;">Number of Employees</mat-label>
-        <input matInput type="number" placeholder="Your total employees" formControlName="employeeCount" required>
+        <mat-label style="color: black;">Number of Employees</mat-label>
+        <input matInput type="number" placeholder="Your total employees" formControlName="employeeCount" matTooltip="Number of employees" matTooltipPosition="after" required>
       </mat-form-field><br>
 
       <mat-form-field>
-        <mat-label style="font-size: large;color: black;">Company License No.</mat-label>
-        <input matInput  placeholder="Company's license number" formControlName="licenseNumber" required>
+        <mat-label style="color: black;">Company License No.</mat-label>
+        <input matInput  placeholder="Company's license number" formControlName="licenseNumber" matTooltip="Licence number" matTooltipPosition="after" required>
       </mat-form-field><br>
 
       <mat-form-field>
-        <mat-label style="font-size: large;color: black;">Revenue</mat-label>
-        <input matInput placeholder="Revenue" formControlName="revenue" required>
+        <mat-label style="color: black;">Revenue</mat-label>
+        <input matInput placeholder="Revenue" formControlName="revenue" matTooltip="Annual Revenue of the company" matTooltipPosition="after" required>
       </mat-form-field><br>
 
       <mat-form-field>
-        <mat-label style="font-size: large;color: black;"> Organization type</mat-label>
+        <mat-label style="color: black;"> Organization type</mat-label>
         <mat-select [(value)]="selected" formControlName="organizationType" required>
           <mat-option>None</mat-option>
           <mat-option value="Limited Company">Limited Company</mat-option>
@@ -57,13 +57,13 @@
       
 
       <div>
-        <button mat-raised-button matStepperNext style="font-size: large;color: black;">Next</button>
+        <button mat-raised-button matStepperNext style="color: black;">Next</button>
       </div>
     </form>
   </mat-step>
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel style="font-size: large;color: black;">Answer the Questionnaire</ng-template>
+      <ng-template matStepLabel style="color: black;">Answer the Questionnaire</ng-template>
 
 
                       <div class="wrap-input100">   
@@ -81,24 +81,22 @@
                       </div>
 
       <div>
-        <button mat-raised-button matStepperPrevious style="font-size: large;color: black;">Back</button>
-        <button mat-raised-button matStepperNext [disabled]="!secondFormGroup.valid" style="font-size: large;color: black;">submit</button>
+        <button mat-raised-button matStepperPrevious style="color: black;">Back</button>
+        <button mat-raised-button matStepperNext [disabled]="!secondFormGroup.valid" style="color: black;">Submit</button>
       </div>
     </form>
   </mat-step>
   <mat-step>
-    <ng-template matStepLabel style="font-size: large;color: black;">Done</ng-template>
+    <ng-template matStepLabel style="color: black;">Done</ng-template>
     <div><br>
       <h2>You are all set and ready to get your amount!</h2><br>
       <h3>We will take the information submitted by you at during the registration <br> as your personal information.</h3>
       <h3>Our representative will mail you shortly regarding your application status.</h3>
-      <h3>Once your application is approved, you will get a mail listing all the essential 
-      documents required, please visit your nearest branch with those documents,
-      along with original copy of your pancard and photo id.</h3>
+      <h3>Once your application is approved, you will get a mail listing all the essential documents required; please visit your nearest branch with those documents, along with an original copy of your pan card and photo id.</h3>
 <br><br>
-      <button mat-raised-button (click)="apply()" style="font-size: large;color: black;">Confirm</button>
-      <h6>By clicking this button you accept our terms and conditions*</h6>
-      <h6>and ensure that all the details entered by you is correct, and take the liablities further actions if otherwise.</h6>
+      <button mat-raised-button (click)="apply()" style="color: black;">Confirm</button>
+      <h6>By clicking this button, you accept our terms and conditions*</h6>
+      <h6>and ensure that all the details entered by you is correct, and take the liabilities further actions if otherwise.</h6>
     </div>
   </mat-step>
 </mat-horizontal-stepper>

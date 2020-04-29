@@ -9,7 +9,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 @Component({
   selector: 'app-organizational-user',
   templateUrl: './organizational-user.component.html',
-  styleUrls: ['./organizational-user.component.css']
+  styleUrls: ['../forgot-password/forgot-password.component.css']
 })
 
 export class OrganizationalUserComponent implements OnInit {

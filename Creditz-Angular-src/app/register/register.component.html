@@ -127,7 +127,7 @@
                         </small>
                         <button type="button" 
                         class="login100-form-btn" 
-                        [disabled]="!personForm.form.valid ||emailAlreadyExist!=''" 
+                        [disabled]="!personForm.form.valid || emailAlreadyExist!=''" 
                         (click)="sendVerificationEmail(email.value)" 
                         style="font-size: medium;">
                         Send otp to verify email</button>

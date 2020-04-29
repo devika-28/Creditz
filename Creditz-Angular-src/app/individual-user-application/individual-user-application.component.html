@@ -5,36 +5,36 @@
 </div>
 
 <div class="container" *ngIf="this.storeRole=='Person' and this.store!=null">
-  <img src="assets/farm.jpg" alt="IMG" style="width:100%; margin-top:-2%">
+  <img src="assets/farm.jpg" alt="IMG" style="width:100%; margin-top:-2% ">
 
 <mat-horizontal-stepper linear #stepper  class="centered"> 
   <mat-step [stepControl]="firstFormGroup" >
     <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Your Credit Details</ng-template>
-      <mat-form-field>
+      <ng-template matStepLabel  style="color: black;">Your Credit Details</ng-template>
 
-    <mat-label>Pan Card</mat-label>
-        <input matInput placeholder="Pancard" formControlName="pancard" pattern="(^([a-zA-Z]{5})([0-9]{4})([a-zA-Z]{1})$)" required>
+      <mat-form-field >
+    <mat-label  style="color: black;">Pan Card</mat-label>
+        <input matInput placeholder="Pancard" formControlName="pancard" pattern="(^([a-zA-Z]{5})([0-9]{4})([a-zA-Z]{1})$)" matTooltip="Pattern: AAAAA1234A" matTooltipPosition="after"  required>
       </mat-form-field><br>
 
       <mat-form-field>
-        <mat-label>Loan Amount</mat-label>
-        <input matInput type="number" placeholder="Loan Amount" formControlName="loanAmount" required>
+        <mat-label  style="color: black;">Loan Amount</mat-label>
+        <input matInput type="number" placeholder="Loan Amount" formControlName="loanAmount" matTooltip="Range: 10,000 INR - 1,50,000 INR" matTooltipPosition="after" required>
       </mat-form-field><br>
 
       <mat-form-field>
-        <mat-label>Tenure</mat-label>
-        <input matInput type="number" placeholder="Repayment Duration" formControlName="loanTenure" required>
+        <mat-label  style="color: black;">Tenure</mat-label>
+        <input matInput type="number" placeholder="Repayment Duration in Months" formControlName="loanTenure" matTooltip="Range: 3 months - 100 months" matTooltipPosition="after"  required>
       </mat-form-field><br>
 
       <mat-form-field>
-        <mat-label>age</mat-label>
-        <input matInput type="number" placeholder="Your age" formControlName="age" required>
+        <mat-label  style="color: black;">Age</mat-label>
+        <input matInput type="number" placeholder="Your age" formControlName="age" matTooltip="Please enter your age" matTooltipPosition="after"  required>
       </mat-form-field><br>
 
       <mat-form-field>
-        <mat-label>Occupation</mat-label>
-        <input matInput placeholder="Your Occupation" formControlName="occupation" required>
+        <mat-label  style="color: black;">Occupation</mat-label>
+        <input matInput placeholder="Your Occupation" formControlName="occupation"  matTooltip="Please enter your occupation" matTooltipPosition="after" required>
       </mat-form-field><br>
       <div>
         <button mat-raised-button matStepperNext>Next</button>
