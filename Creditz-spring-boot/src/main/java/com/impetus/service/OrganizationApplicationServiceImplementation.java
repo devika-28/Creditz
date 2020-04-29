@@ -47,7 +47,7 @@ public class OrganizationApplicationServiceImplementation implements Organizatio
 
     /** @param application
      * @return Application id string and value of application id */
-	public HashMap<String, String> organizationRiskMitigate(OrganizationApplicant application) {
+	public HashMap<String,String> organizationRiskMitigate(OrganizationApplicant application) {
         HashMap<String, String> json=null;
         Date applicationdate = null;
         int noOfApplication;
@@ -223,4 +223,10 @@ public class OrganizationApplicationServiceImplementation implements Organizatio
     public List<OrganizationApplicant> findTopPersonCreditors() {
         return organizationApplication.findTopPersonCreditors(APPROVED);
     }
+
+	@Override
+	public List<OrganizationApplicant> getAllOrganizationApplicant() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

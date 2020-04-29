@@ -10,7 +10,7 @@ import com.impetus.model.PersonApplicant;
 @Service
 public interface PersonApplicationService {
 
-    Map<String, Long> riskMitigate(PersonApplicant application);
+    Map<String, String> riskMitigate(PersonApplicant application);
 
     /** find person applications 
      * @return list of Person Applicants */

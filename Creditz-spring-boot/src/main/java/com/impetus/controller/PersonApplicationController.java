@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.impetus.model.PersonApplicant;
@@ -27,7 +26,7 @@ public class PersonApplicationController {
      * @return set the risk status into database */
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping("/individual-user/user-application")
-    public Map<String, String> personApplicantApplicationSubmit(@RequestBody PersonApplicant application) {
+    public Map<String,String> personApplicantApplicationSubmit(@RequestBody PersonApplicant application) {
 
         return service.riskMitigate(application);
 
@@ -53,8 +52,8 @@ public class PersonApplicationController {
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/getPersonApplicants")
-    public List<PersonApplicant> getAllPersonApplicant(@RequestParam(defaultValue = "0") int pageNo, @RequestParam(defaultValue = "1") int pageSize) {
-        return service.getAllPersonApplicant(pageNo, pageSize);
+    public List<PersonApplicant> getAllPersonApplicant() {
+        return service.getAllPersonApplicant();
 
     }
 
