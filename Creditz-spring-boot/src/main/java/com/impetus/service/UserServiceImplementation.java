@@ -36,14 +36,14 @@ public class UserServiceImplementation implements UserService {
      */
     public String generateOTP() throws NoSuchAlgorithmException {
         String numbers = "0123456789";
-        String o = "";
-        Random r = SecureRandom.getInstanceStrong();
+        String finalotp = "";
+        Random randomNo = SecureRandom.getInstanceStrong();
         char otp[] = new char[6];
         for (int i = 0; i < otp.length; i++) {
-            otp[i] = numbers.charAt(r.nextInt(numbers.length()));
-            o = o + otp[i];
+            otp[i] = numbers.charAt(randomNo.nextInt(numbers.length()));
+            finalotp = finalotp + otp[i];
         }
-        return o;
+        return finalotp;
     }
 
     /** send OTP.
@@ -108,15 +108,12 @@ public class UserServiceImplementation implements UserService {
         Calendar cal = Calendar.getInstance();
         Date date=cal.getTime();
         DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
-        String formattedDate=dateFormat.format(date);
-        System.out.println("Current time of the day using Calendar - 24 hour format: "+ formattedDate);
-        return formattedDate;
+        return dateFormat.format(date);
     }
 
     public static String getCurrentDate() {
-    	SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
+    	SimpleDateFormat formatter= new SimpleDateFormat("dd/MM/yyyy");
     	Date date = new Date(System.currentTimeMillis());
-    	System.out.println(formatter.format(date));
     	return formatter.format(date);
     }
 

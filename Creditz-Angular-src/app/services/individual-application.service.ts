@@ -29,13 +29,16 @@ export class IndividualApplicationService {
     }
 
     return this.http.post(this.apiUrl,body,this.config)
-        .subscribe(
-          (res:Response)=>{
-            this.applicationId = res['Application_Id'];
-            window.open("creditz/home","_self");
-            window.alert("Thanks!\nYour Application is being taken into consideration\nWe will inform you Sooner\n Your Application Id is: "+ this.applicationId);
+    .subscribe(
+      (res:Response)=>{
+        this.applicationId = res['Application_Id'];
+        if (res['Application_Id']!=undefined){
+          window.open("successful","_self");
+            window.alert( this.applicationId);
           }
+        }
         )
-        
+       
   }
 }
+

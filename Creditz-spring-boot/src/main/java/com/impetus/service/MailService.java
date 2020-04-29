@@ -67,17 +67,7 @@ public class MailService {
          * send() function. SimpleMailMessage Object is required because send() function uses object of SimpleMailMessage as a Parameter
          */
 
-//        SimpleMailMessage mail = new SimpleMailMessage();
        this.sendMail(user.getUserEmail(), ANALYST_SUBJECT, "Your Login Credentials: " + "  EmailAddress:" + user.getUserEmail() + "  your password :" + user.getPassword() + "\n" + ENDDATA);
-//        mail.setTo(user.getUserEmail());
-//        mail.setSubject(ANALYST_SUBJECT);
-//        mail.setText(
-//                "Your Login Credentials: " + "  EmailAddress:" + user.getUserEmail() + "  your password :" + user.getPassword() + "\n" + ENDDATA);
-
-        /*
-         * This send() contains an Object of SimpleMailMessage as an Parameter
-         */
-//        javaMailSender.send(mail);
     }
 
     public void sendEmailToApplicants(String userEmail, String estatus, String applicationStatus) {
@@ -92,38 +82,30 @@ public class MailService {
         switch (applicationStatus) {
             case "Approved":
             	this.sendMail(userEmail, APPLICATION_UPDATE_SUBJECT, WELCOME + "\n" + APPROVED + "\n" + ADDITIONALDATA + "\n" + ENDDATA);
-//                mail.setText(WELCOME + "\n" + APPROVED + "\n" + ADDITIONALDATA + "\n" + ENDDATA);
                 break;
             case "Rejected Low Credits":
             	this.sendMail(userEmail, APPLICATION_UPDATE_SUBJECT, WELCOME + "\n" + DISAPPROVED + "\n" + REJECTEDLOWCREDITS + "\n" + ENDDATA);
-//                mail.setText(WELCOME + "\n" + DISAPPROVED + "\n" + REJECTEDLOWCREDITS + "\n" + ENDDATA);
                 break;
             case "Rejected":
             	this.sendMail(userEmail, APPLICATION_UPDATE_SUBJECT, WELCOME + "\n" + DISAPPROVED + "\n" + REJECTED + "\n" + ENDDATA);
-//                mail.setText(WELCOME + "\n" + DISAPPROVED + "\n" + REJECTED + "\n" + ENDDATA);
                 break;
             case "Rejected Bad History":
             	this.sendMail(userEmail, APPLICATION_UPDATE_SUBJECT, WELCOME + "\n" + DISAPPROVED + "\n" + REJECTEDBADHISTORY + "\n" + ENDDATA);
-//                mail.setText(WELCOME + "\n" + DISAPPROVED + "\n" + REJECTEDBADHISTORY + "\n" + ENDDATA);
                 break;
             case "Pending":
             	this.sendMail(userEmail, APPLICATION_UPDATE_SUBJECT, WELCOME + "\n" + PENDING + "\n" + ENDDATA);
-//                mail.setText(WELCOME + "\n" + PENDING + "\n" + ENDDATA);
                 break;
             case "Record Not Found":
             	this.sendMail(userEmail, APPLICATION_UPDATE_SUBJECT, WELCOME + "\n" + DISAPPROVED + "\n" + RECORDNOTFOUND + "\n" + ENDDATA);
-//                mail.setText(WELCOME + "\n" + DISAPPROVED + "\n" + RECORDNOTFOUND + "\n" + ENDDATA);
                 break;
             default:
             	this.sendMail(userEmail, APPLICATION_UPDATE_SUBJECT, WELCOME + "\n" + DISAPPROVED + "\n" + RECORDNOTFOUND + "\n" + ENDDATA);
-//                mail.setText(WELCOME + "\n" + DISAPPROVED + "\n" + RECORDNOTFOUND + "\n" + ENDDATA);
 
         }
 
         /*
          * This send() contains an Object of SimpleMailMessage as an Parameter
          */
-//        javaMailSender.send(mail);
     }
 
     /** Send OTP to user on its email Address.
@@ -132,15 +114,9 @@ public class MailService {
      * @param otp
      */
     public void sendOtpToUser(String userEmail, String otp) {
-//        SimpleMailMessage mail = new SimpleMailMessage();
         this.sendMail(userEmail, OTPSUBJECT, OTPCONTENT + "\n" + otp + "\n" + ENDDATA);
-//        mail.setTo(userEmail);
-//        mail.setSubject(OTPSUBJECT);
-//        mail.setText(OTPCONTENT + "\n" + otp + "\n" + ENDDATA);
-
         /*
          * This send() contains an Object of SimpleMailMessage as an Parameter
          */
-//        javaMailSender.send(mail);
     }
 }

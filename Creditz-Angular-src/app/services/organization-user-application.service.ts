@@ -32,11 +32,13 @@ export class OrganizationUserApplicationService {
       return this.http.post(this.apiUrl,body,this.config)
         .subscribe(
           (res:Response)=>{
+            console.log(res);
             this.applicationId = res['Application_Id'];
-          //console.log(this.applicationId);
+            if (res['Application_Id']!=undefined){
             window.open("successful","_self");
-                window.alert("Thanks!\nYour Application is being taken into consideration\nWe will inform you Sooner\n Your Application Id is: "+ this.applicationId);
+                window.alert( this.applicationId);
               }
+            }
             )
            
       }

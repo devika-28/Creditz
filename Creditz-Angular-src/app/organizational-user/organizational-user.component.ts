@@ -20,7 +20,7 @@ export class OrganizationalUserComponent implements OnInit {
   secondFormGroup: FormGroup;
   isEditable = false;
   isThisStepDone = false;
-  minAmount=20000;
+  minAmount=200000;
   maxAmount=7000000;
   minTenure=6;
   maxTenure=100;
@@ -47,7 +47,6 @@ export class OrganizationalUserComponent implements OnInit {
     criminalRecord:['', Validators.required]
   });
 }
-  
   apply(){
     
     window.alert("We will use the information submitted by you at the registration as your contact details");
