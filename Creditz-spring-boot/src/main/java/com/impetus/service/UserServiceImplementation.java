@@ -57,9 +57,9 @@ public class UserServiceImplementation implements UserService {
 	 * @throws NoSuchAlgorithmException
 	 */
 	public String sendOTP(String userEmail) throws NoSuchAlgorithmException {
-        
+
 		String otp = this.generateOTP();
-		LOG.info(" UserServiceImplementation ::sendOTP::call sendMail method with user Email"+userEmail);
+		LOG.info(" UserServiceImplementation ::sendOTP::call sendMail method with user Email" + userEmail);
 		notificationService.sendMail(userEmail, APPPLICATION_SUBJECT, APPPLICATION + otp);
 		return otp;
 	}
@@ -122,7 +122,8 @@ public class UserServiceImplementation implements UserService {
 		Date date = cal.getTime();
 		DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 		String formattedDate = dateFormat.format(date);
-		LOG.info("UserServiceImplementation ::sendOTP::Current time of the day using Calendar-24 hour format:" + formattedDate);
+		LOG.info("UserServiceImplementation ::sendOTP::Current time of the day using Calendar-24 hour format:"
+				+ formattedDate);
 		return formattedDate;
 	}
 
@@ -132,7 +133,7 @@ public class UserServiceImplementation implements UserService {
 	public static String getCurrentDate() {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date(System.currentTimeMillis());
-		LOG.info("UserServiceImplementation ::sendOTP::Current time of the day using Calendar-24 hour format:" +date);
+		LOG.info("UserServiceImplementation ::sendOTP::Current time of the day using Calendar-24 hour format:" + date);
 		return formatter.format(date);
 	}
 

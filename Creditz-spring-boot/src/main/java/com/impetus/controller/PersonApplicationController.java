@@ -45,7 +45,7 @@ public class PersonApplicationController {
 	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@PostMapping("/individual-user/user-history")
 	public List<PersonApplicant> personHistory(@RequestBody PersonApplicant userId) {
-		LOG.info("PersonApplicationController::personHistory::return to getHistory with userId" + userId);
+		LOG.info("PersonApplicationController::personHistory::return to getHistory with userId{}",userId);
 
 		return service.getHistory(userId);
 

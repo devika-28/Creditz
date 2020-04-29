@@ -27,7 +27,7 @@ public class PersonController {
 	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GetMapping("/findPersonByUserId")
 	public Person findPersonByUserId(@RequestParam Long userId) {
-		LOG.info("PersonController::findPersonByUserId::return findPersonByUserId method with userId"+userId);
+		LOG.info("PersonController::findPersonByUserId::return findPersonByUserId method with userId:{}",userId);
 		return personService.findPersonByUserId(userId);
 	}
 }

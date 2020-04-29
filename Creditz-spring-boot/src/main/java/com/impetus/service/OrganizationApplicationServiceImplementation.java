@@ -20,7 +20,7 @@ import com.impetus.repository.OrganizationRepository;
 
 @Service
 public class OrganizationApplicationServiceImplementation implements OrganizationApplicationService {
-	
+
 	private static final Logger LOG = LoggerFactory.getLogger(OrganizationApplicationServiceImplementation.class);
 	static final String APPROVED = "Approved";
 	static final String REJECTEDLOWCREDITS = "Rejected Low Credits";
@@ -180,11 +180,10 @@ public class OrganizationApplicationServiceImplementation implements Organizatio
 		return "Pending Internal Error";
 	}
 
-
-
 	/** @return list of Organization Applicants */
 	public List<OrganizationApplicant> findApplicants() {
-
+		LOG.info(
+				"OrganizationApplicationServiceImplementation::findApplicants::call findByemailStatus method with email Status:{},EMAILSTATUS ");
 		return organizationApplication.findByemailStatus(EMAILSTATUS);
 
 	}
@@ -196,6 +195,7 @@ public class OrganizationApplicationServiceImplementation implements Organizatio
 	 */
 	@Override
 	public List<OrganizationApplicant> findTopPersonCreditors() {
+		LOG.info("OrganizationApplicationServiceImplementation::findApplicants::call findByemailStatus method with email Status:{}",EMAILSTATUS);
 		return organizationApplication.findTopPersonCreditors(APPROVED);
 	}
 
@@ -207,7 +207,9 @@ public class OrganizationApplicationServiceImplementation implements Organizatio
 	 */
 	@Override
 	public List<OrganizationApplicant> getHistory(OrganizationApplicant userId) {
-
+		LOG.info(
+				"OrganizationApplicationServiceImplementation::getHistory::call findByemailStatus method with findByUserId:{}",
+				(userId.getUserId()).getUserId());
 		return organizationApplication.findByUserId((userId.getUserId()).getUserId());
 	}
 
@@ -217,11 +219,10 @@ public class OrganizationApplicationServiceImplementation implements Organizatio
 	 * @return list of Organization Applicants
 	 */
 	public List<OrganizationApplicant> getAllOrganizationApplicant() {
-
+		LOG.info(
+				"OrganizationApplicationServiceImplementation::getAllOrganizationApplicant::call findAll method with email Status:{},EMAILSTATUS ");
 		return organizationApplication.findAll();
 
 	}
 
-
-	
 }

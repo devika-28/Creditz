@@ -31,8 +31,9 @@ public class AnalystServiceImplementation implements AnalystService {
 	@Override
 	public List<User> getAllAnalyst() {
 		String role = "Analyst";
-		return user.findByRole(role);
-
+		LOG.info("AnalystServiceImplementation::getAllAnalyst::call findByRole method with role:{}",role);
+        return user.findByRole(role);
+		
 	}
 
 	/**
@@ -40,9 +41,10 @@ public class AnalystServiceImplementation implements AnalystService {
 	 *
 	 * @param userEmail
 	 */
-	public void deleteAnalyst(String userEmail){
+	public void deleteAnalyst(String userEmail) {
+		LOG.info("AnalystServiceImplementation::deleteAnalyst::call findByUserEmail method with user email:{}",userEmail);
 		user.delete(user.findByUserEmail(userEmail));
-		LOG.info(" AnalystServiceImplementation::deleteAnalyst::Delete user successfully with userEmail"+userEmail);
+		LOG.info("AnalystServiceImplementation::deleteAnalyst::Delete user successfully with userEmail{}", userEmail);
 	}
 
 	/**
@@ -52,14 +54,8 @@ public class AnalystServiceImplementation implements AnalystService {
 	 * @return User
 	 */
 	public User uniqueCheckEmail(String userEmail) {
-		try {
-			return user.findByUserEmail(userEmail);
-		} catch (NullPointerException e) {
-			User user1 = new User();
-			user1.setUserEmail(null);
-			user1.setPassword(null);
-			return user1;
-		}
+		LOG.info("AnalystServiceImplementation::uniqueCheckEmail::call findByUserEmail method with user email:{}",userEmail);
+		return user.findByUserEmail(userEmail);
 
 	}
 
@@ -87,7 +83,9 @@ public class AnalystServiceImplementation implements AnalystService {
 	 */
 	@Override
 	public String sendOtp(String userEmail) {
+		LOG.info("AnalystServiceImplementation::sendOtp::call generateOtp method");
 		String otp = this.generateOtp();
+		LOG.info("AnalystServiceImplementation::sendOtp::call sendOtpToUser method with user email:{}",userEmail);
 		notificationService.sendOtpToUser(userEmail, otp);
 		return otp;
 	}
@@ -126,6 +124,7 @@ public class AnalystServiceImplementation implements AnalystService {
 	@Override
 	public User findUserByEmailPassword(String userEmail, String password) {
 		User dummyuser = new User();
+		LOG.info("AnalystServiceImplementation::sendOtp::call findByUserEmail method with user email:{}",userEmail);
 		User user1 = user.findByUserEmail(userEmail);
 		if (BCrypt.checkpw(password, user1.getPassword())) {
 			return user1;

@@ -59,7 +59,8 @@ public class AnalystController {
 	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GetMapping("/checkUniqueUser")
 	public User uniqueEmailCheck(@RequestParam String userEmail) {
-		LOG.info("AnalystController::uniqueEmailCheck::call uniqueCheckEmail method with userEmail" + userEmail);
+		LOG.info("AnalystController::uniqueEmailCheck::call uniqueCheckEmail method with userEmail{}"
+				+ "" + userEmail);
 		return service.uniqueCheckEmail(userEmail);
 	}
 
@@ -72,7 +73,7 @@ public class AnalystController {
 	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GetMapping("/getOtp")
 	public String sendOtp(String userEmail) {
-		LOG.info("AnalystController::uniqueEmailCheck::call sendOtp method with userEmail" + userEmail);
+		LOG.info("AnalystController::uniqueEmailCheck::call sendOtp method with userEmail:{}",userEmail);
 		return service.sendOtp(userEmail);
 	}
 

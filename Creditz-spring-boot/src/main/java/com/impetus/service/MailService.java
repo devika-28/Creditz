@@ -46,11 +46,13 @@ public class MailService {
 	}
 
 	void sendMail(String email, String subject, String text) {
+		
 		SimpleMailMessage mail = new SimpleMailMessage();
 		mail.setTo(email);
 		mail.setSubject(subject);
 		mail.setText(text);
-        javaMailSender.send(mail);
+		LOG.info("MailService:: sendMail::call sendMail method");
+		javaMailSender.send(mail);
 	}
 
 	//
@@ -69,7 +71,7 @@ public class MailService {
 		 * function. SimpleMailMessage Object is required because send() function uses
 		 * object of SimpleMailMessage as a Parameter
 		 */
-
+		LOG.info("MailService:: sendEmail::call sendMail method");
 		this.sendMail(user.getUserEmail(), ANALYST_SUBJECT, "Your Login Credentials: " + "  EmailAddress:"
 				+ user.getUserEmail() + "  Your password :" + user.getPassword() + "\n" + ENDDATA);
 	}
@@ -87,29 +89,36 @@ public class MailService {
 		mail.setSubject(APPLICATION_UPDATE_SUBJECT);
 		switch (applicationStatus) {
 		case "Approved":
+			LOG.info("MailService::sendEmailToApplicants::call sendMail method");
 			this.sendMail(userEmail, APPLICATION_UPDATE_SUBJECT,
 					WELCOME + "\n" + APPROVED + "\n" + ADDITIONALDATA + "\n" + ENDDATA);
 			break;
 		case "Rejected Low Credits":
+			LOG.info("MailService::sendEmailToApplicants::call sendMail method");
 			this.sendMail(userEmail, APPLICATION_UPDATE_SUBJECT,
 					WELCOME + "\n" + DISAPPROVED + "\n" + REJECTEDLOWCREDITS + "\n" + ENDDATA);
 			break;
 		case "Rejected":
+			LOG.info("MailService::sendEmailToApplicants::call sendMail method");
 			this.sendMail(userEmail, APPLICATION_UPDATE_SUBJECT,
 					WELCOME + "\n" + DISAPPROVED + "\n" + REJECTED + "\n" + ENDDATA);
 			break;
 		case "Rejected Bad History":
+			LOG.info("MailService::sendEmailToApplicants::call sendMail method");
 			this.sendMail(userEmail, APPLICATION_UPDATE_SUBJECT,
 					WELCOME + "\n" + DISAPPROVED + "\n" + REJECTEDBADHISTORY + "\n" + ENDDATA);
 			break;
 		case "Pending":
+			LOG.info("MailService::sendEmailToApplicants::call sendMail method");
 			this.sendMail(userEmail, APPLICATION_UPDATE_SUBJECT, WELCOME + "\n" + PENDING + "\n" + ENDDATA);
 			break;
 		case "Record Not Found":
+			LOG.info("MailService::sendEmailToApplicants::call sendMail method");
 			this.sendMail(userEmail, APPLICATION_UPDATE_SUBJECT,
 					WELCOME + "\n" + DISAPPROVED + "\n" + RECORDNOTFOUND + "\n" + ENDDATA);
 			break;
 		default:
+			LOG.info("MailService::sendOtpToUser::call sendMail method");
 			this.sendMail(userEmail, APPLICATION_UPDATE_SUBJECT,
 					WELCOME + "\n" + DISAPPROVED + "\n" + RECORDNOTFOUND + "\n" + ENDDATA);
 

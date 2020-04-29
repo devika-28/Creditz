@@ -21,6 +21,10 @@ public class OrganizationServiceImplementation implements OrganizationService {
      * @return Organization */
     @Override
     public Organization findOrganizationByUserId(Long userId) {
+    	LOG.info(
+				"OrganizationServiceImplementation::findOrganizationByUserId::call findOrganizationByUserId method with findByUserId:{}",
+				userId);
+    	
         return organization.findOrganizationByUserId(userId);
     }
 }

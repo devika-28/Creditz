@@ -20,7 +20,7 @@ import com.impetus.repository.PersonRepository;
 
 @Service
 public class PersonApplicationServiceImplementation implements PersonApplicationService {
-	
+
 	private static final Logger LOG = LoggerFactory.getLogger(PersonApplicationServiceImplementation.class);
 	static final String APPROVED = "Approved";
 	static final String FALSE = "False";
@@ -189,7 +189,8 @@ public class PersonApplicationServiceImplementation implements PersonApplication
 
 	@Override
 	public List<PersonApplicant> getHistory(PersonApplicant userId) {
-
+		LOG.info(" PersonApplicationServiceImplementation::getHistory::call findByUserId method with UserId:{}",
+				(userId.getUserId()).getUserId());
 		return personApplication.findByUserId((userId.getUserId()).getUserId());
 	}
 
@@ -198,15 +199,15 @@ public class PersonApplicationServiceImplementation implements PersonApplication
 	 *
 	 * @return list of Person Applicants
 	 */
-	public List<PersonApplicant> getAllPersonApplicant() {
-
+	public List<PersonApplicant>getAllPersonApplicant() {
+		LOG.info("PersonApplicationServiceImplementation::getAllPersonApplicant::call findAll");
 		return personApplication.findAll();
 
 	}
 
 	/** @return list of Person Applicants */
 	public List<PersonApplicant> findApplicants() {
-
+		LOG.info("PersonApplicationServiceImplementation::findApplicants::call findByemailStatus method");
 		return personApplication.findByemailStatus(FALSE);
 
 	}
@@ -216,7 +217,8 @@ public class PersonApplicationServiceImplementation implements PersonApplication
 	 * 
 	 * @return list of Person Applicants
 	 */
-	public List<PersonApplicant> findTopPersonCreditors() {
+	public List<PersonApplicant> findTopPersonCreditors(){
+		LOG.info("PersonApplicationServiceImplementation::findTopPersonCreditors::call findTopPersonCreditors method");
 		return personApplication.findTopPersonCreditors(APPROVED);
 	}
 

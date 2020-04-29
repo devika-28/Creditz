@@ -50,8 +50,7 @@ public class OrganizationApplicationController {
 	@PostMapping("/organization-user/user-history")
 	public List<OrganizationApplicant> organizationHistory(@RequestBody OrganizationApplicant userId) {
 
-		LOG.info("OrganizationApplicationController ::organizationHistory::return to getHistory method with userId"
-				+ userId);
+		LOG.info("OrganizationApplicationController ::organizationHistory::return to getHistory method with userId:{}",userId);
 
 		return service.getHistory(userId);
 

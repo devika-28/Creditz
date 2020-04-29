@@ -27,7 +27,7 @@ public class OrganizationController {
 	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GetMapping("/findOrganizationByUserId")
 	public Organization findOrganizationByUserId(@RequestParam Long userId) {
-		LOG.info("OrganizationController::findOrganizationByUserId:: return to findOrganizationByUserId method with userId"+userId);
+		LOG.info("OrganizationController::findOrganizationByUserId:: return to findOrganizationByUserId method with userId{}",userId);
 		return organizationService.findOrganizationByUserId(userId);
 	}
 
