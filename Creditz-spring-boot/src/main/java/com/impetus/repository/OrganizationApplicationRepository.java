@@ -68,7 +68,7 @@ public interface OrganizationApplicationRepository extends JpaRepository<Organiz
     List<OrganizationApplicant> findTopPersonCreditors(String applicationStatus);
 
     /** @param userId
-     * @return list of applicant with same userid given in the parameter */
+     * @return list of applicant with same userId given in the parameter */
     @Query(nativeQuery = true, value = "Select * from organizationapplicant where user_id=:userId")
     List<OrganizationApplicant> findByUserId(long userId);
 
