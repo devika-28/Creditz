@@ -25,7 +25,7 @@ public class Organization {
 	private String organizationName;
 
 	/** The contact. */
-	@Column(name = "contact", nullable = false, length=10)
+	@Column(name = "contact", nullable = false, length = 10)
 	private long contact;
 
 	/** The address. */

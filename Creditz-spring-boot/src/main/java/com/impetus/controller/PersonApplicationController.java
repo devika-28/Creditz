@@ -3,6 +3,8 @@ package com.impetus.controller;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,55 +18,66 @@ import com.impetus.service.PersonApplicationService;
 @RestController
 public class PersonApplicationController {
 
-    @Autowired
-    private PersonApplicationService service;
+	private static final Logger LOG = LoggerFactory.getLogger(PersonApplicationController.class);
+	@Autowired
+	private PersonApplicationService service;
 
-    /** Function to calculate risk on the basis of persons application.
-     * 
-     * @param application
-     *            Person application
-     * @return set the risk status into database */
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
-    @PostMapping("/individual-user/user-application")
-    public Map<String,String> personApplicantApplicationSubmit(@RequestBody PersonApplicant application) {
+	/**
+	 * Function to calculate risk on the basis of persons application.
+	 * 
+	 * @param application Person application
+	 * @return set the risk status into database
+	 */
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
+	@PostMapping("/individual-user/user-application")
+	public Map<String, String> personApplicantApplicationSubmit(@RequestBody PersonApplicant application) {
+		LOG.info("PersonApplicationController::personApplicantApplicationSubmit::return to riskMitigate method");
+		return service.riskMitigate(application);
 
-        return service.riskMitigate(application);
+	}
 
-    }
+	/**
+	 * find person applications corresponding to particular Id.
+	 *
+	 * @param userId
+	 * @return list of Person Applicants
+	 */
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
+	@PostMapping("/individual-user/user-history")
+	public List<PersonApplicant> personHistory(@RequestBody PersonApplicant userId) {
+		LOG.info("PersonApplicationController::personHistory::return to getHistory with userId" + userId);
 
-    /** find person applications corresponding to particular Id.
-     *
-     * @param userId
-     * @return list of Person Applicants */
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
-    @PostMapping("/individual-user/user-history")
-    public List<PersonApplicant> personHistory(@RequestBody PersonApplicant userId) {
+		return service.getHistory(userId);
 
-        return service.getHistory(userId);
+	}
 
-    }
+	/**
+	 * find all person applicants.
+	 *
+	 * @param pageSize
+	 * @param pageNo
+	 * @return list of person Applicants
+	 */
 
-    /** find all person applicants.
-     *
-     * @param pageSize
-     * @param pageNo
-     * @return list of person Applicants */
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
+	@GetMapping("/getPersonApplicants")
+	public List<PersonApplicant> getAllPersonApplicant() {
+		LOG.info("PersonApplicationController::getAllPersonApplicant::return to getAllPersonApplicant method");
+		return service.getAllPersonApplicant();
 
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
-    @GetMapping("/getPersonApplicants")
-    public List<PersonApplicant> getAllPersonApplicant() {
-        return service.getAllPersonApplicant();
+	}
 
-    }
+	/**
+	 * find top creditors.
+	 * 
+	 * @return list of Person Applicants
+	 */
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
+	@GetMapping("/getTopPersonApplicants")
+	public List<PersonApplicant> findTopPersonCreditors() {
+		LOG.info("PersonApplicationController::findTopPersonCreditors::return to findTopPersonCreditors method");
+		return service.findTopPersonCreditors();
 
-    /** find top creditors.
-     * 
-     * @return list of Person Applicants */
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
-    @GetMapping("/getTopPersonApplicants")
-    public List<PersonApplicant> findTopPersonCreditors() {
-        return service.findTopPersonCreditors();
-
-    }
+	}
 
 }

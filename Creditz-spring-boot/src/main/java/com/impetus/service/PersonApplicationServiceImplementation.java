@@ -20,6 +20,7 @@ import com.impetus.repository.PersonRepository;
 
 @Service
 public class PersonApplicationServiceImplementation implements PersonApplicationService {
+	
 	private static final Logger LOG = LoggerFactory.getLogger(PersonApplicationServiceImplementation.class);
 	static final String APPROVED = "Approved";
 	static final String FALSE = "False";

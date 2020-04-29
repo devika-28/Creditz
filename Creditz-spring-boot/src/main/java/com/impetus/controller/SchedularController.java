@@ -23,79 +23,92 @@ import com.impetus.service.PersonApplicationService;
 @RestController
 public class SchedularController {
 
-    private static final Logger LOG = LoggerFactory.getLogger(SchedularController.class);
+	private static final Logger LOG = LoggerFactory.getLogger(SchedularController.class);
 
-    @Autowired
-    private PersonApplicationRepository personRepository;
+	@Autowired
+	private PersonApplicationRepository personRepository;
 
-    @Autowired
-    private OrganizationApplicationRepository repository;
+	@Autowired
+	private OrganizationApplicationRepository repository;
 
-    @Autowired
-    private PersonApplicationService service;
+	@Autowired
+	private PersonApplicationService service;
 
-    @Autowired
-    private OrganizationApplicationService service1;
+	@Autowired
+	private OrganizationApplicationService service1;
 
-    @Autowired
-    private MailService notificationService;
+	@Autowired
+	private MailService notificationService;
 
-    static final DateTimeFormatter DATETIMEFORMATTER = DateTimeFormatter.ofPattern("HH:mm:ss");
-    static final String STATUS = "True";
+	static final DateTimeFormatter DATETIMEFORMATTER = DateTimeFormatter.ofPattern("HH:mm:ss");
+	static final String STATUS = "True";
 
-    /** send status of application to person applicants. */
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
-    @GetMapping("/sendUpdatePerson")
-    public void statusUpdatePersonApplicants() {
-        ArrayList<PersonApplicant> personApplicants;
+	/** send status of application to person applicants. */
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
+	@GetMapping("/sendUpdatePerson")
+	public void statusUpdatePersonApplicants() {
+		ArrayList<PersonApplicant> personApplicants;
+		LOG.info("SchedularController ::statusUpdatePersonApplicants::Schedular starts");
+		LOG.info("SchedularController ::statusUpdatePersonApplicants::called find applicants method");
+		personApplicants = (ArrayList<PersonApplicant>) service.findApplicants();
+		Iterator<PersonApplicant> personapplicantIterator = personApplicants.iterator();
 
-        personApplicants = (ArrayList<PersonApplicant>) service.findApplicants();
+		while (personapplicantIterator.hasNext()) {
+			PersonApplicant applicants = personapplicantIterator.next();
 
-        Iterator<PersonApplicant> personapplicantIterator = personApplicants.iterator();
+			String email = applicants.getUserId().getUserEmail();
+			LOG.info("SchedularController ::statusUpdateForOrganization::The user email is" + email);
+			String estatus = applicants.getEmailStatus();
+			LOG.info("SchedularController ::statusUpdateForOrganization::The Email Status is" + estatus);
+			String applicationStatus = applicants.getApplicationStatus();
+			LOG.info(
+					"SchedularController ::statusUpdateForOrganization::The application status is" + applicationStatus);
 
-        while (personapplicantIterator.hasNext()) {
-            PersonApplicant applicants = personapplicantIterator.next();
-            String email = applicants.getUserId().getUserEmail();
-            String estatus = applicants.getEmailStatus();
-            String applicationStatus = applicants.getApplicationStatus();
+			try {
+				LOG.info("SchedularController ::statusUpdatePersonApplicants::call sendEmailToApplicants method");
+				notificationService.sendEmailToApplicants(email, estatus, applicationStatus);
+				LOG.info("SchedularController ::statusUpdatePersonApplicants::call updateEmailStatus method" + email);
+				personRepository.updateEmailStatus(applicants.getApplicationId(), STATUS);
 
-            try {
-                notificationService.sendEmailToApplicants(email, estatus, applicationStatus);
-                LOG.info("Application status has send to {}", email);
-                personRepository.updateEmailStatus(applicants.getApplicationId(), STATUS);
-            } catch (MailException mailException) {
-                LOG.error("exception ocuured", mailException);
-            }
+			} catch (MailException mailException) {
+				LOG.error("SchedularController ::statusUpdatePersonApplicants::exception occur", mailException);
+			}
 
-        }
+		}
+		LOG.info("SchedularController ::statusUpdatePersonApplicants::Schedular has stop");
+	}
 
-    }
+	/** send status of application to organization applicants. */
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
+	@GetMapping("/sendUpdateOrganization")
+	public void statusUpdateForOrganization() {
+		LOG.info("SchedularController ::statusUpdateForOrganization::Schedular starts");
+		ArrayList<OrganizationApplicant> organizationApplicants;
 
-    /** send status of application to organization applicants. */
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
-    @GetMapping("/sendUpdateOrganization")
-    public void statusUpdateForOrganization() {
+		LOG.info("SchedularController ::statusUpdatePersonApplicants::called find applicants method");
+		organizationApplicants = (ArrayList<OrganizationApplicant>) service1.findApplicants();
 
-        ArrayList<OrganizationApplicant> organizationApplicants;
+		Iterator<OrganizationApplicant> organizationapplicantIterator = organizationApplicants.iterator();
 
-        organizationApplicants = (ArrayList<OrganizationApplicant>) service1.findApplicants();
+		while (organizationapplicantIterator.hasNext()) {
+			OrganizationApplicant applicants = organizationapplicantIterator.next();
+			String email = applicants.getUserId().getUserEmail();
+			LOG.info("SchedularController ::statusUpdateForOrganization::The user email is" + email);
+			String estatus = applicants.getEmailStatus();
+			LOG.info("SchedularController ::statusUpdateForOrganization::The Email Status is" + estatus);
+			String applicationStatus = applicants.getApplicationStatus();
+			LOG.info(
+					"SchedularController ::statusUpdateForOrganization::The application status is" + applicationStatus);
 
-        Iterator<OrganizationApplicant> organizationapplicantIterator = organizationApplicants.iterator();
-
-        while (organizationapplicantIterator.hasNext()) {
-            OrganizationApplicant applicants = organizationapplicantIterator.next();
-            String email = applicants.getUserId().getUserEmail();
-            String estatus = applicants.getEmailStatus();
-            String applicationStatus = applicants.getApplicationStatus();
-
-            try {
-                notificationService.sendEmailToApplicants(email, estatus, applicationStatus);
-                LOG.info("Application status has send to {}", email);
-                repository.updateEmailStatus(applicants.getApplicationId(), STATUS);
-            } catch (MailException mailException) {
-                LOG.error("exception ocuured", mailException);
-            }
-
-        }
-    }
+			try {
+				LOG.info("SchedularController ::statusUpdateForOrganization::call sendEmailToApplicants method");
+				notificationService.sendEmailToApplicants(email, estatus, applicationStatus);
+				LOG.info("SchedularController ::statusUpdateForOrganization::Application status has send to" + email);
+				repository.updateEmailStatus(applicants.getApplicationId(), STATUS);
+			} catch (MailException mailException) {
+				LOG.error("SchedularController ::statusUpdateForOrganization::exception occur", mailException);
+			}
+		}
+		LOG.info("SchedularController ::statusUpdateForOrganization::Schedular has stop");
+	}
 }

@@ -17,65 +17,69 @@ import org.springframework.stereotype.Component;
 @Component
 public class User {
 
-   /** the userId */
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long userId;
-  
-    /** the userEmail */
-    @Column(name = "user_email", nullable = false, unique=true)
-    private String userEmail;
+	/** the userId */
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long userId;
 
-    /** the role*/
-    @Column(name = "role", nullable = false)
-    private String role;
+	/** the userEmail */
+	@Column(name = "user_email", nullable = false, unique = true)
+	private String userEmail;
 
-   /** the password*/
-    @Column(name = "password", nullable = false)
-    private String password;
+	/** the role */
+	@Column(name = "role", nullable = false)
+	private String role;
 
-    /** @return the userId */
-    public long getUserId() {
-        return userId;
-    }
+	/** the password */
+	@Column(name = "password", nullable = false)
+	private String password;
 
-    /** @param userId
-     *      the userId to set */
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
+	/** @return the userId */
+	public long getUserId() {
+		return userId;
+	}
 
-    /** @return the userEmail */
-    public String getUserEmail() {
-        return userEmail;
-    }
+	/**
+	 * @param userId the userId to set
+	 */
+	public void setUserId(long userId) {
+		this.userId = userId;
+	}
 
-    /** @param userEmail
-     *            the userEmail to set */
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
-    }
+	/** @return the userEmail */
+	public String getUserEmail() {
+		return userEmail;
+	}
 
-    /** @return the role */
-    public String getRole() {
-        return role;
-    }
+	/**
+	 * @param userEmail the userEmail to set
+	 */
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+	}
 
-    /** @param role
-     *            the role to set */
-    public void setRole(String role) {
-        this.role = role;
-    }
+	/** @return the role */
+	public String getRole() {
+		return role;
+	}
 
-    /** @return the password */
-    public String getPassword() {
-        return password;
-    }
+	/**
+	 * @param role the role to set
+	 */
+	public void setRole(String role) {
+		this.role = role;
+	}
 
-    /** @param password
-     *            the password to set */
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	/** @return the password */
+	public String getPassword() {
+		return password;
+	}
+
+	/**
+	 * @param password the password to set
+	 */
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 }

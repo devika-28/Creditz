@@ -2,6 +2,8 @@ package com.impetus.controller;
 
 import java.security.NoSuchAlgorithmException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,47 +25,57 @@ import com.impetus.service.UserService;
 
 public class UserController {
 
-    /** The user service. */
-    @Autowired
-    private UserService userservice;
+	private static final Logger LOG = LoggerFactory.getLogger(UserController.class);
+	/** The user service. */
+	@Autowired
+	private UserService userservice;
 
-    @GetMapping("/otp")
-    public String sendOTP(String userEmail) throws NoSuchAlgorithmException{
-        return userservice.sendOTP(userEmail);
+	@GetMapping("/otp")
+	public String sendOTP(String userEmail) throws NoSuchAlgorithmException {
+		LOG.info(" UserController::sendOTP::call sendOTP method");
+		return userservice.sendOTP(userEmail);
 
-    }
+	}
 
-    /** Save person.
-     *
-     * @param user
-     *            the user
-     * @return the person */
-    @PostMapping("/save_person")
-    public Person savePerson(@RequestBody Person user) {
-        userservice.savePerson(user);
-        return user;
-    }
+	/**
+	 * Save person.
+	 *
+	 * @param user the user
+	 * @return the person
+	 */
+	@PostMapping("/save_person")
+	public Person savePerson(@RequestBody Person user) {
+		LOG.info(" UserController::savePerson::call savePerson method");
+		userservice.savePerson(user);
 
-    /** Save organization.
-     *
-     * @param user
-     *            the user
-     * @return the organization */
-    @PostMapping("/save_organization")
-    public Organization saveOrganization(@RequestBody Organization user) {
-        userservice.saveOrganization(user);
-        return user;
-    }
+		return user;
+	}
 
-    /** Save analyst.
-     *
-     * @param user
-     *            the user
-     * @return the user */
-    @PostMapping("/save_analyst")
-    public User saveAnalyst(@RequestBody User user) {
-        userservice.saveAnalyst(user);
-        return user;
-    }
+	/**
+	 * Save organization.
+	 *
+	 * @param user the user
+	 * @return the organization
+	 */
+	@PostMapping("/save_organization")
+	public Organization saveOrganization(@RequestBody Organization user) {
+		LOG.info(" UserController::saveOrganization::call saveOrganization method");
+		userservice.saveOrganization(user);
+
+		return user;
+	}
+
+	/**
+	 * Save analyst.
+	 *
+	 * @param user the user
+	 * @return the user
+	 */
+	@PostMapping("/save_analyst")
+	public User saveAnalyst(@RequestBody User user) {
+		LOG.info("UserController:: saveAnalyst::call saveAnalyst method");
+		userservice.saveAnalyst(user);
+		return user;
+	}
 
 }

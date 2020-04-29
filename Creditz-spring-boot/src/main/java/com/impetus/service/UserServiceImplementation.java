@@ -9,6 +9,8 @@ import java.util.Date;
 import java.util.Random;
 
 import org.mindrot.jbcrypt.BCrypt;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,100 +23,117 @@ import com.impetus.model.User;
 @Service
 public class UserServiceImplementation implements UserService {
 
-    @Autowired
-    private UserDAO userdao;
-    @Autowired
-    private MailService notificationService;
-    static final String APPPLICATION_SUBJECT = "Email OTP Verification";
-    static final String APPPLICATION = "Hello,\n Thank you for register at our website\n please verify your otp ,Your otp numberis below \n";
+	private static final Logger LOG = LoggerFactory.getLogger(UserServiceImplementation.class);
+	@Autowired
+	private UserDAO userdao;
+	@Autowired
+	private MailService notificationService;
+	static final String APPPLICATION_SUBJECT = "Email OTP Verification";
+	static final String APPPLICATION = "Hello,\n Thank you for registering in our website\n Please verify your OTP ,Your OTP is below \n";
 
+	/**
+	 * generate the six digit opt and return in string form.
+	 * 
+	 * @return OTP, in string form
+	 * @throws NoSuchAlgorithmException
+	 */
+	public String generateOTP() throws NoSuchAlgorithmException {
+		String numbers = "0123456789";
+		String o = "";
+		Random r = SecureRandom.getInstanceStrong();
+		char otp[] = new char[6];
+		for (int i = 0; i < otp.length; i++) {
+			otp[i] = numbers.charAt(r.nextInt(numbers.length()));
+			o = o + otp[i];
+		}
+		return o;
+	}
 
-    /** generate the six digit opt and return in string form.
-     * 
-     * @return OTP, in string form
-     * @throws NoSuchAlgorithmException
-     */
-    public String generateOTP() throws NoSuchAlgorithmException {
-        String numbers = "0123456789";
-        String finalotp = "";
-        Random randomNo = SecureRandom.getInstanceStrong();
-        char otp[] = new char[6];
-        for (int i = 0; i < otp.length; i++) {
-            otp[i] = numbers.charAt(randomNo.nextInt(numbers.length()));
-            finalotp = finalotp + otp[i];
-        }
-        return finalotp;
-    }
+	/**
+	 * send OTP.
+	 * 
+	 * @param userEmail the userEmail
+	 * @return OTP, in string form
+	 * @throws NoSuchAlgorithmException
+	 */
+	public String sendOTP(String userEmail) throws NoSuchAlgorithmException {
+        
+		String otp = this.generateOTP();
+		LOG.info(" UserServiceImplementation ::sendOTP::call sendMail method with user Email"+userEmail);
+		notificationService.sendMail(userEmail, APPPLICATION_SUBJECT, APPPLICATION + otp);
+		return otp;
+	}
 
-    /** send OTP.
-     * 
-     * @param userEmail
-     *            the userEmail
-     * @return OTP, in string form
-     * @throws NoSuchAlgorithmException
-     */
-    public String sendOTP(String userEmail) throws NoSuchAlgorithmException {
+	/**
+	 * Save person.
+	 *
+	 * @param user the user
+	 * @return true, if successful
+	 */
+	@Transactional
+	@Override
+	public boolean savePerson(Person user) {
+		User user1 = user.getUser();
+		user1.setPassword(hashPassword(user1.getPassword()));
+		user.setUser(user1);
+		return userdao.savePerson(user);
+	}
 
-        String otp = this.generateOTP();
-        notificationService.sendMail(userEmail,APPPLICATION_SUBJECT,APPPLICATION+otp );    
-        return otp;
-    }
+	/**
+	 * * @param user the user
+	 * 
+	 * @return true, if successful
+	 */
+	@Override
+	public boolean saveOrganization(Organization user) {
+		User user1 = user.getUser();
+		user1.setPassword(hashPassword(user1.getPassword()));
+		user.setUser(user1);
+		return userdao.saveOrganization(user);
+	}
 
-    /** Save person.
-     *
-     * @param user
-     *            the user
-     * @return true, if successful */
-    @Transactional
-    @Override
-    public boolean savePerson(Person user) {
-        User user1 = user.getUser();
-        user1.setPassword(hashPassword(user1.getPassword()));
-        user.setUser(user1);
-        return userdao.savePerson(user);
-    }
+	/**
+	 * encrypt the password.
+	 *
+	 * @param plainTextPassword
+	 * @return String
+	 */
+	private String hashPassword(String plainTextPassword) {
+		return BCrypt.hashpw(plainTextPassword, BCrypt.gensalt());
+	}
 
-    /** * @param user the user
-     * 
-     * @return true, if successful */
-    @Override
-    public boolean saveOrganization(Organization user) {
-        User user1 = user.getUser();
-        user1.setPassword(hashPassword(user1.getPassword()));
-        user.setUser(user1);
-        return userdao.saveOrganization(user);
-    }
+	/**
+	 * Save Analyst.
+	 *
+	 * @param user the user
+	 * @return true, if successful
+	 */
+	@Override
+	public boolean saveAnalyst(User user) {
+		user.setPassword(hashPassword(user.getPassword()));
+		return userdao.saveAnalyst(user);
+	}
 
-    /** encrypt the password.
-     *
-     * @param plainTextPassword
-     * @return String */
-    private String hashPassword(String plainTextPassword) {
-        return BCrypt.hashpw(plainTextPassword, BCrypt.gensalt());
-    }
+	/**
+	 * @return formattedDate
+	 */
+	public static String getCurrentTime() {
+		Calendar cal = Calendar.getInstance();
+		Date date = cal.getTime();
+		DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+		String formattedDate = dateFormat.format(date);
+		LOG.info("UserServiceImplementation ::sendOTP::Current time of the day using Calendar-24 hour format:" + formattedDate);
+		return formattedDate;
+	}
 
-    /** Save Analyst.
-     *
-     * @param user
-     *            the user
-     * @return true, if successful */
-    @Override
-    public boolean saveAnalyst(User user) {
-        user.setPassword(hashPassword(user.getPassword()));
-        return userdao.saveAnalyst(user);
-    }
-    
-    public static String getCurrentTime() {
-        Calendar cal = Calendar.getInstance();
-        Date date=cal.getTime();
-        DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
-        return dateFormat.format(date);
-    }
-
-    public static String getCurrentDate() {
-    	SimpleDateFormat formatter= new SimpleDateFormat("dd/MM/yyyy");
-    	Date date = new Date(System.currentTimeMillis());
-    	return formatter.format(date);
-    }
+	/**
+	 * @return time
+	 */
+	public static String getCurrentDate() {
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = new Date(System.currentTimeMillis());
+		LOG.info("UserServiceImplementation ::sendOTP::Current time of the day using Calendar-24 hour format:" +date);
+		return formatter.format(date);
+	}
 
 }

@@ -9,30 +9,39 @@ import com.impetus.model.OrganizationApplicant;
 
 @Service
 public interface OrganizationApplicationService {
-    /** get organization applications 
-    
-     * @return list of Organization Applicants */
+	/**
+	 * get organization applications
+	 * 
+	 * @return list of Organization Applicants
+	 */
 
-    List<OrganizationApplicant> getAllOrganizationApplicant();
+	List<OrganizationApplicant> getAllOrganizationApplicant();
 
-    /** @return list of Organization Applicants */
-    List<OrganizationApplicant> findApplicants();
+	/** @return list of Organization Applicants */
+	List<OrganizationApplicant> findApplicants();
 
-    /** find out top creditors.
-     * 
-     * @return list of Organization Applicants */
-    List<OrganizationApplicant> findTopPersonCreditors();
+	/**
+	 * find out top creditors.
+	 * 
+	 * @return list of Organization Applicants
+	 */
+	List<OrganizationApplicant> findTopPersonCreditors();
 
-    /** Organization risk Mitigate.
-     * 
-     * @param application
-     * @return Application id and its value in long decides whether to approve or reject the application */
-    Map<String, String> organizationRiskMitigate(OrganizationApplicant application);
+	/**
+	 * Organization risk Mitigate.
+	 * 
+	 * @param application
+	 * @return Application id and its value in long decides whether to approve or
+	 *         reject the application
+	 */
+	Map<String, String> organizationRiskMitigate(OrganizationApplicant application);
 
-    /** find out all application associated with particular userId.
-     *
-     * @param userId
-     * @return list of Organization Applicants */
-    List<OrganizationApplicant> getHistory(OrganizationApplicant userId);
+	/**
+	 * find out all application associated with particular userId.
+	 *
+	 * @param userId
+	 * @return list of Organization Applicants
+	 */
+	List<OrganizationApplicant> getHistory(OrganizationApplicant userId);
 
 }

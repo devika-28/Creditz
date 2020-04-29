@@ -16,102 +16,117 @@ import javax.persistence.Table;
 public class Person {
 
 	static final int TEN = 10;
-	
-    /** The person id. */
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long personId;
 
-    /** The person name. */
-    @Column(name = "person_name", nullable = false)
-    private String personName;
+	/** The person id. */
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long personId;
 
-    /** The contact. */
-    @Column(name = "contact", nullable = false, length=10)
-    private long contact;
+	/** The person name. */
+	@Column(name = "person_name", nullable = false)
+	private String personName;
 
-    /** The address. */
-    @Column(name = "address", nullable = false)
-    private String address;
+	/** The contact. */
+	@Column(name = "contact", nullable = false, length = 10)
+	private long contact;
 
-    /** The user. */
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "userId")
-    private User user;
+	/** The address. */
+	@Column(name = "address", nullable = false)
+	private String address;
 
-    /** Gets the person id.
-     *
-     * @return the person id */
-    public long getPersonId() {
-        return personId;
-    }
+	/** The user. */
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "userId")
+	private User user;
 
-    /** Sets the person id.
-     *
-     * @param personId
-     *            the new person id */
-    public void setPersonId(long personId) {
-        this.personId = personId;
-    }
+	/**
+	 * Gets the person id.
+	 *
+	 * @return the person id
+	 */
+	public long getPersonId() {
+		return personId;
+	}
 
-    /** Gets the person name.
-     *
-     * @return the person name */
-    public String getPersonName() {
-        return personName;
-    }
+	/**
+	 * Sets the person id.
+	 *
+	 * @param personId the new person id
+	 */
+	public void setPersonId(long personId) {
+		this.personId = personId;
+	}
 
-    /** Sets the person name.
-     *
-     * @param personName
-     *            the new person name */
-    public void setPersonName(String personName) {
-        this.personName = personName;
-    }
+	/**
+	 * Gets the person name.
+	 *
+	 * @return the person name
+	 */
+	public String getPersonName() {
+		return personName;
+	}
 
-    /** Gets the contact.
-     *
-     * @return the contact */
-    public long getContact() {
-        return contact;
-    }
+	/**
+	 * Sets the person name.
+	 *
+	 * @param personName the new person name
+	 */
+	public void setPersonName(String personName) {
+		this.personName = personName;
+	}
 
-    /** Sets the contact.
-     *
-     * @param contact
-     *            the new contact */
-    public void setContact(long contact) {
-        this.contact = contact;
-    }
+	/**
+	 * Gets the contact.
+	 *
+	 * @return the contact
+	 */
+	public long getContact() {
+		return contact;
+	}
 
-    /** Gets the address.
-     *
-     * @return the address */
-    public String getAddress() {
-        return address;
-    }
+	/**
+	 * Sets the contact.
+	 *
+	 * @param contact the new contact
+	 */
+	public void setContact(long contact) {
+		this.contact = contact;
+	}
 
-    /** Sets the address.
-     *
-     * @param address
-     *            the new address */
-    public void setAddress(String address) {
-        this.address = address;
-    }
+	/**
+	 * Gets the address.
+	 *
+	 * @return the address
+	 */
+	public String getAddress() {
+		return address;
+	}
 
-    /** Gets the user.
-     *
-     * @return the user */
-    public User getUser() {
-        return user;
-    }
+	/**
+	 * Sets the address.
+	 *
+	 * @param address the new address
+	 */
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
-    /** Sets the user.
-     *
-     * @param user
-     *            the new user */
-    public void setUser(User user) {
-        this.user = user;
-    }
+	/**
+	 * Gets the user.
+	 *
+	 * @return the user
+	 */
+	public User getUser() {
+		return user;
+	}
+
+	/**
+	 * Sets the user.
+	 *
+	 * @param user the new user
+	 */
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 }

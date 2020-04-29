@@ -117,7 +117,7 @@ public class PersonApplicant {
 		return applicationId;
 	}
 
-	/** @param applicationId*/
+	/** @param applicationId */
 	public void setApplicationId(long applicationId) {
 		this.applicationId = applicationId;
 	}
@@ -126,7 +126,8 @@ public class PersonApplicant {
 	public String getPancard() {
 		return pancard;
 	}
-	/** @param pancard*/
+
+	/** @param pancard */
 	public void setPancard(String pancard) {
 		this.pancard = pancard;
 	}
@@ -137,22 +138,21 @@ public class PersonApplicant {
 	}
 
 	/**
-	 * @param loanAmount 
-	 * the occupation to set
+	 * @param loanAmount the occupation to set
 	 */
 	public void setLoanAmount(int loanAmount) {
 		this.loanAmount = loanAmount;
 	}
 
-	/** @return the 
-	 * age of applicant */
+	/**
+	 * @return the age of applicant
+	 */
 	public int getAge() {
 		return age;
 	}
 
 	/**
-	 * @param age 
-	 * the age to set
+	 * @param age the age to set
 	 */
 	public void setAge(int age) {
 		this.age = age;

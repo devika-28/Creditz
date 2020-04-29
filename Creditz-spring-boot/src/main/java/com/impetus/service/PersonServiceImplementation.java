@@ -1,5 +1,7 @@
 package com.impetus.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +11,7 @@ import com.impetus.repository.PersonRepository;
 @Service
 public class PersonServiceImplementation implements PersonService {
 
+	private static final Logger LOG = LoggerFactory.getLogger(AnalystServiceImplementation.class);
     @Autowired
     private PersonRepository person;
 
@@ -16,8 +19,8 @@ public class PersonServiceImplementation implements PersonService {
      *
      * @param userId
      * @return Person */
-    public Person findPersonByUserId(Long userId) {
-        return person.findPersonByUserId(userId);
+    public Person findPersonByUserId(Long userId){
+    return person.findPersonByUserId(userId);
 
     }
 
