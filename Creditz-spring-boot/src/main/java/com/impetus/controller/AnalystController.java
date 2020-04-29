@@ -31,7 +31,7 @@ public class AnalystController {
 	 */
 	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GetMapping("/getAllAnalyst")
-	public List<User> getAllAnalyst(){
+	public List<User> getAllAnalyst() {
 		LOG.info("AnalystController::getAllAnalyst::call getAllAnalyst method");
 		return service.getAllAnalyst();
 
@@ -59,8 +59,7 @@ public class AnalystController {
 	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GetMapping("/checkUniqueUser")
 	public User uniqueEmailCheck(@RequestParam String userEmail) {
-		LOG.info("AnalystController::uniqueEmailCheck::call uniqueCheckEmail method with userEmail{}"
-				+ "" + userEmail);
+		LOG.info("AnalystController::uniqueEmailCheck::call uniqueCheckEmail method with userEmail{}" + "" + userEmail);
 		return service.uniqueCheckEmail(userEmail);
 	}
 
@@ -73,7 +72,7 @@ public class AnalystController {
 	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GetMapping("/getOtp")
 	public String sendOtp(String userEmail) {
-		LOG.info("AnalystController::uniqueEmailCheck::call sendOtp method with userEmail:{}",userEmail);
+		LOG.info("AnalystController::uniqueEmailCheck::call sendOtp method with userEmail:{}", userEmail);
 		return service.sendOtp(userEmail);
 	}
 
@@ -102,7 +101,13 @@ public class AnalystController {
 	public User findUser(@RequestBody String auth) {
 		HttpBasicAuthenticationHeader http = new HttpBasicAuthenticationHeader();
 		auth = http.decoder(auth);
-		LOG.info("AnalystController::findUser::call findUserByEmailPassword method");
-		return service.findUserByEmailPassword(auth.split(":")[0], auth.split(":")[1]);
+		try {
+			LOG.info("AnalystController::findUser::call findUserByEmailPassword method");
+			return service.findUserByEmailPassword(auth.split(":")[0], auth.split(":")[1]);
+		} catch (Exception e) {
+			LOG.warn("AnalystController ::findUser:: run time exception occur{}", e);
+			User user = new User();
+			return user;
+		}
 	}
 }

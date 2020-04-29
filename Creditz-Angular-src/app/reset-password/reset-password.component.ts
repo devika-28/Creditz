@@ -26,7 +26,7 @@ export class ResetPasswordComponent implements OnInit {
     this.analystService.checkUniqueEmail(this.userModel1.userEmail).subscribe(res=>{
       this.UserEmailCheck=res;
         if(this.UserEmailCheck===null){
-          this.emailAlreadyExist="please enter a  Registered email";
+          this.emailAlreadyExist="Please enter a  Registered email";
         }
           else
           {
@@ -40,9 +40,9 @@ export class ResetPasswordComponent implements OnInit {
  onSubmitForm() {
     this.userService.findUserByEmailAndPassword(this.userModel1.userEmail,this.userModel2.password).subscribe(  
     data => {
-      if(data===null)
+      if(data.userEmail===null)
       {
-        window.alert("Your Email or password is correct please enter a valid Email and password");
+        window.alert("Your Email or Password is incorrect ,Please enter a valid Email and password");
       }
       else
       {
