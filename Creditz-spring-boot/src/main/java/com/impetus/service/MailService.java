@@ -18,7 +18,6 @@ public class MailService {
 	static final String ANALYST_SUBJECT = "Financial Analyst login Credentials";
 	static final String OTPSUBJECT = "Email OTP Verification";
 	static final String WELCOME = "Dear Applicant," + "\n\n" + "Thank You for applying for loan, and believing in us!";
-	static final String DISAPPROVED = "We are Sorry! But you loan application is Declined, Please refer to our website for possible reason as in why this may have occured.";
 	static final String REJECTEDLOWCREDITS = "We are Sorry! But your application is Rejected. Reason: Your Credit score doesn't meet our eligiblity Criteria";
 	static final String REJECTED = "We are Sorry! But you loan application is Declined, Please refer to our website for possible reason as in why this may have occured.";
 	static final String APPROVED = "Volia ! Your application is Approved, please visit our nearest branch for further fomalities. Hope to see you soon!";
@@ -30,6 +29,7 @@ public class MailService {
 			+ "You can visit our nearest Branch with all an original copy of your PAN card, Identity proof and bank statement for further processing. ";
 	static final String OTPCONTENT = "Dear user, \nWe see you have requested for an OTP, Please note that it is valid only for one time use.\n\nNot You, please contact our officials.";
 
+	static final String REJECTEDEARLY="We are Sorry! to inform you ,your application has been rejected ,it seems that you are applying for loan too frequently";
 	/*
 	 * The Spring Framework provides an easy abstraction for sending email by using
 	 * the JavaMailSender interface, and Spring Boot provides auto-configuration for
@@ -46,7 +46,7 @@ public class MailService {
 	}
 
 	void sendMail(String email, String subject, String text) {
-		
+
 		SimpleMailMessage mail = new SimpleMailMessage();
 		mail.setTo(email);
 		mail.setSubject(subject);
@@ -76,7 +76,7 @@ public class MailService {
 				+ user.getUserEmail() + "  Your password :" + user.getPassword() + "\n" + ENDDATA);
 	}
 
-	public void sendEmailToApplicants(String userEmail, String estatus, String applicationStatus) {
+	public void sendEmailToApplicants(String userEmail,String applicationStatus) {
 
 		/*
 		 * This JavaMailSender Interface is used to send Mail in Spring Boot. This
@@ -96,17 +96,17 @@ public class MailService {
 		case "Rejected Low Credits":
 			LOG.info("MailService::sendEmailToApplicants::call sendMail method");
 			this.sendMail(userEmail, APPLICATION_UPDATE_SUBJECT,
-					WELCOME + "\n" + DISAPPROVED + "\n" + REJECTEDLOWCREDITS + "\n" + ENDDATA);
+					WELCOME + "\n" + REJECTEDLOWCREDITS + "\n" + ENDDATA);
 			break;
 		case "Rejected":
 			LOG.info("MailService::sendEmailToApplicants::call sendMail method");
 			this.sendMail(userEmail, APPLICATION_UPDATE_SUBJECT,
-					WELCOME + "\n" + DISAPPROVED + "\n" + REJECTED + "\n" + ENDDATA);
+					WELCOME + "\n"  + REJECTED + "\n" + ENDDATA);
 			break;
 		case "Rejected Bad History":
 			LOG.info("MailService::sendEmailToApplicants::call sendMail method");
 			this.sendMail(userEmail, APPLICATION_UPDATE_SUBJECT,
-					WELCOME + "\n" + DISAPPROVED + "\n" + REJECTEDBADHISTORY + "\n" + ENDDATA);
+					WELCOME + "\n"  + REJECTEDBADHISTORY + "\n" + ENDDATA);
 			break;
 		case "Pending":
 			LOG.info("MailService::sendEmailToApplicants::call sendMail method");
@@ -115,12 +115,17 @@ public class MailService {
 		case "Record Not Found":
 			LOG.info("MailService::sendEmailToApplicants::call sendMail method");
 			this.sendMail(userEmail, APPLICATION_UPDATE_SUBJECT,
-					WELCOME + "\n" + DISAPPROVED + "\n" + RECORDNOTFOUND + "\n" + ENDDATA);
+					WELCOME + "\n" + RECORDNOTFOUND + "\n" + ENDDATA);
+			break;
+		case "Rejected Early":
+			LOG.info("MailService::sendEmailToApplicants::call sendMail method");
+			this.sendMail(userEmail, APPLICATION_UPDATE_SUBJECT,
+					WELCOME + "\n" + REJECTEDEARLY+ "\n" + ENDDATA);
 			break;
 		default:
 			LOG.info("MailService::sendOtpToUser::call sendMail method");
 			this.sendMail(userEmail, APPLICATION_UPDATE_SUBJECT,
-					WELCOME + "\n" + DISAPPROVED + "\n" + RECORDNOTFOUND + "\n" + ENDDATA);
+					WELCOME + "\n" + RECORDNOTFOUND + "\n" + ENDDATA);
 
 		}
 

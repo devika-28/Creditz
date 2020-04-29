@@ -44,10 +44,10 @@ public class MailController {
 		 * Here we will call sendEmail() for Sending mail to the sender.
 		 */
 		try {
-			LOG.info("SchedularController ::send::call sendEmailToApplicants method");
+			LOG.info("MailController ::send::call sendEmailToApplicants method");
 			notificationService.sendEmail(user);
 		} catch (MailException mailException) {
-			LOG.error("SchedularController::send::exception occur", mailException);
+			LOG.error("MailController::send::exception occur", mailException);
 		}
 
 	}
@@ -64,10 +64,10 @@ public class MailController {
 		 * Here we will call sendOtpToUser() for Sending mail to the sender.
 		 */
 		try {
-			LOG.info("SchedularController ::sendOtp::call sendEmailToApplicants method");
+			LOG.info("MailController::sendOtp::call sendEmailToApplicants method");
 			notificationService.sendOtpToUser(userEmail, otp);
 		} catch (MailException mailException) {
-			LOG.error("SchedularController::sendOtp::exception occur", mailException);
+			LOG.error("MailController::sendOtp::exception occur", mailException);
 		}
 
 	}

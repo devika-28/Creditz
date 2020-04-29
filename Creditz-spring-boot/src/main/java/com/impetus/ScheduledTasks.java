@@ -61,7 +61,7 @@ public class ScheduledTasks {
 					+ applicationStatus);
 			try {
 				LOG.info("ScheduledTasks::sendApplicationStatusToPersonApplicants::call sendEmailToApplicants method");
-				notificationService.sendEmailToApplicants(email, estatus, applicationStatus);
+				notificationService.sendEmailToApplicants(email,applicationStatus);
 				LOG.info("ScheduledTasks ::sendApplicationStatusToPersonApplicants::call updateEmailStatus Method");
 				personRepository.updateEmailStatus(applicants.getApplicationId(), STATUS);
 			} catch (MailException mailException) {
@@ -94,7 +94,7 @@ public class ScheduledTasks {
 			try {
 				LOG.info(
 						"ScheduledTasks::scheduleSendApplicationStatusToPersonApplicants::call sendEmailToApplicants method");
-				notificationService.sendEmailToApplicants(email, estatus, applicationStatus);
+				notificationService.sendEmailToApplicants(email, applicationStatus);
 				LOG.info(
 						"ScheduledTasks::scheduleSendApplicationStatusToPersonApplicantss::call updateEmailStatus Method");
 				repository.updateEmailStatus(applicants.getApplicationId(), STATUS);

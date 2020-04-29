@@ -27,7 +27,15 @@ public class PersonController {
 	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GetMapping("/findPersonByUserId")
 	public Person findPersonByUserId(@RequestParam Long userId) {
+		try {
 		LOG.info("PersonController::findPersonByUserId::return findPersonByUserId method with userId:{}",userId);
 		return personService.findPersonByUserId(userId);
+		}
+		catch(Exception e)
+		{
+		LOG.warn("PersonController ::findPersonByUserId:: run time exception occur{}", e);
+		return personService.findPersonByUserId(userId);
+			
+		}
 	}
 }

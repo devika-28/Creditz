@@ -66,7 +66,7 @@ public class SchedularController {
 
 			try {
 				LOG.info("SchedularController ::statusUpdatePersonApplicants::call sendEmailToApplicants method");
-				notificationService.sendEmailToApplicants(email, estatus, applicationStatus);
+				notificationService.sendEmailToApplicants(email,applicationStatus);
 				LOG.info(
 						"SchedularController ::statusUpdatePersonApplicants::call updateEmailStatus method with email:{}",
 						email);
@@ -104,7 +104,7 @@ public class SchedularController {
 
 			try {
 				LOG.info("SchedularController ::statusUpdateForOrganization::call sendEmailToApplicants method");
-				notificationService.sendEmailToApplicants(email, estatus, applicationStatus);
+				notificationService.sendEmailToApplicants(email,applicationStatus);
 				LOG.info("SchedularController ::statusUpdateForOrganization::Application status has send to {}",email);
 				repository.updateEmailStatus(applicants.getApplicationId(), STATUS);
 			} catch (MailException mailException) {

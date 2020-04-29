@@ -59,8 +59,16 @@ public class AnalystController {
 	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GetMapping("/checkUniqueUser")
 	public User uniqueEmailCheck(@RequestParam String userEmail) {
+		try {
 		LOG.info("AnalystController::uniqueEmailCheck::call uniqueCheckEmail method with userEmail{}" + "" + userEmail);
 		return service.uniqueCheckEmail(userEmail);
+		}
+		catch(Exception e)
+		{
+			LOG.warn("AnalystController ::uniqueEmailCheck:: run time exception occur{}", e);
+			User user = new User();
+			return user;
+		}
 	}
 
 	/**

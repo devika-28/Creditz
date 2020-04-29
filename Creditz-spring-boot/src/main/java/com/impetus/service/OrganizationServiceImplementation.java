@@ -12,19 +12,21 @@ import com.impetus.repository.OrganizationRepository;
 public class OrganizationServiceImplementation implements OrganizationService {
 
 	private static final Logger LOG = LoggerFactory.getLogger(OrganizationServiceImplementation.class);
-    @Autowired
-    private OrganizationRepository organization;
+	@Autowired
+	private OrganizationRepository organization;
 
-    /** Find Organization details on the basis of userId.
-     *
-     * @param userId
-     * @return Organization */
-    @Override
-    public Organization findOrganizationByUserId(Long userId) {
-    	LOG.info(
+	/**
+	 * Find Organization details on the basis of userId.
+	 *
+	 * @param userId
+	 * @return Organization
+	 */
+	@Override
+	public Organization findOrganizationByUserId(Long userId) {
+		LOG.info(
 				"OrganizationServiceImplementation::findOrganizationByUserId::call findOrganizationByUserId method with findByUserId:{}",
 				userId);
-    	
-        return organization.findOrganizationByUserId(userId);
-    }
+
+		return organization.findOrganizationByUserId(userId);
+	}
 }
