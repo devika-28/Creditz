@@ -32,9 +32,9 @@ export class IndividualApplicationService {
     .subscribe(
       (res:Response)=>{
         this.applicationId = res['Application_Id'];
-        if (res['Application_Id']!=undefined){
-          window.open("successful","_self");
-            window.alert( this.applicationId);
+        if (res['Application_Id']!=null){
+        window.open("successful","_self");
+            window.alert("Thanks!\nYour Application is being taken into consideration\nWe will inform you Sooner\nYour Application Id is: "+ this.applicationId);
           }
         }
         )
