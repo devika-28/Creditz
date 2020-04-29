@@ -20,7 +20,10 @@ import com.impetus.repository.OrganizationRepository;
 
 @Service
 public class OrganizationApplicationServiceImplementation implements OrganizationApplicationService {
+<<<<<<< HEAD
 
+=======
+>>>>>>> e49c8c447994905f585dbab1adbdc785fa09e976
 	private static final Logger LOG = LoggerFactory.getLogger(OrganizationApplicationServiceImplementation.class);
 	static final String APPROVED = "Approved";
 	static final String REJECTEDLOWCREDITS = "Rejected Low Credits";
@@ -179,6 +182,58 @@ public class OrganizationApplicationServiceImplementation implements Organizatio
 		}
 		return "Pending Internal Error";
 	}
+<<<<<<< HEAD
+=======
+
+	/**
+	 * find out all application associated with particular userId.
+	 *
+	 * @param userId
+	 * @return list of Organization Applicants
+	 */
+	@Override
+	public List<OrganizationApplicant> getHistory(OrganizationApplicant userId) {
+
+		return organizationApplication.findByUserId((userId.getUserId()).getUserId());
+	}
+
+	/**
+	 * get organization applications in particular page with no of records.
+	 *
+	 * @param pageNo
+	 * @param pageSize
+	 * @return list of Organization Applicants
+	 */
+	public List<OrganizationApplicant> getAllOrganizationApplicant(Integer pageNo, Integer pageSize) {
+
+		Pageable paging = PageRequest.of(pageNo, pageSize);
+
+		Page<OrganizationApplicant> pagedResult = organizationApplication.findAll(paging);
+
+		if (pagedResult.hasContent()) {
+			return pagedResult.getContent();
+		} else {
+			return new ArrayList<>();
+		}
+	}
+
+	/** @return list of Organization Applicants */
+	public List<OrganizationApplicant> findApplicants() {
+
+		return organizationApplication.findByemailStatus(EMAILSTATUS);
+
+	}
+
+	/**
+	 * find out top creditors.
+	 * 
+	 * @return list of Organization Applicants
+	 */
+	@Override
+	public List<OrganizationApplicant> findTopPersonCreditors() {
+		return organizationApplication.findTopPersonCreditors(APPROVED);
+	}
+>>>>>>> e49c8c447994905f585dbab1adbdc785fa09e976
 
 	/**
 	 * find out all application associated with particular userId.

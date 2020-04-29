@@ -74,19 +74,19 @@ export class RegisterComponent implements OnInit {
   }
 
   sendVerificationEmail(email){
-    window.alert("verifying Email Id \n please wait");
+    window.alert("We are sending an OTP to you Email to verify it really is you!");
     this.emailid=email;
     this._registerService.sendotp(email).subscribe(data=>{
     this.otpno=data;
     console.log(data);
     if(this.otpno!=null){
-    window.alert("otp sent to your entered email\n Please check your email");
+    window.alert("Please check your email!");
     this.enterotp=true;
     }
     },
     error => {
       this.error = error;
-      window.alert("error in sending otp \n Please check your entered  email \n enter correct email id");
+      window.alert("We are facing some issues in sending OTP, please make sure you have entered correct email id!");
     });
   }
 
@@ -96,7 +96,7 @@ export class RegisterComponent implements OnInit {
       this.enterotp=false;
     }
     else{
-      window.alert("incorrect otp\nEnter correct otp");
+      window.alert("Please, Enter correct OTP");
     }
   }
 
@@ -106,7 +106,7 @@ export class RegisterComponent implements OnInit {
     this._registerService.registerPerson(this.personModel)
     .subscribe( 
       data => {
-        window.alert("You have registered successfully !!!")
+        window.alert("Voila! You have registered successfully!!!")
         this.router.navigate(['/login'], { queryParams: { registered: true }});
       },
       error => {
@@ -122,7 +122,7 @@ export class RegisterComponent implements OnInit {
     this._registerService.registerOrganization(this.organizationModel)
     .subscribe( 
     data => { 
-      window.alert("You have registered successfully !!!");
+      window.alert("Voila! You have registered successfully!!!");
       this.router.navigate(['/login'], { queryParams: { registered: true }});
     },
     error => {

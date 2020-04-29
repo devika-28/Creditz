@@ -48,7 +48,7 @@
                       </small>   
                     </div>
                     <div *ngIf="emailAlreadyExist!=''" class="text-danger">
-                      <small>{{emailAlreadyExist}}</small> 
+                          <small>{{emailAlreadyExist}} </small>
                     </div>
                 <label for="psw"><b>Password</b></label>
                   <input type="password" 
@@ -127,7 +127,7 @@
                         </small>
                         <button type="button" 
                         class="login100-form-btn" 
-                        [disabled]="!personForm.form.valid && emailAlreadyExist==''" 
+                        [disabled]="!personForm.form.valid || emailAlreadyExist!=''" 
                         (click)="sendVerificationEmail(email.value)" 
                         style="font-size: medium;">
                         Send otp to verify email</button>
@@ -214,10 +214,10 @@
                           Enter in email format.
                           </small>    
                         </div>
-                        <div *ngIf="emailAlreadyExist!='' && mail.valid" 
-                        class="text-danger">
-                          <small>{{emailAlreadyExist}} </small>
-                        </div>
+                                  <div *ngIf="emailAlreadyExist!=''" class="text-danger">
+                                    <small>{{emailAlreadyExist}} </small>
+                                  </div>
+
                     <label for="psw"><b>Password</b></label>  
                       <input type="password"  
                       pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}"  
@@ -294,7 +294,7 @@
                               verify your account to register. 
                                 <button type="button" 
                                 class="login100-form-btn"  
-                                [disabled]="!organizationForm.form.valid && emailAlreadyExist==''" 
+                                [disabled]="!organizationForm.form.valid || emailAlreadyExist!=''" 
                                 (click)="sendVerificationEmail(mail.value)" 
                                 style="font-size: medium;">
                                 Send otp to verify email</button>
@@ -312,7 +312,7 @@
                               required>           
                               <button type="button" 
                               class="login100-form-btn" 
-                              [disabled]="!organizationForm.form.valid && emailAlreadyExist==''" 
+                              [disabled]="!organizationForm.form.valid || emailAlreadyExist!=''" 
                               (click)="checkotp(cotp.value)" 
                               style="font-size: medium;">
                               Enter</button>      
@@ -337,9 +337,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-

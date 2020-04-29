@@ -1,0 +1,34 @@
+  <div class="navbar-toggler"  data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" href="home" >      Home  </a>
+      </li>
+            
+      <li class="nav-item">
+        <a class="nav-link" href="aboutUs" >      About   Us  </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="faq" >  FAQ  </a>
+      </li>
+
+     <li class="nav-item" >
+        <a class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href ="ourPolicies">  Our Policies  </a>
+      </li>  
+      
+      <li class="nav-item" *ngIf="this.store==null">
+        <a class="nav-link" href="login" >  login  </a>
+      </li>
+
+      <li class="nav-item" *ngIf="this.store!=null">
+        <a class="nav-link" (click)="logout()" >  logout  </a>
+      </li>
+
+
+<!--      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li> 
+-->
+
+    </ul>
+  </div>

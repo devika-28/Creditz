@@ -25,9 +25,7 @@ export class ResetPasswordComponent implements OnInit {
   {
     this.analystService.checkUniqueEmail(this.userModel1.userEmail).subscribe(res=>{
       this.UserEmailCheck=res;
-       console.log("done");
         if(this.UserEmailCheck===null){
-          console.log("done");
           this.emailAlreadyExist="please enter a  Registered email";
         }
           else
@@ -40,8 +38,6 @@ export class ResetPasswordComponent implements OnInit {
     );
 }
  onSubmitForm() {
-    console.log(this.userModel1.userEmail);
-    console.log(this.userModel2.password);
     this.userService.findUserByEmailAndPassword(this.userModel1.userEmail,this.userModel2.password).subscribe(  
     data => {
       if(data===null)
