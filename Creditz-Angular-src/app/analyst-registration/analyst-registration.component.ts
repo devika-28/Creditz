@@ -39,7 +39,7 @@ export class AnalystRegistrationComponent implements OnInit {
     this.mailService.sendMail(this.userModel1.userEmail,this.userModel1.password).subscribe
     (data=>console.log('success'))
     this.openDialog();
-    this.router.navigate(['adminsidenav'], {queryParams: { registered: true }});
+    this.router.navigate(['admin'], {queryParams: { registered: true }});
     },
     error => {
         this.error = error;

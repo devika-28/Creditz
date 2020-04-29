@@ -29,7 +29,7 @@ export class ForgotPasswordComponent implements OnInit {
       otp: ['', Validators.required]
     });
     this.secondFormGroup = this._formBuilder.group({
-      password: ['', [Validators.required,Validators.minLength(8)]],
+      password: ['', [Validators.required,Validators.minLength(8),, Validators.pattern("^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$")]],
       confirmpassword: ['', Validators.required]
 
     });
