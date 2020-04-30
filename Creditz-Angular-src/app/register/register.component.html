@@ -120,7 +120,7 @@
                       <small *ngIf="contact.errors.pattern">Number should be in 10 digit.
                       </small>      
                     </div>
-                    <div *ngIf="!hasEmailverified && email.valid">
+                    <div *ngIf="!hasEmailverified && email.valid && organizationForm.form.invalid">
                       <div class="container-login100-form-btn" >
                         <small>
                        verify your account to register. 
@@ -133,7 +133,7 @@
                         Send otp to verify email</button>
                       </div>
                     </div>
-                    <div *ngIf="enterotp">
+                    <div *ngIf="enterotp && organizationForm.form.invalid">
                       <div class="form-group">
                         <label for="potp"><b>Enter OTP</b></label>
                           <input type="text" 
@@ -150,7 +150,7 @@
                          Enter</button>
                       </div> 
                       <br>  
-                      <div *ngIf=hasEmailverified>
+                      <div *ngIf="hasEmailverified && organizationForm.form.invalid">
                         <div class="form-group">
                           <button  class="btn btn-success" 
                           class="login100-form-btn" 
@@ -288,7 +288,7 @@
                             <small *ngIf="ccontact.errors.pattern">Number should be in 10 digit.
                             </small>      
                           </div>  
-                          <div *ngIf="!hasEmailverified && mail.valid">
+                          <div *ngIf="!hasEmailverified && mail.valid && personForm.form.invalid">
                             <div class="container-login100-form-btn" >
                               <small>
                               verify your account to register. 
@@ -301,7 +301,7 @@
                               </small>
                             </div>
                           </div>
-                          <div *ngIf="enterotp && organizationForm.form.valid">
+                          <div *ngIf="enterotp && organizationForm.form.valid && personForm.form.invalid">
                            <div class="form-group">
                             <label for="cotp"><b>Enter OTP</b></label>
                               <input type="text" 
@@ -319,7 +319,7 @@
                            </div> 
                           </div>
                           <br>  
-                          <div *ngIf="hasEmailverified && organizationForm.form.valid">
+                          <div *ngIf="hasEmailverified && organizationForm.form.valid && personForm.form.invalid">
                           <div class="form-group">
                             <button  
                             class="btn btn-success" 
