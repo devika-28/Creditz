@@ -14,7 +14,7 @@ import com.impetus.service.PersonService;
 @RestController
 public class PersonController {
 
-	private static final Logger LOG = LoggerFactory.getLogger(PersonApplicationController.class);
+	private static final Logger LOG = LoggerFactory.getLogger(PersonController.class);
 	@Autowired
 	private PersonService personService;
 
@@ -28,14 +28,12 @@ public class PersonController {
 	@GetMapping("/findPersonByUserId")
 	public Person findPersonByUserId(@RequestParam Long userId) {
 		try {
-		LOG.info("PersonController::findPersonByUserId::return findPersonByUserId method with userId:{}",userId);
-		return personService.findPersonByUserId(userId);
+			LOG.info("PersonController::findPersonByUserId::return findPersonByUserId method with userId:{}", userId);
+			return personService.findPersonByUserId(userId);
+		} catch (Exception e) {
+			LOG.warn("PersonController ::findPersonByUserId:: run time exception occur{0}", e);
+
 		}
-		catch(Exception e)
-		{
-		LOG.warn("PersonController ::findPersonByUserId:: run time exception occur{0}", e);
-		return personService.findPersonByUserId(userId);
-			
-		}
+		return null;
 	}
 }

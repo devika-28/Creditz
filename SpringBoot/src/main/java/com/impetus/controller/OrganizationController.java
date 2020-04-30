@@ -28,15 +28,16 @@ public class OrganizationController {
 	@GetMapping("/findOrganizationByUserId")
 	public Organization findOrganizationByUserId(@RequestParam Long userId) {
 		try {
-		LOG.info("OrganizationController::findOrganizationByUserId:: return to findOrganizationByUserId method with userId{}",userId);
-		return organizationService.findOrganizationByUserId(userId);
+			LOG.info(
+					"OrganizationController::findOrganizationByUserId:: return to findOrganizationByUserId method with userId{}",
+					userId);
+			return organizationService.findOrganizationByUserId(userId);
+		} catch (Exception e) {
+			LOG.warn("OrganizationController ::findOrganizationByUserId:: exception occur{0}", e);
+
 		}
-		catch(Exception e)
-		{
-		LOG.warn("AnalystController ::findUser:: run time exception occur{}", e);
-		return organizationService.findOrganizationByUserId(userId);
-			
-		}
+
+		return null;
 	}
 
 }

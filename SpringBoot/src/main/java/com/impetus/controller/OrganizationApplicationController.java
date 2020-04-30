@@ -40,9 +40,11 @@ public class OrganizationApplicationController {
 		try {
 			return service.organizationRiskMitigate(application);
 		} catch (ParseException e) {
-			LOG.info("Date formating exception");
+			LOG.error(
+					"OrganizationApplicationController ::organizationApplicantApplicationSubmit::Date formating exception",
+					e);
 		}
-          return null;
+		return null;
 	}
 
 	/**
@@ -55,7 +57,8 @@ public class OrganizationApplicationController {
 	@PostMapping("/organization-user/user-history")
 	public List<OrganizationApplicant> organizationHistory(@RequestBody OrganizationApplicant userId) {
 
-		LOG.info("OrganizationApplicationController ::organizationHistory::return to getHistory method with userId:{}",userId);
+		LOG.info("OrganizationApplicationController ::organizationHistory::return to getHistory method with userId:{}",
+				userId);
 
 		return service.getHistory(userId);
 

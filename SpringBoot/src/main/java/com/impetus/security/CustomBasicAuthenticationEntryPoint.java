@@ -6,11 +6,14 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint;
 
 /** Basic Authentication Entry point of the applications. */
 public class CustomBasicAuthenticationEntryPoint extends BasicAuthenticationEntryPoint {
+	private static final Logger LOG = LoggerFactory.getLogger(CustomBasicAuthenticationEntryPoint.class);
 
 	/**
 	 * Start the authentication by setting response status and adding header.
@@ -28,6 +31,7 @@ public class CustomBasicAuthenticationEntryPoint extends BasicAuthenticationEntr
 
 		PrintWriter writer = response.getWriter();
 		writer.println("HTTP Status 401 : " + authException.getMessage());
+		LOG.info("CustomBasicAuthenticationEntryPoint::commence::working");
 	}
 
 	/** set REALM name to RMS_REALM. */

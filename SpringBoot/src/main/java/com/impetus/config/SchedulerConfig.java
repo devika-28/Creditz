@@ -9,7 +9,8 @@ import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 
 @Configuration
 public class SchedulerConfig implements SchedulingConfigurer {
-	private static final Logger LOG = LoggerFactory.getLogger(RMSAuthInitializer.class);
+	private static final Logger LOG = LoggerFactory.getLogger(SchedulerConfig.class);
+	
 	/**
 	 * pool size
 	 */
@@ -22,6 +23,7 @@ public class SchedulerConfig implements SchedulingConfigurer {
 		ThreadPoolTaskScheduler threadPoolTaskScheduler = new ThreadPoolTaskScheduler();
 		threadPoolTaskScheduler.setPoolSize(POOL_SIZE);
 		threadPoolTaskScheduler.setThreadNamePrefix("my-scheduled-task-pool-");
+		LOG.info("SchedularConfig::configureTasks::initializing threadpool");
 		threadPoolTaskScheduler.initialize();
 		scheduledTaskRegistrar.setTaskScheduler(threadPoolTaskScheduler);
 	}

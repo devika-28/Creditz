@@ -11,7 +11,7 @@ import com.impetus.repository.PersonRepository;
 @Service
 public class PersonServiceImplementation implements PersonService {
 
-	private static final Logger LOG = LoggerFactory.getLogger(AnalystServiceImplementation.class);
+	private static final Logger LOG = LoggerFactory.getLogger(PersonServiceImplementation.class);
 	@Autowired
 	private PersonRepository person;
 
@@ -22,7 +22,8 @@ public class PersonServiceImplementation implements PersonService {
 	 * @return Person
 	 */
 	public Person findPersonByUserId(Long userId) {
-		LOG.info("PersonServiceImplementation::findPersonByUserId::call findPersonByUserId method with userId:{}",userId);
+		LOG.info("PersonServiceImplementation::findPersonByUserId::call findPersonByUserId method with userId:{}",
+				userId);
 		return person.findPersonByUserId(userId);
 
 	}

@@ -41,7 +41,7 @@ public class LoginController {
 			}
 			return new ResponseEntity<>(users, HttpStatus.OK);
 		} catch (Exception e) {
-			LOG.info("LoginController :: login::RunTimeException", e);
+			LOG.info("LoginController :: login::Exception", e);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
 	}

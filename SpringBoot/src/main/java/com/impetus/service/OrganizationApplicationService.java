@@ -35,7 +35,7 @@ public interface OrganizationApplicationService {
 	 * @return Application id and its value in long decides whether to approve or
 	 *         reject the application
 	 */
-	Map<String, Long> organizationRiskMitigate(OrganizationApplicant application)throws ParseException;
+	Map<String, Long> organizationRiskMitigate(OrganizationApplicant application) throws ParseException;
 
 	/**
 	 * find out all application associated with particular userId.

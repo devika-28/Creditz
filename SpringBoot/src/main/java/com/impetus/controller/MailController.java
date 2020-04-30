@@ -53,7 +53,7 @@ public class MailController {
 	}
 
 	/**
-	 * @return
+	 * sending otp to user via calling method sendOtpToUser service method 
 	 * @param userEmail
 	 * @param otp
 	 */

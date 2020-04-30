@@ -1,5 +1,8 @@
 package com.impetus.service;
 
+
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.List;
 import java.util.Random;
 
@@ -63,17 +66,24 @@ public class AnalystServiceImplementation implements AnalystService {
 	 * generate One Time Password.
 	 *
 	 * @return String
+	 * @throws NoSuchAlgorithmException 
 	 */
 	@Override
-	public String generateOtp() {
+
+	public String generateOtp() throws NoSuchAlgorithmException {
 		String numbers = "123456789";
-		Random r = new Random();
-		char otp[] = new char[5];
+		StringBuilder finalotp = new StringBuilder();
+		Random r = SecureRandom.getInstanceStrong();
+		char[] otp = new char[5];
 		for (int i = 0; i < otp.length; i++) {
 			otp[i] = numbers.charAt(r.nextInt(numbers.length()));
+			finalotp.append(otp[i]);
+			
 		}
-		return new String(otp);
+		LOG.info("otp generated for registration");
+		return ""+finalotp;
 	}
+		
 
 	/**
 	 * send one time password to userEmail.
@@ -84,7 +94,12 @@ public class AnalystServiceImplementation implements AnalystService {
 	@Override
 	public String sendOtp(String userEmail) {
 		LOG.info("AnalystServiceImplementation::sendOtp::call generateOtp method");
-		String otp = this.generateOtp();
+		String otp = null;
+		try {
+			otp = this.generateOtp();
+		} catch (NoSuchAlgorithmException e) {
+			LOG.error("AnalystServiceImplementation::sendOtp::exception occured:{0}",e);
+		}
 		LOG.info("AnalystServiceImplementation::sendOtp::call sendOtpToUser method with user email:{}",userEmail);
 		notificationService.sendOtpToUser(userEmail, otp);
 		return otp;

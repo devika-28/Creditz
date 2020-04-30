@@ -66,7 +66,7 @@ public class SchedularController {
 
 			try {
 				LOG.info("SchedularController ::statusUpdatePersonApplicants::call sendEmailToApplicants method");
-				notificationService.sendEmailToApplicants(email,applicationStatus);
+				notificationService.sendEmailToApplicants(email, applicationStatus);
 				LOG.info(
 						"SchedularController ::statusUpdatePersonApplicants::call updateEmailStatus method with email:{}",
 						email);
@@ -95,17 +95,17 @@ public class SchedularController {
 		while (organizationapplicantIterator.hasNext()) {
 			OrganizationApplicant applicants = organizationapplicantIterator.next();
 			String email = applicants.getUserId().getUserEmail();
-			LOG.info("SchedularController ::statusUpdateForOrganization::The user email is {}",email);
+			LOG.info("SchedularController ::statusUpdateForOrganization::The user email is {}", email);
 			String estatus = applicants.getEmailStatus();
-			LOG.info("SchedularController ::statusUpdateForOrganization::The Email Status is {}" , estatus);
+			LOG.info("SchedularController ::statusUpdateForOrganization::The Email Status is {}", estatus);
 			String applicationStatus = applicants.getApplicationStatus();
-			LOG.info(
-					"SchedularController ::statusUpdateForOrganization::The application status is {}" , applicationStatus);
+			LOG.info("SchedularController ::statusUpdateForOrganization::The application status is {}",
+					applicationStatus);
 
 			try {
 				LOG.info("SchedularController ::statusUpdateForOrganization::call sendEmailToApplicants method");
-				notificationService.sendEmailToApplicants(email,applicationStatus);
-				LOG.info("SchedularController ::statusUpdateForOrganization::Application status has send to {}",email);
+				notificationService.sendEmailToApplicants(email, applicationStatus);
+				LOG.info("SchedularController ::statusUpdateForOrganization::Application status has send to {}", email);
 				repository.updateEmailStatus(applicants.getApplicationId(), STATUS);
 			} catch (MailException mailException) {
 				LOG.error("SchedularController ::statusUpdateForOrganization::exception occur", mailException);

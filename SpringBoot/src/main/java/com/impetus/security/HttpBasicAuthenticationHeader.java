@@ -16,7 +16,7 @@ public class HttpBasicAuthenticationHeader {
 		Base64.Decoder decoder = Base64.getDecoder();
 		byte[] decodedByteArray = decoder.decode((auth.split(" "))[1]);
 
-		LOG.info("HttpBasicAuth");
+		LOG.info("HttpBasicAuthenticationHeader::decoder::HttpBasicAuth working");
 		return new String(decodedByteArray);
 	}
 }

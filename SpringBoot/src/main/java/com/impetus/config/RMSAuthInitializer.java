@@ -38,6 +38,7 @@ public class RMSAuthInitializer extends AbstractAnnotationConfigDispatcherServle
 	@Override
 	protected Filter[] getServletFilters() {
 		Filter[] singleton = { new CORSFilter() };
+		LOG.info("RMSAuthInitializer::getServletFilters::get servlet filters");
 		return singleton;
 	}
 

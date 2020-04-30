@@ -53,19 +53,19 @@ public class ScheduledTasks {
 		while (personapplicantIterator.hasNext()) {
 			PersonApplicant applicants = personapplicantIterator.next();
 			String email = applicants.getUserId().getUserEmail();
-			LOG.info("ScheduledTasks::sendApplicationStatusToPersonApplicants::The user email is:{}",email);
+			LOG.info("ScheduledTasks::sendApplicationStatusToPersonApplicants::The user email is:{}", email);
 			String estatus = applicants.getEmailStatus();
-			LOG.info("ScheduledTasks::sendApplicationStatusToPersonApplicants::The email Status is:{}",estatus);
+			LOG.info("ScheduledTasks::sendApplicationStatusToPersonApplicants::The email Status is:{}", estatus);
 			String applicationStatus = applicants.getApplicationStatus();
-			LOG.info("ScheduledTasks::sendApplicationStatusToPersonApplicants::The applicationStatus is{}"
-					,applicationStatus);
+			LOG.info("ScheduledTasks::sendApplicationStatusToPersonApplicants::The applicationStatus is{}",
+					applicationStatus);
 			try {
 				LOG.info("ScheduledTasks::sendApplicationStatusToPersonApplicants::call sendEmailToApplicants method");
-				notificationService.sendEmailToApplicants(email,applicationStatus);
+				notificationService.sendEmailToApplicants(email, applicationStatus);
 				LOG.info("ScheduledTasks ::sendApplicationStatusToPersonApplicants::call updateEmailStatus Method");
 				personRepository.updateEmailStatus(applicants.getApplicationId(), STATUS);
 			} catch (MailException mailException) {
-				LOG.info("ScheduledTasks::sendApplicationStatusToPersonApplicants::Exception occur{0}",mailException);
+				LOG.info("ScheduledTasks::sendApplicationStatusToPersonApplicants::Exception occur{0}", mailException);
 			}
 
 		}
@@ -88,18 +88,21 @@ public class ScheduledTasks {
 			LOG.info(
 					"ScheduledTasks::scheduleSendApplicationStatusToPersonApplicants::call sendEmailToApplicants method");
 			String estatus = applicants.getEmailStatus();
-			LOG.info("ScheduledTasks::scheduleSendApplicationStatusToPersonApplicants::The email Status is{}",estatus);
+			LOG.info("ScheduledTasks::scheduleSendApplicationStatusToPersonApplicants::The email Status is{}", estatus);
 			String applicationStatus = applicants.getApplicationStatus();
-			LOG.info("ScheduledTasks::scheduleSendApplicationStatusToPersonApplicants::The applicationStatus is:{}",applicationStatus);
+			LOG.info("ScheduledTasks::scheduleSendApplicationStatusToPersonApplicants::The applicationStatus is:{}",
+					applicationStatus);
 			try {
 				LOG.info(
 						"ScheduledTasks::scheduleSendApplicationStatusToPersonApplicants::call sendEmailToApplicants method");
+
 				notificationService.sendEmailToApplicants(email, applicationStatus);
 				LOG.info(
 						"ScheduledTasks::scheduleSendApplicationStatusToPersonApplicantss::call updateEmailStatus Method");
 				repository.updateEmailStatus(applicants.getApplicationId(), STATUS);
 			} catch (MailException mailException) {
-				LOG.info("ScheduledTasks::scheduleSendApplicationStatusToPersonApplicants::Exception occur:{}",mailException);
+				LOG.info("ScheduledTasks::scheduleSendApplicationStatusToPersonApplicants::Exception occur:{0}",
+						mailException);
 			}
 
 		}

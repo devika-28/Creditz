@@ -28,18 +28,16 @@ public class LoginServiceImplementation implements LoginService {
 
 		HashMap<String, String> credentials = new HashMap<>();
 
-		
-			User currentUser = loginRepo.findByUserEmail(userEmail);
-			if(currentUser!=null) {
+		User currentUser = loginRepo.findByUserEmail(userEmail);
+		if (currentUser != null) {
 			credentials.put("userId", String.valueOf(currentUser.getUserId()));
 			credentials.put("role", String.valueOf(currentUser.getRole()));
-			}
-			else {
-				credentials.put("userId", null);
-				credentials.put("role", null);
-				LOG.info("login error");
-			}
-	
+		} else {
+			credentials.put("userId", null);
+			credentials.put("role", null);
+			LOG.info(" LoginServiceImplementation::postLoginDetails::login error");
+		}
+
 		return credentials;
 	}
 

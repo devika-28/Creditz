@@ -1,5 +1,6 @@
 package com.impetus.service;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -29,7 +30,7 @@ public interface AnalystService {
     /** generate One Time Password.
      *
      * @return String */
-    String generateOtp();
+    String generateOtp()throws NoSuchAlgorithmException;
 
     /** send one time password to userEmail.
      *

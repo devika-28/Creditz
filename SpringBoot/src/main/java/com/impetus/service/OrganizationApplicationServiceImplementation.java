@@ -158,6 +158,7 @@ public class OrganizationApplicationServiceImplementation implements Organizatio
 		Date applicationdate;
 		List<OrganizationApplicant> list = organizationApplication.findByUserId(userId);
 		noOfApplication = list.size();
+
 		if (noOfApplication > 0) {
 			String lastApplicationDate = list.get(noOfApplication - 1).getDate();
 

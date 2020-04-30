@@ -112,6 +112,7 @@ public class PersonApplicationServiceImplementation implements PersonApplication
 		Long userId = (application.getUserId()).getUserId();
 		int noOfApplication;
 		Date applicationdate;
+		
 		List<PersonApplicant> list = personApplication.findByUserId(userId);
 		noOfApplication = list.size();
 		if (noOfApplication > 0) {

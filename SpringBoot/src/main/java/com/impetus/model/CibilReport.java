@@ -46,13 +46,15 @@ public class CibilReport {
 	@Column(name = "monthly_Income", nullable = false)
 	private int monthlyIncome;
 
-	// balance yet to pay to the lending institutions
-	/** the currentBalance */
+	/**
+	 * the currentBalance balance yet to pay to the lending institutions
+	 */
 	@Column(name = "current_Balance", nullable = false)
 	private float currentBalance;
 
-	// STD, NPA, SUB https://www.coverfox.com/cibil/cibil-report/
-	/** the category */
+	/**
+	 * the category STD, NPA, SUB https://www.coverfox.com/cibil/cibil-report/
+	 */
 	@Column(name = "category", nullable = false)
 	private String category;
 
@@ -64,9 +66,12 @@ public class CibilReport {
 	@Column(name = "credit_Limit", nullable = false)
 	private float creditLimit;
 
-	/** the creditUtilization */
+	/**
+	 * the creditUtilization if it is more than 70% of credit limit == then we wont
+	 * give loan
+	 */
 	@Column(name = "credit_Utilization", nullable = false)
-	private float creditUtilization; // if it is more than 70% of credit limit == then we wont give loan
+	private float creditUtilization;
 
 	/** @return the panCard */
 	public String getPanCard() {

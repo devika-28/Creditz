@@ -51,8 +51,9 @@ public class RegistrationRepository  {
 			currentSession.save(user1);
 			currentSession.save(user);
 			status = true;
+			LOG.info("RegistrationRepository::saveAnalyst::Person saved successfully");
 		} catch (Exception e) {
-			LOG.error("exception occured {0}", e);
+			LOG.error("RegistrationRepository::saveAnalyst::exception occurs{0}", e);
 		}
 		return status;
 	}
@@ -74,8 +75,9 @@ public class RegistrationRepository  {
 			currentSession.save(user1);
 			currentSession.save(user);
 			status = true;
+			LOG.info("RegistrationRepository::saveAnalyst::Organization saved successfully");
 		} catch (Exception e) {
-			LOG.error("exception occured", e);
+			LOG.error("RegistrationRepository::saveAnalyst::exception occurs", e);
 		}
 		return status;
 	}
@@ -95,8 +97,9 @@ public class RegistrationRepository  {
 			user.setRole("Analyst");
 			currentSession.save(user);
 			status = true;
+			LOG.info("RegistrationRepository::saveAnalyst::Analyst saved successfully");
 		} catch (Exception e) {
-			LOG.error("exception occured", e);
+			LOG.error("RegistrationRepository::saveAnalyst::exception occurs", e);
 		}
 		return status;
 	}

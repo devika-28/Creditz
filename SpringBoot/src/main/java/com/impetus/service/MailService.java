@@ -29,7 +29,7 @@ public class MailService {
 			+ "You can visit our nearest Branch with all an original copy of your PAN card, Identity proof and bank statement for further processing. ";
 	static final String OTPCONTENT = "Dear user, \nWe see you have requested for an OTP, Please note that it is valid only for one time use.\n\nNot You, please contact our officials.";
 
-	static final String REJECTEDEARLY="We are Sorry! to inform you ,your application has been rejected ,it seems that you are applying for loan too frequently";
+	static final String REJECTEDEARLY = "We are Sorry! to inform you ,your application has been rejected ,it seems that you are applying for loan too frequently";
 	/*
 	 * The Spring Framework provides an easy abstraction for sending email by using
 	 * the JavaMailSender interface, and Spring Boot provides auto-configuration for
@@ -72,11 +72,11 @@ public class MailService {
 		 * object of SimpleMailMessage as a Parameter
 		 */
 		LOG.info("MailService:: sendEmail::call sendMail method");
-		this.sendMail(user.getUserEmail(), ANALYST_SUBJECT, "Your Login Credentials: " + "  EmailAddress:"
-				+ user.getUserEmail() + "  Your password :" + user.getPassword() + "\n" + ENDDATA);
+		this.sendMail(user.getUserEmail(), ANALYST_SUBJECT, "Your Login Credentials: \n" + "Email Address: "
+				+ user.getUserEmail() + "\nYour Password : " + user.getPassword() + "\n" + ENDDATA+"\n");
 	}
 
-	public void sendEmailToApplicants(String userEmail,String applicationStatus) {
+	public void sendEmailToApplicants(String userEmail, String applicationStatus) {
 
 		/*
 		 * This JavaMailSender Interface is used to send Mail in Spring Boot. This
@@ -89,43 +89,35 @@ public class MailService {
 		mail.setSubject(APPLICATION_UPDATE_SUBJECT);
 		switch (applicationStatus) {
 		case "Approved":
-			LOG.info("MailService::sendEmailToApplicants::call sendMail method");
+			
 			this.sendMail(userEmail, APPLICATION_UPDATE_SUBJECT,
 					WELCOME + "\n" + APPROVED + "\n" + ADDITIONALDATA + "\n" + ENDDATA);
 			break;
 		case "Rejected Low Credits":
-			LOG.info("MailService::sendEmailToApplicants::call sendMail method");
-			this.sendMail(userEmail, APPLICATION_UPDATE_SUBJECT,
-					WELCOME + "\n" + REJECTEDLOWCREDITS + "\n" + ENDDATA);
+			
+			this.sendMail(userEmail, APPLICATION_UPDATE_SUBJECT, WELCOME + "\n" + REJECTEDLOWCREDITS + "\n" + ENDDATA);
 			break;
 		case "Rejected":
-			LOG.info("MailService::sendEmailToApplicants::call sendMail method");
-			this.sendMail(userEmail, APPLICATION_UPDATE_SUBJECT,
-					WELCOME + "\n"  + REJECTED + "\n" + ENDDATA);
+			
+			this.sendMail(userEmail, APPLICATION_UPDATE_SUBJECT, WELCOME + "\n" + REJECTED + "\n" + ENDDATA);
 			break;
 		case "Rejected Bad History":
-			LOG.info("MailService::sendEmailToApplicants::call sendMail method");
-			this.sendMail(userEmail, APPLICATION_UPDATE_SUBJECT,
-					WELCOME + "\n"  + REJECTEDBADHISTORY + "\n" + ENDDATA);
+			
+			this.sendMail(userEmail, APPLICATION_UPDATE_SUBJECT, WELCOME + "\n" + REJECTEDBADHISTORY + "\n" + ENDDATA);
 			break;
 		case "Pending":
-			LOG.info("MailService::sendEmailToApplicants::call sendMail method");
 			this.sendMail(userEmail, APPLICATION_UPDATE_SUBJECT, WELCOME + "\n" + PENDING + "\n" + ENDDATA);
 			break;
 		case "Record Not Found":
-			LOG.info("MailService::sendEmailToApplicants::call sendMail method");
-			this.sendMail(userEmail, APPLICATION_UPDATE_SUBJECT,
-					WELCOME + "\n" + RECORDNOTFOUND + "\n" + ENDDATA);
+			this.sendMail(userEmail, APPLICATION_UPDATE_SUBJECT, WELCOME + "\n" + RECORDNOTFOUND + "\n" + ENDDATA);
 			break;
 		case "Rejected Early":
-			LOG.info("MailService::sendEmailToApplicants::call sendMail method");
-			this.sendMail(userEmail, APPLICATION_UPDATE_SUBJECT,
-					WELCOME + "\n" + REJECTEDEARLY+ "\n" + ENDDATA);
+			
+			this.sendMail(userEmail, APPLICATION_UPDATE_SUBJECT, WELCOME + "\n" + REJECTEDEARLY + "\n" + ENDDATA);
 			break;
 		default:
-			LOG.info("MailService::sendOtpToUser::call sendMail method");
-			this.sendMail(userEmail, APPLICATION_UPDATE_SUBJECT,
-					WELCOME + "\n" + RECORDNOTFOUND + "\n" + ENDDATA);
+			
+			LOG.info("MailService::sendEmailToApplicants::default case");
 
 		}
 
