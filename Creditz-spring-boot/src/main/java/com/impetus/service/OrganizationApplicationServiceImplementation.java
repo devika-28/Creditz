@@ -23,7 +23,7 @@ public class OrganizationApplicationServiceImplementation implements Organizatio
 
 	private static final Logger LOG = LoggerFactory.getLogger(OrganizationApplicationServiceImplementation.class);
 	static final String APPROVED = "Approved";
-	static final String DATEFORMAT="dd/MM/yyyy";
+	static final String DATEFORMAT = "dd/MM/yyyy";
 	static final String REJECTEDLOWCREDITS = "Rejected Low Credits";
 	static final String REJECTED = "Rejected";
 	static final String PENDING = "Pending";
@@ -31,8 +31,7 @@ public class OrganizationApplicationServiceImplementation implements Organizatio
 	static final String REJECTEDBADHISTORY = "Rejected Bad History";
 	static final String EMAILSTATUS = "False";
 	static final String REJECTEDEARLY = "Rejected Early";
-	
-	
+
 	/** the organization application */
 	@Autowired(required = true)
 	private OrganizationApplicationRepository organizationApplication;
@@ -48,49 +47,59 @@ public class OrganizationApplicationServiceImplementation implements Organizatio
 	/**
 	 * @param application
 	 * @return Application id string and value of application id
-	 * @throws ParseException 
+	 * @throws ParseException
 	 */
 	public HashMap<String, Long> organizationRiskMitigate(OrganizationApplicant application) throws ParseException {
+		LOG.info("OrganizationApplicationServiceImplementation ::organizationRiskMitigate::Evaluating Policy");
+
 		HashMap<String, Long> json = null;
 		Long userId = (application.getUserId()).getUserId();
 		Long organizatinId = organization.getOrganizationIdByUserId(userId);
-			
-		
-		
-				CibilReport reportOfCurrentUser = cibilReport.findByPanCard(application.getPancard());
-                    if (reportOfCurrentUser!=null) {
-				
-            	application.setDate(UserServiceImplementation.getCurrentDate());
-       			application.setTime(UserServiceImplementation.getCurrentTime());
-       			
-				application.setApplicationStatus(
-						this.approveOrDisapprove(application,reportOfCurrentUser));
-                    }else {
-                    	application.setApplicationStatus(RECORDNOTFOUND);
-                    }
-                    application.setEmailStatus(EMAILSTATUS);
-                    
-			organizationApplication.insertApplication(application.getBankruptcy(), application.getBusinessAge(),
-					application.getCriminalRecord(), application.getEmployeeCount(), application.getLicenseNumber(),
-					application.getLoanAmount(), application.getLoanTenure(), application.getOrganizationType(),
-					application.getPancard(), application.getRevenue(), application.getApplicationStatus(),
-					organizatinId, userId, application.getEmailStatus(), application.getDate(), application.getTime());
-			
-			json = new HashMap<>();
-			json.put("Application_Id",organizationApplication.getApplicationId());
-			return json;
-               
+
+		CibilReport reportOfCurrentUser = cibilReport.findByPanCard(application.getPancard());
+		LOG.info("OrganizationApplicationServiceImplementation ::organizationRiskMitigate::Fetching CIBIL Records");
+
+		if (reportOfCurrentUser != null) {
+			LOG.info("OrganizationApplicationServiceImplementation ::organizationRiskMitigate::CIBIL Records, Fetched");
+
+			application.setDate(UserServiceImplementation.getCurrentDate());
+			application.setTime(UserServiceImplementation.getCurrentTime());
+
+			application.setApplicationStatus(this.approveOrDisapprove(application, reportOfCurrentUser));
+			LOG.info("OrganizationApplicationServiceImplementation ::organizationRiskMitigate::Application Status SET");
+		} else {
+			LOG.info("OrganizationApplicationServiceImplementation ::organizationRiskMitigate::CIBIL Record not found");
+
+			application.setApplicationStatus(RECORDNOTFOUND);
+		}
+		application.setEmailStatus(EMAILSTATUS);
+		LOG.info(
+				"OrganizationApplicationServiceImplementation ::organizationRiskMitigate::Inserting Data into database");
+		organizationApplication.insertApplication(application.getBankruptcy(), application.getBusinessAge(),
+				application.getCriminalRecord(), application.getEmployeeCount(), application.getLicenseNumber(),
+				application.getLoanAmount(), application.getLoanTenure(), application.getOrganizationType(),
+				application.getPancard(), application.getRevenue(), application.getApplicationStatus(), organizatinId,
+				userId, application.getEmailStatus(), application.getDate(), application.getTime());
+		LOG.info("OrganizationApplicationServiceImplementation ::organizationRiskMitigate::Data inserted Succesfully");
+
+		json = new HashMap<>();
+		LOG.info("OrganizationApplicationServiceImplementation ::organizationRiskMitigate::Fetching Application ID");
+		json.put("Application_Id", organizationApplication.getApplicationId());
+		LOG.info(
+				"OrganizationApplicationServiceImplementation ::organizationRiskMitigate::Return Application ID to controller");
+		return json;
+
 	}
-	
+
 	/**
 	 * this will calculate and return to submit application after 6months
 	 * 
 	 * @param appdate
 	 * @return
-	 * @throws ParseException 
+	 * @throws ParseException
 	 */
 
-	String checkdate(Date lastApplicationdate,String  currentApplicationdate) throws ParseException {
+	String checkdate(Date lastApplicationdate, String currentApplicationdate) throws ParseException {
 		int daylast;
 		int monthlast;
 		int yearlast;
@@ -100,20 +109,20 @@ public class OrganizationApplicationServiceImplementation implements Organizatio
 		daylast = calendar.get(Calendar.DAY_OF_MONTH);
 		monthlast = calendar.get(Calendar.MONTH);
 		yearlast = calendar.get(Calendar.YEAR);
-	
+
 		monthlast += 6;
 		if (monthlast > 12) {
 			monthlast %= 12;
 			yearlast += 1;
 		}
-		 lastApplicationdate = new SimpleDateFormat(DATEFORMAT).parse(daylast+"/"+monthlast+"/"+yearlast);
-		
-		 currentdate = new SimpleDateFormat(DATEFORMAT).parse(currentApplicationdate);
-        
-		 if (lastApplicationdate.after(currentdate)) {
-          
-            return REJECTEDEARLY;
-        }
+		lastApplicationdate = new SimpleDateFormat(DATEFORMAT).parse(daylast + "/" + monthlast + "/" + yearlast);
+
+		currentdate = new SimpleDateFormat(DATEFORMAT).parse(currentApplicationdate);
+
+		if (lastApplicationdate.after(currentdate)) {
+
+			return REJECTEDEARLY;
+		}
 		return null;
 	}
 
@@ -131,18 +140,19 @@ public class OrganizationApplicationServiceImplementation implements Organizatio
 	 * @param assetCost
 	 * @param liabilites
 	 * @return value for application status approved or other .
-	 * @throws ParseException 
+	 * @throws ParseException
 	 */
 
-	public String approveOrDisapprove(OrganizationApplicant application,CibilReport  reportOfCurrentUser) throws ParseException {
+	public String approveOrDisapprove(OrganizationApplicant application, CibilReport reportOfCurrentUser)
+			throws ParseException {
 		String nextapplicationStatus;
-		String assetCategory=reportOfCurrentUser.getCategory();
-		int cibilScore=reportOfCurrentUser.getCreditScore();
-		int loanAmount=application.getLoanAmount();
-	    int monthlyIncome=reportOfCurrentUser.getMonthlyIncome(); 
-		int loanTenure=application.getLoanTenure();
-		float assetCost=reportOfCurrentUser.getAssetCost();
-		float liabilites=reportOfCurrentUser.getLiabilities();
+		String assetCategory = reportOfCurrentUser.getCategory();
+		int cibilScore = reportOfCurrentUser.getCreditScore();
+		int loanAmount = application.getLoanAmount();
+		int monthlyIncome = reportOfCurrentUser.getMonthlyIncome();
+		int loanTenure = application.getLoanTenure();
+		float assetCost = reportOfCurrentUser.getAssetCost();
+		float liabilites = reportOfCurrentUser.getLiabilities();
 		Long userId = (application.getUserId()).getUserId();
 		int noOfApplication;
 		Date applicationdate;
@@ -150,30 +160,29 @@ public class OrganizationApplicationServiceImplementation implements Organizatio
 		noOfApplication = list.size();
 		if (noOfApplication > 0) {
 			String lastApplicationDate = list.get(noOfApplication - 1).getDate();
-			
-		    applicationdate = new SimpleDateFormat(DATEFORMAT).parse(lastApplicationDate);
-		   
-				if (applicationdate != null) {
-					
-					nextapplicationStatus = this.checkdate(applicationdate,application.getDate());
-		            if (nextapplicationStatus.equals(REJECTEDEARLY)) {
-		            	return REJECTEDEARLY;
-		            }
+
+			applicationdate = new SimpleDateFormat(DATEFORMAT).parse(lastApplicationDate);
+
+			if (applicationdate != null) {
+
+				nextapplicationStatus = this.checkdate(applicationdate, application.getDate());
+				if (nextapplicationStatus.equals(REJECTEDEARLY)) {
+					return REJECTEDEARLY;
 				}
-		            else {
-		              LOG.info("date formating error");	
-		            }
+			} else {
+				LOG.info("date formating error");
 			}
-		
-				            
-		  if (loanAmount > 7000000 || application.getBankruptcy() == 1 || application.getCriminalRecord() == 1) {
+		}
+
+		if (loanAmount > 7000000 || application.getBankruptcy() == 1 || application.getCriminalRecord() == 1) {
 			return REJECTED;
-		} else if (!(assetCategory.equals("STD")) || assetCategory.equals("NPA") || reportOfCurrentUser.getCreditUtilization() >= 60) {
+		} else if (!(assetCategory.equals("STD")) || assetCategory.equals("NPA")
+				|| reportOfCurrentUser.getCreditUtilization() >= 60) {
 			return REJECTEDBADHISTORY;
 		} else if (cibilScore < 500 && cibilScore >= 300) {
 			return REJECTEDLOWCREDITS;
 		} else if (cibilScore <= 900 && cibilScore >= 700) {
-			
+
 			return APPROVED;
 		} else if (cibilScore < 700 && cibilScore >= 500) {
 			float calculatedIncome = (float) (monthlyIncome * 0.5);
@@ -181,16 +190,15 @@ public class OrganizationApplicationServiceImplementation implements Organizatio
 			float emi = ((loanAmount + interest) / loanTenure);
 			float assetvalue = assetCost - liabilites;
 			float loanamt = (float) (loanAmount + (assetvalue * 0.2));
-			if (calculatedIncome > emi ||assetvalue > loanamt) {
+			if (calculatedIncome > emi || assetvalue > loanamt) {
 				return APPROVED;
-			} 
-		}              		
-		            		
+			}
+		}
+
 		return "Pending Internal Error";
-		            
-		            
+
 	}
-		
+
 	/**
 	 * find out top creditors.
 	 * 
@@ -198,7 +206,9 @@ public class OrganizationApplicationServiceImplementation implements Organizatio
 	 */
 	@Override
 	public List<OrganizationApplicant> findTopPersonCreditors() {
-		LOG.info("OrganizationApplicationServiceImplementation::findApplicants::call findByemailStatus method with email Status:{}",EMAILSTATUS);
+		LOG.info(
+				"OrganizationApplicationServiceImplementation::findApplicants::call findByemailStatus method with email Status:{}",
+				EMAILSTATUS);
 		return organizationApplication.findTopPersonCreditors(APPROVED);
 	}
 
@@ -227,9 +237,6 @@ public class OrganizationApplicationServiceImplementation implements Organizatio
 		return organizationApplication.findAll();
 
 	}
-	
-	
-
 
 	/** @return list of Organization Applicants */
 	public List<OrganizationApplicant> findApplicants() {

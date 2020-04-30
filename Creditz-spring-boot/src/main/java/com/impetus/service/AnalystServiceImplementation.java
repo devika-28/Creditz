@@ -102,12 +102,10 @@ public class AnalystServiceImplementation implements AnalystService {
 		HttpBasicAuthenticationHeader http = new HttpBasicAuthenticationHeader();
 		auth = http.decoder(auth);
 		try {
-			LOG.info("AnalystServiceImplementation::updateUserPassword::call updatePassword method");
 			user.updatePassword(auth.split(":")[0], hashPassword(auth.split(":")[1]));
 			ans = true;
 			return ans;
 		} catch (Exception e) {
-			LOG.error("UserDAOImplementation::savePerson::exception occured{}", e);
 			return ans;
 		}
 	}

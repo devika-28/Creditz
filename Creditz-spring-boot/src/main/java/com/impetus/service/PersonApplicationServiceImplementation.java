@@ -26,14 +26,12 @@ public class PersonApplicationServiceImplementation implements PersonApplication
 	static final String FALSE = "False";
 	static final String REJECTED = "Rejected";
 	static final String RECORDNOTFOUND = "Record Not Found";
-	static final String DATEFORMAT="dd/MM/yyyy";
+	static final String DATEFORMAT = "dd/MM/yyyy";
 	static final String REJECTEDEARLY = "Rejected Early";
 	static final String REJECTEDLOWCREDITS = "Rejected Low Credits";
 	static final String PENDING = "Pending";
 	static final String REJECTEDBADHISTORY = "Rejected Bad History";
 	static final String EMAILSTATUS = "False";
-	
-	
 
 	@Autowired
 	private CibilReportRepository cibilReport;
@@ -55,32 +53,39 @@ public class PersonApplicationServiceImplementation implements PersonApplication
 	 */
 	@Override
 	public Map<String, Long> riskMitigate(PersonApplicant application) throws ParseException {
+		LOG.info("PersonApplicationServiceImplementation ::riskMitigate::Evaluating Policy");
+
 		HashMap<String, Long> json = null;
 		Long userId = (application.getUserId()).getUserId();
 		Long personId = person.getPersonIdByUserId(userId);
-	
-		CibilReport reportOfCurrentUser = cibilReport.findByPanCard(application.getPancard());
-         if (reportOfCurrentUser!=null) {
-				
-            	application.setDate(UserServiceImplementation.getCurrentDate());
-       			application.setTime(UserServiceImplementation.getCurrentTime());	
-				application.setApplicationStatus(this.approveOrDisapprove(application, reportOfCurrentUser));
-			    }else {
-    	             application.setApplicationStatus(RECORDNOTFOUND);
-                      }
-			
-			application.setEmailStatus(FALSE);
-			personApplication.insertApplication(application.getPancard(), application.getLoanAmount(),
-					application.getAge(), application.getGender(), application.getOccupation(),
-					application.getApplicationStatus(), application.getCriminalRecord(), application.getBankruptcy(),
-					application.getLoanTenure(), personId, userId, application.getEmailStatus(), application.getDate(),
-					application.getTime());
 
-			json = new HashMap<>();
-			json.put("Application_Id",
-							personApplication.getApplicationId());
-			return json;
-		
+		CibilReport reportOfCurrentUser = cibilReport.findByPanCard(application.getPancard());
+		LOG.info("PersonApplicationServiceImplementation ::riskMitigate::Fetching CIBIL Records");
+		if (reportOfCurrentUser != null) {
+			LOG.info("PersonApplicationServiceImplementation ::riskMitigate::CIBIL Records, Fetched");
+			application.setDate(UserServiceImplementation.getCurrentDate());
+			application.setTime(UserServiceImplementation.getCurrentTime());
+			application.setApplicationStatus(this.approveOrDisapprove(application, reportOfCurrentUser));
+			LOG.info("PersonApplicationServiceImplementation ::riskMitigate::Application Status SET");
+		} else {
+			LOG.info("PersonApplicationServiceImplementation ::riskMitigate::CIBIL Record not found");
+			application.setApplicationStatus(RECORDNOTFOUND);
+		}
+
+		application.setEmailStatus(FALSE);
+		LOG.info("PersonApplicationServiceImplementation ::riskMitigate::Inserting Data into database");
+		personApplication.insertApplication(application.getPancard(), application.getLoanAmount(), application.getAge(),
+				application.getGender(), application.getOccupation(), application.getApplicationStatus(),
+				application.getCriminalRecord(), application.getBankruptcy(), application.getLoanTenure(), personId,
+				userId, application.getEmailStatus(), application.getDate(), application.getTime());
+		LOG.info("PersonApplicationServiceImplementation ::riskMitigate::Data inserted Succesfully");
+
+		json = new HashMap<>();
+		LOG.info("PersonApplicationServiceImplementation ::riskMitigate::Fetching Application ID");
+		json.put("Application_Id", personApplication.getApplicationId());
+		LOG.info("PersonApplicationServiceImplementation ::riskMitigate::Return Application ID to controller");
+		return json;
+
 	}
 
 	/**
@@ -97,9 +102,12 @@ public class PersonApplicationServiceImplementation implements PersonApplication
 	 * @param monthlyLiablities
 	 * @param currentBalance
 	 * @return status
-	 * @throws ParseException 
+	 * @throws ParseException
 	 */
-	public String approveOrDisapprove(PersonApplicant application, CibilReport reportOfCurrentUser) throws ParseException {
+	public String approveOrDisapprove(PersonApplicant application, CibilReport reportOfCurrentUser)
+			throws ParseException {
+		LOG.info("PersonApplicationServiceImplementation ::approveOrDisapprove::Setting application status");
+
 		String nextapplicationStatus;
 		Long userId = (application.getUserId()).getUserId();
 		int noOfApplication;
@@ -108,22 +116,21 @@ public class PersonApplicationServiceImplementation implements PersonApplication
 		noOfApplication = list.size();
 		if (noOfApplication > 0) {
 			String lastApplicationDate = list.get(noOfApplication - 1).getDate();
-		    applicationdate = new SimpleDateFormat(DATEFORMAT).parse(lastApplicationDate);
-		   
-				if (applicationdate != null) {
-					
-					nextapplicationStatus = organizationApplication.checkdate(applicationdate,application.getDate());
-		            if (nextapplicationStatus.equals(REJECTEDEARLY)) {
-		            	return REJECTEDEARLY;
-		            }
+			applicationdate = new SimpleDateFormat(DATEFORMAT).parse(lastApplicationDate);
+
+			if (applicationdate != null) {
+
+				nextapplicationStatus = organizationApplication.checkdate(applicationdate, application.getDate());
+				if (nextapplicationStatus.equals(REJECTEDEARLY)) {
+					LOG.info("PersonApplicationServiceImplementation ::approveOrDisapprove::Application Status Set");
+					return REJECTEDEARLY;
 				}
-		            else {
-		              LOG.info("date formating error");	
-		            }
-			
+			} else {
+				LOG.info("date formating error");
+			}
+
 		}
-		
-		
+
 		if (application.getBankruptcy() == 1 || application.getCriminalRecord() == 1) {
 			return REJECTED;
 		}
@@ -172,6 +179,8 @@ public class PersonApplicationServiceImplementation implements PersonApplication
 	 */
 	public String validation(int limit, int loanAmount, float creditUtilization, float creditLimit, int monthlyIncome,
 			float monthlyLiablities, float currentBalance) {
+		LOG.info("PersonApplicationServiceImplementation ::validation::Validating User, and setting status");
+
 		if (loanAmount > limit) {
 			return REJECTEDLOWCREDITS;
 		}
@@ -186,7 +195,6 @@ public class PersonApplicationServiceImplementation implements PersonApplication
 
 		return PENDING;
 	}
-	
 
 	/**
 	 * find person applications corresponding to particular Id.
@@ -207,7 +215,7 @@ public class PersonApplicationServiceImplementation implements PersonApplication
 	 *
 	 * @return list of Person Applicants
 	 */
-	public List<PersonApplicant>getAllPersonApplicant() {
+	public List<PersonApplicant> getAllPersonApplicant() {
 		LOG.info("PersonApplicationServiceImplementation::getAllPersonApplicant::call findAll");
 		return personApplication.findAll();
 
@@ -225,7 +233,7 @@ public class PersonApplicationServiceImplementation implements PersonApplication
 	 * 
 	 * @return list of Person Applicants
 	 */
-	public List<PersonApplicant> findTopPersonCreditors(){
+	public List<PersonApplicant> findTopPersonCreditors() {
 		LOG.info("PersonApplicationServiceImplementation::findTopPersonCreditors::call findTopPersonCreditors method");
 		return personApplication.findTopPersonCreditors(APPROVED);
 	}

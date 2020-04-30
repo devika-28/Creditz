@@ -1,4 +1,4 @@
-package com.impetus.repository;
+package com.impetus.dao;
 
 import javax.persistence.EntityManager;
 
@@ -12,16 +12,15 @@ import com.impetus.model.Organization;
 import com.impetus.model.Person;
 import com.impetus.model.User;
 
-
 /** The Class UserDAOImplementation. */
 @Repository
-public class RegistrationRepository  {
-	private static final Logger LOG = LoggerFactory.getLogger(RegistrationRepository.class);
+public class UserDAOImplementation implements UserDAO {
+
 	/** The entity manager. */
 	@Autowired
 	private EntityManager entityManager;
 
-	
+	private static final Logger LOG = LoggerFactory.getLogger(UserDAOImplementation.class);
 
 	/**
 	 * Find User By UserMail.
@@ -52,13 +51,13 @@ public class RegistrationRepository  {
 			currentSession.save(user);
 			status = true;
 		} catch (Exception e) {
-			LOG.error("exception occured {0}", e);
+			LOG.error("exception occured {}", e);
 		}
 		return status;
 	}
 
 	/**
-	 * @see com.impetus.repository.RegisterRepository.User_DAO#saveOrganization(com.impetus.Model.Organization)
+	 * @see com.impetus.UserDAO.User_DAO#saveOrganization(com.impetus.Model.Organization)
 	 *      Save organization.
 	 * @param user the user
 	 * @return the boolean on successfully saving detail returns true To save the
@@ -86,7 +85,7 @@ public class RegistrationRepository  {
 	 * @param user
 	 * @return true or false
 	 */
-	
+	@Override
 	public boolean saveAnalyst(User user) {
 		boolean status = false;
 		try {
