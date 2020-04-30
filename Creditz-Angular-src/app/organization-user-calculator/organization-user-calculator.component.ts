@@ -27,7 +27,7 @@ export class OrganizationUserCalculatorComponent implements OnInit {
 
   checkusertype(){
     if(this.store!=null && this.role=='Person'){
-      window.alert("Sorry !!! You are not organization user, need to logout.\n Login with organization user to apply .");
+      window.alert("Sorry!!! You are not eligible to view apply as an organization.\n Login with an organization user credentials to apply .");
     }
     else{
       this.goToUrl('creditz/organization/apply');

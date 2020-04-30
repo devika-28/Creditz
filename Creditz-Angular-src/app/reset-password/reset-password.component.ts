@@ -42,14 +42,14 @@ export class ResetPasswordComponent implements OnInit {
     data => {
       if(data.userEmail===null)
       {
-        window.alert("Your Email or Password is incorrect ,Please enter a valid Email and password");
+        window.alert("Your Email or Password is incorrect, Please enter a valid Email and Password!");
       }
       else
       {
         this.userService.updateUser(this.userModel1.userEmail,this.userModel1.password).
         subscribe(data=>
           {
-            window.alert("Your password has been successfully changed");
+            window.alert("Your password is changed, Successfully!");
           })
       }
     }
@@ -60,4 +60,3 @@ export class ResetPasswordComponent implements OnInit {
 
  
   }
-

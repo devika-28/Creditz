@@ -13,9 +13,6 @@ export class OrganizationApplicationService {
 }
 
     findAllIndividualApplication(): Observable<any> {
-        // const params = new HttpParams()
-        // .set('pageNo', pageNo+"")
-        // .append('pageSize', pageSize+"");
          return this.http.get("http://localhost:9999/getPersonApplicants");
             
     }

@@ -29,8 +29,6 @@ export class AuthenticationService {
             })
     .pipe(map((res) => {
             if (res['userId']==null){
-              // console.log("INVALID USERID");
-              // this.goToUrl('home');
               alert("Invalid Credentials");
 
               }
@@ -70,7 +68,7 @@ export class AuthenticationService {
             }
             catch(Error){
               console.log(Error.message)
-              alert("Sorry Cant log you in in the moment, it is not you it is us!")
+              alert("Sorry! Cant log you in in the moment, it is not you it is us!")
             }
             
            }

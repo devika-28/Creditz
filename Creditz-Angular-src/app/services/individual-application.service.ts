@@ -34,7 +34,7 @@ export class IndividualApplicationService {
         this.applicationId = res['Application_Id'];
         if (res['Application_Id']!=null){
         window.open("successful","_self");
-            window.alert("Thanks!\nYour Application is being taken into consideration\nWe will inform you Sooner\nYour Application Id is: "+ this.applicationId);
+            window.alert("Thanks!\nYour Application is being taken into consideration\nWe will inform you Soon\nYour Application Id is: "+ this.applicationId);
           }
         }
         )
