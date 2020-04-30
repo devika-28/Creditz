@@ -51,7 +51,7 @@ public class UserDAOImplementation implements UserDAO {
 			currentSession.save(user);
 			status = true;
 		} catch (Exception e) {
-			LOG.error("exception occured {}", e);
+			LOG.error("UserDAOImplementation::savePerson::exception occured{}",e);
 		}
 		return status;
 	}
@@ -74,7 +74,7 @@ public class UserDAOImplementation implements UserDAO {
 			currentSession.save(user);
 			status = true;
 		} catch (Exception e) {
-			LOG.error("exception occured", e);
+			LOG.error("UserDAOImplementation:: saveAnalyst::exception occured{}",e);
 		}
 		return status;
 	}
@@ -95,7 +95,8 @@ public class UserDAOImplementation implements UserDAO {
 			currentSession.save(user);
 			status = true;
 		} catch (Exception e) {
-			LOG.error("exception occured", e);
+			LOG.error("UserDAOImplementation:: saveAnalyst::exception occured{}",e);
+		
 		}
 		return status;
 	}

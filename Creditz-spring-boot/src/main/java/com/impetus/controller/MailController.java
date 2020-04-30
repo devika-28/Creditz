@@ -47,7 +47,7 @@ public class MailController {
 			LOG.info("MailController ::send::call sendEmailToApplicants method");
 			notificationService.sendEmail(user);
 		} catch (MailException mailException) {
-			LOG.error("MailController::send::exception occur", mailException);
+			LOG.error("MailController::send::exception occur {}", mailException);
 		}
 
 	}
@@ -67,7 +67,7 @@ public class MailController {
 			LOG.info("MailController::sendOtp::call sendEmailToApplicants method");
 			notificationService.sendOtpToUser(userEmail, otp);
 		} catch (MailException mailException) {
-			LOG.error("MailController::sendOtp::exception occur", mailException);
+			LOG.error("MailController::sendOtp::exception occur{}", mailException);
 		}
 
 	}
