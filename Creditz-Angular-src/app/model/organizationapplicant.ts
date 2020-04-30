@@ -15,9 +15,7 @@ export class OrganizationApplicant
     bankruptcy:number;
     loanTenure:number;
     organizationId:number; 
-    userId:number;
-    applicationDate:Date;
-    applicationTime:string;
+    userId:number; 
     constructor( 
         pancard:string,
         loanAmount:number,

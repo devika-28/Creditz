@@ -16,7 +16,6 @@ export class IndividualUserComponent implements OnInit {
   constructor(public dialog: MatDialog) {}
 
   ngOnInit() {
-    console.log( this.calculateEMI(1000,6))
   }
 
   public greaterThan(subj: any, num: number) {

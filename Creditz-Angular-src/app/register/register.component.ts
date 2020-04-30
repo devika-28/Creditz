@@ -74,11 +74,10 @@ export class RegisterComponent implements OnInit {
   }
 
   sendVerificationEmail(email){
-    window.alert("We are sending an OTP to you Email to verify it really is you!");
+    window.alert("We are sending an OTP to your Email, to verify this really is you!");
     this.emailid=email;
     this._registerService.sendotp(email).subscribe(data=>{
     this.otpno=data;
-    console.log(data);
     if(this.otpno!=null){
     window.alert("Please check your email!");
     this.enterotp=true;

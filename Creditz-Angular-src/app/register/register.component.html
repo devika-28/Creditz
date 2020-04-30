@@ -325,7 +325,7 @@
                             class="btn btn-success" 
                             class="login100-form-btn" 
                             (click)="onSubmit2()" 
-                            [disabled]="!organizationForm.form.valid && emailAlreadyExist==''" 
+                            [disabled]="!organizationForm.form.valid || emailAlreadyExist!=''" 
                             type="submit" 
                             style="font-size: medium;">Register</button>          
                           </div> 

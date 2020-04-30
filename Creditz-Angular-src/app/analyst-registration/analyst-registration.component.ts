@@ -32,12 +32,11 @@ export class AnalystRegistrationComponent implements OnInit {
   
   onSubmit1() {
     this.submitted = true;
-    console.log(this.userModel1);
    
     this.analystService.registerAnalyst(this.userModel1).subscribe(  
     data => {console.log('success'!,data)
     this.mailService.sendMail(this.userModel1.userEmail,this.userModel1.password).subscribe
-    (data=>console.log('success'))
+    (data=>{})
     this.openDialog();
     this.router.navigate(['admin'], {queryParams: { registered: true }});
     },
@@ -57,7 +56,6 @@ openDialog(): void {
   });
 
   dialogRef.afterClosed().subscribe(result => {
-    console.log('The dialog was closed');
   });
 }
 

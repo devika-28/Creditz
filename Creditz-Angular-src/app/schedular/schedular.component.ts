@@ -17,13 +17,15 @@ export class SchedularComponent implements OnInit {
 personApplicantClick()
 {
  this.scheduleService.scheduleEmailUpdatePersonApplicant().subscribe(data=>
-  console.log("done")
+  window.alert("Emails Sent!")
+
   );
 }
 organizationApplicantClick()
 {
   this.scheduleService.scheduleEmailUOdateOrganizaionApplicant().subscribe(data=>
-    console.log("done")
+    window.alert("Emails Sent!")
+
     );
 }
 

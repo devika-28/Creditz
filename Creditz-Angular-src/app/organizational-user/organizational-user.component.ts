@@ -50,7 +50,6 @@ export class OrganizationalUserComponent implements OnInit {
   apply(){
     
     window.alert("We will use the information submitted by you at the registration as your contact details");
-    console.log(this.selected);
     this.applicationService.applyService(
       this.firstFormGroup.controls['pancard'].value,
       this.firstFormGroup.controls['loanAmount'].value,
@@ -63,7 +62,5 @@ export class OrganizationalUserComponent implements OnInit {
      this.secondFormGroup.controls['criminalRecord'].value,
      this.secondFormGroup.controls['bankruptcy'].value,
     this.firstFormGroup.controls['loanTenure'].value);   
-    console.log(this.firstFormGroup.controls['loanTenure'].value+"tenure");   
-    console.log(this.firstFormGroup.controls['loanAmount'].value+"amount");  
  }
 }

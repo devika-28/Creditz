@@ -57,6 +57,7 @@ export class ShowAnalystComponent implements OnInit {
         this.analystservice.findAllAnalyst().subscribe(stream=>
           {
            this.dataSource.data=stream as any;
+           window.alert("Analyst Deleted");
     
           });
        

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpParams } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,6 @@ export class UserService {
     // }
   
     createBasicAuthToken(username: String, password: String) {
-      console.log('Basic ' + window.btoa(username + ":" + password))
       return 'Basic ' + window.btoa(username + ":" + password)
     }
 

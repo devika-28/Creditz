@@ -13,7 +13,7 @@ import { PersonApplicant } from '../model/personapplicant';
 export class CreditorTableListComponent implements OnInit {
   topPersons$: Observable<PersonApplicant>;
   public array:any;
-  displayedColumns: string[] = ['applicationId','personName','contact','address','loanAmount','loanTenure','applicationDate','applicationStatus','emailStatus'];
+  displayedColumns: string[] = ['applicationId','personName','contact','address','loanAmount','loanTenure','applicationStatus','emailStatus'];
   @ViewChild(MatSort) sort:MatSort;
   @ViewChild(MatPaginator) paginator:MatPaginator;
   dataSource=new MatTableDataSource<any[]>();

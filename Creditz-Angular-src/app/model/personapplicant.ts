@@ -13,7 +13,5 @@ export class PersonApplicant
     bankCorupptency:boolean;
     loanTenture:number; 
     user:User; 
-    applicationDate:Date;
-    applicationTime:string;
 
 }

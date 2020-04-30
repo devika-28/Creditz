@@ -26,7 +26,7 @@ export class HistoryComponent implements OnInit {
   constructor(private historyService: HistoryService) {  }
    
   dataSource = new MatTableDataSource(ELEMENT_DATA);
-  displayedColumns = ['applicationId', 'loanAmount', 'loanTenure', 'applicationStatus'];
+  displayedColumns = ["date", 'applicationId', 'loanAmount', 'loanTenure', 'applicationStatus'];
 
   @ViewChild(MatSort, {static: false}) sort: MatSort;
 
@@ -35,32 +35,32 @@ export class HistoryComponent implements OnInit {
     this.historyService.showHistory(window.sessionStorage.getItem('userId'))
     .subscribe((history:History[])=>{
       history.forEach(i => {
-        status='Pending'
+        status='Pending: Contact customer care, Sorry! for inconvenience.'
         switch(i['applicationStatus']){
           case 'Rejected':
-            status='Rejected'
+            status='Rejected: Please see out privacy policy for further insight.'
             break;
           case 'Rejected Bad History':
-            status='Rejected'
+            status='Rejected: Seems like there is an issue with your credit patterns'
             break;  
           case 'Rejected Low Credits':
-            status='Rejected'
+            status='Rejected: Low credits'
             break; 
           case 'Approved':
-            status='Approved'
+            status='Approved: Your Application is Approved!'
             break;
           case 'Rejected Amount Declined':
-            status='Rejected'
+            status='Rejected: Amount is being Declined.'
             break;
           case 'Pending Internal Error':
-            status='Pending'
+            status='Pending: Contact customer care, Sorry! for inconvenience.'
             break;
           case 'Record Not Found':
-            status='Rejected'
+            status='Rejected: Looks like you do not have any Credit History'
             break;
           
         }
-        var temp = {applicationId:i['applicationId'], loanAmount:i['loanAmount'], loanTenure:i['loanTenure'], applicationStatus:status, emailStatus:i['emailStatus']}
+        var temp = {applicationId:i['applicationId'], loanAmount:i['loanAmount'], loanTenure:i['loanTenure'], applicationStatus:status, emailStatus:i['emailStatus'], date:i['date']}
         ELEMENT_DATA.push(temp)
       });
     })
@@ -68,9 +68,7 @@ export class HistoryComponent implements OnInit {
     this.dataSource.sort = this.sort;
     
     const sortState: Sort = {active: 'applicationId', direction: 'desc'};
-    this.sort.active = sortState.active;
     this.sort.direction = sortState.direction;
-    this.sort.sortChange.emit(sortState);
 
     // this.historyService.showHistory(window.sessionStorage.getItem('userId'));
   }
