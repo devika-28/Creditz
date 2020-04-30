@@ -5,13 +5,19 @@ import static org.junit.Assert.assertEquals;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+@SpringBootTest
+@AutoConfigureMockMvc
 public class SchedulerControllerTests {
 
 	@Test
+	@BeforeEach
 	public void testFindPersonByUserId() throws URISyntaxException {
 		RestTemplate restTemplate = new RestTemplate();
 

@@ -8,13 +8,19 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 import org.junit.Assert;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
+@SpringBootTest
+@AutoConfigureMockMvc
 public class OrganizationApplicationControllerTests {
 
+	@BeforeEach
 	@Test
 	public void testOrgApplication() throws URISyntaxException {
 		RestTemplate restTemplate = new RestTemplate();
