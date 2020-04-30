@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../model/user';
 import { AnalystService } from '../services/analyst.service';
 import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reset-password',
@@ -15,7 +16,8 @@ export class ResetPasswordComponent implements OnInit {
   userModel1=new User(1,'a@gmail.com','empty','default');
   userModel2=new User(1,'a@gmail.com','empty','default');
   UserEmailCheck: any;
-  constructor(private analystService:AnalystService,private userService: UserService) { }
+  constructor(private analystService:AnalystService,private userService: UserService,
+               private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -50,6 +52,7 @@ export class ResetPasswordComponent implements OnInit {
         subscribe(data=>
           {
             window.alert("Your password is changed, Successfully!");
+            this.router.navigate(['login']);
           })
       }
     }
