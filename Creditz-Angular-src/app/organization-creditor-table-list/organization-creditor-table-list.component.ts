@@ -12,7 +12,7 @@ import { OrganizationApplicationService } from '../services/organization-applica
 export class OrganizationCreditorTableListComponent implements OnInit {
   store = window.sessionStorage.getItem('userId');
   storeRole = window.sessionStorage.getItem('role');
-  displayedColumns: string[] = ['applicationId','organizationName','contact','address','loanAmount','loanTenure','applicationStatus','emailStatus'];
+  displayedColumns: string[] = ['applicationId','organizationName','contact','address','loanAmount','loanTenure','applicationDate','applicationStatus','emailStatus'];
   @ViewChild(MatSort) sort:MatSort;
   @ViewChild(MatPaginator) paginator:MatPaginator;
   dataSource=new MatTableDataSource<any[]>();
