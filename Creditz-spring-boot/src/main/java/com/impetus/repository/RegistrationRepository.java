@@ -12,16 +12,13 @@ import com.impetus.model.Organization;
 import com.impetus.model.Person;
 import com.impetus.model.User;
 
-
 /** The Class UserDAOImplementation. */
 @Repository
-public class RegistrationRepository  {
+public class RegistrationRepository {
 	private static final Logger LOG = LoggerFactory.getLogger(RegistrationRepository.class);
 	/** The entity manager. */
 	@Autowired
 	private EntityManager entityManager;
-
-	
 
 	/**
 	 * Find User By UserMail.
@@ -50,9 +47,10 @@ public class RegistrationRepository  {
 			User user1 = user.getUser();
 			currentSession.save(user1);
 			currentSession.save(user);
+			LOG.info("RegistrationRepository::savePerson::user has saved in database succesfully");
 			status = true;
 		} catch (Exception e) {
-			LOG.error("exception occured {0}", e);
+			LOG.error("RegistrationRepository::savePerson::exception occured{}", e);
 		}
 		return status;
 	}
@@ -73,9 +71,10 @@ public class RegistrationRepository  {
 			User user1 = user.getUser();
 			currentSession.save(user1);
 			currentSession.save(user);
+			LOG.info("RegistrationRepository:: saveOrganization::user has saved in database succesfully");
 			status = true;
 		} catch (Exception e) {
-			LOG.error("exception occured", e);
+			LOG.error("RegistrationRepository::saveOrganization::exception occured{}", e);
 		}
 		return status;
 	}
@@ -86,7 +85,7 @@ public class RegistrationRepository  {
 	 * @param user
 	 * @return true or false
 	 */
-	
+
 	public boolean saveAnalyst(User user) {
 		boolean status = false;
 		try {
@@ -94,11 +93,12 @@ public class RegistrationRepository  {
 			Session currentSession = entityManager.unwrap(Session.class);
 			user.setRole("Analyst");
 			currentSession.save(user);
+			LOG.info("RegistrationRepository:: saveAnalyst::user has saved in database succesfully");
 			status = true;
 		} catch (Exception e) {
-			LOG.error("exception occured", e);
+			LOG.error("RegistrationRepository:: saveAnalyst::exception occured{}", e);
 		}
 		return status;
-	}
 
+	}
 }

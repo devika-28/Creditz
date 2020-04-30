@@ -95,6 +95,11 @@
                 <mat-header-cell *matHeaderCellDef mat-sort-header>Loan Tenure</mat-header-cell>
                 <mat-cell *matCellDef="let application"> {{application.loanTenure}}</mat-cell>
               </ng-container>
+
+              <ng-container matColumnDef="applicationDate">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Applied Date </mat-header-cell>
+                <mat-cell *matCellDef="let application"> {{application.applicationDate}}</mat-cell>
+              </ng-container>
         
               <ng-container matColumnDef="applicationStatus">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Application Status </mat-header-cell>
@@ -121,8 +126,7 @@
           </table>
           <mat-paginator [length]="length"
                          [pageSize]="pageSize"
-                         [pageSizeOptions]="pageSizeOptions"
-                         >
+                         [pageSizeOptions]="pageSizeOptions">
           </mat-paginator>
           
           </div>

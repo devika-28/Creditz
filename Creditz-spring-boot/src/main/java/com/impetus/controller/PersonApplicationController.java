@@ -32,11 +32,14 @@ public class PersonApplicationController {
 	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@PostMapping("/individual-user/user-application")
 	public Map<String, Long> personApplicantApplicationSubmit(@RequestBody PersonApplicant application) {
-		LOG.info("PersonApplicationController::personApplicantApplicationSubmit::return to riskMitigate method");
+		LOG.info("PersonApplicationController::personApplicantApplicationSubmit::call riskMitigate method");
 		try {
 			return service.riskMitigate(application);
 		} catch (ParseException e) {
-			LOG.info("date formate parsing exception");
+			LOG.error(
+					"PersonApplicationController::personApplicantApplicationSubmit::Date formating exception{}",
+					e);
+
 		}
 		return null;
 
@@ -51,7 +54,7 @@ public class PersonApplicationController {
 	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@PostMapping("/individual-user/user-history")
 	public List<PersonApplicant> personHistory(@RequestBody PersonApplicant userId) {
-		LOG.info("PersonApplicationController::personHistory::return to getHistory with userId{}",userId);
+		LOG.info("PersonApplicationController::personHistory::return to getHistory with userId{}", userId);
 
 		return service.getHistory(userId);
 
