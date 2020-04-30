@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.Length;
+
 /** The Class Person. */
 @Entity
 @Table(name = "person")
@@ -27,7 +29,8 @@ public class Person {
 	private String personName;
 
 	/** The contact. */
-	@Column(name = "contact", nullable = false, length = 10)
+	@Length(min = TEN, max = TEN)
+	@Column(name = "contact", nullable = false)
 	private long contact;
 
 	/** The address. */
