@@ -14,7 +14,6 @@ export class OrganizationUserCalculatorComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    //console.log( this.calculateEMI(1000,6))
   }
 
   public greaterThan(subj: any, num: number) {
@@ -26,8 +25,8 @@ export class OrganizationUserCalculatorComponent implements OnInit {
   }
 
   checkusertype(){
-    if(this.store!=null && this.role=='Person'){
-      window.alert("Sorry!!! You are not eligible to view apply as an organization.\n Login with an organization user credentials to apply .");
+    if(this.store!=null && this.role=='Person'){   
+      window.alert("Sorry!!! You are not eligible to view This Page\n Login with an organizational credential to view this functionality.");
     }
     else{
       this.goToUrl('creditz/organization/apply');

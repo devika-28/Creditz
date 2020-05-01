@@ -41,7 +41,7 @@ export class IndividualUserApplicationComponent implements OnInit {
     }
 
   apply(){
-    window.alert("We will use the information submitted by you at the registration as your contact details");
+    window.alert("We will use the information submitted by you during the registration as your contact details");
     this.applicationService.applyService(this.firstFormGroup.controls['age'].value,
     this.secondFormGroup.controls['bankruptcy'].value,
     this.secondFormGroup.controls['criminalRecord'].value,

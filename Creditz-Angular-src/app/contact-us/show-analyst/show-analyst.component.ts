@@ -50,7 +50,7 @@ export class ShowAnalystComponent implements OnInit {
   deleteAnalyst(userEmail:any)
   {
        this.userService.deleteAnalyst(userEmail).subscribe(data=>
-        {console.log("success",data)
+        {
         this.analystservice.findAllAnalyst(this.pageNo,this.pageSize).subscribe(stream=>
           {
            this.dataSource.data=stream as any;

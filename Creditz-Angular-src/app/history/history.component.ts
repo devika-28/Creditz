@@ -35,7 +35,7 @@ export class HistoryComponent implements OnInit {
     this.historyService.showHistory(window.sessionStorage.getItem('userId'))
     .subscribe((history:History[])=>{
       history.forEach(i => {
-        status='Pending: Contact customer care, Sorry! for inconvenience.'
+        status='Pending: Contact customer care.'
         switch(i['applicationStatus']){
           case 'Rejected':
             status='Rejected: Please see out privacy policy for further insight.'
@@ -53,7 +53,7 @@ export class HistoryComponent implements OnInit {
             status='Rejected: Amount is being Declined.'
             break;
           case 'Pending Internal Error':
-            status='Pending: Contact customer care, Sorry! for inconvenience.'
+            status='Pending: Contact customer care.'
             break;
           case 'Record Not Found':
             status='Rejected: Looks like you do not have any Credit History'

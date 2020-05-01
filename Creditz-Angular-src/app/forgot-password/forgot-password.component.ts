@@ -37,11 +37,11 @@ export class ForgotPasswordComponent implements OnInit {
 
 sendOtp()
 {
-  window.alert("Wait some time otp is sending to your registered email address");
+  window.alert("Wait some time OTP is being sent to your registered email address");
  this.otp= this.otpService.sendOtpToUser(this.firstFormGroup.controls['userEmail'].value).subscribe(  
-      data => {console.log('success')
+      data => {
      this.otp=data;
-     window.alert("otp has been sent to your registered email");
+     window.alert("OTP has been sent to your registered email");
 });
 
 }
@@ -53,7 +53,7 @@ updateUser()
   this.userService.updateUser(this.firstFormGroup.controls['userEmail'].value,
   this.secondFormGroup.controls['password'].value).subscribe(data=>
   {
-    window.alert("Your password has been successfully changed");
+    window.alert("Your password is changed, succesfully!");
     
   })
 }

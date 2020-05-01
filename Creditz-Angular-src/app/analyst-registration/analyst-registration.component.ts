@@ -34,7 +34,7 @@ export class AnalystRegistrationComponent implements OnInit {
     this.submitted = true;
    
     this.analystService.registerAnalyst(this.userModel1).subscribe(  
-    data => {console.log('success'!,data)
+    data => {
     this.mailService.sendMail(this.userModel1.userEmail,this.userModel1.password).subscribe
     (data=>{})
     this.openDialog();

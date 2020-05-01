@@ -38,18 +38,7 @@ export class CreditorTableListComponent implements OnInit {
        });
       
   }
-//   pageEvents(event:any)
-//   {  
-//     //  this.pageIndex=event.pageIndex;
-//     //  this.pageNo=event.pageSize;
-//      this.organizataionApplication.findAllIndividualApplication(event.pageIndex,event.pageSize).subscribe(stream=>
-//         {
-//            this.dataSource.data=stream as any;
-//            console.log(this.dataSource.data.length);
-//         });
-//         this.dataSource.paginator=this.paginator;
-      
-//  }
+
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
   } 

@@ -31,13 +31,13 @@ export class ApplicantProfileComponent implements OnInit {
         }
      else {
       
-      console.log("this.store");
+
       this.organizationService.findOrganizationByUserId(this.store).
       subscribe(stream=>
    {
       
       this.organization=stream as any;
-      console.log(this.organization);
+
 
    });
 

@@ -36,10 +36,8 @@ export class AuthenticationService {
             else{
 
               try{
-              console.log(res['role']);
               
               window.sessionStorage.setItem("userId",res['userId']);
-              console.log(res['userId']);
               window.sessionStorage.setItem("role",res['role']);
 
 
@@ -67,7 +65,6 @@ export class AuthenticationService {
              } 
             }
             catch(Error){
-              console.log(Error.message)
               alert("Sorry! Cant log you in in the moment, it is not you it is us!")
             }
             
@@ -77,7 +74,6 @@ export class AuthenticationService {
   }
 
   createBasicAuthToken(username: String, password: String) {
-    console.log('Basic ' + window.btoa(username + ":" + password))
     return 'Basic ' + window.btoa(username + ":" + password)
   }
 

@@ -49,7 +49,7 @@ export class OrganizationalUserComponent implements OnInit {
 }
   apply(){
     
-    window.alert("We will use the information submitted by you at the registration as your contact details");
+    window.alert("We will use the information submitted by you during registration as your contact details.");
     this.applicationService.applyService(
       this.firstFormGroup.controls['pancard'].value,
       this.firstFormGroup.controls['loanAmount'].value,

@@ -36,18 +36,7 @@ export class OrganizationCreditorTableListComponent implements OnInit {
        });
       
   }
-  // ngAfterViewChecked()
-  // {
-  //      this.pageSize=this.pageEvent.pageSize;
-  //      this.pageNo=this.pageEvent.pageIndex;
-  //      console.log(this.pageIndex+"check");
-  //      this.organizataionApplication.findAllOrganizationApplication(this.pageIndex,this.pageSize).subscribe(stream=>
-  //       {
-  //          this.dataSource.data=stream as any;
-  //          console.log(this.pageIndex);
-  //       });
-  //       // this.dataSource.paginator=this.paginator;
-  // }
+ 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
   }
