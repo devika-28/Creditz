@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.stereotype.Component;
@@ -23,7 +24,8 @@ public class User {
 	private long userId;
 
 	/** the userEmail */
-	@Column(name = "user_email", nullable = false, unique = true)
+	@Email
+	@Column(unique = true,name = "user_email", nullable = false)
 	private String userEmail;
 
 	/** the role */
