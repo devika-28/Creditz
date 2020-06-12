@@ -1,49 +1,40 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-          
-    <span class="navbar-toggler-icon"></span>
-  </button> 
-
-  <a class="navbar-brand" href="#" style="font-size:24px; margin-top:1%">C₹ED!TZ</a>
-
-  <div class="collapse navbar-collapse" id="navbarToggler">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item">
-        <a class="nav-link" href="creditz/home" >      Home  </a>
-      </li>
-            
-      <li class="nav-item" *ngIf="showInHeader()">
-        <a class="nav-link" href="creditz/history">     Applications  </a>
-      </li>
-
-
-     <li class="dropdown" >
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="policy">  Our Policies  </a>
-          <div class="dropdown-menu" aria-labelledby="policy">
-            <a class="dropdown-item" href="creditz/individual">Individual Policies</a>
-             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="creditz/organization">Organizational Policies</a>
-          </div>
-      </li>  
-
-     <li class="dropdown" *ngIf="this.store==null" >
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="policy">  Login  </a>
-          <div class="dropdown-menu" aria-labelledby="policy">
-            <a class="dropdown-item" href="register">New User, Sign Up</a>
-             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="login">Already have an Account</a>
-          </div>
-      </li>  
-
-      <li class="nav-item" *ngIf="this.store!=null">
-        <a class="nav-link" (click)="logout()" >  Logout  </a>
-      </li>
-
-    </ul>
-  <form class="form-inline my-2 my-lg-0" >
-<div style="max-width:50" *ngIf="showInHeader()">
-<button class="profileButton" (click)="openProfileDialog()"></button>
-</div>
-    </form>
-  </div>
-</nav> 
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+   <span class="navbar-toggler-icon"></span>
+   </button> 
+   <a class="navbar-brand" href="#" style="font-size:24px; margin-top:1%">C₹ED!TZ</a>
+   <div class="collapse navbar-collapse" id="navbarToggler">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+         <li class="nav-item">
+            <a class="nav-link" href="creditz/home" >      Home  </a>
+         </li>
+         <li class="nav-item" *ngIf="showInHeader()">
+            <a class="nav-link" href="creditz/history">     Applications  </a>
+         </li>
+         <li class="dropdown" >
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="policy">  Our Policies  </a>
+            <div class="dropdown-menu" aria-labelledby="policy">
+               <a class="dropdown-item" href="creditz/individual">Individual Policies</a>
+               <div class="dropdown-divider"></div>
+               <a class="dropdown-item" href="creditz/organization">Organizational Policies</a>
+            </div>
+         </li>
+         <li class="dropdown" *ngIf="this.store==null" >
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="policy">  Login  </a>
+            <div class="dropdown-menu" aria-labelledby="policy">
+               <a class="dropdown-item" href="register">New User, Sign Up</a>
+               <div class="dropdown-divider"></div>
+               <a class="dropdown-item" href="login">Already have an Account</a>
+            </div>
+         </li>
+         <li class="nav-item" *ngIf="this.store!=null">
+            <a class="nav-link" (click)="logout()" >  Logout  </a>
+         </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0" >
+         <div style="max-width:50" *ngIf="showInHeader()">
+            <button class="profileButton" (click)="openProfileDialog()"></button>
+         </div>
+      </form>
+   </div>
+</nav>

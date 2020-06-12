@@ -1,23 +1,23 @@
-mat-panel-title
-{
-  color:blue; 
-  font-size: large; 
-}
-mat-panel-description
-{
-    color:black; 
-    font-size: large;   
-}
-mat-accordion
-{
-    height:500px;
+mat-panel-title {
+    color: blue;
+    font-size: large;
 }
 
-.profile-card{
-    text-align: center;
-    padding:20px;
+mat-panel-description {
+    color: black;
+    font-size: large;
 }
-a{
+
+mat-accordion {
+    height: 500px;
+}
+
+.profile-card {
+    text-align: center;
+    padding: 20px;
+}
+
+a {
     color: black;
     align-content: center;
 }

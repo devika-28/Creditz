@@ -1,21 +1,13 @@
-
-mat-container
-{
- height:auto;
+mat-container {
+    height: auto;
 }
-.profile-card{
+
+.profile-card {
     text-align: center;
-    padding:20px;
+    padding: 20px;
 }
 
-a{
+a {
     color: black;
     align-content: center;
 }
-/* mat-sidenav-content
-{
- display:flex; 
- width: 90%;
- min-width: 400px;
- height:0%
-} */

@@ -1,19 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { AuthenticationService } from '../services/authentication.service';
+import { Component, OnInit } from "@angular/core";
+import { Router, ActivatedRoute } from "@angular/router";
+import { AuthenticationService } from "../services/authentication.service";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.css"],
 })
 export class LoginComponent implements OnInit {
-
-  store = window.sessionStorage.getItem('userId');
-  storeRole = window.sessionStorage.getItem('role');
+  store = window.sessionStorage.getItem("userId");
+  storeRole = window.sessionStorage.getItem("role");
   username: string;
-  password : string;
-  errorMessage = 'Invalid Credentials';
+  password: string;
+  errorMessage = "Invalid Credentials";
   successMessage: string;
   invalidLogin = false;
   loginSuccess = false;
@@ -21,19 +20,24 @@ export class LoginComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService) {   }
+    private authenticationService: AuthenticationService
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   handleLogin() {
-    this.authenticationService.authenticationService(this.username, this.password).subscribe((result)=> {
-      this.invalidLogin = false;
-      this.loginSuccess = true;
-      this.successMessage = 'Login Successful.';
-    }, () => {
-      this.invalidLogin = true;
-      this.loginSuccess = false;
-    });      
+    this.authenticationService
+      .authenticationService(this.username, this.password)
+      .subscribe(
+        (result) => {
+          this.invalidLogin = false;
+          this.loginSuccess = true;
+          this.successMessage = "Login Successful.";
+        },
+        () => {
+          this.invalidLogin = true;
+          this.loginSuccess = false;
+        }
+      );
   }
 }

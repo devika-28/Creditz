@@ -1,25 +1,16 @@
-import {Injectable} from "@angular/core";
-import {HttpClient, HttpParams} from "@angular/common/http";
-import {Observable} from "rxjs";
-@Injectable(
-    {
-        providedIn: 'root'
-    }
-)
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpParams } from "@angular/common/http";
+import { Observable } from "rxjs";
+@Injectable({
+  providedIn: "root",
+})
 export class ApplicationService {
-    
-    constructor(private http:HttpClient) {
-    
- }
+  constructor(private http: HttpClient) {}
 
-   findAllTopIndividualCreditors(): Observable<any> {
-
-        return this.http.get("http://localhost:9999/getTopPersonApplicants");
-            
-}
-findAllTopOrganizationCreditors(): Observable<any> {
+  findAllTopIndividualCreditors(): Observable<any> {
+    return this.http.get("http://localhost:9999/getTopPersonApplicants");
+  }
+  findAllTopOrganizationCreditors(): Observable<any> {
     return this.http.get("http://localhost:9999/getTopOrganizationApplicants");
-        
-}
-   
+  }
 }

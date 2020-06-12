@@ -1,8 +1,8 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from "@angular/core/testing";
 
-import { OrganizationUserApplicationService } from './organization-user-application.service';
+import { OrganizationUserApplicationService } from "./organization-user-application.service";
 
-describe('OrganizationUserApplicationService', () => {
+describe("OrganizationUserApplicationService", () => {
   let service: OrganizationUserApplicationService;
 
   beforeEach(() => {
@@ -10,7 +10,7 @@ describe('OrganizationUserApplicationService', () => {
     service = TestBed.inject(OrganizationUserApplicationService);
   });
 
-  it('should be created', () => {
+  it("should be created", () => {
     expect(service).toBeTruthy();
   });
 });

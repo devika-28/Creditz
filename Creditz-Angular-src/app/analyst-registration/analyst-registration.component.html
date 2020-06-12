@@ -1,169 +1,148 @@
- <div *ngIf="this.storeRole=='Admin' and this.store!=null">
-    <mat-sidenav-container  >
-    
-        <mat-sidenav #start mode="side" opened >
-                <mat-nav-list>
+<div *ngIf="this.storeRole=='Admin' and this.store!=null">
+    <mat-sidenav-container>
+
+        <mat-sidenav #start mode="side" opened>
+            <mat-nav-list>
                 <div class="profile-card">
-                    <img width:200px
-                    height:50px
-                    object-fit:cover
-                    src="assets\admin.jpg" alt="admin.jpg">
+                    <img width:200px height:50px object-fit:cover src="assets\admin.jpg" alt="admin.jpg">
                     <div class="header">
-                       <h4>Admin</h4>
+                        <h4>Admin</h4>
                     </div>
-               </div>
-               <a mat-list-item [routerLink]="'/admin'">
-                <mat-icon>question_answer</mat-icon>
-                <span>Person Applications</span>
-               </a>
-               <br>
-               <a mat-list-item [routerLink]="'/organization-creditor-list'">
-                <mat-icon>question_answer</mat-icon>
-                <span>Organization Applications</span>
-            </a>
-            <br>
-            
-            <a mat-list-item [routerLink]="'/analyst-registration'">
-                <mat-icon>person_add</mat-icon>
-                <span>RegisterAnalyst</span>
-            </a>
-            <br>
+                </div>
+                <a mat-list-item [routerLink]="'/admin'">
+                    <mat-icon>question_answer</mat-icon>
+                    <span>Person Applications</span>
+                </a>
+                <br>
+                <a mat-list-item [routerLink]="'/organization-creditor-list'">
+                    <mat-icon>question_answer</mat-icon>
+                    <span>Organization Applications</span>
+                </a>
+                <br>
 
-            <a mat-list-item [routerLink]="'/show-analyst'">
-                <mat-icon>delete</mat-icon>
-                <span> Show Analyst</span>
-            </a>
-            <br>
+                <a mat-list-item [routerLink]="'/analyst-registration'">
+                    <mat-icon>person_add</mat-icon>
+                    <span>RegisterAnalyst</span>
+                </a>
+                <br>
 
-            <a mat-list-item>
-                <mat-icon>alarm</mat-icon>
-                <span> Schedular</span>
-            </a>
-            <br>
+                <a mat-list-item [routerLink]="'/show-analyst'">
+                    <mat-icon>delete</mat-icon>
+                    <span> Show Analyst</span>
+                </a>
+                <br>
 
-            
+                <a mat-list-item>
+                    <mat-icon>alarm</mat-icon>
+                    <span> Schedular</span>
+                </a>
+                <br>
 
-        </mat-nav-list>
-            
+
+
+            </mat-nav-list>
+
         </mat-sidenav>
         <mat-sidenav-content>
-       
+
             <div style="display: block; width:100%; min-width:400px;">
-                <head> 
-                <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-                </head>
-               
+
                 <body id="LoginForm">
-                <div class="container">
-                <div class="login-form">
-            <div class="main-div">
-                <div class="panel">
-                   <h2>REGISTRATION FOR ANALYST</h2>
-               <br>
-                   
-                </div>
-                <form #personForm="ngForm"  (ngSubmit)="onSubmit1()"  novalidate>
-                    <div class="form-group">
-                    <input type="email"   #email="ngModel" name="c_mail" class="form-control" id="t2" 
-                    placeholder="Email Address" (change)="emailCheckUnique()"
-                    pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                    [class.is-invalid]="email.invalid && email.touched"
-                    placeholder="Enter email" name="pemail" 
-                    [(ngModel)]="userModel1.userEmail" required>
-                    <div *ngIf="email.invalid && (email.dirty || email.touched)"
-                    class="text-danger">
-                    <small *ngIf="email.errors.pattern">
-                    Enter in email format.
-                    </small> 
-                    <small *ngIf="email.errors.required">
-                    Email is required.
-                    </small> 
-                    </div>
+                    <div class="container">
+                        <div class="login-form">
+                            <div class="main-div">
+                                <div class="panel">
+                                    <h2>REGISTRATION FOR ANALYST</h2>
+                                    <br>
 
-                    <div *ngIf="emailAlreadyExist!=''" class="text-danger">
-                        <small>{{emailAlreadyExist}} </small>
-                    
-                    </div>
-                    
-                    <br>
-                </div>
-                    
-                <div class="form-group">
-                    <show-hide-password size="sm" btnStyle="primary" [btnOutline]="false">
-                    <input type="password" 
-                    #password="ngModel" 
-                    class="form-control"
-                    pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}" 
-                    [class.is-invalid]="password.invalid && password.touched"
-                    name="psw" 
-                    [(ngModel)]="userModel1.password" 
-                    required id="t3"
-                    placeholder="Password">
-                </show-hide-password>
-                    <div *ngIf="password.invalid && (password.dirty || password.touched)"
-                    class="text-danger">
-                    <small *ngIf="password.errors.required">
-                    Password is required.
-                    </small>
-                    <small *ngIf="password.errors.pattern">
-                    At least 8 characters in length,Lowercase letters,Uppercase letters,Numbers,Special characters.
-                    </small>      
-                    </div>
-                    <br>
-                </div>
-                        
-                 <div class="form-group">
+                                </div>
+                                <form #personForm="ngForm" (ngSubmit)="onSubmit1()" novalidate>
+                                    <div class="form-group">
+                                        <input type="email" #email="ngModel" name="c_mail" class="form-control" id="t2"
+                                            placeholder="Email Address" (change)="emailCheckUnique()"
+                                            pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                                            [class.is-invalid]="email.invalid && email.touched"
+                                            placeholder="Enter email" name="pemail" [(ngModel)]="userModel1.userEmail"
+                                            required>
+                                        <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                                            class="text-danger">
+                                            <small *ngIf="email.errors.pattern">
+                                                Enter in email format.
+                                            </small>
+                                            <small *ngIf="email.errors.required">
+                                                Email is required.
+                                            </small>
+                                        </div>
 
-                    <show-hide-password size="sm" btnStyle="primary" [btnOutline]="false">
-                    <input type="password" 
-                    class="form-control" 
-                    id="t4" 
-                    placeholder="Repeat password"
-                    #confirmpassword="ngModel" 
-                    appConfirmEqualValidator="psw"  
-                    [class.is-invalid]="confirmpassword.invalid && confirmpassword.touched && confirmpassword.errors?.notEqual" 
-                    name="cpsw" 
-                    ngModel required>
-                   </show-hide-password>
-                    <div *ngIf="confirmpassword.invalid && (confirmpassword.dirty || confirmpassword.touched)"
-                    class="text-danger">
-                    <small *ngIf="confirmpassword.errors.required">
-                     Password is required to enter again.
-                    </small>
-                    <small *ngIf=" confirmpassword.errors?.notEqual">password and confirmpassword does not match.
-                    </small>      
+                                        <div *ngIf="emailAlreadyExist!=''" class="text-danger">
+                                            <small>{{emailAlreadyExist}} </small>
+
+                                        </div>
+
+                                        <br>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <show-hide-password size="sm" btnStyle="primary" [btnOutline]="false">
+                                            <input type="password" #password="ngModel" class="form-control"
+                                                pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}"
+                                                [class.is-invalid]="password.invalid && password.touched" name="psw"
+                                                [(ngModel)]="userModel1.password" required id="t3"
+                                                placeholder="Password">
+                                        </show-hide-password>
+                                        <div *ngIf="password.invalid && (password.dirty || password.touched)"
+                                            class="text-danger">
+                                            <small *ngIf="password.errors.required">
+                                                Password is required.
+                                            </small>
+                                            <small *ngIf="password.errors.pattern">
+                                                At least 8 characters in length,Lowercase letters,Uppercase
+                                                letters,Numbers,Special characters.
+                                            </small>
+                                        </div>
+                                        <br>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <show-hide-password size="sm" btnStyle="primary" [btnOutline]="false">
+                                            <input type="password" class="form-control" id="t4"
+                                                placeholder="Repeat password" #confirmpassword="ngModel"
+                                                appConfirmEqualValidator="psw"
+                                                [class.is-invalid]="confirmpassword.invalid && confirmpassword.touched && confirmpassword.errors?.notEqual"
+                                                name="cpsw" ngModel required>
+                                        </show-hide-password>
+                                        <div *ngIf="confirmpassword.invalid && (confirmpassword.dirty || confirmpassword.touched)"
+                                            class="text-danger">
+                                            <small *ngIf="confirmpassword.errors.required">
+                                                Password is required to enter again.
+                                            </small>
+                                            <small *ngIf=" confirmpassword.errors?.notEqual">password and
+                                                confirmpassword does not match.
+                                            </small>
+                                        </div>
+                                        <br>
+                                    </div>
+
+                                    <button type="submit" [disabled]="personForm.form.invalid|| emailAlreadyExist!=''"
+                                        class="btn btn-primary">Register</button>
+                                </form>
+
+                            </div>
+
+                        </div>
                     </div>
-                    <br>
-                </div>
-                
-                <button type="submit"  [disabled]="personForm.form.invalid|| emailAlreadyExist!=''" class="btn btn-primary">Register</button>
-                </form>
-                    
+                </body>
             </div>
-                
-                </div></div>
-            </body>
-            </div>
-            
-           
-      
+
+
+
         </mat-sidenav-content>
-    
-        </mat-sidenav-container>
-    </div> 
-     <div *ngIf="this.store==null">
-     <app-login></app-login>
-     </div> 
-       
-        <router-outlet></router-outlet>
-    
-    
-    
-    
 
+    </mat-sidenav-container>
+</div>
+<div *ngIf="this.store==null">
+    <app-login></app-login>
+</div>
 
-
-
-
+<router-outlet></router-outlet>

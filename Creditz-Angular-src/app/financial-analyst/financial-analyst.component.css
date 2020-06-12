@@ -1,36 +1,37 @@
 table {
-  width: 100%;
+    width: 100%;
 }
 
 tr.example-detail-row {
-  height: 0;
-  color:black;
+    height: 0;
+    color: black;
 }
 
 tr.example-element-row:not(.example-expanded-row):hover {
-  background:blue;
+    background: blue;
 }
 
 tr.example-element-row:not(.example-expanded-row):active {
-  background:whitesmoke;
+    background: whitesmoke;
 }
 
 .example-element-row td {
-  border-bottom-width: 0;
+    border-bottom-width: 0;
 }
 
 .example-element-detail {
-  overflow: hidden;
-  display: flex;
+    overflow: hidden;
+    display: flex;
 }
 
 .example-element-description {
-  padding: 16px;
+    padding: 16px;
 }
 
 .example-element-description-attribution {
-  opacity: 0.5;
+    opacity: 0.5;
 }
+
 
 /* mat-header-cell 
  {
@@ -44,59 +45,52 @@ tr.example-element-row:not(.example-expanded-row):active {
   
 } */
 
-h1{
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 30px;
+h1 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
 }
+
 .mat-tab-group {
-  margin-bottom: auto;
-  
+    margin-bottom: auto;
 }
-.label
-{
-    
-  background-color: cornflowerblue;
-  
+
+.label {
+    background-color: cornflowerblue;
 }
-.mat-cell{
-  width:max-content
+
+.mat-cell {
+    width: max-content
 }
+
 table {
-  width: 100%;
-}
-.mat-tab
-{
-  color:black;
+    width: 100%;
 }
 
-td{
-font-size:15px;
-color:black;
- }
-
- th{
-   font-size: 18px;
-   color: darkblue;
-   font-family: 'Times New Roman', Times, serif;
- }
-
- .container {
-   height: max-content;
-
+.mat-tab {
+    color: black;
 }
 
+td {
+    font-size: 15px;
+    color: black;
+}
 
+th {
+    font-size: 18px;
+    color: darkblue;
+    font-family: 'Times New Roman', Times, serif;
+}
 
-.image{
-height:400%;
-width:100%;
+.container {
+    height: max-content;
+}
 
-/* position: relativ; */
-/* background-size: 200%; */
-/* border-top-right-radius: 10cm ; */
-
-/* //float: left;
+.image {
+    height: 400%;
+    width: 100%;
+    /* position: relativ; */
+    /* background-size: 200%; */
+    /* border-top-right-radius: 10cm ; */
+    /* //float: left;
 background-attachment: scroll; */
 }
-
-

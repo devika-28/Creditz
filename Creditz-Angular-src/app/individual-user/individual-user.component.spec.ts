@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { IndividualUserComponent } from './individual-user.component';
+import { IndividualUserComponent } from "./individual-user.component";
 
-describe('IndividualUserComponent', () => {
+describe("IndividualUserComponent", () => {
   let component: IndividualUserComponent;
   let fixture: ComponentFixture<IndividualUserComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IndividualUserComponent ]
-    })
-    .compileComponents();
+      declarations: [IndividualUserComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('IndividualUserComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

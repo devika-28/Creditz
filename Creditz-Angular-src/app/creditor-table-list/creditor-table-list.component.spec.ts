@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CreditorTableListComponent } from './creditor-table-list.component';
+import { CreditorTableListComponent } from "./creditor-table-list.component";
 
-describe('CreditorTableListComponent', () => {
+describe("CreditorTableListComponent", () => {
   let component: CreditorTableListComponent;
   let fixture: ComponentFixture<CreditorTableListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreditorTableListComponent ]
-    })
-    .compileComponents();
+      declarations: [CreditorTableListComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('CreditorTableListComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

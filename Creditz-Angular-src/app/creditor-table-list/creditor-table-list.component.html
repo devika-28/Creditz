@@ -46,11 +46,6 @@
         <mat-cell *matCellDef="let application"> {{application.loanTenure}}</mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="applicationDate">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Applied Date </mat-header-cell>
-        <mat-cell *matCellDef="let application"> {{application.applicationDate}}</mat-cell>
-      </ng-container>
-
       <ng-container matColumnDef="applicationStatus">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Application Status </mat-header-cell>
         <mat-cell *matCellDef="let application"> {{application.applicationStatus}}</mat-cell>

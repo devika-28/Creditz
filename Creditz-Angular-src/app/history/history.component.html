@@ -13,36 +13,31 @@
 
             <div class="example-container mat-elevation-z8">
                     <table mat-table [dataSource]="dataSource" matSort matSortActive="applicationId" matSortStart="desc" matSortDisableClear  align= "center">
-                    <!-- Position Column -->
+
+                    <ng-container matColumnDef="date">
+                      <th mat-header-cell *matHeaderCellDef mat-header="date" style="color: darkblue"> Application Date </th>
+                      <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+                    </ng-container>
+                   
                     <ng-container matColumnDef="applicationId">
                       <th mat-header-cell *matHeaderCellDef mat-header="applicationId" style="color: darkblue"> Application Id </th>
                       <td mat-cell *matCellDef="let element"> {{element.applicationId}} </td>
                     </ng-container>
 
-                    <!-- Name Column -->
                     <ng-container matColumnDef="loanAmount">
                       <th mat-header-cell *matHeaderCellDef mat-header style="color: darkblue"> Loan Amount </th>
                       <td mat-cell *matCellDef="let element"> {{element.loanAmount}} </td>
                     </ng-container>
 
-                    <!-- Weight Column -->
                     <ng-container matColumnDef="loanTenure">
                       <th mat-header-cell *matHeaderCellDef mat-header style="color: darkblue"> loan Tenure </th>
                       <td mat-cell *matCellDef="let element"> {{element.loanTenure}} </td>
                     </ng-container>
 
-                    <!-- Symbol Column -->
                     <ng-container matColumnDef="applicationStatus">
                       <th mat-header-cell *matHeaderCellDef mat-header style="color: darkblue"> Application Status </th>
                       <td mat-cell *matCellDef="let element"> {{element.applicationStatus}} </td>
-                    <!--  <div >
-                      <td mat-cell *matCellDef="let element"> {{element.applicationStatus}} </td>
-                      </div>
-                      <div >
-                      <td mat-cell *matCellDef="let element"> {{element.applicationStatus}} </td>
-                      </div>-->
-
-                    </ng-container>
+\                    </ng-container>
 
                     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" ></tr>  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                   </table>

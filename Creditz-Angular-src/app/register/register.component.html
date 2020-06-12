@@ -1,18 +1,18 @@
 <div class="limiter" style=" width:80%; margin-left:10%;"   *ngIf="this.storeRole==null and this.store==null" align="center">
-  <div class="container-login100">
-    <div class="wrap-login100">
-       <div style=" float: right; margin:0%">
-          <div style=" margin-left:1%;" >
+<div class="container-login100">
+   <div class="wrap-login100">
+      <div style=" float: right; margin:0%">
+         <div style=" margin-left:1%;" >
             <img class="login100-pic img" aTilt src="assets/img/registerf.jpg" alt="IMG" >
-          </div>
-          <br>
-          <br>
-          <div  class="matt" style="border-color: whitesmoke;border-top-left-radius: 5%; border-bottom-left-radius: 5%; border-bottom-right-radius: 5%;  border-top-right-radius: 5%; border-style: solid; background-color:whitesmoke; ">
+         </div>
+         <br>
+         <br>
+         <div  class="matt" style="border-color: whitesmoke;border-top-left-radius: 5%; border-bottom-left-radius: 5%; border-bottom-right-radius: 5%;  border-top-right-radius: 5%; border-style: solid; background-color:whitesmoke; ">
             <mat-tab-group >
-              <mat-tab label=" Registration  for  Person/Individual">
-                <form #personForm="ngForm"  (ngSubmit)="onSubmit1()" novalidate>
-                <br>
-                <label for="pname"><b>Name</b></label>
+               <mat-tab label=" Registration  for  Person/Individual">
+                  <form #personForm="ngForm"  (ngSubmit)="onSubmit1()" novalidate>
+                  <br>
+                  <label for="pname"><b>Name</b></label>
                   <input type="text" 
                   [class.is-invalid]="name.invalid && name.touched" 
                   class="input100" 
@@ -22,13 +22,13 @@
                   [(ngModel)]="personModel.personName" 
                   required>
                   <span class="focus-input100"></span>
-                    <div *ngIf="name.invalid && (name.dirty || name.touched)"
-                    class="text-danger">      
-                      <small *ngIf="name.errors.required">
-                       Name is required.
-                      </small>
-                    </div>   
-                <label for="pemail"><b>Email</b></label>
+                  <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                     class="text-danger">      
+                     <small *ngIf="name.errors.required">
+                     Name is required.
+                     </small>
+                  </div>
+                  <label for="pemail"><b>Email</b></label>
                   <input type="text" #email="ngModel" 
                   pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                   [class.is-invalid]="email.invalid && email.touched" 
@@ -38,20 +38,23 @@
                   (change)="emailCheckUnique1()"  
                   [(ngModel)]="userModel1.userEmail" 
                   required>
-                    <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                  <div *ngIf="email.invalid && (email.dirty || email.touched)"
                      class="text-danger">
-                      <small *ngIf="email.errors.required">
-                      Email is required.
-                      </small>
-                      <small *ngIf="email.errors.pattern">
-                      Enter in email format.
-                      </small>   
-                    </div>
-                    <div *ngIf="emailAlreadyExist!=''" class="text-danger">
-                          <small>{{emailAlreadyExist}} </small>
-                    </div>
-                <label for="psw"><b>Password</b></label>
+                     <small *ngIf="email.errors.required">
+                     Email is required.
+                     </small>
+                     <small *ngIf="email.errors.pattern">
+                     Enter in email format.
+                     </small>   
+                  </div>
+                  <div *ngIf="emailAlreadyExist!=''" class="text-danger">
+                     <small>{{emailAlreadyExist}} </small>
+                  </div>
+                  <label for="psw"><b>Password</b></label>
                   <input type="password" 
+                  onmousedown="this.type='text'"
+                  onmouseup="this.type='password'"
+                  onmousemove="this.type='password'"
                   #password="ngModel"
                   pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}" 
                   [class.is-invalid]="password.invalid && password.touched" 
@@ -61,16 +64,19 @@
                   [(ngModel)]="userModel1.password" 
                   required>
                   <div *ngIf="password.invalid && (password.dirty || password.touched)"
-                   class="text-danger">
-                  <small *ngIf="password.errors.required">
-                  Password is required.
-                  </small>
-                  <small *ngIf="password.errors.pattern">
-                  At least 8 characters in length,Lowercase letters,Uppercase letters,Numbers,Special characters.
-                  </small>      
+                     class="text-danger">
+                     <small *ngIf="password.errors.required">
+                     Password is required.
+                     </small>
+                     <small *ngIf="password.errors.pattern">
+                     At least 8 characters in length,Lowercase letters,Uppercase letters,Numbers,Special characters.
+                     </small>      
                   </div>
-                <label for="cpsw"><b>Confirm Password</b></label>
+                  <label for="cpsw"><b>Confirm Password</b></label>
                   <input type="password" 
+                  onmousedown="this.type='text'"
+                  onmouseup="this.type='password'"
+                  onmousemove="this.type='password'"
                   #confirmpassword="ngModel" 
                   appConfirmEqualValidator="psw" 
                   [class.is-invalid]="confirmpassword.invalid && confirmpassword.touched" 
@@ -79,15 +85,15 @@
                   name="cpsw" 
                   ngModel 
                   required>
-                    <div *ngIf="confirmpassword.invalid"
-                    class="text-danger">
-                      <small *ngIf="(confirmpassword.errors.required &&  confirmpassword.touched) || (confirmpassword.errors.required && confirmpassword.dirty )">
-                      Password is required to enter again.
-                      </small>
-                      <small *ngIf=" confirmpassword.errors?.notEqual && !confirmpassword.errors.required  && (confirmpassword.touched ||confirmpassword.dirty)">password and confirmpassword does not match.
-                      </small>      
-                    </div>                      
-                <label for="address"><b>Address</b></label>
+                  <div *ngIf="confirmpassword.invalid"
+                     class="text-danger">
+                     <small *ngIf="(confirmpassword.errors.required &&  confirmpassword.touched) || (confirmpassword.errors.required && confirmpassword.dirty )">
+                     Password is required to enter again.
+                     </small>
+                     <small *ngIf=" confirmpassword.errors?.notEqual && !confirmpassword.errors.required  && (confirmpassword.touched ||confirmpassword.dirty)">password and confirmpassword does not match.
+                     </small>      
+                  </div>
+                  <label for="address"><b>Address</b></label>
                   <input type="address" 
                   #add="ngModel" 
                   [class.is-invalid]="add.invalid && add.touched" 
@@ -97,12 +103,12 @@
                   [(ngModel)]="personModel.address" 
                   required>
                   <div *ngIf="add.invalid && (add.dirty || add.touched)"
-                  class="text-danger">      
-                    <small *ngIf="add.errors.required">
-                    Address is required.
-                    </small>
-                  </div>   
-                <label for="contact"><b>Contact No.</b></label>
+                     class="text-danger">      
+                     <small *ngIf="add.errors.required">
+                     Address is required.
+                     </small>
+                  </div>
+                  <label for="contact"><b>Contact No.</b></label>
                   <input type="text" 
                   #contact="ngModel" 
                   pattern="^\d{10}" 
@@ -112,18 +118,18 @@
                   name="contact" 
                   [(ngModel)]="personModel.contact" 
                   required>
-                    <div *ngIf="contact.invalid && (contact.dirty || contact.touched )"
-                    class="text-danger">
-                      <small *ngIf="contact.errors.required">
-                      Contact number is required.
-                      </small>
-                      <small *ngIf="contact.errors.pattern">Number should be in 10 digit.
-                      </small>      
-                    </div>
-                    <div *ngIf="!hasEmailverified && email.valid">
-                      <div class="container-login100-form-btn" >
+                  <div *ngIf="contact.invalid && (contact.dirty || contact.touched )"
+                     class="text-danger">
+                     <small *ngIf="contact.errors.required">
+                     Contact number is required.
+                     </small>
+                     <small *ngIf="contact.errors.pattern">Number should be in 10 digit.
+                     </small>      
+                  </div>
+                  <div *ngIf="!hasEmailverified && email.valid && organizationForm.form.invalid">
+                     <div class="container-login100-form-btn" >
                         <small>
-                       verify your account to register. 
+                        verify your account to register. 
                         </small>
                         <button type="button" 
                         class="login100-form-btn" 
@@ -131,209 +137,214 @@
                         (click)="sendVerificationEmail(email.value)" 
                         style="font-size: medium;">
                         Send otp to verify email</button>
-                      </div>
-                    </div>
-                    <div *ngIf="enterotp">
-                      <div class="form-group">
+                     </div>
+                  </div>
+                  <div *ngIf="enterotp && organizationForm.form.invalid">
+                     <div class="form-group">
                         <label for="potp"><b>Enter OTP</b></label>
-                          <input type="text" 
-                          #potp
-                          class="input100" 
-                          placeholder="Enter otp sent to your entered email" 
-                          name="potp"
-                          required>           
-                      </div>
-                        <button type="button" 
+                        <input type="text" 
+                           #potp
+                           class="input100" 
+                           placeholder="Enter otp sent to your entered email" 
+                           name="potp"
+                           required>           
+                     </div>
+                     <button type="button" 
                         class="login100-form-btn"  
                         (click)="checkotp(potp.value)" 
                         style="font-size: medium;">
-                         Enter</button>
-                      </div> 
-                      <br>  
-                      <div *ngIf=hasEmailverified>
-                        <div class="form-group">
-                          <button  class="btn btn-success" 
-                          class="login100-form-btn" 
-                          [disabled]="!personForm.form.valid" 
-                          type="submit" 
-                          style="font-size: medium;">Register</button>          
-                        </div> 
-                      </div>     
-                </form> 
-              </mat-tab>
-              <mat-tab label=" Registration for Organization/Company">
-                <form #organizationForm="ngForm"   novalidate> 
-                  <br>
-                  <label for="uname"><b>Organization/Company Name</b></label>
-                  <input type="text" 
-                  #cname="ngModel" 
-                  [class.is-invalid]="cname.invalid && cname.touched" 
-                  class="input100" 
-                  placeholder="Enter company name" 
-                  name="cname"  
-                  [(ngModel)]="organizationModel.organizationName" 
-                  required>
-                    <div *ngIf="cname.invalid && (cname.dirty || cname.touched)"
-                    class="text-danger">      
-                      <small *ngIf="cname.errors.required">
-                      Organization/Company Name is required.
-                      </small>
-                    </div>   
-                  <label for="dname"><b>Director Name</b></label>
-                    <input type="text" 
-                    #dirname="ngModel" 
-                    [class.is-invalid]="dirname.invalid && dirname.touched" 
-                    class="input100" 
-                    placeholder="Enter director name" 
-                    name="dname" 
-                    [(ngModel)]="organizationModel.directorName" 
-                    required>
-                      <div *ngIf="dirname.invalid && (dirname.dirty || dirname.touched)"
-                      class="text-danger">      
+                     Enter</button>
+                  </div>
+                  <br>  
+                  <div *ngIf="hasEmailverified && organizationForm.form.invalid">
+                     <div class="form-group">
+                        <button  class="btn btn-success" 
+                           class="login100-form-btn" 
+                           [disabled]="!personForm.form.valid" 
+                           type="submit" 
+                           style="font-size: medium;">Register</button>          
+                     </div>
+                  </div>
+                  </form> 
+               </mat-tab>
+               <mat-tab label=" Registration for Organization/Company">
+                  <form #organizationForm="ngForm"   novalidate>
+                     <br>
+                     <label for="uname"><b>Organization/Company Name</b></label>
+                     <input type="text" 
+                     #cname="ngModel" 
+                     [class.is-invalid]="cname.invalid && cname.touched" 
+                     class="input100" 
+                     placeholder="Enter company name" 
+                     name="cname"  
+                     [(ngModel)]="organizationModel.organizationName" 
+                     required>
+                     <div *ngIf="cname.invalid && (cname.dirty || cname.touched)"
+                        class="text-danger">      
+                        <small *ngIf="cname.errors.required">
+                        Organization/Company Name is required.
+                        </small>
+                     </div>
+                     <label for="dname"><b>Director Name</b></label>
+                     <input type="text" 
+                     #dirname="ngModel" 
+                     [class.is-invalid]="dirname.invalid && dirname.touched" 
+                     class="input100" 
+                     placeholder="Enter director name" 
+                     name="dname" 
+                     [(ngModel)]="organizationModel.directorName" 
+                     required>
+                     <div *ngIf="dirname.invalid && (dirname.dirty || dirname.touched)"
+                        class="text-danger">      
                         <small *ngIf="dirname.errors.required">
                         Director name is required.
                         </small>
-                      </div>   
-                    <label for="email"><b>Organization/Company Email</b></label>
-                      <input type="email" 
-                      #mail="ngModel" 
-                      pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
-                      [class.is-invalid]="mail.invalid && mail.touched" 
-                      class="input100" 
-                      placeholder="Enter email" 
-                      name="email" 
-                      (change)="emailCheckUnique2()" 
-                      [(ngModel)]="userModel2.userEmail" 
-                      required>
-                        <div *ngIf="mail.invalid && (mail.dirty || mail.touched)"
+                     </div>
+                     <label for="email"><b>Organization/Company Email</b></label>
+                     <input type="email" 
+                     #mail="ngModel" 
+                     pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
+                     [class.is-invalid]="mail.invalid && mail.touched" 
+                     class="input100" 
+                     placeholder="Enter email" 
+                     name="email" 
+                     (change)="emailCheckUnique2()" 
+                     [(ngModel)]="userModel2.userEmail" 
+                     required>
+                     <div *ngIf="mail.invalid && (mail.dirty || mail.touched)"
                         class="text-danger">
-                          <small *ngIf="mail.errors.required">
-                          Email is required.
-                          </small>
-                          <small *ngIf="mail.errors.pattern">
-                          Enter in email format.
-                          </small>    
+                        <small *ngIf="mail.errors.required">
+                        Email is required.
+                        </small>
+                        <small *ngIf="mail.errors.pattern">
+                        Enter in email format.
+                        </small>    
+                     </div>
+                     <div *ngIf="emailAlreadyExist!=''" class="text-danger">
+                        <small>{{emailAlreadyExist}} </small>
+                     </div>
+                     <label for="psw"><b>Password</b></label>  
+                     <input type="password"  
+                     onmousedown="this.type='text'"
+                     onmouseup="this.type='password'"
+                     onmousemove="this.type='password'"
+                     pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}"  
+                     #cpassword="ngModel" 
+                     [class.is-invalid]="cpassword.invalid && cpassword.touched" 
+                     class="input100"
+                     placeholder="Enter Password" 
+                     name="cpsw" 
+                     [(ngModel)]="userModel2.password" 
+                     required>
+                     <div *ngIf="cpassword.invalid && (cpassword.dirty || cpassword.touched)"
+                        class="text-danger">
+                        <small *ngIf="cpassword.errors.required">
+                        Password is required.
+                        </small>
+                        <small *ngIf="cpassword.errors.pattern">
+                        At least 8 characters in length,Lowercase letters,Uppercase letters,Numbers,Special characters.
+                        </small>      
+                     </div>
+                     <label for="cpsw"><b>Confirm Password</b></label>
+                     <input type="password" 
+                     onmousedown="this.type='text'"
+                     onmouseup="this.type='password'"
+                     onmousemove="this.type='password'"
+                     #ccpassword="ngModel" 
+                     appConfirmEqualValidator="cpsw"
+                     [class.is-invalid]="ccpassword.invalid && ccpassword.touched" 
+                     class="input100"
+                     placeholder="Enter Password again" 
+                     name="ccpsw" 
+                     ngModel 
+                     required>
+                     <div *ngIf="ccpassword.invalid"
+                        class="text-danger">
+                        <small *ngIf="(ccpassword.errors.required &&  ccpassword.touched) || (ccpassword.errors.required && ccpassword.dirty )">
+                        Password is required to enter again.
+                        </small>
+                        <small *ngIf=" ccpassword.errors?.notEqual && !ccpassword.errors.required  && (ccpassword.touched ||ccpassword.dirty)">password and confirmpassword does not match.
+                        </small>     
+                     </div>
+                     <label for="address"><b>Address</b></label>
+                     <input type="address" 
+                     #cadd="ngModel" 
+                     [class.is-invalid]="cadd.invalid && cadd.touched" 
+                     class="input100" 
+                     placeholder="Enter address" 
+                     name="address" 
+                     [(ngModel)]="organizationModel.address" 
+                     required>
+                     <div *ngIf="cadd.invalid && (cadd.dirty || cadd.touched)"
+                        class="text-danger">      
+                        <small *ngIf="cadd.errors.required">
+                        Address is required.
+                        </small>
+                     </div>
+                     <label for="contact"><b>Contact No.</b></label>
+                     <input type="text" 
+                     #ccontact="ngModel" 
+                     pattern="^\d{10}" 
+                     [class.is-invalid]="ccontact.invalid && ccontact.touched"
+                     class="input100" 
+                     placeholder="Enter contact no." 
+                     name="contact" 
+                     [(ngModel)]="organizationModel.contact" 
+                     required>
+                     <div *ngIf="ccontact.invalid && (ccontact.dirty || ccontact.touched)"
+                        class="text-danger">
+                        <small *ngIf="ccontact.errors.required">
+                        contact number is required.
+                        </small>
+                        <small *ngIf="ccontact.errors.pattern">Number should be in 10 digit.
+                        </small>      
+                     </div>
+                     <div *ngIf="!hasEmailverified && mail.valid && personForm.form.invalid">
+                        <div class="container-login100-form-btn" >
+                           <small>
+                           verify your account to register. 
+                           <button type="button" 
+                           class="login100-form-btn"  
+                           [disabled]="!organizationForm.form.valid || emailAlreadyExist!=''" 
+                           (click)="sendVerificationEmail(mail.value)" 
+                           style="font-size: medium;">
+                           Send otp to verify email</button>
+                           </small>
                         </div>
-                                  <div *ngIf="emailAlreadyExist!=''" class="text-danger">
-                                    <small>{{emailAlreadyExist}} </small>
-                                  </div>
-
-                    <label for="psw"><b>Password</b></label>  
-                      <input type="password"  
-                      pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}"  
-                      #cpassword="ngModel" 
-                      [class.is-invalid]="cpassword.invalid && cpassword.touched" 
-                      class="input100"
-                      placeholder="Enter Password" 
-                      name="cpsw" 
-                      [(ngModel)]="userModel2.password" 
-                      required>
-                        <div *ngIf="cpassword.invalid && (cpassword.dirty || cpassword.touched)"
-                          class="text-danger">
-                          <small *ngIf="cpassword.errors.required">
-                            Password is required.
-                          </small>
-                          <small *ngIf="cpassword.errors.pattern">
-                          At least 8 characters in length,Lowercase letters,Uppercase letters,Numbers,Special characters.
-                          </small>      
-                        </div> 
-                      <label for="cpsw"><b>Confirm Password</b></label>
-                        <input type="password" 
-                        #ccpassword="ngModel" 
-                        appConfirmEqualValidator="cpsw"
-                        [class.is-invalid]="ccpassword.invalid && ccpassword.touched" 
-                        class="input100"
-                        placeholder="Enter Password again" 
-                        name="ccpsw" 
-                        ngModel 
-                        required>
-                          <div *ngIf="ccpassword.invalid"
-                          class="text-danger">
-                            <small *ngIf="(ccpassword.errors.required &&  ccpassword.touched) || (ccpassword.errors.required && ccpassword.dirty )">
-                            Password is required to enter again.
-                            </small>
-                            <small *ngIf=" ccpassword.errors?.notEqual && !ccpassword.errors.required  && (ccpassword.touched ||ccpassword.dirty)">password and confirmpassword does not match.
-                            </small>     
-                          </div>
-                      <label for="address"><b>Address</b></label>
-                        <input type="address" 
-                        #cadd="ngModel" 
-                        [class.is-invalid]="cadd.invalid && cadd.touched" 
-                        class="input100" 
-                        placeholder="Enter address" 
-                        name="address" 
-                        [(ngModel)]="organizationModel.address" 
-                        required>
-                          <div *ngIf="cadd.invalid && (cadd.dirty || cadd.touched)"
-                            class="text-danger">      
-                            <small *ngIf="cadd.errors.required">
-                            Address is required.
-                            </small>
-                          </div>   
-                      <label for="contact"><b>Contact No.</b></label>
-                        <input type="text" 
-                        #ccontact="ngModel" 
-                        pattern="^\d{10}" 
-                        [class.is-invalid]="ccontact.invalid && ccontact.touched"
-                        class="input100" 
-                        placeholder="Enter contact no." 
-                        name="contact" 
-                        [(ngModel)]="organizationModel.contact" 
-                        required>
-                          <div *ngIf="ccontact.invalid && (ccontact.dirty || ccontact.touched)"
-                          class="text-danger">
-                            <small *ngIf="ccontact.errors.required">
-                            contact number is required.
-                            </small>
-                            <small *ngIf="ccontact.errors.pattern">Number should be in 10 digit.
-                            </small>      
-                          </div>  
-                          <div *ngIf="!hasEmailverified && mail.valid">
-                            <div class="container-login100-form-btn" >
-                              <small>
-                              verify your account to register. 
-                                <button type="button" 
-                                class="login100-form-btn"  
-                                [disabled]="!organizationForm.form.valid || emailAlreadyExist!=''" 
-                                (click)="sendVerificationEmail(mail.value)" 
-                                style="font-size: medium;">
-                                Send otp to verify email</button>
-                              </small>
-                            </div>
-                          </div>
-                          <div *ngIf="enterotp && organizationForm.form.valid">
-                           <div class="form-group">
-                            <label for="cotp"><b>Enter OTP</b></label>
-                              <input type="text" 
+                     </div>
+                     <div *ngIf="enterotp && organizationForm.form.valid && personForm.form.invalid">
+                        <div class="form-group">
+                           <label for="cotp"><b>Enter OTP</b></label>
+                           <input type="text" 
                               #cotp
                               class="input100" 
                               placeholder="Enter otp sent to your entered email" 
                               name="cotp"
                               required>           
-                              <button type="button" 
-                              class="login100-form-btn" 
-                              [disabled]="!organizationForm.form.valid || emailAlreadyExist!=''" 
-                              (click)="checkotp(cotp.value)" 
-                              style="font-size: medium;">
-                              Enter</button>      
-                           </div> 
-                          </div>
-                          <br>  
-                          <div *ngIf="hasEmailverified && organizationForm.form.valid">
-                          <div class="form-group">
-                            <button  
-                            class="btn btn-success" 
-                            class="login100-form-btn" 
-                            (click)="onSubmit2()" 
-                            [disabled]="!organizationForm.form.valid && emailAlreadyExist==''" 
-                            type="submit" 
-                            style="font-size: medium;">Register</button>          
-                          </div> 
-                          </div>
-                     </form> 
-                  </mat-tab>
-        </mat-tab-group>
+                           <button type="button" 
+                           class="login100-form-btn" 
+                           [disabled]="!organizationForm.form.valid || emailAlreadyExist!=''" 
+                           (click)="checkotp(cotp.value)" 
+                           style="font-size: medium;">
+                           Enter</button>      
+                        </div>
+                     </div>
+                     <br>  
+                     <div *ngIf="hasEmailverified && organizationForm.form.valid && personForm.form.invalid">
+                        <div class="form-group">
+                           <button  
+                           class="btn btn-success" 
+                           class="login100-form-btn" 
+                           (click)="onSubmit2()" 
+                           [disabled]="!organizationForm.form.valid || emailAlreadyExist!=''" 
+                           type="submit" 
+                           style="font-size: medium;">Register</button>          
+                        </div>
+                     </div>
+                  </form>
+               </mat-tab>
+            </mat-tab-group>
+         </div>
       </div>
-    </div>
-  </div>
+   </div>
 </div>

@@ -1,120 +1,94 @@
 <div *ngIf="this.storeRole=='Analyst' and this.store!=null">
-<div style=" min-width:50%; max-width:50%;float:right;">
-  <div class="container" >
-    <img src="assets/discussion.jpg" alt="IMG" class="image">
-  </div>
-</div>
-
-
-<div style="max-width:50%; min-width:50%; float:left;"> 
-
-<mat-tab-group animationDuration="1000ms">
-<mat-tab label ="Top Individual Creditors">
-<table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
-
-<ng-container matColumnDef="personId">
-<th mat-header-cell *matHeaderCellDef> Person Id </th>
-<td mat-cell *matCellDef="let element"> {{element.personId.personId}}</td>
-</ng-container> 
-
- <ng-container matColumnDef="personName">
-  <th mat-header-cell *matHeaderCellDef> Name </th>
-  <td mat-cell *matCellDef="let element"> {{element.personId.personName}}</td>
-</ng-container> 
-
-
-<ng-container matColumnDef="contact">
-  <th mat-header-cell *matHeaderCellDef > Contact no </th>
-  <td mat-cell *matCellDef="let element"> {{element.personId.contact}}</td>
-</ng-container>
-
-<ng-container matColumnDef="address">
-  <th mat-header-cell *matHeaderCellDef > Address </th>
-  <td mat-cell *matCellDef="let element"> {{element.personId.address}}</td>
-</ng-container>
-
-<ng-container matColumnDef="expandedDetail">
-  <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
-    <div class="example-element-detail"
-         [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-      
-      <div class="example-element-description">
-        <h4> Applicant Id  :{{element.applicationId}}</h4>
-        <h4> Loan Amount   :{{element.loanAmount}}</h4>
-        <h4> Occupation   :{{element.occupation}}</h4>
-        <h4> Loan Tenure:{{element.loanTenure}}</h4>
+   <div style=" min-width:50%; max-width:50%;float:right;">
+      <div class="container" >
+         <img src="assets/discussion.jpg" alt="IMG" class="image">
       </div>
-    </div>
-  </td>
+   </div>
+   <div style="max-width:50%; min-width:50%; float:left;">
+      <mat-tab-group animationDuration="1000ms">
+         <mat-tab label ="Top Individual Creditors">
+            <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
+               <ng-container matColumnDef="personId">
+                  <th mat-header-cell *matHeaderCellDef> Person Id </th>
+                  <td mat-cell *matCellDef="let element"> {{element.personId.personId}}</td>
+               </ng-container>
+               <ng-container matColumnDef="personName">
+                  <th mat-header-cell *matHeaderCellDef> Name </th>
+                  <td mat-cell *matCellDef="let element"> {{element.personId.personName}}</td>
+               </ng-container>
+               <ng-container matColumnDef="contact">
+                  <th mat-header-cell *matHeaderCellDef > Contact No </th>
+                  <td mat-cell *matCellDef="let element"> {{element.personId.contact}}</td>
+               </ng-container>
+               <ng-container matColumnDef="address">
+                  <th mat-header-cell *matHeaderCellDef > Address </th>
+                  <td mat-cell *matCellDef="let element"> {{element.personId.address}}</td>
+               </ng-container>
+               <ng-container matColumnDef="expandedDetail">
+                  <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+                  <div class="example-element-detail"
+                  [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                  <div class="example-element-description">
+                     <h4> Applicant Id  :{{element.applicationId}}</h4>
+                     <h4> Loan Amount   :{{element.loanAmount}}</h4>
+                     <h4> Occupation   :{{element.occupation}}</h4>
+                     <h4> Loan Tenure:{{element.loanTenure}}</h4>
+                  </div>
+   </div>
+   </td>
+   </ng-container>
+   <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+   <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
+   class="example-element-row"
+   [class.example-expanded-row]="expandedElement === element"
+   (click)="expandedElement = expandedElement === element ? null : element">
+   </tr>
+   <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+   </table>
+   </mat-tab>
+   <mat-tab label ="Top Organizational Creditors">
+   <table mat-table [dataSource]="dataSource1" multiTemplateDataRows class="mat-elevation-z8">
+   <ng-container matColumnDef="organizationId">
+   <th mat-header-cell *matHeaderCellDef> Person Id </th>
+   <td mat-cell *matCellDef="let element"> {{element.organizationId.organizationId}}</td>
+   </ng-container> 
+   <ng-container matColumnDef="organizationName">
+   <th mat-header-cell *matHeaderCellDef> Name </th>
+   <td mat-cell *matCellDef="let element"> {{element.organizationId.organizationName}}</td>
+   </ng-container> 
+   <ng-container matColumnDef="contact">
+   <th mat-header-cell *matHeaderCellDef > Contact no </th>
+   <td mat-cell *matCellDef="let element"> {{element.organizationId.contact}}</td>
+   </ng-container>
+   <ng-container matColumnDef="address">
+   <th mat-header-cell *matHeaderCellDef > Address </th>
+   <td mat-cell *matCellDef="let element"> {{element.organizationId.address}}</td>
+   </ng-container>
+   <ng-container matColumnDef="expandedDetail">
+   <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay1.length">
+   <div class="example-element-detail"
+   [@detailExpand]="element == expandedElement1 ? 'expanded' : 'collapsed'">
+   <div class="example-element-description">
+   <h4> Applicant Id   :{{ element.applicationId }}</h4>
+   <h4> Loan Amount    :{{element.loanAmount}}</h4>
+   <h4> Revenue       :{{element.revenue}}</h4>
+   <h4> Loan Tenure  :{{element.loanTenure}}</h4>
+   <h4> Director Name :{{element.organizationId.directorName}}</h4>
+   </div>
+</div>
+</td>
 </ng-container>
-
-<tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-  <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
-      class="example-element-row"
-      [class.example-expanded-row]="expandedElement === element"
-      (click)="expandedElement = expandedElement === element ? null : element">
-  </tr>
-  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
-  </table>
+<tr mat-header-row *matHeaderRowDef="columnsToDisplay1"></tr>
+<tr mat-row *matRowDef="let element; columns: columnsToDisplay1;"
+class="example-element-row"
+[class.example-expanded-row]="expandedElement1 === element"
+(click)="expandedElement1 = expandedElement1 === element ? null : element">
+</tr>
+<tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+</table>
 </mat-tab>
- <mat-tab label ="Top Organizational Creditors">
-  
-  <table mat-table [dataSource]="dataSource1" multiTemplateDataRows class="mat-elevation-z8">
-
-    <ng-container matColumnDef="organizationId">
-    <th mat-header-cell *matHeaderCellDef> Person Id </th>
-    <td mat-cell *matCellDef="let element"> {{element.organizationId.organizationId}}</td>
-    </ng-container> 
-    
-     <ng-container matColumnDef="organizationName">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.organizationId.organizationName}}</td>
-    </ng-container> 
-    
-    
-    <ng-container matColumnDef="contact">
-      <th mat-header-cell *matHeaderCellDef > Contact no </th>
-      <td mat-cell *matCellDef="let element"> {{element.organizationId.contact}}</td>
-    </ng-container>
-    
-    <ng-container matColumnDef="address">
-      <th mat-header-cell *matHeaderCellDef > Address </th>
-      <td mat-cell *matCellDef="let element"> {{element.organizationId.address}}</td>
-    </ng-container>
-    
-    <ng-container matColumnDef="expandedDetail">
-      <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay1.length">
-        <div class="example-element-detail"
-        [@detailExpand]="element == expandedElement1 ? 'expanded' : 'collapsed'">
-         
-          <div class="example-element-description">
-            <h4> ApplicantId   :{{ element.applicationId }}</h4>
-            <h4> LoanAmount    :{{element.loanAmount}}</h4>
-            <h4> Revenue       :{{element.revenue}}</h4>
-           
-            <h4> Loan tenture  :{{element.loanTenure}}</h4>
-            <h4> Director Name :{{element.organizationId.directorName}}</h4>
-          </div>
-        </div>
-      </td>
-    </ng-container>
-    
-    <tr mat-header-row *matHeaderRowDef="columnsToDisplay1"></tr>
-      <tr mat-row *matRowDef="let element; columns: columnsToDisplay1;"
-          class="example-element-row"
-          [class.example-expanded-row]="expandedElement1 === element"
-          (click)="expandedElement1 = expandedElement1 === element ? null : element">
-      </tr>
-      <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
-      </table>
-    </mat-tab>
-    
 </mat-tab-group>
 </div>
-
 <div *ngIf="this.store==null">
-<app-login></app-login>
-</div> 
- 
-
-
+   <app-login></app-login>
+</div>

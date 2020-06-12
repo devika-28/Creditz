@@ -1,145 +1,109 @@
-
 <!-- <div style="display: box; width: 90%; min-width: 400px;height:90%"> -->
-  <div *ngIf="this.storeRole=='Admin' and this.store!=null">
-  <mat-sidenav-container  >
-    
-    <mat-sidenav #start mode="side" opened >
-            <mat-nav-list>
+<div *ngIf="this.storeRole=='Admin' and this.store!=null">
+   <mat-sidenav-container  >
+      <mat-sidenav #start mode="side" opened >
+         <mat-nav-list>
             <div class="profile-card">
-                <img width:200px
-                height:50px
-                object-fit:cover
-                src="assets\admin.jpg" alt="admin.jpg">
-                <div class="header">
-                   <h4>Admin</h4>
-                </div>
-           </div>
-           <a mat-list-item [routerLink]="'/admin'">
-            <mat-icon>question_answer</mat-icon>
-            <span>Person Applications</span>
-           </a>
-           
-           <br>
-           <a mat-list-item [routerLink]="'/organization-creditor-list'">
-            <mat-icon>question_answer</mat-icon>
-            <span>Organization Applications</span>
-           </a>
-           <br>
-        
-           <a mat-list-item [routerLink]="'/analyst-registration'">
-            <mat-icon>person_add</mat-icon>
-            <span>RegisterAnalyst</span>
-           </a>
-           <br>
-
-        <a mat-list-item [routerLink]="'/show-analyst'">
-            <mat-icon>delete</mat-icon>
-            <span> Show Analyst</span>
-        </a>
-        <br>
-
-        <a mat-list-item [routerLink]="'/schedular'"  >
-          <mat-icon>alarm</mat-icon>
-          <span> Schedular</span>
-      </a>
-        <br>
-</mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
-    <!-- <div style="height: 100vh,100ch;"> -->
-      <!-- <div style="display: box; width: 120%; min-width: 400px; margin-left:25%;"> -->
-        <h1> Organization Application Details</h1>
-
-        <div class= "data-container mat-elevation-z12">
-          <div class="example-header">
-            <mat-form-field floatLabel="never">
-              <input matInput (keyup)="applyFilter($event.target.value)" [(ngModel)]="searchKey" placeholder="SearchByApplicationStatus">
-             <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="onSearchClear()">
-             <mat-icon>close</mat-icon>
-             </button>
-            </mat-form-field>
-          </div>
-          
-        <table mat-table [dataSource]="dataSource" matSort>
-         
-              
-              <ng-container matColumnDef="applicationId">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Application ID </mat-header-cell>
-                <mat-cell *matCellDef="let application"> {{application.applicationId}}</mat-cell>
-              </ng-container>
-        
-              <ng-container matColumnDef="organizationName">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
-                <mat-cell *matCellDef="let application"> {{application.organizationId.organizationName}}</mat-cell>
-              </ng-container>
-          
-          
-              <ng-container matColumnDef="contact">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Contact no </mat-header-cell>
-                <mat-cell *matCellDef="let application"> {{application.organizationId.contact}}</mat-cell>
-              </ng-container>
-        
-              
-              <ng-container matColumnDef="address">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Address </mat-header-cell>
-                <mat-cell *matCellDef="let application"> {{application.organizationId.address}}</mat-cell>
-              </ng-container>
-        
-              <ng-container matColumnDef="loanAmount">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Loan Amount </mat-header-cell>
-                <mat-cell *matCellDef="let application"> {{application.loanAmount}}</mat-cell>
-              </ng-container>
-        
-        
-              <ng-container matColumnDef="loanTenure">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>Loan Tenure</mat-header-cell>
-                <mat-cell *matCellDef="let application"> {{application.loanTenure}}</mat-cell>
-              </ng-container>
-
-              <ng-container matColumnDef="applicationDate">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>Applied Date </mat-header-cell>
-                <mat-cell *matCellDef="let application"> {{application.applicationDate}}</mat-cell>
-              </ng-container>
-        
-              <ng-container matColumnDef="applicationStatus">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Application Status </mat-header-cell>
-                <mat-cell *matCellDef="let application"> {{application.applicationStatus}}</mat-cell>
-              </ng-container>
-
-
-              <ng-container matColumnDef="emailStatus">
-                <mat-header-cell *matHeaderCellDef mat-sort-header>Email Status </mat-header-cell>
-                <mat-cell *matCellDef="let application"> {{application.emailStatus}}</mat-cell>
-              </ng-container>
-          
-              <ng-container matColumnDef="loading">
-                <mat-footer-cell *matFooterCellDef colspan="6">
-                  <mat-spinner></mat-spinner>
-               </mat-footer-cell>
-                
+               <img width:200px
+                  height:50px
+                  object-fit:cover
+                  src="assets\admin.jpg" alt="admin.jpg">
+               <div class="header">
+                  <h4>Admin</h4>
+               </div>
+            </div>
+            <a mat-list-item [routerLink]="'/admin'">
+               <mat-icon>question_answer</mat-icon>
+               <span>Person Applications</span>
+            </a>
+            <br>
+            <a mat-list-item [routerLink]="'/organization-creditor-list'">
+               <mat-icon>question_answer</mat-icon>
+               <span>Organization Applications</span>
+            </a>
+            <br>
+            <a mat-list-item [routerLink]="'/analyst-registration'">
+               <mat-icon>person_add</mat-icon>
+               <span>RegisterAnalyst</span>
+            </a>
+            <br>
+            <a mat-list-item [routerLink]="'/show-analyst'">
+               <mat-icon>delete</mat-icon>
+               <span> Show Analyst</span>
+            </a>
+            <br>
+            <a mat-list-item [routerLink]="'/schedular'"  >
+               <mat-icon>alarm</mat-icon>
+               <span> Schedular</span>
+            </a>
+            <br>
+         </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav-content>
+         <!-- <div style="height: 100vh,100ch;"> -->
+         <!-- <div style="display: box; width: 120%; min-width: 400px; margin-left:25%;"> -->
+         <h1> Organization Application Details</h1>
+         <div class= "data-container mat-elevation-z12">
+            <div class="example-header">
+               <mat-form-field floatLabel="never">
+                  <input matInput (keyup)="applyFilter($event.target.value)" [(ngModel)]="searchKey" placeholder="SearchByApplicationStatus">
+                  <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="onSearchClear()">
+                     <mat-icon>close</mat-icon>
+                  </button>
+               </mat-form-field>
+            </div>
+            <table mat-table [dataSource]="dataSource" matSort>
+               <ng-container matColumnDef="applicationId">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> Application ID </mat-header-cell>
+                  <mat-cell *matCellDef="let application"> {{application.applicationId}}</mat-cell>
                </ng-container>
-              
-              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-              <mat-footer-row *matFooterRowDef="['loading']"[ngClass]="{'hide':dataSource!=null}"></mat-footer-row>
-              
-          </table>
-          <mat-paginator [length]="length"
-                         [pageSize]="pageSize"
-                         [pageSizeOptions]="pageSizeOptions">
-          </mat-paginator>
-          
-          </div>
-        
-    </mat-sidenav-content>
-
-    </mat-sidenav-container>
-    </div>
-    <div *ngIf="this.store==null">
-      <app-login></app-login>
-     </div>
-   
-    <router-outlet></router-outlet>
-
-
-
+               <ng-container matColumnDef="organizationName">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+                  <mat-cell *matCellDef="let application"> {{application.organizationId.organizationName}}</mat-cell>
+               </ng-container>
+               <ng-container matColumnDef="contact">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> Contact no </mat-header-cell>
+                  <mat-cell *matCellDef="let application"> {{application.organizationId.contact}}</mat-cell>
+               </ng-container>
+               <ng-container matColumnDef="address">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> Address </mat-header-cell>
+                  <mat-cell *matCellDef="let application"> {{application.organizationId.address}}</mat-cell>
+               </ng-container>
+               <ng-container matColumnDef="loanAmount">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> Loan Amount </mat-header-cell>
+                  <mat-cell *matCellDef="let application"> {{application.loanAmount}}</mat-cell>
+               </ng-container>
+               <ng-container matColumnDef="loanTenure">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header>Loan Tenure</mat-header-cell>
+                  <mat-cell *matCellDef="let application"> {{application.loanTenure}}</mat-cell>
+               </ng-container>
+               <ng-container matColumnDef="applicationStatus">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header> Application Status </mat-header-cell>
+                  <mat-cell *matCellDef="let application"> {{application.applicationStatus}}</mat-cell>
+               </ng-container>
+               <ng-container matColumnDef="emailStatus">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header>Email Status </mat-header-cell>
+                  <mat-cell *matCellDef="let application"> {{application.emailStatus}}</mat-cell>
+               </ng-container>
+               <ng-container matColumnDef="loading">
+                  <mat-footer-cell *matFooterCellDef colspan="6">
+                     <mat-spinner></mat-spinner>
+                  </mat-footer-cell>
+               </ng-container>
+               <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+               <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+               <mat-footer-row *matFooterRowDef="['loading']"[ngClass]="{'hide':dataSource!=null}"></mat-footer-row>
+            </table>
+            <mat-paginator [length]="length"
+            [pageSize]="pageSize"
+            [pageSizeOptions]="pageSizeOptions"
+            >
+            </mat-paginator>
+         </div>
+      </mat-sidenav-content>
+   </mat-sidenav-container>
+</div>
+<div *ngIf="this.store==null">
+   <app-login></app-login>
+</div>
+<router-outlet></router-outlet>

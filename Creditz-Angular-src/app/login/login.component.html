@@ -1,79 +1,63 @@
 <div class="limiter" style=" width:40%; margin-left:30%;"   *ngIf="this.storeRole==null and this.store==null" align="center">
-				<div class="container-login100">
-							<div class="wrap-login100">
-
-
-
-								<div style=" float: right; margin:0%">
-									<form class="login100-form validate-form" style="border:none;" novalidate>
-							          <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
-                        <div class="alert alert-success" *ngIf='loginSuccess'>{{successMessage}}</div>
-								          <div style=" margin-left:1%; align:center" >
-							      						<img class="login100-pic img" aTilt src="assets/img-01.png" alt="IMG" >
-							          	</div>
-              
-									<mat-form-field appearance="none">
-									<div class="wrap-input100 validate-input">
-
-                  
-									<input matInput 
-									matTooltip="Enter your Email"	matTooltipPosition="below"
- 									placeholder="Enter Email" type="email"  class="input100" id="username" name="username" #userEmail="ngModel" [(ngModel)]="username" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [class.is-invalid]="userEmail.invalid && userEmail.touched" required>
-														<span class="focus-input100"></span>
-														<!--<i class="fa fa-envelope" aria-hidden="true"></i>-->
-									</div>
-									</mat-form-field>
-
-
-									
-									<mat-form-field appearance="none">
-									<div class="wrap-input100 validate-input" data-validate = "password is required">
-									<input matInput 
-									matTooltip="Enter your Password"	matTooltipPosition="below"
-									placeholder="Enter Password" type="password" class="input100" id="password" [(ngModel)]="password" name="password" required>
-														<span class="focus-input100"></span>
-														<!--<i class="fa fa-lock" aria-hidden="true"></i>-->
-									</div>
-									</mat-form-field>
-
-									<div class="container-login100-form-btn" >
-										<button type="submit" (click)=handleLogin() class="login100-form-btn" id="submit">Login</button>
-									</div>
-
-									<div style="bottom:0px">
-													<div class="text-center p-t-12">
-														<span class="txt1">
-															Forgot
-														</span>
-														<a class="txt2" href="forgot-password">
-															Username / Password?
-														</a>
-														
-													</div>
-
-													<div class="text-center p-t-136">
-
-													</div>
-																				<br>	
-													<div class="text-center p-t-136">
-														<a class="txt2" href="register" style="padding-right: 15%; margin-left:0px">
-															Create your Account       
-															<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-														</a>
-
-														<a class="txt2" href="reset-password">
-															      Change Password
-															<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-														</a>
-														
-													</div>
-										</div>
-								</form>
-
-					</div>
-		</div>
+<div class="container-login100">
+   <div class="wrap-login100">
+      <div style=" float: right; margin:0%">
+         <form class="login100-form validate-form" style="border:none;" novalidate>
+            <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
+            <div class="alert alert-success" *ngIf='loginSuccess'>{{successMessage}}</div>
+            <div style=" margin-left:1%; align:center" >
+               <img class="login100-pic img" aTilt src="assets/img-01.png" alt="IMG" >
+            </div>
+            <mat-form-field appearance="none">
+               <div class="wrap-input100 validate-input">
+                  <input matInput 
+                  matTooltip="Enter your Email"	matTooltipPosition="below"
+                  placeholder="Enter Email" type="email"  class="input100" id="username" name="username" #userEmail="ngModel" [(ngModel)]="username" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [class.is-invalid]="userEmail.invalid && userEmail.touched" required>
+                  <span class="focus-input100"></span>
+                  <!--<i class="fa fa-envelope" aria-hidden="true"></i>-->
+               </div>
+            </mat-form-field>
+            <mat-form-field appearance="none">
+               <div class="wrap-input100 validate-input" data-validate = "password is required">
+                  <input matInput
+                  matTooltip="Enter your Password"	matTooltipPosition="below"
+                  onmousedown="this.type='text'" onmouseup="this.type='password'" onmousemove="this.type='password'"
+                  placeholder="Enter Password" type="password" class="input100" id="password" [(ngModel)]="password" name="password" required>
+                 <span class="focus-input100"></span>
+                 <i matSuffix  class="material-icons"  showHideTrigger="password" [showHideStatus]="{ materialIcon: true, id: 'password' }"></i>
+                  <!--<i class="fa fa-lock" aria-hidden="true"></i>-->
+               </div>
+            </mat-form-field>    
+            <div class="container-login100-form-btn" >
+               <button type="submit" (click)=handleLogin() class="login100-form-btn" id="submit">Login</button>
+            </div>
+            <div style="bottom:0px">
+               <div class="text-center p-t-12">
+                  <span class="txt1">
+                  Forgot
+                  </span>
+                  <a class="txt2" href="forgot-password">
+                  Password?
+                  </a>
+               </div>
+               <div class="text-center p-t-136">
+               </div>
+               <br>	
+               <div class="text-center p-t-136">
+                  <a class="txt2" href="register" style="padding-right: 15%; margin-left:0px">
+                  Create your Account       
+                  <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                  </a>
+                  <a class="txt2" href="reset-password">
+                  Change Password
+                  <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                  </a>
+               </div>
+            </div>
+         </form>
+      </div>
+   </div>
 </div>
-
 <div *ngIf="this.store!=null">
-	<app-error>  </app-error>
+   <app-error>  </app-error>
 </div>

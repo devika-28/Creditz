@@ -1,67 +1,55 @@
- <div *ngIf="this.storeRole=='Admin' and this.store!=null">
+<div *ngIf="this.storeRole=='Admin' and this.store!=null">
     <mat-sidenav-container>
-    
-        <mat-sidenav mode="side" opened >
-                <mat-nav-list>
+
+        <mat-sidenav mode="side" opened>
+            <mat-nav-list>
                 <div class="profile-card">
-                    <img width:200px
-                    height:50px
-                    object-fit:cover
-                    src="assets\admin.jpg" alt="admin.jpg">
+                    <img width:200px height:50px object-fit:cover src="assets\admin.jpg" alt="admin.jpg">
                     <div class="header">
-                       <h4>Admin</h4>
+                        <h4>Admin</h4>
                     </div>
-               </div>
-               <a mat-list-item [routerLink]="'/admin'">
-                <mat-icon>question_answer</mat-icon>
-                <span>Person Applications</span>
-               </a>
-               <br>
+                </div>
+                <a mat-list-item [routerLink]="'/admin'">
+                    <mat-icon>question_answer</mat-icon>
+                    <span>Person Applications</span>
+                </a>
+                <br>
                 <a mat-list-item [routerLink]="'/organization-creditor-list'">
                     <mat-icon>question_answer</mat-icon>
                     <span>Organization Applications</span>
                 </a>
                 <br>
-                
+
                 <a mat-list-item [routerLink]="'/analyst-registration'">
                     <mat-icon>person_add</mat-icon>
                     <span>RegisterAnalyst</span>
                 </a>
                 <br>
-    
+
                 <a mat-list-item [routerLink]="'/show-analyst'">
                     <mat-icon>delete</mat-icon>
                     <span> Show Analyst</span>
                 </a>
                 <br>
-    
-                <a mat-list-item [routerLink]="'/schedular'"  >
+
+                <a mat-list-item [routerLink]="'/schedular'">
                     <mat-icon>alarm</mat-icon>
                     <span> Schedular</span>
                 </a>
-              
+
                 <br>
             </mat-nav-list>
-            
+
         </mat-sidenav>
         <mat-sidenav-content>
-       
-        <app-creditor-table-list></app-creditor-table-list>
-      
+
+            <app-creditor-table-list></app-creditor-table-list>
+
         </mat-sidenav-content>
-   
-        </mat-sidenav-container>
-     </div>
-    <div *ngIf="this.store==null">
+
+    </mat-sidenav-container>
+</div>
+<div *ngIf="this.store==null">
     <app-login></app-login>
-    </div>
-    <router-outlet></router-outlet>
-    
-    
-    
-    
-
-
-
-
-
+</div>
+<router-outlet></router-outlet>
